@@ -1,0 +1,75 @@
+\documentclass[12pt, onecolumn, titlepage]{article}
+
+\usepackage[brazil]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\begin{document} %Inicio do documento
+
+\begin{titlepage} %Capa
+	
+	\vfill
+	\begin{center}
+	
+		{\large \textbf{Faculdade de Ciências e Tecnologia\\Universidade Estadual Paulista\\``Júlio de Mesquita Filho''}} \\[3cm]
+		{\small \textbf{Bruno Santos de Lima - RA: 141251093}}\\
+		{\small \textbf{Leandro Ungari Cayres - RA: 141250992}}\\[3cm]
+		{\Large Definição do Projeto}\\
+		{\Large Sistema Fexpress}\\[3cm]
+
+	\hspace{.45\textwidth} %posiciona a minipage
+	\begin{minipage}{.5\textwidth}
+		\small Disciplina de Banco de Dados I. Professor Dr. Ronaldo Celso Messias Correia pelo curso de Ciência da Computação. Com data de entrega 05 de Junho de 2016 \\[0.5cm]
+	\end{minipage}
+
+	\vfill
+	\vspace{1.5cm}
+	
+	\large \textbf{Presidente Prudente\\}
+	\large \textbf{Maio - 2016}
+	
+	\end{center}
+	
+\end{titlepage}
+%Fim da capa
+\newpage
+
+\renewcommand{\contentsname}{Índice}
+\tableofcontents
+
+\newpage
+
+\section{Introdução}
+\label{sect:introducao}
+
+Este documento tem como proposito descrever detalhes referentes ao Sistema Fexpress, detalhes tanto no sentido de funcionamento do sistema, mas principalmente detalhes de caráter técnico relacionados a área de banco de dados. 
+
+Esta coletânea esta dividida como segue: na seção \ref{sect:especificacao} é especificado o sistema bem com sua lógica de funcionamento, na seção \ref{sect:conceitual} é apresentado o modelo entidade relacionamento do sistema, a seção \ref{sect:relacional} mostra o modelo conceitual, em seguida a seção \ref{sect:normalizacao} evidencia discussões referentes ao processo de normalização, por fim a seção \ref{sect:algebra} apresenta detalhes pertinentes a Álgebra Relacional.
+
+\section{Especificação do Problema}
+\label{sect:especificacao}
+
+O Sistema Frexpress, acrônimo de Food Express, consistem em um Sistema para gerenciamento de uma distribuidora de alimentos, com o intuito de armazenar os dados necessários para a que a empresa possa realizar a gestão de seus clientes, fornecedores, produtos e rotas de viagens, bem como fornecer um mecanismo que facilite a obtenção dos melhores caminhos para o transporte das mercadorias até as localizações de seus clientes.
+
+No sistema os clientes (mercados e estabelecimentos comerciais do setor alimentício) da distribuidora podem realizar encomendas para serem entregues em seus respectivos estabelecimento, os gerentes da distribuidora devem ter acesso a essas encomendas e utilizam o sistema para elaborar viagens com rotas convenentes em termos de custos de viagem, especificando tipo de carga, veículo e motorista que faram parte da viagem. O Gerentes da distribuidora também tem controle de todo o sistema de estoque, podendo realizar pedidos aos seus fornecedores (fabricas, produtores rurais e empresas) para repor o mesmo, ou para atender as necessidades de um cliente em especifico.
+
+Trata-se de um sistema web, implementado utilizando a linguagem de programação PHP, além da utilização da linguagem de marcação HTML, CSS, contendo algumas aplicações de JavaScrit, além de utilizar como Sistema Gerenciador de Banco de Dados (SGBD) o Mysql.
+
+\section{Esquema Conceitual}
+\label{sect:conceitual}
+
+
+\section{Esquema Relacional}
+\label{sect:relacional}
+
+
+\section{Normalização}
+\label{sect:normalizacao}
+
+
+\section{Álgebra Relacional}
+\label{sect:algebra}
+
+
+\end{document}
