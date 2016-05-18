@@ -1,6 +1,8 @@
 \select@language {brazil}
 \contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{2}
 \contentsline {section}{\numberline {2}Especifica\IeC {\c c}\IeC {\~a}o do Problema}{2}
+\contentsline {subsection}{\numberline {2.1}Entidades}{3}
+\contentsline {subsection}{\numberline {2.2}Relacionamento entre Entidades}{3}
 \contentsline {section}{\numberline {3}Esquema Conceitual}{3}
 \contentsline {section}{\numberline {4}Esquema Relacional}{3}
 \contentsline {section}{\numberline {5}Normaliza\IeC {\c c}\IeC {\~a}o}{3}
