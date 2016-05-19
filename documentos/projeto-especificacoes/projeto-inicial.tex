@@ -64,23 +64,129 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \begin{description}
 
 \item E1. Funcionario
-\item \qquad Atributos: 
+\item \qquad Atributos: idFuncionario (PK), nome, salario, dataContratacao e dataNascimento.
 
-\item E1.1 Motorista
-\item \qquad
+\item E1.1. Motorista
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idMotorista (PK), categoriaHabilitacao e telefone.
 
-\item E1.2 Gerente
-\item \qquad
+\item E1.2. Gerente
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idGerente (PK), email, login e senha.
+
+\item E1.3. Segurança
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idSeguranca (PK) e porteArma.
+
+\item E1.4. Limpeza
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idLimpeza (PK) e setor.
 
 \item E2. Fornecedor
-\item \qquad
+\item \qquad Atributos: cnpj (PK), nome, email e telefone.
 
-\item E3. 
+\item E2.1. Fabrica
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada.
+
+\item E2.2. Agricultor
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada.
+
+\item E2.3. Outro
+\item \qquad Atributos: São os mesmos do outro, pois é uma entidade especializada.
+
+\item E3. Empresa
+\item \qquad Atributos: cnpj (PK), nome, proprietario, chaveAcesso e senha.
+
+\item E4. Produto
+\item \qquad Atributos: idProduto (PK), preco e descricao.
+
+\item E5. Pedido
+\item \qquad Atributos: idPedido (PK) e data.
+
+\item E6. Deposito
+\item \qquad Atributos: idDeposito (PK), descricao e capacidade.
+
+\item E7. Viagem
+\item \qquad Atributos: idViagem (PK) e descricao.
+
+\item E8. Veiculo
+\item \qquad Atributos: idVeiculo (PK), modelo, placa, ano e capacidade.
+
+\item E9. Endereço
+\item \qquad Atributos: idEndereco (PK), rua/avenida, numero, bairro e completo.
+
+\item E10. Cidade
+\item \qquad Atributos: nome (PK), estado (PK) e pais.
+
+\item E11. Pagamento
+\item \qquad Atributos: idPagamento (PK), numeroBoleto, descricao e valor.
+
+\item E12. Item
+\item \qquad Atributos: quantidade e precoTotal.
+
+\item E13. Especificação do Produto
+\item \qquad Atributos: idEspecProduto (PK), nome e descricao.
+
+\item E14. Encomenda
+\item \qquad Atributos: idEncomenda (PK) e data.
 
 \end{description}
 
 \subsection{Relacionamento entre Entidades}
 \label{sect:relacionamento}
+
+Definidas as entidades que serão utilizadas tem-se a necessidade de especificar os relacionamentos entre essas entidades, cada uma dos relacionamento está exemplificado abaixo:
+
+\begin{description}
+
+\item Gerente \textbf{Faz} Pedido: 
+\item \qquad O Gerente (E1.2) da distribuidora de alimentos utiliza o sistema para fazer Pedido (E5) de itens para um de seus fornecedores. O Pedido pode ser feito por um Gerente e um Gerente pode fazer vários pedidos.
+
+\item Gerente \textbf{Controla} Deposito: 
+\item \qquad O Gerente (E1.2) controla os produtos pertencentes ao Deposito (E6) da distribuidora de alimentos. O Gerente pode controlar vários Depósitos e os Depósitos podem ser controladores por vários Gerentes.
+
+\item Gerente \textbf{Solicita} Viagem: 
+\item \qquad O Gerente (E1.2) da distribuidora de alimentos, ciente da existência de encomendas realizadas por seus clientes, solicita uma Viagem (E7) para a entrega de um conjunto de encomendas. O Gerente pode solicitar várias Viagens, assim como as Viagens podem ser solicitadas por vários Gerentes.
+
+\item Pedido \textbf{Possui} Item: 
+\item \qquad O Pedido (E5) no caso está relacionado estritamente com o pedido da distribuidora de alimentos para um de seus fornecedores com o intuito de abastecer o seu deposito de produtos, cada Pedido contém um conjunto de Itens (E12), assim um Pedido pode ter vários Itens, porem cada Item pode estar contido em um único Pedido.
+
+\item Viagem \textbf{Possui} Veiculo: 
+\item \qquad Cada uma das Viagens (E7) realizadas, tem como o objetivo entregar encomendas para os clientes da distribuidora de alimentos, assim em cada uma dessas viagens tem-se um Veículo (E8) para realização da mesma. Cada Viagem é realizada por um Veículo e cada Veículo pode realizar várias viagens.
+
+\item Motorista \textbf{Realiza} Viagem: 
+\item \qquad O Motorista (E1.1) realiza a Viagem (E7) seguindo uma rota previamente determinada. Um Motorista pode realizar várias Viagens e uma Viagem pode ser realizada por um Motorista.
+
+\item Viagem \textbf{Referente} Encomenda: 
+\item \qquad A Viagem (E7) acontece com a finalidade de entregar Encomendas (E14) para os clientes da distribuidora. Uma Viagem pode referir-se a várias Encomendas e uma Encomenda pode estar em uma Viagem.
+
+\item Endereco \textbf{Pertence} Cidade: 
+\item \qquad Todos os Endereços (E9) pertencem a uma determinada Cidade (E10). Um Endereço pertence a uma única Cidade, já uma Cidade pode conter diversos Endereços.
+
+\item Empresa \textbf{Localizada} Endereco: 
+\item \qquad As Empresas (E3), que são clientes da distribuidora de alimentos, tem endereços físicos, onde esses Endereços (E9) são utilizados para realizar a entrega de encomendas para as Empresas clientes da distribuidora de alimentos. Uma Empresa tem um único Endereço e um Endereço pertence a uma única Empresa.
+
+\item Fornecedor \textbf{Localizado} Endereco: 
+\item \qquad Os Fornecedores (E2) da distribuidora de alimentos, tem endereços físicos. Um Fornecedor tem um único Endereço (E9) e um Endereço pertence a um único Fornecedor.
+
+\item Fornecedor \textbf{Fornece} Produto: 
+\item \qquad O Fornecedor (E2) é o responsável por suprir as necessidades da distribuidora fornecendo os Produtos (E4) necessários para abastecer o deposito da mesma. Um Fornecedor pode fornecer um ou mais produtos e um produto pode ser fornecido por um ou mais distribuidor.
+
+\item Deposito \textbf{Contem} Produto: 
+\item \qquad O Deposito (E6) da distribuidora de alimentos contém uma série de Produtos (E4) que podem ser encomendados pelas Empresas que são clientes. O Deposito pode conter diversos Produtos e cada Produto pode estar em um Deposito.
+
+\item Produto \textbf{Refere} Pagamento: 
+\item \qquad
+
+\item Pagamento \textbf{Refere} Encomenda: 
+\item \qquad
+
+\item EspecificacaoProduto \textbf{refere} Produto: 
+\item \qquad Em cada uma das encomendas realizadas pelas empresas clientes da distribuidora de alimentos existe uma Especificação (E13) de um Produto que refere-se a um Produto (E4) disponibilizado pela distribuidora. Neste caso cada Produto tem apenas uma Especificação e vice-versa. 
+
+\item Encomenda \textbf{Contem} EspecificacaoProduto: 
+\item \qquad Cada Encomenda (E14) contém contém um conjunto de especificações, cada especificação está ligada a um produto pertencente a Encomenda. Cada Encomenda contém diversas Especificações (E13) de Produto, sendo que está última está presente em diversas Encomendas.
+
+\item Empresa \textbf{Pede} Encomenda: 
+\item \qquad A Empresa (E3) cliente da distribuidora de alimentos realiza pedidos de Encomenda (E14) que uma serie de produtos, onde essas Encomendas devem ser entregas pela distribuidora diretamente no endereço da Empresa. Cada Empresa pode realizar pedidos por várias Encomendas e uma Encomenda pode ser pedida por apenas uma Empresa.
+
+\end{description}
 
 \section{Esquema Conceitual}
 \label{sect:conceitual}
