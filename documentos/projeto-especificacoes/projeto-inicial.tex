@@ -196,13 +196,199 @@ Dentre as consultas em que o sistema pode realizar no Banco de Dados, podemos de
 \section{Esquema Conceitual}
 \label{sect:conceitual}
 
+\newpage
+\section{Mapeamento do Esquema Relacional}
+A seguir serão descritas todas as etapas do processo de modelagem do modelo conceitual (ER) para o relacional.
 
-\section{Esquema Relacional}
-\label{sect:relacional}
+No primeiro passo, para cada entidade no modelo ER são criadas tabelas correspondentes, para os atributos compostos somente são incluídos os atributos simples e deve ser escolhida uma chave primária.
+\\
+\renewcommand{\baselinestretch}{1.2}
+\begin{table}[htb!]
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10.5cm}}
+cidade & (\underline{idCidade}, nome, estado, pais) \\
+endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+viagem & (\underline{idViagem}, descricao) \\
+funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+seguranca & (\underline{idSeguranca}, porteArma)\\
+gerente & (\underline{idGerente}, email, login, senha)\\
+auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
+deposito & (\underline{numero}, descricao, capacidade)\\
+pedido & (\underline{idPedido}, dia, mes, ano)\\
+produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc)\\
+fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero)\\
+fabrica & (\underline{idFabrica})\\
+agricultor & (\underline{idAgricultor})\\
+outro & (\underline{idOutro})\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+especifproduto & (\underline{idEspecProduto}, nome, descricao)\\
+encomenda & (\underline{idEncomenda}, dia, mes, ano)\\
+empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha)
+\end{tabular}
+\end{center}
+\end{table}
+
+No segundo passo, são criadas tabelas para todos as entidades fracas incluindo nestas todos os atributos simples, como há entidades fracas neste modelo, segue para o próximo passo.
+
+No terceiro passo, para todos os relacionamentos de cardinalidade 1:1, deve ser definida a chave estrangeira e em qual tabela esta fará parte.
+
+\begin{table}[htb!]
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10.5cm}}
+cidade & (\underline{idCidade}, nome, estado, pais) \\
+endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+viagem & (\underline{idViagem}, descricao) \\
+funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+seguranca & (\underline{idSeguranca}, porteArma)\\
+gerente & (\underline{idGerente}, email, login, senha)\\
+auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
+deposito & (\underline{numero}, descricao, capacidade)\\
+pedido & (\underline{idPedido}, dia, mes, ano)\\
+produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$)\\
+fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
+fabrica & (\underline{idFabrica})\\
+agricultor & (\underline{idAgricultor})\\
+outro & (\underline{idOutro})\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+especproduto & (\underline{idEspecProduto}, nome, descricao)\\
+encomenda & (\underline{idEncomenda}, dia, mes, ano)\\
+empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
+No quarto passo, são definidas as localizações das chaves estrangeiras e atributos das relações 1:N ou N:1.
+
+\begin{table}[htb!]
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10.5cm}}
+cidade & (\underline{idCidade}, nome, estado, pais) \\
+endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
+funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+seguranca & (\underline{idSeguranca}, porteArma)\\
+gerente & (\underline{idGerente}, email, login, senha)\\
+auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
+deposito & (\underline{numero}, descricao, capacidade)\\
+pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
+fabrica & (\underline{idFabrica})\\
+agricultor & (\underline{idAgricultor})\\
+outro & (\underline{idOutro})\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+especproduto & (\underline{idEspecProduto}, nome, descricao)\\
+encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
+\end{tabular}
+\end{center}
+\end{table}
 
 
+
+No quinto passo, são definidas novas tabelas para todos os relacionamentos com cardinalidade N:N.
+
+\begin{table}[htb!]
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10.5cm}}
+cidade & (\underline{idCidade}, nome, estado, pais) \\
+endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
+funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+seguranca & (\underline{idSeguranca}, porteArma)\\
+gerente & (\underline{idGerente}, email, login, senha)\\
+auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
+deposito & (\underline{numero}, descricao, capacidade)\\
+pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
+fabrica & (\underline{idFabrica})\\
+agricultor & (\underline{idAgricultor})\\
+outro & (\underline{idOutro})\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+especproduto & (\underline{idEspecProduto}, nome, descricao)\\
+encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
+EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
+item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)
+\end{tabular}
+\end{center}
+\end{table}
+\newpage
+No sexto passo, são definidas as tabelas para os relacionamentos n-ários, com $n > 2$, como não há estes no neste modelo segue para a próxima etapa.
+
+No sétimo passo, são definidos os atributos multivalorados, como não definição do modelo conceitual não há a presença, seguimos para a próxima etapa.
+
+No oitavo e último passo são definidas as chaves estrangeiras para as especializações, foi escolhida a alternativa 2.
+
+\begin{table}[htb!]
+\begin{center}
+\begin{tabular}{p{2.5cm} p{10.5cm}}
+cidade & (\underline{idCidade}, nome, estado, pais) \\
+endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
+funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+motorista & (\underline{$\overline{idMotorista}$}, categoriaHabilitacao, codigo, area, numero)\\
+seguranca & (\underline{$\overline{idSeguranca}$}, porteArma)\\
+gerente & (\underline{$\overline{idGerente}$}, email, login, senha)\\
+auxiliarlimpeza & (\underline{$\overline{idLimpeza}$}, setor)\\
+deposito & (\underline{numero}, descricao, capacidade)\\
+pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
+fabrica & (\underline{$\overline{idFabrica}$})\\
+agricultor & (\underline{$\overline{idAgricultor}$})\\
+outro & (\underline{$\overline{idOutro}$})\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+especproduto & (\underline{idEspecProduto}, nome, descricao)\\
+encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
+EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
+item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)
+\end{tabular}
+\end{center}
+\end{table}
+
+\newpage
 \section{Normalização}
-\label{sect:normalizacao}
+Nesta seção será descrito o processo de normalização a partir do modelo relacional obtido na última etapa descrita da seção anterior.
+
+\begin{description}
+
+\item Primeira Forma Normal (1FN):
+
+Nesta etapa, são verificadas as presenças de atributos multivalorados e não-atômicos.
+
+\textit{(b)} - Todos os atributos de todas as relações já são monovaloradas e atômicos.
+
+Logo está na 1FN.
+
+\item Segunda Forma Normal (2FN):
+
+Nesta etapa, são verificados atributos que dependem parcialmente das chaves compostas das relações.
+
+\textit{b} - Nenhuma relação possui chave composta, logo todos os atributos dependem integralmente de suas chaves correspondentes.
+
+Logo está na 2FN.
+
+\item Terceira Forma Normal (3FN):
+
+Nesta última etapa, são verificados se os atributos não-chaves dependem de outros atributos não-chaves, em caso afirmativo cria-se novas relações.
+
+\textit{b} - Os atributos dependem unicamente das suas chaves primárias em cada relação.
+
+Logo está na 3FN.
+\end{description}
 
 
 \section{Álgebra Relacional}
