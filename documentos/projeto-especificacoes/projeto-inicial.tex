@@ -210,21 +210,21 @@ cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
 veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
 viagem & (\underline{idViagem}, descricao) \\
-funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
 motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dia, mes, ano)\\
-produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc)\\
+pedido & (\underline{idPedido}, dataPedido)\\
+produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero)\\
 fabrica & (\underline{idFabrica})\\
 agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
-pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especifproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, dia, mes, ano)\\
+encomenda & (\underline{idEncomenda}, data)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha)
 \end{tabular}
 \end{center}
@@ -241,21 +241,21 @@ cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
 veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
 viagem & (\underline{idViagem}, descricao) \\
-funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
 motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dia, mes, ano)\\
-produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$)\\
+pedido & (\underline{idPedido}, dataPedido)\\
+produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
 agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
-pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, dia, mes, ano)\\
+encomenda & (\underline{idEncomenda}, data)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
 \end{tabular}
 \end{center}
@@ -271,21 +271,21 @@ cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
 veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
-funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
 motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
-produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
 agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
-pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
 \end{tabular}
 \end{center}
@@ -302,21 +302,21 @@ cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
 veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
-funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
 motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
-produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
 agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
-pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
 EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
 item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)
@@ -337,21 +337,21 @@ cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
 veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
-funcionario & (\underline{idFuncionario}, nome, salario, diaContratacao, mesContratacao, anoContratacao, dia, mes, ano)\\
+funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
 motorista & (\underline{$\overline{idMotorista}$}, categoriaHabilitacao, codigo, area, numero)\\
 seguranca & (\underline{$\overline{idSeguranca}$}, porteArma)\\
 gerente & (\underline{$\overline{idGerente}$}, email, login, senha)\\
 auxiliarlimpeza & (\underline{$\overline{idLimpeza}$}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
-produto & (\underline{codProduto}, preco, diaFab, mesFab, anoFab, diaVenc, mesVenc, anoVenc, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
+pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{$\overline{idFabrica}$})\\
 agricultor & (\underline{$\overline{idAgricultor}$})\\
 outro & (\underline{$\overline{idOutro}$})\\
-pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, diaVenc, mesVenc, anoVenc)\\
+pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, dia, mes, ano, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
 EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
 item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.14)  20 MAY 2016 09:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.14)  20 MAY 2016 11:23
 entering extended mode
 **projeto-inicial.tex
 
@@ -346,6 +346,15 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 ial.toc)
 \tf@toc=\write3
  [1]
+
+LaTeX Warning: Reference `sect:relacional' on page 2 undefined on input line 48
+.
+
+
+LaTeX Warning: Reference `sect:normalizacao' on page 2 undefined on input line 
+48.
+
+
 Overfull \hbox (11.77223pt too wide) in paragraph at lines 57--58
 \OT1/cmr/m/n/12 a lin-gua-gem de pro-gramac~ao PHP, alem da uti-lizac~ao da 
 lin-gua-gem de marcac~ao
@@ -372,6 +381,11 @@ Overfull \hbox (7.20064pt too wide) in paragraph at lines 248--248
  []
 
 
+Underfull \hbox (badness 2443) in paragraph at lines 251--252
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 259--260
 []\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
  []
@@ -389,6 +403,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 273--274
 
 Overfull \hbox (7.20064pt too wide) in paragraph at lines 278--278
 []\OT1/cmr/m/n/12 auxiliarlimpeza| 
+ []
+
+
+Underfull \hbox (badness 2443) in paragraph at lines 281--282
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
+[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
  []
 
 
@@ -412,6 +436,16 @@ Overfull \hbox (7.20064pt too wide) in paragraph at lines 309--309
  []
 
 
+Underfull \hbox (badness 2443) in paragraph at lines 312--313
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 319--320
+[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 320--321
 []\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
  []
@@ -432,6 +466,16 @@ Overfull \hbox (7.20064pt too wide) in paragraph at lines 344--344
  []
 
 
+Underfull \hbox (badness 2443) in paragraph at lines 347--348
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--355
+[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 355--356
 []\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
  []
@@ -449,13 +493,13 @@ LaTeX Warning: Text page 14 contains only floats.
 (D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
 ial.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
  1690 strings out of 493921
  21672 string characters out of 3144876
- 87952 words of memory out of 3000000
+ 86937 words of memory out of 3000000
  4994 multiletter control sequences out of 15000+200000
  8849 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -467,7 +511,7 @@ Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on projeto-inicial.pdf (16 pages, 132124 bytes).
+Output written on projeto-inicial.pdf (16 pages, 132400 bytes).
 PDF statistics:
  82 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
