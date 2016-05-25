@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.14)  20 MAY 2016 11:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.14)  25 MAY 2016 13:52
 entering extended mode
 **projeto-inicial.tex
 
@@ -489,7 +489,19 @@ Overfull \hbox (3.88582pt too wide) in paragraph at lines 335--359
 
 LaTeX Warning: Text page 14 contains only floats.
 
-[14] [15]
+[14]
+Overfull \hbox (5.89162pt too wide) in paragraph at lines 401--402
+[]\OT1/cmr/m/n/12 3 - $\OML/cmm/m/it/12 []$ \OT1/cmr/m/n/12 ($\OML/cmm/m/it/12
+ []$ \OT1/cmr/m/n/12 (Pa-ga-mento X $\OML/cmm/m/it/12 []$
+ []
+
+
+Overfull \hbox (5.89162pt too wide) in paragraph at lines 403--404
+[]\OT1/cmr/m/n/12 4 - $\OML/cmm/m/it/12 []$ \OT1/cmr/m/n/12 ($\OML/cmm/m/it/12
+ []$ \OT1/cmr/m/n/12 (Pa-ga-mento X $\OML/cmm/m/it/12 []$
+ []
+
+[15] [16]
 (D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
 ial.aux)
 
@@ -497,23 +509,25 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1690 strings out of 493921
- 21672 string characters out of 3144876
+ 1695 strings out of 493921
+ 21741 string characters out of 3144876
  86937 words of memory out of 3000000
- 4994 multiletter control sequences out of 15000+200000
+ 4999 multiletter control sequences out of 15000+200000
  8849 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  27i,14n,24p,706b,255s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on projeto-inicial.pdf (16 pages, 132400 bytes).
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on projeto-inicial.pdf (17 pages, 154719 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

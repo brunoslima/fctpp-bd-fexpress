@@ -388,11 +388,31 @@ Nesta última etapa, são verificados se os atributos não-chaves dependem de ou
 \textit{b} - Os atributos dependem unicamente das suas chaves primárias em cada relação.
 
 Logo está na 3FN.
-\end{description}
+\end{description} 
 
 
 \section{Álgebra Relacional}
 \label{sect:algebra}
+
+1 - selecao (data > varData )(Encomenda)
+
+2 - (Fornecedor * (pi (idFornecedor) (Item * (pi (codProduto) (Produto X (pi (idEspecProduto)(selecao (nome=varNome) (EspecProduto)))))))
+
+3 - $\sigma _{(status="finalizado")}$ ($\sigma _{(idPagamento=fkPagamento)}$ (Pagamento X $\pi_{fkPagamento}$ (Encomenda) ) )
+
+4 - $\sigma _{(status="finalizado")}$ ($\sigma _{(idPagamento=fkPagamento)}$ (Pagamento X $\pi_{fkPagamento}$ (Pedido) ) )
+
+5 - $\sigma _{(status="executando")}$ (Encomenda)
+
+6 - $\sigma _{(idEndereco=fkEndereco)}$ Endereco X ($\sigma _{(idEmpresa=fkEmpresa)}$ (Empresa X ($\sigma _{(idEncomenda=varEncomenda)}$ (Encomenda)) )) 
+
+7 - $\sigma _{(status="concluido")}$ (Pedido)
+
+8 - $\sigma _{(status="disponivel")}$ (Veiculo)
+
+9 - $\sigma _{(status="disponivel")}$ (Motorista)
+
+10 - $\sigma _{(status="executando")}$ (Pedido)
 
 
 \end{document}
