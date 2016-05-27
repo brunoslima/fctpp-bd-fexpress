@@ -4,6 +4,16 @@
 %\usepackage[latin1]{inputenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\graphicspath{{figuras/}}
+\usepackage{geometry}
+%\geometry{
+%	a4paper,
+%	left=3cm,
+%	top=3cm,
+%	right=2cm,
+%	bottom=2cm
+%}
+\usepackage{float}
 
 \begin{document} %Inicio do documento
 
@@ -16,11 +26,11 @@
 		{\small \textbf{Bruno Santos de Lima - RA: 141251093}}\\
 		{\small \textbf{Leandro Ungari Cayres - RA: 141250992}}\\[3cm]
 		{\Large Definição do Projeto}\\
-		{\Large Sistema Fexpress}\\[3cm]
+		{\Large Sistema FoodExpress}\\[3cm]
 
 	\hspace{.45\textwidth} %posiciona a minipage
 	\begin{minipage}{.5\textwidth}
-		\small Disciplina de Banco de Dados I. Professor Dr. Ronaldo Celso Messias Correia pelo curso de Ciência da Computação. Com data de entrega 05 de Junho de 2016 \\[0.5cm]
+		\small Disciplina de Banco de Dados I. Professor Dr. Ronaldo Celso Messias Correia, pelo curso de Ciência da Computação. Com data de entrega 05 de Junho de 2016 \\[0.5cm]
 	\end{minipage}
 
 	\vfill
@@ -43,18 +53,18 @@
 \section{Introdução}
 \label{sect:introducao}
 
-Este documento tem como proposito descrever detalhes referentes ao Sistema Fexpress, detalhes tanto no sentido de funcionamento do sistema, mas principalmente particularidades de caráter técnico relacionados a área de Ciência da Computação com ênfase em Banco de Dados. 
+Este documento tem como proposito descrever detalhes referentes ao Sistema FoodExpress, detalhes tanto no quesito de funcionamento do sistema, mas principalmente particularidades de caráter técnico relacionados a área de Ciência da Computação com ênfase em Banco de Dados. 
 
-Essa coletânea esta dividida como segue: na seção \ref{sect:especificacao} é especificado o sistema bem com sua lógica de funcionamento, na seção \ref{sect:conceitual} é apresentado o modelo entidade relacionamento do sistema, a seção \ref{sect:relacional} mostra o modelo conceitual, em seguida a seção \ref{sect:normalizacao} evidencia discussões referentes ao processo de normalização, por fim a seção \ref{sect:algebra} apresenta detalhes pertinentes a Álgebra Relacional.
+Essa coletânea esta dividida como segue: na seção \ref{sect:especificacao} é especificado o sistema bem como sua lógica de funcionamento, na seção \ref{sect:conceitual} é apresentado o modelo entidade relacionamento do sistema, a seção \ref{sect:relacional} mostra o processo de mapeamento para o modelo conceitual e modelo em si, em seguida a seção \ref{sect:normalizacao} evidencia discussões referentes ao processo de normalização, por fim a seção \ref{sect:algebra} apresenta detalhes pertinentes as principais consultas a serem realizadas e sua resolução utilizando Álgebra Relacional.
 
 \section{Especificação do Problema}
 \label{sect:especificacao}
 
-O Sistema Fexpress, do acrônimo de Food Express, consistem em uma ferramenta para gerenciamento de uma distribuidora de alimentos, com o intuito de armazenar os dados necessários para a que a empresa possa realizar a gestão de seus clientes, fornecedores, produtos e rotas de viagens, bem como fornecer um mecanismo que facilite a obtenção dos melhores caminhos para o transporte das mercadorias até as localizações de seus clientes.
+O Sistema FoodExpress consiste em uma ferramenta para gerenciamento de uma distribuidora de alimentos, com o intuito de armazenar os dados necessários para a que a empresa possa realizar a gestão de seus clientes, fornecedores, produtos e rotas de viagens, bem como fornecer um mecanismo que facilite a obtenção dos melhores caminhos para o transporte das mercadorias até as localizações de seus clientes.
 
-No sistema os clientes (empresas e estabelecimentos comerciais do setor alimentício) da distribuidora podem realizar encomendas para serem entregues em seus respectivos estabelecimento, os gerentes da distribuidora devem ter acesso a essas encomendas e utilizam o sistema para elaborar viagens com rotas convenentes em termos de custos de viagem, especificando tipo de carga, veículo e motorista que faram parte da viagem. O Gerentes da distribuidora também tem controle de todo o sistema de estoque, podendo realizar pedidos aos seus fornecedores (fabricas, produtores rurais entre outros) para repor o mesmo, ou para atender as necessidades de um cliente em especifico.
+No sistema os clientes (empresas e estabelecimentos comerciais do setor alimentício) da distribuidora podem realizar encomendas para serem entregues em seus respectivos estabelecimento, os gerentes da distribuidora devem ter acesso a essas encomendas e utilizam o sistema para elaborar viagens com rotas convenentes em termos de custos de viagem, especificando tipo de carga, veículo e motorista que faram parte da viagem. O Gerentes da distribuidora também tem controle de todo o sistema de estoque, podendo realizar pedidos aos seus fornecedores (fabricas, produtores rurais, entre outros) para repor o mesmo, ou para atender as necessidades de um cliente em especifico.
 
-A ferramenta consiste em uma plataforma web, implementada utilizando a linguagem de programação PHP, além da utilização da linguagem de marcação HTML, CSS, contendo algumas aplicações de JavaScript, além de utilizar como Sistema Gerenciador de Banco de Dados (SGBD) o MySQL.
+A ferramenta consiste em uma plataforma web, implementada utilizando a linguagem de programação PHP, além da utilização da linguagem de marcação e de estilo: HTML e CSS, contendo algumas aplicações de JavaScript, além de utilizar como Sistema Gerenciador de Banco de Dados (SGBD) o MySQL.
 
 \subsection{Entidades}
 \label{sect:entidades}
@@ -67,7 +77,7 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \item \qquad Atributos: idFuncionario (PK), nome, salario, dataContratacao e dataNascimento.
 
 \item E1.1. Motorista
-\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idMotorista (PK), categoriaHabilitacao e telefone.
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idMotorista (PK), categoriaHabilitacao, telefone e disponivel.
 
 \item E1.2. Gerente
 \item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idGerente (PK), email, login e senha.
@@ -82,40 +92,40 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \item \qquad Atributos: cnpj (PK), nome, email e telefone.
 
 \item E2.1. Fabrica
-\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada.
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo proprio: idFrabrica (PK).
 
 \item E2.2. Agricultor
-\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada.
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo proprio: idAgricultor (PK).
 
 \item E2.3. Outro
-\item \qquad Atributos: São os mesmos do outro, pois é uma entidade especializada.
+\item \qquad Atributos: São os mesmos do outro, pois é uma entidade especializada, contendo ainda seu atributo proprio: idOutro (PK).
 
 \item E3. Empresa
 \item \qquad Atributos: cnpj (PK), nome, proprietario, chaveAcesso e senha.
 
 \item E4. Produto
-\item \qquad Atributos: idProduto (PK), preco e descricao.
+\item \qquad Atributos: codProduto (PK), preco, dataFabricacao e dataNascimento.
 
 \item E5. Pedido
-\item \qquad Atributos: idPedido (PK) e data.
+\item \qquad Atributos: idPedido (PK),data e status.
 
 \item E6. Deposito
-\item \qquad Atributos: idDeposito (PK), descricao e capacidade.
+\item \qquad Atributos: numero (PK), descricao e capacidade.
 
 \item E7. Viagem
 \item \qquad Atributos: idViagem (PK) e descricao.
 
 \item E8. Veiculo
-\item \qquad Atributos: idVeiculo (PK), modelo, placa, ano e capacidade.
+\item \qquad Atributos: idVeiculo (PK), modelo, placa, ano, capacidade e disponivel.
 
 \item E9. Endereço
-\item \qquad Atributos: idEndereco (PK), rua/avenida, numero, bairro e completo.
+\item \qquad Atributos: idEndereco (PK), logradouro, numero, bairro e completo.
 
 \item E10. Cidade
 \item \qquad Atributos: idCidade (PK), nome, estado e pais.
 
 \item E11. Pagamento
-\item \qquad Atributos: idPagamento (PK), numeroBoleto, descricao, valor e dataVencimento.
+\item \qquad Atributos: idPagamento (PK), numeroBoleto, descricao, valor e dataVencimento, dataEmissao e status.
 
 \item E12. Item
 \item \qquad Atributos: quantidade e precoTotal.
@@ -124,7 +134,7 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \item \qquad Atributos: idEspecProduto (PK), nome e descricao.
 
 \item E14. Encomenda
-\item \qquad Atributos: idEncomenda (PK) e data.
+\item \qquad Atributos: idEncomenda (PK), data e status.
 
 \end{description}
 
@@ -188,16 +198,64 @@ Definidas as entidades que serão utilizadas tem-se a necessidade de especificar
 
 \end{description}
 
-\subsection*{Principais Consultas}
+\subsection{Principais Consultas}
 \label{sect:principaisConsultas}
 
-Dentre as consultas em que o sistema pode realizar no Banco de Dados, podemos destacar as seguintes: Gerente consulta as encomendas que foram realizadas pelos clientes da distribuidora, Getente consulta os motoristas e veiculos disponiveis para realizar a viagem, Gerente...
+Dentre as consultas em que o sistema pode realizar no Banco de Dados, podemos destacar dez consultas como as principais, observe abaixo:
 
+\begin{enumerate}
+
+\item Listagem de encomendas a partir de uma data.
+
+\item Busca por fornecedores que ofertam um determinado produto.
+
+\item Listagem de pagamentos recebidos de empresas.
+
+\item Listagem de pagamentos realizados a fornecedores.
+
+\item Listagem de encomendas solicitadas.
+
+\item Busca e conseguentemente a listagem de endereços de entrega relativos às encomendas.
+
+\item Listagem de pedidos realizados.
+
+\item Consulta e listagem de veículos disponíveis.
+
+\item Consulta e listagem de motoristas disponíveis.
+
+\item Listagem de pedidos em andamento.
+
+%1 - Verificar se o item está presente em algum depósito.
+%1 - Listagem de encomendas a partir de uma data.
+%2 - Busca por fornecedores que ofertam um determinado produto
+%3 - Listagem de entradas (pagamentos recebidos de empresas)
+%4 - Listagem de saídas (pagamentos realizados a fornecedores)
+%5 - Listagem de encomendas solicitadas
+%6 - Buscar endereços de entrega relativos às encomendas
+%7 - Listagem de pedidos realizados
+%8 - Consulta a veículos disponíveis
+%9 - Consulta a motoristas disponíveis
+%10 - Lista de pedidos em andamento
+
+\end{enumerate}
+
+\newpage
 \section{Esquema Conceitual}
 \label{sect:conceitual}
 
+Com base nas entidades e nas relações entre elas apresentadas anteriormente neste documento na seção \ref{sect:especificacao}, foi modelado o esquema conceitual do projeto para o sistema FoodExpress, este modelo trata-se do modelo entidade-relacionamento, ou simplesmente modelo ER. Este modelo pode ser observado a seguir:
+
+\newpage
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.25, angle=90]{modelo-conceitual.png}
+  \label{figRotulo}
+\end{figure}
+
 \newpage
 \section{Mapeamento do Esquema Relacional}
+\label{sect:relacional}
 A seguir serão descritas todas as etapas do processo de modelagem do modelo conceitual (ER) para o relacional.
 
 No primeiro passo, para cada entidade no modelo ER são criadas tabelas correspondentes, para os atributos compostos somente são incluídos os atributos simples e deve ser escolhida uma chave primária.
@@ -208,15 +266,15 @@ No primeiro passo, para cada entidade no modelo ER são criadas tabelas correspo
 \begin{tabular}{p{2.5cm} p{10.5cm}}
 cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
-veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade, disponivel) \\
 viagem & (\underline{idViagem}, descricao) \\
 funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
-motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero, disponivel)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dataPedido)\\
+pedido & (\underline{idPedido}, dataPedido, status)\\
 produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero)\\
 fabrica & (\underline{idFabrica})\\
@@ -224,7 +282,7 @@ agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
 pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especifproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, data)\\
+encomenda & (\underline{idEncomenda}, data, status)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha)
 \end{tabular}
 \end{center}
@@ -239,15 +297,15 @@ No terceiro passo, para todos os relacionamentos de cardinalidade 1:1, deve ser 
 \begin{tabular}{p{2.5cm} p{10.5cm}}
 cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento) \\
-veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade, disponivel) \\
 viagem & (\underline{idViagem}, descricao) \\
 funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
-motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero, disponivel)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dataPedido)\\
+pedido & (\underline{idPedido}, dataPedido, status)\\
 produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
@@ -255,7 +313,7 @@ agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
 pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, data)\\
+encomenda & (\underline{idEncomenda}, data, status)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
 \end{tabular}
 \end{center}
@@ -269,15 +327,15 @@ No quarto passo, são definidas as localizações das chaves estrangeiras e atri
 \begin{tabular}{p{2.5cm} p{10.5cm}}
 cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
-veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade, disponivel) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
 funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
-motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero, disponivel)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+pedido & (\underline{idPedido}, dataPedido, status, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
 produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
@@ -285,13 +343,11 @@ agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
 pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, status, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)
 \end{tabular}
 \end{center}
 \end{table}
-
-
 
 No quinto passo, são definidas novas tabelas para todos os relacionamentos com cardinalidade N:N.
 
@@ -300,15 +356,15 @@ No quinto passo, são definidas novas tabelas para todos os relacionamentos com 
 \begin{tabular}{p{2.5cm} p{10.5cm}}
 cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
-veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade, disponivel) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
 funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
-motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero)\\
+motorista & (\underline{idMotorista}, categoriaHabilitacao, codigo, area, numero, disponivel)\\
 seguranca & (\underline{idSeguranca}, porteArma)\\
 gerente & (\underline{idGerente}, email, login, senha)\\
 auxiliarlimpeza & (\underline{idLimpeza}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+pedido & (\underline{idPedido}, dataPedido, status, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
 produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{idFabrica})\\
@@ -316,34 +372,37 @@ agricultor & (\underline{idAgricultor})\\
 outro & (\underline{idOutro})\\
 pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, status, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
 EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
-item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)
+item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade, precoTotal)
 \end{tabular}
 \end{center}
 \end{table}
+
 \newpage
-No sexto passo, são definidas as tabelas para os relacionamentos n-ários, com $n > 2$, como não há estes no neste modelo segue para a próxima etapa.
+No sexto passo, são definidas as tabelas para os relacionamentos n-ários, com $n > 2$, como não há estes no neste modelo segue para a próxima etapa.\\
 
-No sétimo passo, são definidos os atributos multivalorados, como não definição do modelo conceitual não há a presença, seguimos para a próxima etapa.
+No sétimo passo, são definidos os atributos multivalorados, como não definição do modelo conceitual não há a presença, seguimos para a próxima etapa.\\
 
-No oitavo e último passo são definidas as chaves estrangeiras para as especializações, foi escolhida a alternativa 2.
+No oitavo e último passo são definidas as chaves estrangeiras para as especializações, foi escolhida a alternativa 2.\\
+
+Finalizando todos os passos realizados no mapeamento, enfim temos a seguir o modelo relacional, tanto na forma textual quanto na forma de diagrama, referente ao projeto do sistema FoodExpress.\\
 
 \begin{table}[htb!]
 \begin{center}
 \begin{tabular}{p{2.5cm} p{10.5cm}}
 cidade & (\underline{idCidade}, nome, estado, pais) \\
 endereco & (\underline{idEndereco}, logradouro, numero, bairro, complemento, $\overline{fkCidade}$) \\
-veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade) \\
+veiculo & (\underline{idVeiculo}, placa, ano, modelo, capacidade, disponivel) \\
 viagem & (\underline{idViagem}, descricao, $\overline{fkVeiculo}$, $\overline{fkMotorista}$, $\overline{fkGerente}$) \\
 funcionario & (\underline{idFuncionario}, nome, salario, dataContratacao, dataNascimento)\\
-motorista & (\underline{$\overline{idMotorista}$}, categoriaHabilitacao, codigo, area, numero)\\
+motorista & (\underline{$\overline{idMotorista}$}, categoriaHabilitacao, codigo, area, numero, disponivel)\\
 seguranca & (\underline{$\overline{idSeguranca}$}, porteArma)\\
 gerente & (\underline{$\overline{idGerente}$}, email, login, senha)\\
 auxiliarlimpeza & (\underline{$\overline{idLimpeza}$}, setor)\\
 deposito & (\underline{numero}, descricao, capacidade)\\
-pedido & (\underline{idPedido}, dataPedido, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
+pedido & (\underline{idPedido}, dataPedido, status, $\overline{fkPagamento}$, $\overline{fkGerente}$)\\
 produto & (\underline{codProduto}, preco, dataFabricacao, dataVencimento, $\overline{fkEspecProduto}$, $\overline{fkDeposito}$)\\
 fornecedor & (\underline{cnpj}, nome, email, codigo, area, numero, $\overline{fkEndereco}$)\\
 fabrica & (\underline{$\overline{idFabrica}$})\\
@@ -351,16 +410,24 @@ agricultor & (\underline{$\overline{idAgricultor}$})\\
 outro & (\underline{$\overline{idOutro}$})\\
 pagamento & (\underline{idPagamento}, numeroBoleto, descricao, valor, dataVencimento, dataEmissao)\\
 especproduto & (\underline{idEspecProduto}, nome, descricao)\\
-encomenda & (\underline{idEncomenda}, data, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
+encomenda & (\underline{idEncomenda}, data, status, $\overline{fkPagamento}$, $\overline{fkViagem}$, $\overline{fkEmpresa}$)\\
 empresa & (\underline{cnpj}, proprietario, nome, chaveAcesso, senha, $\overline{fkEndereco}$)\\
 EncomEspec & (\underline{$\overline{idEncomenda}$}, \underline{$\overline{idEspecProduto}$})\\
-item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade)
+item & (\underline{$\overline{codProduto}$}, \underline{$\overline{cnpjFornecedor}$}, quantidade, precoTotal)
 \end{tabular}
 \end{center}
 \end{table}
 
 \newpage
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{modelo-relacional.png}
+  \label{figRotulo}
+\end{figure}
+
+\newpage
 \section{Normalização}
+\label{sect:normalizacao}
 Nesta seção será descrito o processo de normalização a partir do modelo relacional obtido na última etapa descrita da seção anterior.
 
 \begin{description}
@@ -390,9 +457,66 @@ Nesta última etapa, são verificados se os atributos não-chaves dependem de ou
 Logo está na 3FN.
 \end{description}
 
-
+\newpage
 \section{Álgebra Relacional}
 \label{sect:algebra}
+
+Com base nas principais consultas definidas anteriormente na seção \ref{sect:principaisConsultas} é detalhado a seguir cada uma dessas consultas que estão organizadas abaixo da seguinte forma: titulo, descrição e resolução utilizando a Algebra Relacional.\\
+
+\begin{enumerate}
+
+\item \textbf{Listagem de encomendas a partir de uma data.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta atraves de uma data especificado pelo usuário do sistema, é listado todas as encomendas que tem data superior a data previamente especificada.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(data > varData )}$ (Encomenda)\\
+
+\item \textbf{Busca por fornecedores que ofertam um determinado produto.}\\\\
+\qquad \textbf{Descrição:} Nesta consulta atraves de um determinado produto é listado todos os fornecedores que fornecem este determinado produto.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad (Fornecedor * ($\pi _{(idFornecedor)}$ (Item * ($\pi _{(codProduto)}$ (Produto X ($\pi _{(idEspecProduto)}$ ($\sigma _{(nome=varNome)}$ (EspecProduto)))))))\\
+
+\item \textbf{Listagem de pagamentos recebidos de empresas.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta atraves de um determinado item especificado pelo usuário do sistema, é verificado se este item está em algum depósito, caso esteja é listado os itens e o depósito em que ele está.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="finalizado")}$ ($\sigma _{(idPagamento=fkPagamento)}$ (Pagamento X $\pi_{fkPagamento}$ (Encomenda)))
+
+\item \textbf{Listagem de pagamentos realizados a fornecedores.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listado todos os pagamentos que a distribuidora de alimentos fez aos seus fornecedores.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="finalizado")}$ ($\sigma _{(idPagamento=fkPagamento)}$ (Pagamento X $\pi_{fkPagamento}$ (Pedido)))\\
+
+\item \textbf{Listagem de encomendas solicitadas.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listada todas as encomendas feitas por empresas clientes da distribuidora de alimentos.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="executando")}$ (Encomenda)\\
+
+\item \textbf{Busca e conseguentemente a listagem do endereço de entrega relativos á encomenda.
+} \\\\
+\qquad \textbf{Descrição:} Nesta consulta a partir de uma encomenda especificada pelo usuário será listado o endereço da empresa que solicitou está encomenda.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(idEndereco=fkEndereco)}$ Endereco X ($\sigma _{(idEmpresa=fkEmpresa)}$ (Empresa X ($\sigma _{(idEncomenda=varEncomenda)}$ (Encomenda)))) \\
+
+\item \textbf{Listagem de pedidos realizados.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listado todos os pedidos que a distribuidora de alimentos encaminhou para seus fornecedores.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="concluido")}$ (Pedido) \\
+
+\item \textbf{Consulta e listagem de veículos disponíveis.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listado todos os veículos disponiveis para realizar uma viagem.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="disponivel")}$ (Veiculo) \\
+
+\item \textbf{Consulta e listagem de motoristas disponíveis.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listado todos os motoristas disponiveis para realizar uma viagem.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="disponivel")}$ (Motorista) \\
+
+\item \textbf{Listagem de pedidos em andamento.} \\\\
+\qquad \textbf{Descrição:} Nesta consulta é listado todos os pedidos que estão em andamento, ou seja, não foram concluidos.\\\\
+\qquad \textbf{Resolução de consulta:}\\
+\qquad $\sigma _{(status="executando")}$ (Pedido) \\
+
+\end{enumerate}
 
 
 \end{document}

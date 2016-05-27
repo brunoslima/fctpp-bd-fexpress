@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.14)  20 MAY 2016 11:23
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  27 MAY 2016 15:20
 entering extended mode
 **projeto-inicial.tex
 
-(D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
-ial.tex
+("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\1º Semestr
+e\Banco de Dados I\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-
+inicial.tex"
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -15,9 +16,9 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,19 +33,19 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.sty"
 Package: babel 2008/07/08 v3.8m The Babel package
 
 *************************************
 * Local config file bblopts.cfg used
 *
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\bblopts.cfg"
 File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\portuges.ldf"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\portuges.ldf"
 Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\babel\babel.def"
+("C:\Program Files\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2008/07/08 v3.8m Babel common definitions
 \babel@savecnt=\count87
 \U@D=\dimen103
@@ -52,19 +53,19 @@ File: babel.def 2008/07/08 v3.8m Babel common definitions
 \l@brazil = a dialect from \language\l@portuges 
 Package babel Info: Making " an active character on input line 145.
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -214,7 +215,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -245,7 +246,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -269,31 +270,31 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
@@ -301,219 +302,462 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
-(D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
-ial.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
-\scratchdimen=\dimen106
-\scratchbox=\box26
-\nofMPsegments=\count90
-\nofMParguments=\count91
-\everyMPshowfont=\toks17
-\MPscratchCnt=\count92
-\MPscratchDim=\dimen107
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
-\everyMPtoPDFconversion=\toks18
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count89
+\Gm@cntv=\count90
+\c@Gm@tempcnt=\count91
+\Gm@bindingoffset=\dimen106
+\Gm@wd@mp=\dimen107
+\Gm@odd@mp=\dimen108
+\Gm@even@mp=\dimen109
+\Gm@layoutwidth=\dimen110
+\Gm@layoutheight=\dimen111
+\Gm@layouthoffset=\dimen112
+\Gm@layoutvoffset=\dimen113
+\Gm@dimlist=\toks17
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count92
+\float@exts=\toks18
+\float@box=\box26
+\@float@everytoks=\toks19
+\@floatcapt=\box27
+)
+("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\1º Semestr
+e\Banco de Dados I\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-
+inicial.aux"
+
+LaTeX Warning: Label `figRotulo' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+ ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count93
+\scratchdimen=\dimen114
+\scratchbox=\box28
+\nofMPsegments=\count94
+\nofMParguments=\count95
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count96
+\MPscratchDim=\dimen115
+\MPnumerator=\count97
+\makeMPintoPDFobject=\count98
+\everyMPtoPDFconversion=\toks21
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-13.87262pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 24.
+(Font)              <12> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 24.
+(Font)              <8> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 24.
+(Font)              <6> on input line 34.
 [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
-ial.toc)
+("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\1º Semestr
+e\Banco de Dados I\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-
+inicial.toc")
 \tf@toc=\write3
- [1]
+ [1] [2] [3] [4] [5] [6] [7] [8] [9]
+<figuras/modelo-conceitual.png, id=38, 2659.9375pt x 1470.49374pt>
+File: figuras/modelo-conceitual.png Graphic file (type png)
 
-LaTeX Warning: Reference `sect:relacional' on page 2 undefined on input line 48
-.
+<use figuras/modelo-conceitual.png>
+Package pdftex.def Info: figuras/modelo-conceitual.png used on input line 252.
+(pdftex.def)             Requested size: 664.98276pt x 367.62254pt.
+
+Overfull \vbox (108.5062pt too high) has occurred while \output is active []
 
 
-LaTeX Warning: Reference `sect:normalizacao' on page 2 undefined on input line 
-48.
-
-
-Overfull \hbox (11.77223pt too wide) in paragraph at lines 57--58
-\OT1/cmr/m/n/12 a lin-gua-gem de pro-gramac~ao PHP, alem da uti-lizac~ao da 
-lin-gua-gem de marcac~ao
- []
-
-[2] [3] [4] [5] [6] [7] [8]
-Overfull \hbox (7.20064pt too wide) in paragraph at lines 217--217
+[10 <C:/Users/BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/1º Seme
+stre/Banco de Dados I/fctpp-bd-fexpress/documentos/projeto-especificacoes/figur
+as/modelo-conceitual.png>]
+Overfull \hbox (7.20064pt too wide) in paragraph at lines 275--275
 []\OT1/cmr/m/n/12 auxiliarlimpeza| 
  []
 
 
-Overfull \hbox (3.67567pt too wide) in paragraph at lines 226--226
+Overfull \hbox (3.67567pt too wide) in paragraph at lines 284--284
 []\OT1/cmr/m/n/12 especifproduto| 
  []
 
-
-Overfull \hbox (3.88582pt too wide) in paragraph at lines 208--230
- [] 
- []
-
-[9]
-Overfull \hbox (7.20064pt too wide) in paragraph at lines 248--248
+[11]
+Overfull \hbox (7.20064pt too wide) in paragraph at lines 306--306
 []\OT1/cmr/m/n/12 auxiliarlimpeza| 
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 251--252
+Underfull \hbox (badness 2443) in paragraph at lines 309--310
 []\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 259--260
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
 []\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
  []
 
-
-Overfull \hbox (3.88582pt too wide) in paragraph at lines 239--261
- [] 
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 273--274
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 []\OT1/cmr/m/n/12 ($[]$, des-cri-cao, $[]$, $[]$,
  []
 
 
-Overfull \hbox (7.20064pt too wide) in paragraph at lines 278--278
+Overfull \hbox (7.20064pt too wide) in paragraph at lines 336--336
 []\OT1/cmr/m/n/12 auxiliarlimpeza| 
  []
 
 
-Underfull \hbox (badness 2443) in paragraph at lines 281--282
+Underfull \hbox (badness 2443) in paragraph at lines 339--340
 []\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 288--289
-[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 289--290
+Underfull \hbox (badness 10000) in paragraph at lines 347--348
 []\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
- []
-
-
-Overfull \hbox (3.88582pt too wide) in paragraph at lines 269--291
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 304--305
-[]\OT1/cmr/m/n/12 ($[]$, des-cri-cao, $[]$, $[]$,
- []
-
-
-Overfull \hbox (7.20064pt too wide) in paragraph at lines 309--309
-[]\OT1/cmr/m/n/12 auxiliarlimpeza| 
- []
-
-
-Underfull \hbox (badness 2443) in paragraph at lines 312--313
-[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 319--320
-[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 320--321
-[]\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
- []
-
-
-Overfull \hbox (3.88582pt too wide) in paragraph at lines 300--324
- [] 
- []
-
-[11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 339--340
-[]\OT1/cmr/m/n/12 ($[]$, des-cri-cao, $[]$, $[]$,
- []
-
-
-Overfull \hbox (7.20064pt too wide) in paragraph at lines 344--344
-[]\OT1/cmr/m/n/12 auxiliarlimpeza| 
- []
-
-
-Underfull \hbox (badness 2443) in paragraph at lines 347--348
-[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
-[]\OT1/cmr/m/n/12 ($[]$, data, $[]$, $[]$,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 355--356
-[]\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
- []
-
-
-Overfull \hbox (3.88582pt too wide) in paragraph at lines 335--359
- [] 
  []
 
 [13]
+Underfull \hbox (badness 10000) in paragraph at lines 360--361
+[]\OT1/cmr/m/n/12 ($[]$, des-cri-cao, $[]$, $[]$,
+ []
 
-LaTeX Warning: Text page 14 contains only floats.
 
-[14] [15]
-(D:\Documentos\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-inic
-ial.aux)
+Overfull \hbox (7.20064pt too wide) in paragraph at lines 365--365
+[]\OT1/cmr/m/n/12 auxiliarlimpeza| 
+ []
 
-LaTeX Warning: There were undefined references.
+
+Underfull \hbox (badness 2443) in paragraph at lines 368--369
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--377
+[]\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
+ []
+
+[14]
+
+LaTeX Warning: Text page 15 contains only floats.
+
+
+Overfull \vbox (6.52155pt too high) has occurred while \output is active []
+
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 398--399
+[]\OT1/cmr/m/n/12 ($[]$, des-cri-cao, $[]$, $[]$,
+ []
+
+
+Overfull \hbox (7.20064pt too wide) in paragraph at lines 403--403
+[]\OT1/cmr/m/n/12 auxiliarlimpeza| 
+ []
+
+
+Underfull \hbox (badness 2443) in paragraph at lines 406--407
+[]\OT1/cmr/m/n/12 ($[]$, preco, da-ta-Fa-bri-ca-cao, da-ta-Ven-ci-mento,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 414--415
+[]\OT1/cmr/m/n/12 ($[]$, pro-pri-e-ta-rio, nome, cha-ve-A-cesso, se-nha,
+ []
+
+[16]
+
+LaTeX Warning: Text page 17 contains only floats.
+
+
+Overfull \vbox (6.52155pt too high) has occurred while \output is active []
+
+
+[17] <figuras/modelo-relacional.png, id=67, 958.58125pt x 1376.14125pt>
+File: figuras/modelo-relacional.png Graphic file (type png)
+
+<use figuras/modelo-relacional.png>
+Package pdftex.def Info: figuras/modelo-relacional.png used on input line 424.
+(pdftex.def)             Requested size: 479.28946pt x 688.06895pt.
+
+Overfull \hbox (49.28484pt too wide) in paragraph at lines 424--426
+ [][] 
+ []
+
+
+Overfull \vbox (148.99234pt too high) has occurred while \output is active []
+
+
+[18 <C:/Users/BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/1º Seme
+stre/Banco de Dados I/fctpp-bd-fexpress/documentos/projeto-especificacoes/figur
+as/modelo-relacional.png>] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 464--465
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 468--472
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--477
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--477
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 473--477
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 478--482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 478--482
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--487
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 488--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
+
+ []
+
+
+Overfull \hbox (85.41176pt too wide) in paragraph at lines 494--498
+$\OML/cmm/m/it/12 []$ \OT1/cmr/m/n/12 En-de-reco X ($\OML/cmm/m/it/12 []$ \OT
+1/cmr/m/n/12 (Em-presa X ($\OML/cmm/m/it/12 []$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 499--503
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 499--503
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 499--503
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--508
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--508
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 504--508
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 509--513
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 509--513
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 509--513
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 514--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 514--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 514--518
+
+ []
+
+[22]
+("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\1º Semestr
+e\Banco de Dados I\fctpp-bd-fexpress\documentos\projeto-especificacoes\projeto-
+inicial.aux")
+
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1690 strings out of 493921
- 21672 string characters out of 3144876
- 86937 words of memory out of 3000000
- 4994 multiletter control sequences out of 15000+200000
+ 2268 strings out of 493921
+ 30757 string characters out of 3147282
+ 98936 words of memory out of 3000000
+ 5548 multiletter control sequences out of 15000+200000
  8849 words of font info for 31 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,14n,24p,706b,255s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
-:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on projeto-inicial.pdf (16 pages, 132400 bytes).
+ 27i,14n,24p,707b,259s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
+fb>
+Output written on projeto-inicial.pdf (23 pages, 497795 bytes).
 PDF statistics:
- 82 PDF objects out of 1000 (max. 8388607)
+ 116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
