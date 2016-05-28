@@ -53,23 +53,23 @@
 \section{Introdução}
 \label{sect:introducao}
 
-Este documento tem como proposito descrever detalhes referentes ao Sistema FoodExpress, detalhes tanto no quesito de funcionamento do sistema, mas principalmente particularidades de caráter técnico relacionados a área de Ciência da Computação com ênfase em Banco de Dados. 
+Este documento tem como propósito descrever detalhes referentes ao Sistema FoodExpress, detalhes tanto no quesito de funcionamento do sistema, quanto principalmente em relação a particularidades de caráter técnico relacionados a área de Ciência da Computação com ênfase em Banco de Dados. 
 
-Essa coletânea esta dividida como segue: na seção \ref{sect:especificacao} é especificado o sistema bem como sua lógica de funcionamento, na seção \ref{sect:conceitual} é apresentado o modelo entidade relacionamento do sistema, a seção \ref{sect:relacional} mostra o processo de mapeamento para o modelo conceitual e modelo em si, em seguida a seção \ref{sect:normalizacao} evidencia discussões referentes ao processo de normalização, por fim a seção \ref{sect:algebra} apresenta detalhes pertinentes as principais consultas a serem realizadas e sua resolução utilizando Álgebra Relacional.
+Essa coletânea está dividida como segue: na seção \ref{sect:especificacao} é especificado o sistema bem como sua lógica de funcionamento, na seção \ref{sect:conceitual} é apresentado o modelo entidade relacionamento do sistema, a seção \ref{sect:relacional} mostra o processo de mapeamento para o modelo conceitual e seu respectivo modelo, em seguida a seção \ref{sect:normalizacao} evidencia discussões referentes ao processo de normalização, por fim a seção \ref{sect:algebra} apresenta detalhes pertinentes as principais consultas a serem realizadas e sua resolução utilizando Álgebra Relacional.
 
 \section{Especificação do Problema}
 \label{sect:especificacao}
 
 O Sistema FoodExpress consiste em uma ferramenta para gerenciamento de uma distribuidora de alimentos, com o intuito de armazenar os dados necessários para a que a empresa possa realizar a gestão de seus clientes, fornecedores, produtos e rotas de viagens, bem como fornecer um mecanismo que facilite a obtenção dos melhores caminhos para o transporte das mercadorias até as localizações de seus clientes.
 
-No sistema os clientes (empresas e estabelecimentos comerciais do setor alimentício) da distribuidora podem realizar encomendas para serem entregues em seus respectivos estabelecimento, os gerentes da distribuidora devem ter acesso a essas encomendas e utilizam o sistema para elaborar viagens com rotas convenentes em termos de custos de viagem, especificando tipo de carga, veículo e motorista que faram parte da viagem. O Gerentes da distribuidora também tem controle de todo o sistema de estoque, podendo realizar pedidos aos seus fornecedores (fabricas, produtores rurais, entre outros) para repor o mesmo, ou para atender as necessidades de um cliente em especifico.
+No sistema os clientes (empresas e estabelecimentos comerciais do setor alimentício) da distribuidora podem realizar encomendas para serem entregues em seus respectivos estabelecimento, os gerentes da distribuidora devem ter acesso a essas encomendas e utilizam o sistema para elaborar viagens com rotas convenientes em termos de custos de viagem, especificando tipo de carga, veículo e motorista que farão parte desta. O Gerentes da distribuidora também tem controle de todo o sistema de estoque, podendo realizar pedidos aos seus fornecedores (fábricas, produtores rurais, entre outros) para repor o mesmo, ou para atender as necessidades de um cliente em especifico.
 
 A ferramenta consiste em uma plataforma web, implementada utilizando a linguagem de programação PHP, além da utilização da linguagem de marcação e de estilo: HTML e CSS, contendo algumas aplicações de JavaScript, além de utilizar como Sistema Gerenciador de Banco de Dados (SGBD) o MySQL.
 
 \subsection{Entidades}
 \label{sect:entidades}
 
-Abaixo segue especificado o conjunto de entidades necessarias para a elaboração deste projeto, todas as entidades estão organizadas com o prefixo E seguido de um número que identifica a mesma de forma única neste documento, além disso cada entidade contém um conjunto de atributos que também estão especificados, observe abaixo:
+Abaixo segue especificado o conjunto de entidades necessárias para a elaboração deste projeto, todas as entidades estão organizadas com o prefixo E seguido de um número que identifica a mesma de forma única neste documento, além disso cada entidade contém um conjunto de atributos que também estão especificados, observe abaixo:
 
 \begin{description}
 
@@ -77,28 +77,28 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \item \qquad Atributos: idFuncionario (PK), nome, salario, dataContratacao e dataNascimento.
 
 \item E1.1. Motorista
-\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idMotorista (PK), categoriaHabilitacao, telefone e disponivel.
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos próprios: idMotorista (PK), categoriaHabilitacao, telefone e disponivel.
 
 \item E1.2. Gerente
-\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idGerente (PK), email, login e senha.
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos próprios: idGerente (PK), email, login e senha.
 
 \item E1.3. Segurança
-\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idSeguranca (PK) e porteArma.
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos próprios: idSeguranca (PK) e porteArma.
 
 \item E1.4. AuxiliarLimpeza
-\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos proprios: idLimpeza (PK) e setor.
+\item \qquad Atributos: São os mesmos do funcionario, pois é uma entidade especializada contendo ainda os seguintes atributos próprios: idLimpeza (PK) e setor.
 
 \item E2. Fornecedor
 \item \qquad Atributos: cnpj (PK), nome, email e telefone.
 
 \item E2.1. Fabrica
-\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo proprio: idFrabrica (PK).
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo próprio: idFrabrica (PK).
 
 \item E2.2. Agricultor
-\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo proprio: idAgricultor (PK).
+\item \qquad Atributos: São os mesmos do fornecedor, pois é uma entidade especializada, contendo ainda seu atributo próprio: idAgricultor (PK).
 
 \item E2.3. Outro
-\item \qquad Atributos: São os mesmos do outro, pois é uma entidade especializada, contendo ainda seu atributo proprio: idOutro (PK).
+\item \qquad Atributos: São os mesmos do outro, pois é uma entidade especializada, contendo ainda seu atributo próprio: idOutro (PK).
 
 \item E3. Empresa
 \item \qquad Atributos: cnpj (PK), nome, proprietario, chaveAcesso e senha.
@@ -141,7 +141,7 @@ Abaixo segue especificado o conjunto de entidades necessarias para a elaboraçã
 \subsection{Relacionamento entre Entidades}
 \label{sect:relacionamento}
 
-Definidas as entidades que serão utilizadas tem-se a necessidade de especificar os relacionamentos entre essas entidades, cada uma dos relacionamento está exemplificado abaixo:
+Definidas as entidades que serão utilizadas, tem-se a necessidade de especificar os relacionamentos entre essas entidades, cada uma dos relacionamento está exemplificado abaixo:
 
 \begin{description}
 
@@ -201,7 +201,7 @@ Definidas as entidades que serão utilizadas tem-se a necessidade de especificar
 \subsection{Principais Consultas}
 \label{sect:principaisConsultas}
 
-Dentre as consultas em que o sistema pode realizar no Banco de Dados, podemos destacar dez consultas como as principais, observe abaixo:
+Dentre as consultas em que o sistema pode realizar no Banco de Dados, podemos destacar dez destas como as principais, observe abaixo:
 
 \begin{enumerate}
 
