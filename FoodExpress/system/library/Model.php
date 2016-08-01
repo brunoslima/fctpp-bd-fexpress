@@ -13,8 +13,8 @@
 		 */
 		public function __construct(){
 
-			if (file_exists("application/config/database.php")) require_once "application/config/database.php";
-			else require_once "system/config/database.php";
+			if (file_exists("application/config/database.php")) require "application/config/database.php";
+			else require "system/config/database.php";
 
 			try {
 
@@ -36,7 +36,7 @@
 		 *
 		 * Última modificação: 12 fev. 2016
 		 */
-		public function select($colunas, $where = null, $orderby = null, $limit = null, $offset){
+		/*public function select($colunas, $where = null, $orderby = null, $limit = null, $offset){
 
 			$query = "SELECT $colunas FROM $this->tabela";
 
@@ -49,6 +49,16 @@
 			$result->setFetchMode(PDO::FETCH_ASSOC);
 			return $result->fetchAll();
 		}
+		*/
+
+		public function select($query){
+
+			$result = $this->connection->query($query);
+			if($result == null) return false;
+			
+			$result->setFetchMode(PDO::FETCH_ASSOC);
+			return $result->fetchAll();
+		}
 
 		/**
 		 * 
@@ -57,13 +67,19 @@
 		 *
 		 * Última modificação: 12 fev. 2016
 		 */
-		public function insert($dados){
+		/*public function insert($dados){
 
 			$indices = implode(", ", array_keys($dados));
 			$valores = "'".implode("','", array_values($dados))."'";
 
 			return $this->connection->query("INSERT INTO `$this->tabela` ($indices) VALUES ($valores)");
+		}*/
+
+		public function insert($query){
+
+			return $this->connection->query($query);
 		}
+
 
 		/**
 		 * Realiza a atualização de dados de uma tabela
@@ -73,13 +89,18 @@
 		 *
 		 * Última modificação: 12 fev. 2016
 		 */
-		public function update(Array $dados, $where){
+		/*public function update(Array $dados, $where){
 
 			foreach($dados as $ind => $val)
 				$campos[] = "$ind = '$val'";
 
 			$campos = implode(", ", $campos);
 			return $result = $this->connection->query("UPDATE $this->tabela SET $campos WHERE $where");
+		}*/
+
+		public function update($query){
+
+			return $this->connection->query($query);
 		}
 
 		/**
@@ -89,8 +110,13 @@
 		 *
 		 * Última modificação: 12 fev. 2016
 		 */
-		public function delete($where){
+		/*public function delete($where){
 
 			return $this->connection->query("DELETE FROM $this->tabela WHERE $where");
+		}*/
+
+		public function delete($query){
+
+			return $this->connection->query();
 		}
 	}

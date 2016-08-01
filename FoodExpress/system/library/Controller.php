@@ -17,6 +17,8 @@
 				extract($vars, EXTR_PREFIX_ALL, "view");
 			}
 
+			require_once "system/config/constant.php";
+			
 			if(file_exists("application/view/".$name.".php")) require_once 'application/view/'.$name.'.php';
 			else require_once 'system/view/'.$name.'.php';
 		}

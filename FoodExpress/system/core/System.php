@@ -59,7 +59,15 @@
 				require_once "system/controller/".$this->controller.".php";	
 			}
 
-			$this->application = new $this->controller();
+			try {
+
+				$this->application = new $this->controller();	
+
+			} catch (Exception $e) {
+				sleep(2);
+				header("Location: http://".$_SERVER['SERVER_NAME']."/FoodExpress");
+				
+			}
 		}	
 
 		/**
