@@ -83,7 +83,9 @@ $(document).ready(function(){
 			case "novofuncionario":
 				url = "/gui/novofuncionario";
 				break;
-
+			case "novofornecedor":
+				url = "/gui/novofornecedor";
+				break;
 			default:
 
 				//console.log("você está agindo de má fé!");
@@ -117,16 +119,35 @@ $(document).ready(function(){
 			$(".opt0").css("display","block");
 			$(".opt1").css("display","none");
 			$(".opt2").css("display","none");
+			$(".opt3").css("display","none");
 		}
 		else if($("select[name='cargo']").val() == "1"){
 			$(".opt0").css("display","none");
 			$(".opt1").css("display","block");
 			$(".opt2").css("display","none");
+			$(".opt3").css("display","none");
+		}
+		else if($("select[name='cargo']").val() == "2"){
+			$(".opt0").css("display","none");
+			$(".opt1").css("display","none");
+			$(".opt2").css("display","block");
+			$(".opt3").css("display","none");
 		}
 		else{
 			$(".opt0").css("display","none");
 			$(".opt1").css("display","none");
-			$(".opt2").css("display","block");
+			$(".opt2").css("display","none");
+			$(".opt3").css("display","block");
+		}
+	});
+
+	$(document).on("click", "select[name='cidadeFornecedor']", function(){
+
+		if($("select[name='cidadeFornecedor']").val() == "0"){
+			$(".optNovaCidade").css("display","block");
+		}
+		else{
+			$(".optNovaCidade").css("display","none");
 		}
 	});
 });

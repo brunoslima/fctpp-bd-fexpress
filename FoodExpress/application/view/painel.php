@@ -31,7 +31,12 @@
 				</ul>
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Estoque</li>
-			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Fornecedores</li>
+			<li value="fornecedores"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Fornecedores
+				<ul>
+					<li value="novofornecedor"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Fornecedor</li>
+					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver Fornecedores</li>
+				</ul>
+			</li>
 			<li value="funcionarios"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Funcionários
 				<ul>
 					<li value="novofuncionario"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Funcionário</li>
@@ -47,11 +52,8 @@
 		<div id="teste">	
 			
 			<br>	
-			<h1>Título</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. </p>
+			<h1>Bem-Vindo ao FoodExpress</h1>
+			<p>A FoodExpress é uma distribuidora de alimentos criada em 2010. So fast how you want!</p>
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo

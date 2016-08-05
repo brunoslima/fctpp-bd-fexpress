@@ -45,6 +45,54 @@
 			}
 		}
 
+
+		public function cadastrarFornecedor(){
+
+			if($_POST['cidadeFornecedor'] == "0"){
+
+				$nome = $_POST['nomeCidadeFornecedor'];
+				$estado = $_POST['estadoCidadeFornecedor'];
+				$pais = $_POST['paisCidadeFornecedor'];
+
+				$modelCidade = new CidadeModel();
+				$primaryKeyCidade = $modelCidade->add($nome, $estado, $pais);
+
+			}
+			else {
+				echo "ENTROU NO ELSE PERDIDO!!!";
+				$primaryKeyCidade = 1;
+			}
+
+			$logradouro = $_POST['logradouroFornecedor'];
+			$numeroEndereco = $_POST['numeroEnderecoFornecedor'];
+			$bairro = $_POST['bairroFornecedor'];
+			$complemento = $_POST['complementoFornecedor'];
+
+			$modelEndereco = new EnderecoModel();
+			$primaryKeyEndereco = $modelEndereco->add($logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade);
+
+
+			$modelFornecedor = new FornecedorModel();
+			$primaryKey = $modelFornecedor->add($primaryKeyEndereco);
+
+			if($_POST['tipoFornecedor'] == "0"){
+				
+				$modelFabrica = new FabricaModel();
+				$modelFabrica->add($primaryKey);
+			}
+			else if($_POST['tipoFornecedor'] == "1"){
+				
+				$modelAgricultor = new AgricultorModel();
+				$modelAgricultor->add($primaryKey);
+			}
+			else{
+	
+				$modelOutro = new OutroModel();
+				$modelOutro->add($primaryKey); 
+			}
+		}
+
+
 		/**
 		 * Redireciona para a view Painel
 		 */

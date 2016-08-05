@@ -66,5 +66,52 @@
 
 			echo $html;
  		}
+
+
+ 		public function novofornecedor(){
+
+ 			$html = '<h1>Novo Fornecedor</h1>
+			<form method="post" action="">
+				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/>
+				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
+				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/>
+				<label>Tipo</label>
+				<select name="tipoFornecedor">
+					<optgroup>
+						<option value="0">Fabrica</option>
+						<option value="1">Agricultor</option>
+						<option value="2">Outro</option>
+					</optgroup>
+				</select>
+				<br>
+				<label>Telefone</label>
+				<input type="text" name="codigoFornecedor" placeholder="Código"/>
+				<input type="text" name="areaFornecedor" placeholder="Área"/>
+				<input type="text" name="numeroFornecedor" placeholder="Número"/>
+				<br>
+				<label>Endereço</label>
+				<input type="text" name="logradouroFornecedor" placeholder="Logradouro"/>
+				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/>
+				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
+				<input type="text" name="complementoFornecedor" placeholder="Complemento"/>
+				<label>Cidade</label>
+				<select name="cidadeFornecedor">
+					<optgroup>
+						<option value="0">Nova cidade</option>
+						<option value="1">Presidente Prudente</option>
+						<option value="2">Martinopolis</option>
+					</optgroup>
+				</select>
+				<div class="optNovaCidade" style="display:block">
+					<label>Nova Cidade</label>
+					<input type="text" name="nomeCidadeFornecedor" placeholder="Nome da cidade" />
+					<input type="text" name="estadoCidadeFornecedor" placeholder="Estado" />
+					<input type="text" name="paisCidadeFornecedor" placeholder="Pais" />				
+				</div>
+				<button class="btn-cadastrar-fornecedor">Cadastrar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
  		
  	}

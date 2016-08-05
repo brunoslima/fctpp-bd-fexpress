@@ -29,7 +29,7 @@ USE `foodexpress`;
 --
 
 CREATE TABLE IF NOT EXISTS `agricultor` (
-  `idAgricultor` int(11) NOT NULL,
+  `idAgricultor` decimal(14) NOT NULL,
   PRIMARY KEY (`idAgricultor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `especproduto` (
 --
 
 CREATE TABLE IF NOT EXISTS `fabrica` (
-  `idFabrica` int(11) NOT NULL,
+  `idFabrica` decimal(14) NOT NULL,
   PRIMARY KEY (`idFabrica`),
   KEY `fk_Fabrica_Fornecedor1_idx` (`idFabrica`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -172,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `fabrica` (
 --
 
 CREATE TABLE IF NOT EXISTS `fornecedor` (
-  `cnpj` int(11) NOT NULL,
+  `cnpj` decimal(14) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `codigo` decimal(3,0) NOT NULL,
@@ -235,7 +235,7 @@ INSERT INTO `gerente` (`email`, `login`, `senha`, `idGerente`) VALUES
 
 CREATE TABLE IF NOT EXISTS `item` (
   `codProduto` int(11) NOT NULL,
-  `cnpjFornecedor` int(11) NOT NULL,
+  `cnpjFornecedor` decimal(14) NOT NULL,
   `quantidade` float NOT NULL,
   `precoTotal` float NOT NULL,
   PRIMARY KEY (`codProduto`,`cnpjFornecedor`),
@@ -267,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `motorista` (
 --
 
 CREATE TABLE IF NOT EXISTS `outro` (
-  `idOutro` int(11) NOT NULL,
+  `idOutro` decimal(14) NOT NULL,
   PRIMARY KEY (`idOutro`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
