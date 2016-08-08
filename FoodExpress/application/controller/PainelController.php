@@ -93,6 +93,13 @@
 		}
 
 
+		public function cadastrarVeiculo(){
+
+			$modelVeiculo = new VeiculoModel();
+			$modelVeiculo->add();
+		}
+
+
 		/**
 		 * Redireciona para a view Painel
 		 */

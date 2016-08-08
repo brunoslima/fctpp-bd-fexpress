@@ -83,9 +83,15 @@ $(document).ready(function(){
 			case "novofuncionario":
 				url = "/gui/novofuncionario";
 				break;
+
 			case "novofornecedor":
 				url = "/gui/novofornecedor";
 				break;
+
+			case "novoveiculo":
+				url = "/gui/novoveiculo";
+				break;
+				
 			default:
 
 				//console.log("você está agindo de má fé!");

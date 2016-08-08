@@ -70,6 +70,8 @@
 
  		public function novofornecedor(){
 
+ 			
+
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
 				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/>
@@ -109,6 +111,20 @@
 					<input type="text" name="paisCidadeFornecedor" placeholder="Pais" />				
 				</div>
 				<button class="btn-cadastrar-fornecedor">Cadastrar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
+ 		public function novoveiculo(){
+
+ 			$html = '<h1>Novo Veículo</h1>
+			<form method="post" action="">
+				<input type="text" placeholder="Placa" name="placaVeiculo"/>
+				<input type="text" placeholder="Ano de fabricação" name="anoVeiculo"/>
+				<input type="text" placeholder="Modelo" name="modeloVeiculo"/>
+				<input type="text" placeholder="Capacidade de carga" name="capacidadeVeiculo"/>
+				<button class="btn-cadastrar-veiculo">Cadastrar</button>
 			</form>';
 
  			echo $html;

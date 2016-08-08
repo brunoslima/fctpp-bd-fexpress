@@ -18,4 +18,5 @@
 			$resultSelect = $this->select("SELECT max(idfuncionario) FROM $this->table");
 			return $resultSelect[0]['max(idfuncionario)'];
 		}
+
 	}

@@ -3,7 +3,7 @@
 	/**
 	* 
 	*/
-	class MotoristaModel extends model{
+	class MotoristaModel extends Model{
 		
 		private $table = "motorista";
 

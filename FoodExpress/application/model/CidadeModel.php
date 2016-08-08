@@ -13,6 +13,13 @@
 			$resultSelect = $this->select("SELECT max(idCidade) FROM $this->table");
 			return $resultSelect[0]['max(idCidade)'];
 		}
+
+		public function pesquisa(){
+
+			$resultSelect = $this->select("SELECT idCidade,nome  FROM $this->table");
+			return $resultSelect;
+
+		}
 	}
 
 ?>

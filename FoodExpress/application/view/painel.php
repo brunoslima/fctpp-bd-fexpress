@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-funcionarios.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pagamentos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pedidos.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
 </head>
@@ -45,8 +46,13 @@
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pagamentos</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pedidos</li>
+			<li value="veiculos"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Veículos
+				<ul>
+					<li value="novoveiculo"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Veículo</li>
+					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver Veículos</li>
+				</ul>
+			</li>
 		</ul>
-
 	</div>
 	<div class="conteudo">	
 		<div id="teste">	
