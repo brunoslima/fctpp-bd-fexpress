@@ -70,7 +70,17 @@
 
  		public function novofornecedor(){
 
- 			
+ 			$modelCidade = new CidadeModel();
+ 			$resultSelect = $modelCidade->pesquisa();
+
+ 			$cidadesParte = '';
+
+ 			/*$cidadesParte = '<option value="'.$resultSelect[0]['idCidade'].'">'.$resultSelect[0]['nome'].'</option>';*/
+			
+			for($i = 0; $i < count($resultSelect); $i++){
+				$cidadesParte .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			}
+
 
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
@@ -99,9 +109,7 @@
 				<label>Cidade</label>
 				<select name="cidadeFornecedor">
 					<optgroup>
-						<option value="0">Nova cidade</option>
-						<option value="1">Presidente Prudente</option>
-						<option value="2">Martinopolis</option>
+						<option value="0">Nova cidade</option>' . $cidadesParte . '
 					</optgroup>
 				</select>
 				<div class="optNovaCidade" style="display:block">

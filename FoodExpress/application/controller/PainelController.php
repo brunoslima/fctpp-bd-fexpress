@@ -60,7 +60,7 @@
 			}
 			else {
 				echo "ENTROU NO ELSE PERDIDO!!!";
-				$primaryKeyCidade = 1;
+				$primaryKeyCidade = $_POST['cidadeFornecedor'];
 			}
 
 			$logradouro = $_POST['logradouroFornecedor'];
