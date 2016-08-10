@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `deposito` (
 --
 
 CREATE TABLE IF NOT EXISTS `empresa` (
-  `cnpj` int(11) NOT NULL,
+  `cnpj` decimal(14) NOT NULL,
   `proprietario` varchar(45) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `chaveAcesso` varchar(45) NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `encomenda` (
   `status` tinyint(1) NOT NULL,
   `fkPagamento` int(11) NOT NULL,
   `fkViagem` int(11) NOT NULL,
-  `fkEmpresa` int(11) NOT NULL,
+  `fkEmpresa` decimal(14) NOT NULL,
   PRIMARY KEY (`idEncomenda`),
   KEY `fk_Encomenda_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Encomenda_Viagem1_idx` (`fkViagem`),

@@ -59,7 +59,6 @@
 
 			}
 			else {
-				echo "ENTROU NO ELSE PERDIDO!!!";
 				$primaryKeyCidade = $_POST['cidadeFornecedor'];
 			}
 
@@ -97,6 +96,34 @@
 
 			$modelVeiculo = new VeiculoModel();
 			$modelVeiculo->add();
+		}
+
+		public function cadastrarEmpresa(){
+
+			if($_POST['cidadeEmpresa'] == "0"){
+
+				$nome = $_POST['nomeCidadeEmpresa'];
+				$estado = $_POST['estadoCidadeEmpresa'];
+				$pais = $_POST['paisCidadeEmpresa'];
+
+				$modelCidade = new CidadeModel();
+				$primaryKeyCidade = $modelCidade->add($nome, $estado, $pais);
+
+			}
+			else {
+				$primaryKeyCidade = $_POST['cidadeEmpresa'];
+			}
+
+			$logradouro = $_POST['logradouroEmpresa'];
+			$numeroEndereco = $_POST['numeroEnderecoEmpresa'];
+			$bairro = $_POST['bairroEmpresa'];
+			$complemento = $_POST['complementoEmpresa'];
+
+			$modelEndereco = new EnderecoModel();
+			$primaryKeyEndereco = $modelEndereco->add($logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade);
+
+			$modelEmpresa = new EmpresaModel();
+			$modelEmpresa->add($primaryKeyEndereco);
 		}
 
 

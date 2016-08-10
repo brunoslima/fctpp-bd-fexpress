@@ -107,7 +107,7 @@
 				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
 				<input type="text" name="complementoFornecedor" placeholder="Complemento"/>
 				<label>Cidade</label>
-				<select name="cidadeFornecedor">
+				<select name="cidade">
 					<optgroup>
 						<option value="0">Nova cidade</option>' . $cidadesParte . '
 					</optgroup>
@@ -133,6 +133,48 @@
 				<input type="text" placeholder="Modelo" name="modeloVeiculo"/>
 				<input type="text" placeholder="Capacidade de carga" name="capacidadeVeiculo"/>
 				<button class="btn-cadastrar-veiculo">Cadastrar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
+ 		public function novaempresa(){
+
+			$modelCidade = new CidadeModel();
+ 			$resultSelect = $modelCidade->pesquisa();
+
+ 			$cidadesParte = '';
+			
+			for($i = 0; $i < count($resultSelect); $i++){
+				$cidadesParte .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 			
+
+ 			$html = '<h1>Nova Empresa</h1>
+			<form method="post" action="">
+				<input type="text" placeholder="Cnpj" name="cnpjEmpresa"/>
+				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/>
+				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/>
+				<input type="text" placeholder="Chave de acesso" name="chaveEmpresa"/>
+				<input type="text" placeholder="Senha" name="senhaEmpresa"/>
+				<br>
+				<label>Endereço</label>
+				<input type="text" name="logradouroEmpresa" placeholder="Logradouro"/>
+				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/>
+				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
+				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
+				<label>Cidade</label>
+				<select name="cidade">
+					<optgroup>
+						<option value="0">Nova cidade</option>' . $cidadesParte . '
+					</optgroup>
+				</select>
+				<div class="optNovaCidade" style="display:block">
+					<label>Nova Cidade</label>
+					<input type="text" name="nomeCidadeEmpresa" placeholder="Nome da cidade" />
+					<input type="text" name="estadoCidadeEmpresa" placeholder="Estado" />
+					<input type="text" name="paisCidadeEmpresa" placeholder="Pais" />				
+				</div>
+				<button class="btn-cadastrar-empresa">Cadastrar</button>
 			</form>';
 
  			echo $html;

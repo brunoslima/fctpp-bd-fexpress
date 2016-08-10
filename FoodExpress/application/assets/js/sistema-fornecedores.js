@@ -19,9 +19,9 @@ $(document).ready(function(){
 	 	$dados['numeroEnderecoFornecedor'] = $("input[name='numeroEnderecoFornecedor']").val();
 	 	$dados['bairroFornecedor'] = $("input[name='bairroFornecedor']").val();
 	 	$dados['complementoFornecedor'] = $("input[name='complementoFornecedor']").val();
-	 	$dados['cidadeFornecedor'] = $("select[name='cidadeFornecedor']").val();
+	 	$dados['cidadeFornecedor'] = $("select[name='cidade']").val();
 
-	 	if($("select[name='cidadeFornecedor']").val() == "0"){
+	 	if($("select[name='cidade']").val() == "0"){
 	 		$dados['nomeCidadeFornecedor'] = $("input[name='nomeCidadeFornecedor']").val();
 	 		$dados['estadoCidadeFornecedor'] = $("input[name='estadoCidadeFornecedor']").val();
 	 		$dados['paisCidadeFornecedor'] = $("input[name='paisCidadeFornecedor']").val();

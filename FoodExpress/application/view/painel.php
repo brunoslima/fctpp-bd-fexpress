@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pagamentos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pedidos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
 </head>
@@ -25,6 +26,12 @@
 	</header>
 	<div class="conteudo-menu">		
 		<ul>
+			<li value="empresas"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Empresa
+				<ul>
+					<li value="novaempresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Nova Encomenda</li>
+					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver empresa</li>
+				</ul>
+			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Encomendas
 				<ul>
 					<li value="novaencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Nova Encomenda</li>

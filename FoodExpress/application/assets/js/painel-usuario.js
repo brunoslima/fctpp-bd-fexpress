@@ -91,6 +91,10 @@ $(document).ready(function(){
 			case "novoveiculo":
 				url = "/gui/novoveiculo";
 				break;
+
+			case "novaempresa":
+				url = "/gui/novaempresa";
+				break;
 				
 			default:
 
@@ -147,9 +151,9 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on("click", "select[name='cidadeFornecedor']", function(){
+	$(document).on("click", "select[name='cidade']", function(){
 
-		if($("select[name='cidadeFornecedor']").val() == "0"){
+		if($("select[name='cidade']").val() == "0"){
 			$(".optNovaCidade").css("display","block");
 		}
 		else{
