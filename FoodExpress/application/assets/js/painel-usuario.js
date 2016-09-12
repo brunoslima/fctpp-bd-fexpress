@@ -92,6 +92,10 @@ $(document).ready(function(){
 				url = "/gui/novoveiculo";
 				break;
 
+			case "mostrarveiculo":
+				url = "/gui/mostrarveiculo";
+				break;
+
 			case "novaempresa":
 				url = "/gui/novaempresa";
 				break;

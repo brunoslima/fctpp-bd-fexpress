@@ -138,6 +138,51 @@
  			echo $html;
  		}
 
+ 		public function mostrarveiculo(){
+
+ 			$html = 
+ 			'<table>
+				  <thead>
+				    <tr>
+				      <th colspan="3">Veículos</th>
+				    </tr>
+				    <tr>
+				      <th>Nº</th>
+				      <th colspan="2">Placa</th>
+				      <th colspan="2">Ano fabricação</th>
+				      <th colspan="2">Modelo</th>
+				      <th colspan="2">Capacidade de carga</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <td>1</td>
+				      <td>FGH-3456</td>
+				      <td>2010</td>
+				      <td>2011</td>
+				      <td>600 kg</td>
+				      <td>
+				        <i class="fa fa-pencil button alterar"></i>
+				        <i class="fa fa-trash button excluir"></i>
+				      </td>
+				    </tr>
+				    <tr>
+				      <td>2</td>
+				      <td>GCV-1234</td>
+				      <td>2015</td>
+				      <td>2016</td>
+				      <td>800 kg</td>
+				      <td>
+				        <i class="fa fa-pencil button alterar"></i>
+				        <i class="fa fa-trash button excluir"></i>
+				      </td>
+				    </tr>
+				  </tbody>
+			</table>';
+
+			echo $html;
+ 		}
+
  		public function novaempresa(){
 
 			$modelCidade = new CidadeModel();
