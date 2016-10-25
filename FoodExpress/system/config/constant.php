@@ -8,16 +8,18 @@
 
 	$project["folder_name"] = "FoodExpress/";
 
+	$project["domain"] = "http://". $_SERVER['SERVER_NAME']. "/" . $project['name'];
+
 	/* ===============================================================================#
 	 * Configurações de Estilos
      */
 
-	$assets["style"] = "../".$project["folder_name"]."application/assets/css/";
+	$assets["style"] = $project["domain"]."/application/assets/css/";
 
-	$assets["images"] = "../".$project["folder_name"]."application/assets/css/images/";
+	$assets["images"] = $project["domain"]."/application/assets/css/images/";
 
-	$assets["fonts"] = "../".$project["folder_name"]."application/assets/css/fonts/";
+	$assets["fonts"] = $project["domain"]."/application/assets/css/fonts/";
 
-	$assets["script"] = "../".$project["folder_name"]."application/assets/js/";
+	$assets["script"] = $project["domain"]."/application/assets/js/";
 
 
