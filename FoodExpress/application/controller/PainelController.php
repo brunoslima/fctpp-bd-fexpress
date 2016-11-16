@@ -100,20 +100,8 @@
 
 		public function cadastrarEmpresa(){
 
-			if($_POST['cidadeEmpresa'] == "0"){
-
-				$nome = $_POST['nomeCidadeEmpresa'];
-				$estado = $_POST['estadoCidadeEmpresa'];
-				$pais = $_POST['paisCidadeEmpresa'];
-
-				$modelCidade = new CidadeModel();
-				$primaryKeyCidade = $modelCidade->add($nome, $estado, $pais);
-
-			}
-			else {
-				$primaryKeyCidade = $_POST['cidadeEmpresa'];
-			}
-
+			
+			$primaryKeyCidade = $_POST['cidadeEmpresa'];
 			$logradouro = $_POST['logradouroEmpresa'];
 			$numeroEndereco = $_POST['numeroEnderecoEmpresa'];
 			$bairro = $_POST['bairroEmpresa'];
@@ -122,8 +110,14 @@
 			$modelEndereco = new EnderecoModel();
 			$primaryKeyEndereco = $modelEndereco->add($logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade);
 
+			$cnpj = $_POST['cnpjEmpresa'];
+			$proprietario = $_POST['proprietarioEmpresa'];
+			$nome = $_POST['nomeEmpresa'];
+			$chave = $_POST['chaveEmpresa'];
+			$senha = $_POST['senhaEmpresa'];
+
 			$modelEmpresa = new EmpresaModel();
-			$modelEmpresa->add($primaryKeyEndereco);
+			$modelEmpresa->add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
 		}
 
 

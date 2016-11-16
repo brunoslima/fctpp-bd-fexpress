@@ -155,13 +155,4 @@ $(document).ready(function(){
 		}
 	});
 
-	$(document).on("click", "select[name='cidade']", function(){
-
-		if($("select[name='cidade']").val() == "0"){
-			$(".optNovaCidade").css("display","block");
-		}
-		else{
-			$(".optNovaCidade").css("display","none");
-		}
-	});
 });

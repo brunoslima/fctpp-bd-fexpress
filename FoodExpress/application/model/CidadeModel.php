@@ -7,18 +7,10 @@
 		
 		private $table = "cidade";
 
-		public function add($nome, $estado, $pais){
+		public function pesquisa($id){
 
-			$resultInsert = $this->insert("INSERT INTO `$this->table` (nome, estado, pais) VALUES ('$nome', '$estado', '$pais')");
-			$resultSelect = $this->select("SELECT max(idCidade) FROM $this->table");
-			return $resultSelect[0]['max(idCidade)'];
-		}
-
-		public function pesquisa(){
-
-			$resultSelect = $this->select("SELECT idCidade,nome  FROM $this->table");
+			$resultSelect = $this->select("SELECT idCidade, nome  FROM $this->table where idEstado = $id");
 			return $resultSelect;
-
 		}
 	}
 

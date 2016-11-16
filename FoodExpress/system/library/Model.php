@@ -18,7 +18,7 @@
 
 			try {
 
-				$this->connection = new PDO('mysql:host='.$database['host'].'; dbname='.$database['name'],$database['user'], $database['password']);
+				$this->connection = new PDO('mysql:host='.$database['host'].'; dbname='.$database['name'].'; charset=utf8',$database['user'], $database['password']);
 
 			} catch (Exception $e) {
 

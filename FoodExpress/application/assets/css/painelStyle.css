@@ -198,7 +198,7 @@ header {
 
 
 .conteudo input{
-	display: block;
+	display: inline-block;
 	height: 30px; min-width: 200px;
 	padding: 10px 6px;
 	margin: 6px 10px;

@@ -9,6 +9,10 @@
  			
  		}
 
+ 		public function novaencomenda(){
+
+ 		}
+
  		public function novofuncionario(){
 
  			$html = '<h1>Novo Funcionário</h1>
@@ -70,23 +74,23 @@
 
  		public function novofornecedor(){
 
- 			$modelCidade = new CidadeModel();
- 			$resultSelect = $modelCidade->pesquisa();
+ 			$modelEstado = new EstadoModel();
+ 			$resultSelect = $modelEstado->pesquisa();
 
- 			$cidadesParte = '';
+ 			$estadoParte = '';
 
  			/*$cidadesParte = '<option value="'.$resultSelect[0]['idCidade'].'">'.$resultSelect[0]['nome'].'</option>';*/
 			
 			for($i = 0; $i < count($resultSelect); $i++){
-				$cidadesParte .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+				$estadoParte .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
 			}
 
 
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
-				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/>
+				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/><br>
 				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
-				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/>
+				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/><br>
 				<label>Tipo</label>
 				<select name="tipoFornecedor">
 					<optgroup>
@@ -103,13 +107,13 @@
 				<br>
 				<label>Endereço</label>
 				<input type="text" name="logradouroFornecedor" placeholder="Logradouro"/>
-				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/>
+				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/><br>
 				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
-				<input type="text" name="complementoFornecedor" placeholder="Complemento"/>
+				<input type="text" name="complementoFornecedor" placeholder="Complemento"/><br>
 				<label>Cidade</label>
-				<select name="cidade">
+				<select name="estado">
 					<optgroup>
-						<option value="0">Nova cidade</option>' . $cidadesParte . '
+						<option value="0">Nova cidade</option>' . $estadoParte . '
 					</optgroup>
 				</select>
 				<div class="optNovaCidade" style="display:block">
@@ -185,44 +189,68 @@
 
  		public function novaempresa(){
 
-			$modelCidade = new CidadeModel();
- 			$resultSelect = $modelCidade->pesquisa();
+			$modelEstado = new EstadoModel();
+ 			$resultSelect = $modelEstado->pesquisa();
 
- 			$cidadesParte = '';
+ 			$opcoesEstado = '';
 			
 			for($i = 0; $i < count($resultSelect); $i++){
-				$cidadesParte .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+				$opcoesEstado .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 	
+
+			$modelCidade = new CidadeModel();
+			$resultSelect = $modelCidade->pesquisa(1);
+			$opcoesCidade = '';
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesCidade .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
 			} 			
 
  			$html = '<h1>Nova Empresa</h1>
 			<form method="post" action="">
 				<input type="text" placeholder="Cnpj" name="cnpjEmpresa"/>
-				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/>
-				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/>
+				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/><br>
+				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/><br>
 				<input type="text" placeholder="Chave de acesso" name="chaveEmpresa"/>
-				<input type="text" placeholder="Senha" name="senhaEmpresa"/>
+				<input type="text" placeholder="Senha" name="senhaEmpresa"/><br>
 				<br>
-				<label>Endereço</label>
+				<label>Endereço</label><br>
 				<input type="text" name="logradouroEmpresa" placeholder="Logradouro"/>
 				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/>
 				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
 				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
+				<br><label>Estado</label>
+				<select name="estado">
+					'.$opcoesEstado.'	
+				</select>
 				<label>Cidade</label>
 				<select name="cidade">
-					<optgroup>
-						<option value="0">Nova cidade</option>' . $cidadesParte . '
-					</optgroup>
+					'.$opcoesCidade.'
 				</select>
-				<div class="optNovaCidade" style="display:block">
-					<label>Nova Cidade</label>
-					<input type="text" name="nomeCidadeEmpresa" placeholder="Nome da cidade" />
-					<input type="text" name="estadoCidadeEmpresa" placeholder="Estado" />
-					<input type="text" name="paisCidadeEmpresa" placeholder="Pais" />				
-				</div>
 				<button class="btn-cadastrar-empresa">Cadastrar</button>
 			</form>';
 
  			echo $html;
+ 		}
+
+ 		public function verEmpresas(){
+
+ 			$model = new EmpresaModel();
+ 			$model->selectAll();
+
+
+ 		}
+
+ 		public function listarCidades(){
+
+ 			//realizando a pesquisa pelas cidades quando se tem o id do estado
+ 			$model = new CidadeModel();
+ 			$resultSelect = $model->pesquisa($_POST['id']);
+ 			$html = '';
+ 			for($i = 0; $i < count($resultSelect); $i++){
+				$html .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 
+			
+			echo $html;	
  		}
  		
  	}
