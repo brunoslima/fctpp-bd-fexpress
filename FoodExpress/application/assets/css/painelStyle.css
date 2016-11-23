@@ -270,7 +270,7 @@ button[class*="btn"]:hover{
 }
 */
 
-table {
+/*table {
   color: #333;
   font-family: sans-serif;
   font-size: .9em;
@@ -318,5 +318,5 @@ td:last-child {
 
 .excluir:hover {
   color: #dc2a2a;
-}
+}*/
 /*---------------------------------------------*/

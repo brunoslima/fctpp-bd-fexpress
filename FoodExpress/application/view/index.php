@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8"/>
 	<title>FoodExpress</title>
-	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>homepage.js"></script>
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>loginStyle.css"/>
 </head>

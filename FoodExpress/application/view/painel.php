@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+	
 	<meta charset="utf-8"/>
+	
 	<title>FoodExpress</title>
-	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-2.2.3.min.js"></script>
+
+	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>datatables.js"></script>
+	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-estoque.js"></script>
@@ -13,8 +19,11 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pedidos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
+
 </head>
 <body>
 	<header>

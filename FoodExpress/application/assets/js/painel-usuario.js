@@ -121,11 +121,17 @@ $(document).ready(function(){
 			
 			$(".conteudo").empty();
 			$(".conteudo").append(data);
+
 		})
 		.fail(function(){
 			console.log("pãã");
 		});
 	});
+
+	/*$(document).on("[value=mostrarveiculo]", "click", function(){
+
+		$('#datatables').DataTable();
+	});*/
 
 	$(document).on("click", "select[name='cargo']", function(){
 
