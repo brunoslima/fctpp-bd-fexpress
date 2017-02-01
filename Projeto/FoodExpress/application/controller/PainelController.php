@@ -92,6 +92,12 @@
 		}
 
 
+		public function cadastrarProduto(){
+
+			$modelProduto = new ProdutoModel();
+			$modelProduto->add();
+		}
+
 		public function cadastrarVeiculo(){
 
 			$modelVeiculo = new VeiculoModel();

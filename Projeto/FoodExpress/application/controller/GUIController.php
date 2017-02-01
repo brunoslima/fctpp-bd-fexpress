@@ -128,6 +128,22 @@
  			echo $html;
  		}
 
+ 		public function novoproduto(){
+
+ 			$html = '<h1>Novo Produto</h1>
+			<form method="post" action="">
+				<input type="text" placeholder="Nome" name="nomeProduto"/>
+				<input type="text" placeholder="Descrição" name="descricaoProduto"/>
+				<button class="btn-cadastrar-produto">Cadastrar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
+ 		public function mostrarprodutos(){
+
+ 		}
+
  		public function novoveiculo(){
 
  			$html = '<h1>Novo Veículo</h1>
@@ -176,116 +192,6 @@
 				      <td>2015</td>
 				      <td>2016</td>
 				      <td>800 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
-				      <!--<td>
-				        <i class="fa fa-pencil button alterar"></i>
-				        <i class="fa fa-trash button excluir"></i>
-				      </td>-->
-				    </tr>
-				    <tr>
-				      <td>1</td>
-				      <td>FGH-3456</td>
-				      <td>2010</td>
-				      <td>2011</td>
-				      <td>600 kg</td>
 				      <!--<td>
 				        <i class="fa fa-pencil button alterar"></i>
 				        <i class="fa fa-trash button excluir"></i>

@@ -44,7 +44,7 @@
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Encomendas
 				<ul>
 					<li value="novaencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Nova Encomenda</li>
-					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">sub-menu 2</li>
+					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver encomendas</li>
 				</ul>
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Estoque</li>
@@ -62,6 +62,12 @@
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pagamentos</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pedidos</li>
+			<li value="produtos"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Produtos
+				<ul>
+					<li value="novoproduto"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Produto</li>
+					<li value="mostrarproduto"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver Produtos</li>
+				</ul>
+			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Rota de Viagens</li>
 			<li value="veiculos"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Veículos
 				<ul>

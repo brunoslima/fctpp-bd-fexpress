@@ -72,7 +72,8 @@ $(document).ready(function(){
 		//top!!
 		var url;
 
-		//console.log($(this).attr("value"));
+		consele.log("Entrou no painel-usuario");
+		console.log($(this).attr("value"));
 
 		switch($(this).attr("value")){
 
@@ -86,6 +87,10 @@ $(document).ready(function(){
 
 			case "novofornecedor":
 				url = "/gui/novofornecedor";
+				break;
+
+			case "novoproduto":
+				url = "/gui/novoproduto";
 				break;
 
 			case "novoveiculo":
@@ -119,6 +124,7 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			
+			console.log("Passou");
 			$(".conteudo").empty();
 			$(".conteudo").append(data);
 
