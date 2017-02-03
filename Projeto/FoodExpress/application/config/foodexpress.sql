@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 26-Out-2016 às 17:59
+-- Data de Criação: 01-Fev-2017 às 17:55
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -5647,7 +5647,6 @@ INSERT INTO `cidade` (`idCidade`, `idEstado`, `nome`) VALUES
 CREATE TABLE IF NOT EXISTS `deposito` (
   `numero` int(11) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
-  `capacidade` float DEFAULT NULL,
   PRIMARY KEY (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -5667,6 +5666,14 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   PRIMARY KEY (`cnpj`),
   KEY `fk_Empresa_Endereco1_idx` (`fkEndereco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `empresa`
+--
+
+INSERT INTO `empresa` (`cnpj`, `proprietario`, `nome`, `chaveAcesso`, `senha`, `fkEndereco`) VALUES
+('123587', 'Bruno Santos', 'AB Integer', 'brunosantos', 'teste123', 2),
+('254785215', 'José Chagas', 'Box Entretenimento', 'jose', 'abcde', 1);
 
 -- --------------------------------------------------------
 
@@ -5696,6 +5703,7 @@ CREATE TABLE IF NOT EXISTS `encomenda` (
 CREATE TABLE IF NOT EXISTS `encomespec` (
   `idEncomenda` int(11) NOT NULL,
   `idEspecProduto` int(11) NOT NULL,
+  `quantidade` float NOT NULL,
   PRIMARY KEY (`idEncomenda`,`idEspecProduto`),
   KEY `fk_Encomenda_has_EspecProduto_EspecProduto1_idx` (`idEspecProduto`),
   KEY `fk_Encomenda_has_EspecProduto_Encomenda1_idx` (`idEncomenda`)
@@ -5716,7 +5724,15 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `fkCidade` int(11) NOT NULL,
   PRIMARY KEY (`idEndereco`),
   KEY `fk_Endereco_Cidade_idx` (`fkCidade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `endereco`
+--
+
+INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complemento`, `fkCidade`) VALUES
+(1, 'Rua Latina', 125, 'Jardim Esplanada', '', 883),
+(2, 'Av. Rui Barbosa', 23, 'Centro', '', 2918);
 
 -- --------------------------------------------------------
 
@@ -5860,11 +5876,13 @@ INSERT INTO `gerente` (`email`, `login`, `senha`, `idGerente`) VALUES
 CREATE TABLE IF NOT EXISTS `item` (
   `codProduto` int(11) NOT NULL,
   `cnpjFornecedor` decimal(14,0) NOT NULL,
+  `num_pedido` int(11) NOT NULL,
   `quantidade` float NOT NULL,
   `precoTotal` float NOT NULL,
   PRIMARY KEY (`codProduto`,`cnpjFornecedor`),
   KEY `fk_Produto_has_Fornecedor_Fornecedor1_idx` (`cnpjFornecedor`),
-  KEY `fk_Produto_has_Fornecedor_Produto1_idx` (`codProduto`)
+  KEY `fk_Produto_has_Fornecedor_Produto1_idx` (`codProduto`),
+  KEY `fk_item_pedido` (`num_pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5905,7 +5923,7 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
   `idPagamento` int(11) NOT NULL AUTO_INCREMENT,
   `numeroBoleto` int(11) NOT NULL,
   `descricao` varchar(45) NOT NULL,
-  `valor` varchar(45) NOT NULL,
+  `valor` double NOT NULL,
   `dataVencimento` date NOT NULL,
   `dataEmissao` date NOT NULL,
   `status` tinyint(1) NOT NULL,
@@ -5944,6 +5962,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `dataVencimento` date DEFAULT NULL,
   `fkEspecProduto` int(11) NOT NULL,
   `fkDeposito` int(11) NOT NULL,
+  `quantidadeTotal` float NOT NULL,
   PRIMARY KEY (`codProduto`),
   KEY `fk_Produto_EspecProduto1_idx` (`fkEspecProduto`),
   KEY `fk_Produto_Deposito1_idx` (`fkDeposito`)
@@ -5976,7 +5995,14 @@ CREATE TABLE IF NOT EXISTS `veiculo` (
   `capacidade` int(11) NOT NULL,
   `disponivel` tinyint(1) NOT NULL,
   PRIMARY KEY (`idVeiculo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `veiculo`
+--
+
+INSERT INTO `veiculo` (`idVeiculo`, `placa`, `ano`, `modelo`, `capacidade`, `disponivel`) VALUES
+(1, 'CVY-5689', '2010', '2011', 45000, 1);
 
 -- --------------------------------------------------------
 
@@ -5990,6 +6016,9 @@ CREATE TABLE IF NOT EXISTS `viagem` (
   `fkVeiculo` int(11) NOT NULL,
   `fkMotorista` int(11) NOT NULL,
   `fkGerente` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
+  `dataInicio` date NOT NULL,
+  `dataChegada` date NOT NULL,
   PRIMARY KEY (`idViagem`),
   KEY `fk_Viagem_Veiculo1_idx` (`fkVeiculo`),
   KEY `fk_Viagem_Motorista1_idx` (`fkMotorista`),
@@ -6028,9 +6057,9 @@ ALTER TABLE `empresa`
 -- Limitadores para a tabela `encomenda`
 --
 ALTER TABLE `encomenda`
+  ADD CONSTRAINT `fk_Encomenda_Empresa1` FOREIGN KEY (`fkEmpresa`) REFERENCES `empresa` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Encomenda_Pagamento1` FOREIGN KEY (`fkPagamento`) REFERENCES `pagamento` (`idPagamento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Encomenda_Viagem1` FOREIGN KEY (`fkViagem`) REFERENCES `viagem` (`idViagem`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Encomenda_Empresa1` FOREIGN KEY (`fkEmpresa`) REFERENCES `empresa` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Encomenda_Viagem1` FOREIGN KEY (`fkViagem`) REFERENCES `viagem` (`idViagem`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `encomespec`
@@ -6067,8 +6096,9 @@ ALTER TABLE `gerente`
 -- Limitadores para a tabela `item`
 --
 ALTER TABLE `item`
-  ADD CONSTRAINT `fk_Produto_has_Fornecedor_Produto1` FOREIGN KEY (`codProduto`) REFERENCES `produto` (`codProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Produto_has_Fornecedor_Fornecedor1` FOREIGN KEY (`cnpjFornecedor`) REFERENCES `fornecedor` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_item_pedido` FOREIGN KEY (`num_pedido`) REFERENCES `pedido` (`idPedido`),
+  ADD CONSTRAINT `fk_Produto_has_Fornecedor_Fornecedor1` FOREIGN KEY (`cnpjFornecedor`) REFERENCES `fornecedor` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Produto_has_Fornecedor_Produto1` FOREIGN KEY (`codProduto`) REFERENCES `produto` (`codProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `motorista`
@@ -6092,15 +6122,15 @@ ALTER TABLE `pagamento`
 -- Limitadores para a tabela `pedido`
 --
 ALTER TABLE `pedido`
-  ADD CONSTRAINT `fk_Pedido_Pagamento1` FOREIGN KEY (`fkPagamento`) REFERENCES `pagamento` (`idPagamento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Pedido_Gerente1` FOREIGN KEY (`fkGerente`) REFERENCES `gerente` (`idGerente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Pedido_Gerente1` FOREIGN KEY (`fkGerente`) REFERENCES `gerente` (`idGerente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Pedido_Pagamento1` FOREIGN KEY (`fkPagamento`) REFERENCES `pagamento` (`idPagamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `produto`
 --
 ALTER TABLE `produto`
-  ADD CONSTRAINT `fk_Produto_EspecProduto1` FOREIGN KEY (`fkEspecProduto`) REFERENCES `especproduto` (`idEspecProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Produto_Deposito1` FOREIGN KEY (`fkDeposito`) REFERENCES `deposito` (`numero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Produto_Deposito1` FOREIGN KEY (`fkDeposito`) REFERENCES `deposito` (`numero`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Produto_EspecProduto1` FOREIGN KEY (`fkEspecProduto`) REFERENCES `especproduto` (`idEspecProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `seguranca`
@@ -6112,9 +6142,9 @@ ALTER TABLE `seguranca`
 -- Limitadores para a tabela `viagem`
 --
 ALTER TABLE `viagem`
-  ADD CONSTRAINT `fk_Viagem_Veiculo1` FOREIGN KEY (`fkVeiculo`) REFERENCES `veiculo` (`idVeiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Viagem_Gerente1` FOREIGN KEY (`fkGerente`) REFERENCES `gerente` (`idGerente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Viagem_Motorista1` FOREIGN KEY (`fkMotorista`) REFERENCES `motorista` (`idMotorista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Viagem_Gerente1` FOREIGN KEY (`fkGerente`) REFERENCES `gerente` (`idGerente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Viagem_Veiculo1` FOREIGN KEY (`fkVeiculo`) REFERENCES `veiculo` (`idVeiculo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

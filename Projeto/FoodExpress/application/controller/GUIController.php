@@ -311,15 +311,18 @@
 
  			$html = '<h1>Nova Empresa</h1>
 			<form method="post" action="">
-				<input type="text" placeholder="Cnpj" name="cnpjEmpresa"/>
+				<br>
+				<label>Informações Empresariais</label><br>
+				<input type="text" placeholder="CNPJ" name="cnpjEmpresa"/><br>
+				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/>
 				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/><br>
-				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/><br>
+				<br><label>Informações de Acesso</label><br>
 				<input type="text" placeholder="Chave de acesso" name="chaveEmpresa"/>
 				<input type="text" placeholder="Senha" name="senhaEmpresa"/><br>
 				<br>
-				<label>Endereço</label><br>
+				<label>Localização</label><br>
 				<input type="text" name="logradouroEmpresa" placeholder="Logradouro"/>
-				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/>
+				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/><br>
 				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
 				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
 				<br><label>Estado</label>
@@ -336,12 +339,29 @@
  			echo $html;
  		}
 
- 		public function verEmpresas(){
-
- 			$model = new EmpresaModel();
- 			$model->selectAll();
 
 
+ 		public function listarempresas(){
+
+			$model = new EmpresaModel();
+ 			$result = $model->selectAll(); 			
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>CNPJ</th>
+					<th>Nome da Empresa</th>
+					<th>Proprietário</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['cnpj']}</td><td>{$value['nome']}</td><td>{$value['proprietario']}</td></tr>";
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
  		}
 
  		public function listarCidades(){

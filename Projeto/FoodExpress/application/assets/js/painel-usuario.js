@@ -63,16 +63,17 @@ $(document).ready(function(){
 	});
 
 
-	$(".conteudo-menu ul > li").click(function(){
+	$(".conteudo-menu ul > li").click(function(e){
 
 		//uma ideia legal é no switch case escolher a url em que
 		// se carregará o conteúdo da pagina
 		//ex: http://localhost/FoodExpress/gui/novaencomenda
 		//pega esse conteudo por ajax e damos uma append na div conteudo, sem esquecer de remover o anterior
 		//top!!
+		
+		e.preventDefault();
 		var url;
 
-		consele.log("Entrou no painel-usuario");
 		console.log($(this).attr("value"));
 
 		switch($(this).attr("value")){
@@ -104,10 +105,15 @@ $(document).ready(function(){
 			case "novaempresa":
 				url = "/gui/novaempresa";
 				break;
+
+			case "listarempresas":
+
+				url = "/gui/listarempresas";
+				break;
 				
 			default:
 
-				//console.log("você está agindo de má fé!");
+				console.log("você está agindo de má fé!");
 				return;
 		}
 
@@ -134,10 +140,7 @@ $(document).ready(function(){
 		});
 	});
 
-	/*$(document).on("[value=mostrarveiculo]", "click", function(){
 
-		$('#datatables').DataTable();
-	});*/
 
 	$(document).on("click", "select[name='cargo']", function(){
 

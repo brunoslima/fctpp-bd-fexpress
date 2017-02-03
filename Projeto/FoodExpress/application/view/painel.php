@@ -7,8 +7,6 @@
 	<title>FoodExpress</title>
 
 	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="<?php echo $assets['script']?>jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="<?php echo $assets['script']?>datatables.js"></script>
 	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
@@ -18,9 +16,9 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pagamentos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pedidos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-produto.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>jquery.dataTables.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
 
@@ -28,7 +26,7 @@
 <body>
 	<header>
 		<div class="conteudo-cabecalho">			
-			<img class="imgLogoCabecalho" src="<?php echo $assets['images']?>logo_transparent.png"; >
+			<img class="imgLogoCabecalho" src="<?php echo $assets['images']?>logo_transparent.png">
 			<h1>FoodExpress</h1>
 		</div>	
 		<div class="logout"><p>Logout</p></div>	
@@ -38,7 +36,7 @@
 			<li value="empresas"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Empresa
 				<ul>
 					<li value="novaempresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Nova Empresa</li>
-					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver empresa</li>
+					<li value="listarempresas"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Listar Empresas</li>
 				</ul>
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Encomendas
