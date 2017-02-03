@@ -126,6 +126,13 @@
 			$modelEmpresa->add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
 		}
 
+		public function addDeposito(){
+
+			$model = new DepositoModel();
+
+			$model->add($_POST['nomeDeposito'], $_POST['descricaoDeposito']);
+		}
+
 
 		/**
 		 * Redireciona para a view Painel

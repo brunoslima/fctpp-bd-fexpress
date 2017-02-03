@@ -78,8 +78,8 @@ $(document).ready(function(){
 
 		switch($(this).attr("value")){
 
-			case "novaencomenda":
-				url = "/gui/novaencomenda";
+			case "verencomendas":
+				url = "/gui/verencomendas";
 				break;
 
 			case "novofuncionario":
@@ -109,6 +109,10 @@ $(document).ready(function(){
 			case "listarempresas":
 
 				url = "/gui/listarempresas";
+				break;
+
+			case "novodeposito":
+				url = "/gui/novodeposito";
 				break;
 				
 			default:

@@ -117,6 +117,11 @@
 
 		public function delete($query){
 
-			return $this->connection->query();
+			return $this->connection->query($query);
+		}
+
+		public function query($query){
+			
+			return $this->connection->query($query);
 		}
 	}

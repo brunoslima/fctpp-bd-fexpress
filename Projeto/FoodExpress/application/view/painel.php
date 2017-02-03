@@ -10,7 +10,7 @@
 	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
-	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-estoque.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-deposito.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-fornecedores.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-funcionarios.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pagamentos.js"></script>
@@ -41,11 +41,14 @@
 			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Encomendas
 				<ul>
-					<li value="novaencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Nova Encomenda</li>
-					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver encomendas</li>
+					<li value="verencomendas"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver encomendas</li>
 				</ul>
 			</li>
-			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Estoque</li>
+			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Depósitos
+				<ul>
+					<li value="novodeposito"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Cadastrar novo depósito</li>
+				</ul>
+			</li>
 			<li value="fornecedores"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Fornecedores
 				<ul>
 					<li value="novofornecedor"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Fornecedor</li>

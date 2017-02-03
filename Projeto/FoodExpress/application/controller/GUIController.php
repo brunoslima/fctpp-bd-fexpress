@@ -9,8 +9,28 @@
  			
  		}
 
- 		public function novaencomenda(){
+ 		public function verencomendas(){
 
+ 			$model = new EncomendaModel();
+ 			$result = $model->listar();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Código</th>
+					<th>Data de realização</th>
+					<th>Status</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$value['data']}</td><td>{$value['status']}</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
  		}
 
  		public function novofuncionario(){
@@ -71,24 +91,40 @@
 			echo $html;
  		}
 
+ 		public function novodeposito(){
+ 			$html = '<h1>Novo Depósito</h1>
+			<form method="post" action="">
+				<input type="text" placeholder="Nome" name="nomeDeposito"/>
+				<textarea name="descricaoDeposito" cols="30" rows="20" placeholder="Descrição"></textarea>
+				<button class="btn-cadastrar-deposito">Cadastrar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
 
  		public function novofornecedor(){
 
  			$modelEstado = new EstadoModel();
  			$resultSelect = $modelEstado->pesquisa();
 
- 			$estadoParte = '';
-
- 			/*$cidadesParte = '<option value="'.$resultSelect[0]['idCidade'].'">'.$resultSelect[0]['nome'].'</option>';*/
+ 			$opcoesEstado = '';
 			
 			for($i = 0; $i < count($resultSelect); $i++){
-				$estadoParte .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
-			}
+				$opcoesEstado .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 	
+
+			$modelCidade = new CidadeModel();
+			$resultSelect = $modelCidade->pesquisa(1);
+			$opcoesCidade = '';
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesCidade .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 
 
 
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
-				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/><br>
+				<input type="text" placeholder="CNPJ" name="cnpjFornecedor"/><br>
 				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
 				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/><br>
 				<label>Tipo</label>
@@ -104,25 +140,18 @@
 				<input type="text" name="codigoFornecedor" placeholder="Código"/>
 				<input type="text" name="areaFornecedor" placeholder="Área"/>
 				<input type="text" name="numeroFornecedor" placeholder="Número"/>
-				<br>
-				<label>Endereço</label>
+				<br><br>
+				<label>Localização</label><br>
 				<input type="text" name="logradouroFornecedor" placeholder="Logradouro"/>
 				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/><br>
 				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
 				<input type="text" name="complementoFornecedor" placeholder="Complemento"/><br>
-				<label>Cidade</label>
 				<select name="estado">
-					<optgroup>
-						<option value="0">Nova cidade</option>' . $estadoParte . '
-					</optgroup>
+					'.$opcoesEstado.'	
 				</select>
-				<div class="optNovaCidade" style="display:block">
-					<label>Nova Cidade</label>
-					<input type="text" name="nomeCidadeFornecedor" placeholder="Nome da cidade" />
-					<input type="text" name="estadoCidadeFornecedor" placeholder="Estado" />
-					<input type="text" name="paisCidadeFornecedor" placeholder="Pais" />				
-				</div>
-				<button class="btn-cadastrar-fornecedor">Cadastrar</button>
+				<select name="cidade">
+					'.$opcoesCidade.'
+				</select>
 			</form>';
 
  			echo $html;
@@ -325,11 +354,10 @@
 				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/><br>
 				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
 				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
-				<br><label>Estado</label>
+				<br>
 				<select name="estado">
 					'.$opcoesEstado.'	
 				</select>
-				<label>Cidade</label>
 				<select name="cidade">
 					'.$opcoesCidade.'
 				</select>
