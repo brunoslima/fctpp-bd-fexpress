@@ -114,7 +114,19 @@ $(document).ready(function(){
 			case "novodeposito":
 				url = "/gui/novodeposito";
 				break;
-				
+
+			case "listarfornecedores":
+				url = "/gui/listarfornecedores";
+				break;
+
+			case "listarfuncionarios":
+				url = "/gui/listarFuncionarios";
+				break;
+
+			case "listardepositos":
+				url = "/gui/listarDepositos";
+				break;
+
 			default:
 
 				console.log("você está agindo de má fé!");
@@ -134,7 +146,6 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			
-			console.log("Passou");
 			$(".conteudo").empty();
 			$(".conteudo").append(data);
 

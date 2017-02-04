@@ -19,6 +19,11 @@
 			$resultInsert = $this->insert("INSERT INTO `$this->table` (cnpj, nome, email, codigo, area, numero, fkEndereco) VALUES ('$cnpj', '$nome', '$email', '$codigo', '$area', '$numero', '$primaryKeyEndereco')");
 			return $cnpj;
 		}
+
+		public function listar(){
+
+			return $this->query("SELECT cnpj, nome, email, codigo, area, numero FROM {$this->table}");
+		}
 	}
 
 ?>

@@ -19,7 +19,6 @@ $(document).ready(function(){
 			cache: false
 		})
 		.done(function(data){
-			console.log(data);
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã hey");

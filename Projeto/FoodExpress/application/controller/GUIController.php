@@ -37,11 +37,12 @@
 
  			$html = '<h1>Novo Funcionário</h1>
 			<form method="post" action="">
+				<label>Informações Pessoais</label><br>
 				<input type="text" placeholder="Nome Completo" name="nome"/>
 				<input type="number" min="0.01" step="0.01" placeholder="Salário" name="salario"/>
-				<label>Data de Nascimento</label><input type="date" name="dataNascimento"/><br>
-				<label>Data de Contratação</label><input type="date" name="dataContratacao"/><br>
-				<label>Cargo</label>
+				<br><br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
+				<br><label>Data de Contratação</label><br><input type="date" name="dataContratacao"/><br>
+				<br><label>Cargo</label><br>
 				<select name="cargo">
 					<optgroup>
 						<option value="0">Auxiliar Limpeza</option>
@@ -55,12 +56,12 @@
 				</div>
 				<div class="opt1">
 					<input type="email" name="contato" placeholder="E-mail de Contato" />
-					<input type="email" name="login" placeholder="E-mail de Login" />
-					<input type="password" name="senha" placeholder="Senha" />
+					<br><input type="email" name="login" placeholder="E-mail de Login" />
+					<br><input type="password" name="senha" placeholder="Senha" />
 					<input type="password" name="confirmsenha" placeholder="Confirmação de Senha" />	
 				</div>
-				<div class="opt2">
-					<label>Categoria de Habilitação</label>
+				<div class="opt2">	
+					<br><label>Categoria de Habilitação</label><br>
 					<select name="Categoria">
 						<optgroup>
 							<option value="0">A</option>
@@ -70,8 +71,8 @@
 							<option value="4">E</option>
 						</optgroup>
 					</select>
-					<br>
-					<label>Telefone</label>
+					<br><br>
+					<label>Telefone</label><br>
 					<input type="text" name="codigo" placeholder="Código"/>
 					<input type="text" name="area" placeholder="Área"/>
 					<input type="text" name="numero" placeholder="Número"/>
@@ -89,6 +90,70 @@
 			</form>';
 
 			echo $html;
+ 		}
+
+ 		public function listarDepositos(){
+
+ 			$model = new DepositoModel();
+ 			$result = $model->listar();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Código</th>
+					<th>Nome</th>
+					<th>Descrição</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['numero']}</td><td>{$value['nome']}</td><td>{$value['descricao']}</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
+ 		}
+
+ 		public function listarFuncionarios(){
+ 			$model = new FuncionarioModel();
+ 			$result = $model->listar();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Nome Completo</th>
+					<th>Salário</th>
+					<th>Cargo</th>
+					<th>Data de Nascimento</th>
+					<th>Data de Contratação</th>
+				</thead>
+				<tbody>
+			";
+
+			$cargo = "Auxiliar de Limpeza";
+ 			foreach ($result['limpeza'] as $value) {
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 			}
+
+ 			$cargo = "Gerência";
+ 			foreach ($result['gerente'] as $value) {
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 			}
+
+ 			$cargo = "Motorista";
+ 			foreach ($result['motorista'] as $value) {
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 			}
+
+ 			$cargo = "Segurança";
+ 			foreach ($result['seguranca'] as $value) {
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
  		}
 
  		public function novodeposito(){
@@ -124,10 +189,11 @@
 
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
+				<label>Informações de Identificação</label><br>
 				<input type="text" placeholder="CNPJ" name="cnpjFornecedor"/><br>
 				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
 				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/><br>
-				<label>Tipo</label>
+				<br><label>Categoria</label><br>
 				<select name="tipoFornecedor">
 					<optgroup>
 						<option value="0">Fabrica</option>
@@ -136,12 +202,12 @@
 					</optgroup>
 				</select>
 				<br>
-				<label>Telefone</label>
+				<br><label>Informações de Comunicação</label><br>
 				<input type="text" name="codigoFornecedor" placeholder="Código"/>
 				<input type="text" name="areaFornecedor" placeholder="Área"/>
 				<input type="text" name="numeroFornecedor" placeholder="Número"/>
 				<br><br>
-				<label>Localização</label><br>
+				<label>Informações de Localização</label><br>
 				<input type="text" name="logradouroFornecedor" placeholder="Logradouro"/>
 				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/><br>
 				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
@@ -152,8 +218,34 @@
 				<select name="cidade">
 					'.$opcoesCidade.'
 				</select>
+				<button class="btn-cadastrar-fornecedor">Cadastrar</button>
 			</form>';
 
+ 			echo $html;
+ 		}
+
+ 		public function listarfornecedores(){
+
+ 			$model = new FornecedorModel();
+ 			$result = $model->listar();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>CNPJ</th>
+					<th>Nome Completo</th>
+					<th>E-mail</th>
+					<th>Telefone</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['cnpj']}</td><td>{$value['nome']}</td><td>{$value['email']}</td><td>+{$value['codigo']} {$value['area']} {$value['numero']}</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
  			echo $html;
  		}
 

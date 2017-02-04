@@ -19,4 +19,12 @@
 			return $resultSelect[0]['max(idfuncionario)'];
 		}
 
+		public function listar(){
+
+			$func['limpeza'] = $this->select("SELECT * FROM funcionario, auxiliarlimpeza WHERE idfuncionario = idAuxiliarLimpeza");
+			$func['gerente'] = $this->select("SELECT * FROM funcionario, gerente WHERE idfuncionario = idGerente");
+			$func['motorista'] = $this->select("SELECT * FROM funcionario, motorista WHERE idfuncionario = idMotorista");
+			$func['seguranca'] = $this->select("SELECT * FROM funcionario, seguranca WHERE idfuncionario = idSeguranca");
+			return $func;
+		}
 	}

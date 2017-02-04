@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-	
-	<meta charset="utf-8"/>
-	
+	<meta charset="utf-8"/>	
 	<title>FoodExpress</title>
-
 	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
-	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-deposito.js"></script>
@@ -17,11 +13,9 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pedidos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-produto.js"></script>
-	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>
-	
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>	
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
-	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
-
+	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">
 </head>
 <body>
 	<header>
@@ -47,21 +41,26 @@
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Depósitos
 				<ul>
 					<li value="novodeposito"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Cadastrar novo depósito</li>
+					<li value="listardepositos"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Listar Depósitos</li>
 				</ul>
 			</li>
 			<li value="fornecedores"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Fornecedores
 				<ul>
 					<li value="novofornecedor"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Fornecedor</li>
-					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver Fornecedores</li>
+					<li value="listarfornecedores"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Listar Fornecedores</li>
 				</ul>
 			</li>
 			<li value="funcionarios"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Funcionários
 				<ul>
 					<li value="novofuncionario"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Novo Funcionário</li>
-					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Ver Funcionários</li>
+					<li value="listarfuncionarios"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Listar Funcionários</li>
 				</ul>
 			</li>
-			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pagamentos</li>
+			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pagamentos
+				<ul>
+					<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Consultar Pagamentos</li>
+				</ul>
+			</li>
 			<li><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Pedidos</li>
 			<li value="produtos"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Produtos
 				<ul>
