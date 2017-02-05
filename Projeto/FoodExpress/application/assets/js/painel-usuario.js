@@ -74,7 +74,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		var url;
 
-		console.log($(this).attr("value"));
+		//console.log($(this).attr("value"));
 
 		switch($(this).attr("value")){
 
@@ -161,7 +161,7 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			
-			console.log("Passou");
+			//console.log("Passou");
 			$(".conteudo").empty();
 			$(".conteudo").append(data);
 

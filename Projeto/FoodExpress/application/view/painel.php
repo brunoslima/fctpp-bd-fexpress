@@ -10,7 +10,7 @@
 	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
-	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-estoque.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-deposito.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-fornecedores.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-funcionarios.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-pagamentos.js"></script>

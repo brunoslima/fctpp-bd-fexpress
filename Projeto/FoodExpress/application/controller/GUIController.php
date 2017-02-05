@@ -54,11 +54,11 @@
 				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/><br>
 				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
 				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
-				<br><label>Estado</label>
+				<br><br><label>Estado</label><br>
 				<select name="estado">
 					'.$opcoesEstado.'	
-				</select>
-				<label>Cidade</label>
+				</select><br>
+				<label>Cidade</label><br>
 				<select name="cidade">
 					'.$opcoesCidade.'
 				</select>
@@ -163,11 +163,12 @@
 
  			$html = '<h1>Novo Funcionário</h1>
 			<form method="post" action="">
+				<label>Informações Pessoais</label><br>
 				<input type="text" placeholder="Nome Completo" name="nome"/>
+				<br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
+				<br><label>Data de Contratação</label><br><input type="date" name="dataContratacao"/><br>
 				<input type="number" min="0.01" step="0.01" placeholder="Salário" name="salario"/>
-				<label>Data de Nascimento</label><input type="date" name="dataNascimento"/><br>
-				<label>Data de Contratação</label><input type="date" name="dataContratacao"/><br>
-				<label>Cargo</label>
+				<br><br><label>Cargo</label><br>
 				<select name="cargo">
 					<optgroup>
 						<option value="0">Auxiliar Limpeza</option>
@@ -186,7 +187,7 @@
 					<input type="password" name="confirmsenha" placeholder="Confirmação de Senha" />	
 				</div>
 				<div class="opt2">
-					<label>Categoria de Habilitação</label>
+					<label>Categoria de Habilitação</label><br>
 					<select name="Categoria">
 						<optgroup>
 							<option value="0">A</option>
@@ -197,13 +198,13 @@
 						</optgroup>
 					</select>
 					<br>
-					<label>Telefone</label>
+					<label>Informações de Contato</label><br>
 					<input type="text" name="codigo" placeholder="Código"/>
 					<input type="text" name="area" placeholder="Área"/>
 					<input type="text" name="numero" placeholder="Número"/>
 				</div>
 				<div class="opt3">
-					<label>Possui porte de arma? </label>
+					<label>Possui porte de arma? </label><br>
 					<select name="porte">
 						<optgroup>
 							<option value="1">Sim</option>
@@ -262,21 +263,26 @@
  			$modelEstado = new EstadoModel();
  			$resultSelect = $modelEstado->pesquisa();
 
- 			$estadoParte = '';
-
- 			/*$cidadesParte = '<option value="'.$resultSelect[0]['idCidade'].'">'.$resultSelect[0]['nome'].'</option>';*/
+ 			$opcoesEstado = '';
 			
 			for($i = 0; $i < count($resultSelect); $i++){
-				$estadoParte .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
-			}
+				$opcoesEstado .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 	
 
+			$modelCidade = new CidadeModel();
+			$resultSelect = $modelCidade->pesquisa(1);
+			$opcoesCidade = '';
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesCidade .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			}
 
  			$html = '<h1>Novo Fornecedor</h1>
 			<form method="post" action="">
+				<label>Informações Gerais</label><br>
 				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/><br>
 				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
 				<input type="email" placeholder="E-mail de Contato" name="emailFornecedor"/><br>
-				<label>Tipo</label>
+				<br><label>Categoria</label><br>
 				<select name="tipoFornecedor">
 					<optgroup>
 						<option value="0">Fabrica</option>
@@ -284,29 +290,25 @@
 						<option value="2">Outro</option>
 					</optgroup>
 				</select>
-				<br>
-				<label>Telefone</label>
+				<br><br>
+				<label>Informações de Contato</label><br>
 				<input type="text" name="codigoFornecedor" placeholder="Código"/>
 				<input type="text" name="areaFornecedor" placeholder="Área"/>
 				<input type="text" name="numeroFornecedor" placeholder="Número"/>
-				<br>
-				<label>Endereço</label>
+				<br><br>
+				<label>Localização</label><br>
 				<input type="text" name="logradouroFornecedor" placeholder="Logradouro"/>
 				<input type="text" name="numeroEnderecoFornecedor" placeholder="Número"/><br>
-				<input type="text" name="bairroFornecedor" placeholder="Bairro"/>
+				<br><input type="text" name="bairroFornecedor" placeholder="Bairro"/>
 				<input type="text" name="complementoFornecedor" placeholder="Complemento"/><br>
-				<label>Cidade</label>
+				<br><br><label>Estado</label><br>
 				<select name="estado">
-					<optgroup>
-						<option value="0">Nova cidade</option>' . $estadoParte . '
-					</optgroup>
+					'.$opcoesEstado.'	
+				</select><br>
+				<label>Cidade</label><br>
+				<select name="cidade">
+					'.$opcoesCidade.'
 				</select>
-				<div class="optNovaCidade" style="display:block">
-					<label>Nova Cidade</label>
-					<input type="text" name="nomeCidadeFornecedor" placeholder="Nome da cidade" />
-					<input type="text" name="estadoCidadeFornecedor" placeholder="Estado" />
-					<input type="text" name="paisCidadeFornecedor" placeholder="Pais" />				
-				</div>
 				<button class="btn-cadastrar-fornecedor">Cadastrar</button>
 			</form>';
 
@@ -467,9 +469,10 @@
 
  			$html = '<h1>Novo Veículo</h1>
 			<form method="post" action="">
-				<input type="text" placeholder="Placa" name="placaVeiculo"/>
-				<input type="text" placeholder="Ano de fabricação" name="anoVeiculo"/>
-				<input type="text" placeholder="Modelo" name="modeloVeiculo"/>
+				<label>Informações Veiculares</label><br>
+				<input type="text" placeholder="Placa" name="placaVeiculo"/><br>
+				<input type="text" placeholder="Ano de fabricação" name="anoVeiculo"/><br>
+				<input type="text" placeholder="Modelo" name="modeloVeiculo"/><br>
 				<input type="text" placeholder="Capacidade de carga" name="capacidadeVeiculo"/>
 				<button class="btn-cadastrar-veiculo">Cadastrar</button>
 			</form>';
@@ -495,8 +498,10 @@
 				<tbody>
 			";
 
+			$status = "";
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idVeiculo']}</td><td>{$value['placa']}</td><td>{$value['ano']}</td><td>{$value['modelo']}</td><td>{$value['capacidade']}</td><td>{$value['disponivel']}</td></tr>";
+ 				$status = ($value['disponivel'] == 1 ? "Disponível" : "Ocupado");
+ 				$html .= "<tr><td>{$value['idVeiculo']}</td><td>{$value['placa']}</td><td>{$value['ano']}</td><td>{$value['modelo']}</td><td>{$value['capacidade']}</td><td>{$status}</td></tr>";
 
  			}
 
