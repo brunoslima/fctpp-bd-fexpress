@@ -18,6 +18,38 @@
 			}
 		}
 
+		public function cadastrarEmpresa(){
+
+			
+			$primaryKeyCidade = $_POST['cidadeEmpresa'];
+			$logradouro = $_POST['logradouroEmpresa'];
+			$numeroEndereco = $_POST['numeroEnderecoEmpresa'];
+			$bairro = $_POST['bairroEmpresa'];
+			$complemento = $_POST['complementoEmpresa'];
+
+			$modelEndereco = new EnderecoModel();
+			$primaryKeyEndereco = $modelEndereco->add($logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade);
+
+			$cnpj = $_POST['cnpjEmpresa'];
+			$proprietario = $_POST['proprietarioEmpresa'];
+			$nome = $_POST['nomeEmpresa'];
+			$chave = $_POST['chaveEmpresa'];
+			$senha = $_POST['senhaEmpresa'];
+
+			$modelEmpresa = new EmpresaModel();
+			$modelEmpresa->add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
+
+		}
+
+		
+		public function addDeposito(){
+
+			$model = new DepositoModel();
+
+			$model->add($_POST['nomeDeposito'], $_POST['descricaoDeposito']);
+		}
+
+		
 		public function cadastrarFuncionario(){
 
 			$modelFuncionario = new FuncionarioModel();
@@ -91,6 +123,36 @@
 			}
 		}
 
+		public function cadastrarPedido(){
+
+			//Pegando data atual
+ 			date_default_timezone_set('America/Sao_Paulo');
+			$data = date('d/m/Y');
+			$dataVencimento = date('d/m/Y', strtotime($data.' +2 days'));
+
+			//Informações do gerente
+			$nome = 'admin';
+			$modeloFuncionarios = new FuncionarioModel();
+			$idGerente = $modeloFuncionarios->buscaIDGerente($nome);
+
+			//Informações Item
+			$valor = 1.0;
+
+			//Informações pagamento
+			//$descricao = $_POST['descricaoPagamento'];
+			$descricao = 'teste manual!';
+			$modeloPagamento = new PagamentoModel();
+			$idPagamento = $modeloPagamento->add(12345, $descricao, $valor, $dataVencimento, $data, $idGerente);
+
+			//Informações Pedido
+			$modeloPedido = new PedidoModel();
+			$modeloPedido->add($data, $idPagamento, $idGerente);
+
+			//Informações ItemPedido
+			//$modeloItem = new ItemModel();
+			//$modeloItem->add();
+
+		}
 
 		public function cadastrarProduto(){
 
@@ -102,35 +164,6 @@
 
 			$modelVeiculo = new VeiculoModel();
 			$modelVeiculo->add();
-		}
-
-		public function cadastrarEmpresa(){
-
-			
-			$primaryKeyCidade = $_POST['cidadeEmpresa'];
-			$logradouro = $_POST['logradouroEmpresa'];
-			$numeroEndereco = $_POST['numeroEnderecoEmpresa'];
-			$bairro = $_POST['bairroEmpresa'];
-			$complemento = $_POST['complementoEmpresa'];
-
-			$modelEndereco = new EnderecoModel();
-			$primaryKeyEndereco = $modelEndereco->add($logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade);
-
-			$cnpj = $_POST['cnpjEmpresa'];
-			$proprietario = $_POST['proprietarioEmpresa'];
-			$nome = $_POST['nomeEmpresa'];
-			$chave = $_POST['chaveEmpresa'];
-			$senha = $_POST['senhaEmpresa'];
-
-			$modelEmpresa = new EmpresaModel();
-			$modelEmpresa->add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
-		}
-
-		public function addDeposito(){
-
-			$model = new DepositoModel();
-
-			$model->add($_POST['nomeDeposito'], $_POST['descricaoDeposito']);
 		}
 
 

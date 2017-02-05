@@ -9,7 +9,7 @@
 
 			public function listar(){
 
-				return $this->query("SELECT idEncomenda, data, status FROM {$this->table}");
+				return $this->select("SELECT idEncomenda, data, status FROM `$this->table`");
 			}
 		}	
 

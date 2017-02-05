@@ -22,7 +22,7 @@
 
 		public function listar(){
 
-			return $this->query("SELECT cnpj, nome, email, codigo, area, numero FROM {$this->table}");
+			return $this->select("SELECT cnpj, nome, email, codigo, area, numero FROM `$this->table`");
 		}
 	}
 

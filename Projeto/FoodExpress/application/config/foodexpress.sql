@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 01-Fev-2017 às 17:55
+-- Data de Criação: 03-Fev-2017 às 23:48
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -5647,8 +5647,16 @@ INSERT INTO `cidade` (`idCidade`, `idEstado`, `nome`) VALUES
 CREATE TABLE IF NOT EXISTS `deposito` (
   `numero` int(11) NOT NULL,
   `descricao` varchar(45) DEFAULT NULL,
+  `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`numero`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `deposito`
+--
+
+INSERT INTO `deposito` (`numero`, `descricao`, `nome`) VALUES
+(1, 'Armazena todos celulares revendidos.', 'Comunicação');
 
 -- --------------------------------------------------------
 

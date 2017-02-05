@@ -14,6 +14,12 @@
 
 			$this->insert("INSERT INTO `$this->table` (nome, descricao) VALUES ('$nome', '$descricao')");
 		}
+
+		public function listarTodos(){
+
+			return $this->select("SELECT idEspecProduto, nome, descricao FROM `$this->table`");
+		}
+
 	}
 
 ?>

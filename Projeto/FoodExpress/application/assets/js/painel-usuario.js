@@ -78,20 +78,61 @@ $(document).ready(function(){
 
 		switch($(this).attr("value")){
 
-			case "verencomendas":
+			case "novaempresa":
+				url = "/gui/novaempresa";
+				break;
+
+			case "mostrarempresa":
+
+				url = "/gui/mostrarempresa";
+				break;
+
+			case "mostrarencomenda":
 				url = "/gui/verencomendas";
+				break;
+
+			case "novodeposito":
+				url = "/gui/novodeposito";
+				break;
+
+			case "mostrardeposito":
+				url = "/gui/listarDepositos";
 				break;
 
 			case "novofuncionario":
 				url = "/gui/novofuncionario";
 				break;
 
+			case "mostrarfuncionario":
+				url = "/gui/listarfuncionarios";
+				break;
+
 			case "novofornecedor":
 				url = "/gui/novofornecedor";
 				break;
 
+			case "mostrarfornecedor":
+				url = "/gui/listarfornecedores";
+				break;
+
+			case "novopedido":
+				url = "/gui/novopedido";
+				break;
+
+			case "mostrarpagamento":
+				url = "/gui/mostrarpagamentos";
+				break;
+
+			case "mostrarpedido":
+				url = "/gui/mostrarpedido";
+				break;
+
 			case "novoproduto":
 				url = "/gui/novoproduto";
+				break;
+
+			case "mostrarproduto":
+				url = "/gui/mostrarproduto";
 				break;
 
 			case "novoveiculo":
@@ -101,35 +142,9 @@ $(document).ready(function(){
 			case "mostrarveiculo":
 				url = "/gui/mostrarveiculo";
 				break;
-
-			case "novaempresa":
-				url = "/gui/novaempresa";
-				break;
-
-			case "listarempresas":
-
-				url = "/gui/listarempresas";
-				break;
-
-			case "novodeposito":
-				url = "/gui/novodeposito";
-				break;
-
-			case "listarfornecedores":
-				url = "/gui/listarfornecedores";
-				break;
-
-			case "listarfuncionarios":
-				url = "/gui/listarFuncionarios";
-				break;
-
-			case "listardepositos":
-				url = "/gui/listarDepositos";
-				break;
-
+				
 			default:
 
-				console.log("você está agindo de má fé!");
 				return;
 		}
 
@@ -146,12 +161,13 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			
+			console.log("Passou");
 			$(".conteudo").empty();
 			$(".conteudo").append(data);
 
 		})
 		.fail(function(){
-			console.log("pãã");
+			console.log("pãã pãã pãã pãã hey");
 		});
 	});
 

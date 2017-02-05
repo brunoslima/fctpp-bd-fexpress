@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	/**
-	 * Associa a função de cadastrar empresa
+	 * Associa a função de cadastrar um novo deposito
 	 * ao respectivo botão
 	 */
 	 $(document).on("click", ".btn-cadastrar-deposito", function(e){
@@ -19,9 +19,13 @@ $(document).ready(function(){
 			cache: false
 		})
 		.done(function(data){
+			console.log(data);
+			console.log("Deposito cadastrado com sucesso!");
 		})
 		.fail(function(){
-			console.log("pãã pãã pãã hey");
+			console.log("pãã pãã pãã pãã hey");
 		});
+
 	});
+	 
 });

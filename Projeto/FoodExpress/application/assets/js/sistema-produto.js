@@ -12,7 +12,7 @@ $(document).ready(function(){
 	 	$dados['descricaoProduto'] = $("input[name='descricaoProduto']").val();
 	 	
 	 	$.ajax({
-			url: ( location.href + "/cadastrarVeiculo"),
+			url: ( location.href + "/cadastrarProduto"),
 			type: "post",
 			async: true,
 			data: $dados,

@@ -27,4 +27,11 @@
 			$func['seguranca'] = $this->select("SELECT * FROM funcionario, seguranca WHERE idfuncionario = idSeguranca");
 			return $func;
 		}
+
+		public function buscaIDGerente($nome){
+
+			//Seria uma boa fazer uma procedure para isto com parametros in, out e tals....
+			return $this->select("SELECT idGerente FROM `$this->tabela`, gerente WHERE (idfuncionario.`$this->tabela` = idGerente and '$nome' = nome.`$this->tabela`)");
+		}
+
 	}

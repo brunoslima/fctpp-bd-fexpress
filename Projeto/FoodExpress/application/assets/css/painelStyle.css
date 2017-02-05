@@ -263,6 +263,29 @@ button[class*="btn"]:hover{
 
 /*--------------- TABELA ----------------------*/
 
+table{
+	margin: 15px auto;
+	font-family: Tahoma;
+	min-width: 850px;
+}
+
+th{
+	padding: 8px 15px;
+	color: #fff;
+	background-color: #ff8c00;
+	font-size: 14px;
+	text-align: left;
+}
+
+td{
+	padding: 8px 15px;
+	text-align: left;
+	font-size: 12px;
+	border-bottom: 1px solid #ccc;
+}
+
+/*---------------------------------------------*/
+
 /*
 * {
   margin: 0;
@@ -321,24 +344,3 @@ td:last-child {
   color: #dc2a2a;
 }*/
 /*---------------------------------------------*/
-
-table{
-	margin: 15px auto;
-	font-family: Tahoma;
-	min-width: 850px;
-}
-
-th{
-	padding: 8px 15px;
-	color: #fff;
-	background-color: #ff8c00;
-	font-size: 14px;
-	text-align: left;
-}
-
-td{
-	padding: 8px 15px;
-	text-align: left;
-	font-size: 12px;
-	border-bottom: 1px solid #ccc;
-}
