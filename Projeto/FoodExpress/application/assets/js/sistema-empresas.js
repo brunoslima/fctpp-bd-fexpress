@@ -36,15 +36,15 @@ $(document).ready(function(){
 		});
 	});
 
-	 $(document).on("change", '[name="boxProduto"]', function(){
+	 $(document).on("change", "select[name='estado']", function(){
 
-		$id = $("[name='boxProduto']").val();
+		$id = $("select[name='estado']").val();
 		$dados = new Object();
 
 		$dados['id'] = $id;
 		var endereco = location.href;
 		endereco = endereco.split("/");
-		var final = "http://" + endereco[2] + "/FoodExpress/gui/listarF";
+		var final = "http://" + endereco[2] + "/FoodExpress/gui/listarCidades";
 		$.ajax({
 			url: ( final),
 			type: "post",
@@ -54,8 +54,8 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			
-			$("#listaFornecedor").empty();
-			$("#listaFornecedor").append(data);
+			$("select[name='cidade']").empty();
+			$("select[name='cidade']").append(data);
 
 		})
 		.fail(function(){

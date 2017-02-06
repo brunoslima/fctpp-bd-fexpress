@@ -371,23 +371,14 @@
  		}
 
  		public function novopedido(){
- 			session_start();
+
  			//Pegando data atual
  			date_default_timezone_set('America/Sao_Paulo');
 			$data = date('d/m/Y');
 			$dataVencimento = date('d/m/Y', strtotime("+40 day"));
 
-
-			$modelProduto = new EspecProdutoModel();
-			$result = $modelProduto->listar();
-			$listaP = "";
-			foreach ($result as $value) {
-				$listaP .= "<option value='".$value['nome']."'></option>";
-			}
-
-
 			//Informações do gerente
-			$nome = $_SESSION['user'];
+			$nome = "admin";
 
  			$html = '<h1>Novo Pedido</h1>
 			<form method="post" action="">
@@ -399,53 +390,27 @@
 				<textarea name="descricaoPagamento" cols="30" rows="20" placeholder="Descrição"></textarea>
 				<br>
 				<p>A seguir, adicione todos os produtos que farão parte do pedido:</p><br><br>
-				<label>Produto</label>
+				<label>Produto</label><br>
 				<input type="text" placeholder="Digite o nome do produto" name="boxProduto" list="listaProdutos"/>
 				<datalist id="listaProdutos">
-					'.$listaP.'
+					<option value="Tomate"></option>
+					<option value="Abacaxi"></option>
+					<option value="Abacate"></option>
 				</datalist>
-				<label>Fornecedor</label>
+				<br>
+				<label>Fornecedor</label><br>
 				<input type="text" name="boxFornecedor" list="listaFornecedor" placeholder="Digite o nome do fornecedor"/>
 				<datalist id="listaFornecedor">
-					
+					<option value="André P&1"></option>
 				</datalist>
 				<br><br>
-				<label>Quantidade</label>
-				<input placeholder="Quantidade unitária" type="number" min="0" step="0.0001" name="quantidadeF"/>
-				<label>Valor(R$):</label>
-				<input placeholder="Valor unitário" type="number" min="0" step="0.01" name="valorF"/><br>
-				<button class="btn-adicionar-item">Adicionar</button>
-				<p>A tabela a seguir lista todos os itens incluídos no pedido:</p>
-				<table class="item-pedido">
-					<thead>
-						<th>Código</th>
-						<th>Produto</th>
-						<th>Fornecedor</th>
-						<th>Quantidade</th>
-						<th>Valor</th>
-					</thead>
-					<tbody>
-						
-					</tbody>
-				</table><br>
-				<p class="message-alert">Não foram incluídos itens.</p><br><br><br>
-				<p class="total-compra">Total da Compra: R$ 0.00</p><br>
-				<p>Para finalizar o pedido, clique em "Finalizar Pedido".</p>
-				<button class="btn-finalizar-pedido">Finalizar Pedido</button>
+				<label>Quantidade</label><br>
+				<input placeholder="Quantidade unitária" type="number" name="quantidade"/>
+				<br>
+				<label>Valor(R$):</label><br>
+				<input placeholder="Valor unitário" type="number" name="valor"/>
+				<button class="btn-cadastrar-pedido">Finalizar Pedido</button>
 			</form>';
-
- 			echo $html;
- 		}
-
- 		public function listarF(){
-
- 			$model = new FornecedorModel();
- 			$result = $model->listarNome($_POST['id']);
- 			$html = "";
-
- 			foreach ($result as $value) {
- 				$html .= "<option value='$value'></option>";
- 			}
 
  			echo $html;
  		}

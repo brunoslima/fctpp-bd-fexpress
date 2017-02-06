@@ -24,19 +24,6 @@
 
 			return $this->select("SELECT cnpj, nome, email, codigo, area, numero FROM `$this->table`");
 		}
-
-		public function listarNome($produto){
-
-			return $this->select("	SELECT nome 
-									FROM fornecedor 
-									INNER JOIN produtofornecedor 
-									ON cnpj = fk_cnpj 
-									INNER JOIN especproduto 
-									ON idEspecProduto = fk_espec_produto
-									where especproduto.nome = $produto";
-
-			");
-		}
 	}
 
 ?>
