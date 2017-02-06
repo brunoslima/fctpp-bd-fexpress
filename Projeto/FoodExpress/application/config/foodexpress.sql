@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 06-Fev-2017 às 09:53
+-- Data de Criação: 03-Fev-2017 às 23:48
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -45,13 +45,6 @@ CREATE TABLE IF NOT EXISTS `auxiliarlimpeza` (
   PRIMARY KEY (`idAuxiliarLimpeza`),
   KEY `fk_AuxiliarLimpeza_funcionario1_idx` (`idAuxiliarLimpeza`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `auxiliarlimpeza`
---
-
-INSERT INTO `auxiliarlimpeza` (`setor`, `idAuxiliarLimpeza`) VALUES
-('Administração', 3);
 
 -- --------------------------------------------------------
 
@@ -5663,8 +5656,7 @@ CREATE TABLE IF NOT EXISTS `deposito` (
 --
 
 INSERT INTO `deposito` (`numero`, `descricao`, `nome`) VALUES
-(1, 'Armazena todos celulares revendidos.', 'Comunicação'),
-(2, 'Depósito de roupas', 'Malharia');
+(1, 'Armazena todos celulares revendidos.', 'Comunicação');
 
 -- --------------------------------------------------------
 
@@ -5758,7 +5750,7 @@ INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complem
 
 CREATE TABLE IF NOT EXISTS `especproduto` (
   `idEspecProduto` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) NOT NULL,
+  `nome` varchar(45) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`idEspecProduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -5852,18 +5844,14 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `dataContratacao` date DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL,
   PRIMARY KEY (`idfuncionario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
 INSERT INTO `funcionario` (`idfuncionario`, `nome`, `salario`, `dataContratacao`, `dataNascimento`) VALUES
-(1, 'Administrador', 0, '2016-07-07', '2016-07-01'),
-(2, 'José Carlos Pereira', 1500, '2011-06-11', '1982-06-03'),
-(3, 'Maria Cardozo', 1200, '2015-03-25', '1985-12-22'),
-(4, 'Luiz Carlos Gomes', 2300, '2011-03-01', '1985-01-06'),
-(5, 'José Aparecido da Silva', 1800, '2011-08-01', '1977-01-07');
+(1, 'Administrador', 0, '2016-07-07', '2016-07-01');
 
 -- --------------------------------------------------------
 
@@ -5885,8 +5873,7 @@ CREATE TABLE IF NOT EXISTS `gerente` (
 --
 
 INSERT INTO `gerente` (`email`, `login`, `senha`, `idGerente`) VALUES
-('admin@admin.com', 'admin@foodexpress.com', 'admin', 1),
-('luizcg@gmail.com', 'luizcg@gmail.com', 'gerencial', 4);
+('admin@admin.com', 'admin@foodexpress.com', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -5922,13 +5909,6 @@ CREATE TABLE IF NOT EXISTS `motorista` (
   PRIMARY KEY (`idMotorista`),
   KEY `fk_Motorista_funcionario1_idx` (`idMotorista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `motorista`
---
-
-INSERT INTO `motorista` (`categoriaHabilitacao`, `codigo`, `area`, `numero`, `disponivel`, `idMotorista`) VALUES
-('2', '55', '18', '996321516', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -5999,19 +5979,6 @@ CREATE TABLE IF NOT EXISTS `produto` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtofornecedor`
---
-
-CREATE TABLE IF NOT EXISTS `produtofornecedor` (
-  `fk_espec_produto` int(11) NOT NULL,
-  `fk_cnpj` decimal(14,0) NOT NULL,
-  PRIMARY KEY (`fk_espec_produto`,`fk_cnpj`),
-  KEY `fk_forn` (`fk_cnpj`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `seguranca`
 --
 
@@ -6021,13 +5988,6 @@ CREATE TABLE IF NOT EXISTS `seguranca` (
   PRIMARY KEY (`idSeguranca`),
   KEY `fk_Segurança_funcionario1_idx` (`idSeguranca`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela `seguranca`
---
-
-INSERT INTO `seguranca` (`porteArma`, `idSeguranca`) VALUES
-(1, 2);
 
 -- --------------------------------------------------------
 
@@ -6179,13 +6139,6 @@ ALTER TABLE `pedido`
 ALTER TABLE `produto`
   ADD CONSTRAINT `fk_Produto_Deposito1` FOREIGN KEY (`fkDeposito`) REFERENCES `deposito` (`numero`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Produto_EspecProduto1` FOREIGN KEY (`fkEspecProduto`) REFERENCES `especproduto` (`idEspecProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Limitadores para a tabela `produtofornecedor`
---
-ALTER TABLE `produtofornecedor`
-  ADD CONSTRAINT `fk_espec` FOREIGN KEY (`fk_espec_produto`) REFERENCES `especproduto` (`idEspecProduto`),
-  ADD CONSTRAINT `fk_forn` FOREIGN KEY (`fk_cnpj`) REFERENCES `fornecedor` (`cnpj`);
 
 --
 -- Limitadores para a tabela `seguranca`

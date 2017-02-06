@@ -25,20 +25,15 @@ $(document).ready(function(){
 				cache: false
 			})
 			.done(function(data){
-				console.log(data);
 				data = $.parseJSON(data);
 				if(data["resposta"] == true){
-
-					if(data["tipoUsuario"].localeCompare("gerente") == 0) window.location.assign(location.href + "painel");
-					else if(data["tipoUsuario"].localeCompare("empresa") == 0) window.location.assign(location.href + "painelEmpresa");
-					else if(data["tipoUsuario"].localeCompare("motorista") == 0) window.location.assign(location.href + "painelMotorista");
-
+					window.location.assign(location.href + "painel");
 				}
 				else{
-					console.log("Erro ao realizar login!");
+					console.log("deu ruim");
 				}
 			})
-			.fail(function(){ //Erro de falta de conexão
+			.fail(function(){
 				console.log("DASD");
 			});
 		}
