@@ -23,8 +23,8 @@
 			
 			<div class="sistema-pagina">
 				<form method="post" action="">
-					<input placeholder="E-mail" autocomplete="off" type="email" name="username"/><br>
-					<input placeholder="Password" type="password" name="password" minlength="5" maxlength="20" /><br>
+					<input placeholder="Identificação" autocomplete="off" type="email" name="username"/><br>
+					<input placeholder="Senha" type="password" name="password" minlength="5" maxlength="20" /><br>
 					<button class="button-login">Login</button>
 				</form>
 			</div>
