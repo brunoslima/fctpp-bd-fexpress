@@ -45,7 +45,7 @@
 					<li value="mostrarencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver encomendas</li>
 				</ul>
 			</li>
-			<li value="depositos"><img class="imgItemMenu" src="<?php echo $assets['images']?>estoque.png">Deposito
+			<li value="depositos"><img class="imgItemMenu" src="<?php echo $assets['images']?>estoque.png">Depósito
 				<ul>
 					<li value="novodeposito"><img class="imgItemMenu" src="<?php echo $assets['images']?>estoque.png">Novo Deposito</li>
 					<li value="mostrardeposito"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Deposito</li>

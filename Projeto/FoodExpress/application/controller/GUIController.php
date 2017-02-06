@@ -165,7 +165,7 @@
 			<form method="post" action="">
 				<label>Informações Pessoais</label><br>
 				<input type="text" placeholder="Nome Completo" name="nome"/>
-				<br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
+				<br><br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
 				<br><label>Data de Contratação</label><br><input type="date" name="dataContratacao"/><br>
 				<input type="number" min="0.01" step="0.01" placeholder="Salário" name="salario"/>
 				<br><br><label>Cargo</label><br>
@@ -375,17 +375,41 @@
  			//Pegando data atual
  			date_default_timezone_set('America/Sao_Paulo');
 			$data = date('d/m/Y');
-			$dataVencimento = date('d/m/Y', strtotime($data.' +2 days'));
+			$dataVencimento = date('d/m/Y', strtotime("+40 day"));
 
 			//Informações do gerente
 			$nome = "admin";
 
  			$html = '<h1>Novo Pedido</h1>
 			<form method="post" action="">
-				<label>Data do pedido: ' .$data. '</label>
-				<label>Gerente responsável: '.$nome. '</label><br><br>
+				<p>Informações sobre o pedido:</p><br>
+				<label>:: Data de Lançamento: ' .$data. '</label><br>
+				<label>:: Data de Vencimento:  ' .$dataVencimento. '</label><br>
+				<label>:: Gerente Responsável: '.$nome. '</label><br><br>
+				<p>Abaixo, descreva qualquer informação relevante em relação a este pedido:</p><br>
 				<textarea name="descricaoPagamento" cols="30" rows="20" placeholder="Descrição"></textarea>
-				<button class="btn-cadastrar-pedido">Cadastrar</button>
+				<br>
+				<p>A seguir, adicione todos os produtos que farão parte do pedido:</p><br><br>
+				<label>Produto</label><br>
+				<input type="text" placeholder="Digite o nome do produto" name="boxProduto" list="listaProdutos"/>
+				<datalist id="listaProdutos">
+					<option value="Tomate"></option>
+					<option value="Abacaxi"></option>
+					<option value="Abacate"></option>
+				</datalist>
+				<br>
+				<label>Fornecedor</label><br>
+				<input type="text" name="boxFornecedor" list="listaFornecedor" placeholder="Digite o nome do fornecedor"/>
+				<datalist id="listaFornecedor">
+					<option value="André P&1"></option>
+				</datalist>
+				<br><br>
+				<label>Quantidade</label><br>
+				<input placeholder="Quantidade unitária" type="number" name="quantidade"/>
+				<br>
+				<label>Valor(R$):</label><br>
+				<input placeholder="Valor unitário" type="number" name="valor"/>
+				<button class="btn-cadastrar-pedido">Finalizar Pedido</button>
 			</form>';
 
  			echo $html;
