@@ -1,3 +1,21 @@
 \begin{thebibliography}{}
 
+\bibitem[Brito 2010]{brito2010bancos}
+Brito, R.~W. (2010).
+\newblock Bancos de dados nosql x sgbds relacionais: an{\'a}lise comparativa.
+\newblock {\em Faculdade Farias Brito e Universidade de Fortaleza}.
+
+\bibitem[Codd 1970]{codd:1970}
+Codd, E.~F. (1970).
+\newblock A relational model of data for large shared data banks.
+\newblock {\em Commun. ACM}, 13(6):377--387.
+
+\bibitem[Nayak et~al. 2013]{typeNOSQL:2013}
+Nayak, A., Poriya, A., and Poojary, D. (2013).
+\newblock Article: Type of nosql databases and its comparison with relational
+  databases.
+\newblock {\em International Journal of Applied Information Systems},
+  5(4):16--19.
+\newblock Published by Foundation of Computer Science, New York, USA.
+
 \end{thebibliography}
