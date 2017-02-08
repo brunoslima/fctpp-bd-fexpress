@@ -10,12 +10,22 @@ Codd, E.~F. (1970).
 \newblock A relational model of data for large shared data banks.
 \newblock {\em Commun. ACM}, 13(6):377--387.
 
+\bibitem[Jatana et~al. 2012]{surveyNosql:2012}
+Jatana, N., Puri, S., Ahuja, M., Kathuria, I., and Gosain, D. (2012).
+\newblock A survey and comparison of relational and non-relational database.
+\newblock {\em International Journal of Engineering Research Technology IJERT}.
+
 \bibitem[Nayak et~al. 2013]{typeNOSQL:2013}
 Nayak, A., Poriya, A., and Poojary, D. (2013).
-\newblock Article: Type of nosql databases and its comparison with relational
-  databases.
+\newblock Type of nosql databases and its comparison with relational databases.
 \newblock {\em International Journal of Applied Information Systems},
   5(4):16--19.
 \newblock Published by Foundation of Computer Science, New York, USA.
+
+\bibitem[Zhao et~al. 2014]{zhaoSchema:2014}
+Zhao, G., Lin, Q., Li, L., and Li, Z. (2014).
+\newblock Schema conversion model of sql database to nosql.
+\newblock In {\em P2P, Parallel, Grid, Cloud and Internet Computing (3PGCIC),
+  2014 Ninth International Conference on}, pages 355--362. IEEE.
 
 \end{thebibliography}

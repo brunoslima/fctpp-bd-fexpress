@@ -26,17 +26,11 @@
 \maketitle
 
 \begin{abstract}
-  Com a popularização da internet em que surgiu uma sociedade digital, vários conceitos foram definidos em que destacam-se a Internet das Coisas e Cloud Computing. Este artigo foca em um dos serviços que está em grande crescimento na sociedade moderna que é a área mobile em que mais de 3,2 bilhões de pessoas têm acesso a internet. Firebase é um serviço de dados em nuvem em tempo real utilizado para criação de aplicativos multiplataformas em que compartilham um banco de dados do próprio Firebase.
+Traduzir o resumo...
 \end{abstract}
      
 \begin{resumo} 
-  Este meta-artigo descreve o estilo a ser usado na confeco de artigos e
-  resumos de artigos para publicao nos anais das conferncias organizadas
-  pela SBC.  solicitada a escrita de resumo e abstract apenas para os artigos
-  escritos em portugus. Artigos em ingls devero apresentar apenas abstract.
-  Nos dois casos, o autor deve tomar cuidado para que o resumo (e o abstract)
-  no ultrapassem 10 linhas cada, sendo que ambos devem estar na primeira
-  pgina do artigo.
+Fazer... (última coisa)
 \end{resumo}
 
 
@@ -48,6 +42,8 @@ Com as diversas aplicações e diversos dispositivos atuando diariamente na vida
 
 Quando o assunto Banco de dados é abordado logo é pensado como os dados não armazenados e manipulados? para isso é seguido um modelo, de certa forma uma padronização, para responder esta pergunta, o modelo mais conhecido e utilizado em larga escala por Sistemas Gerenciadores de Banco de Dados (SGBD's) é denominado modelo relacional \cite{codd:1970} criado por Edgar Frank Codd em 1970, o modelo relacional substituiu o modelo anterior chamado de modelo hierarquico tornando-se um padrão referencia para este quesito, sendo utilizado pela grande maioria dos SGBD's, onde podemos citar por exemplo os mais conhecidos atualmente: MySQL, Oracle, SQL Server e PostgreSQL. \cite{brito2010bancos}
 
+Este artigo esta organizado como segue: na seção \ref{sec:nosql}.....
+
 %melhorar e acrescentar bem mais....
 
 \section{NOSQL} 
@@ -55,26 +51,30 @@ Quando o assunto Banco de dados é abordado logo é pensado como os dados não a
 
 O decorrer do tempo foi pensando em modelagens alternativas ao tão utilizado modelo relacional, tais pensamentos justificam-se devido a algumas limitações presente no modelo relacional, limitações essas relacionadas a falta de felxibilidade fornecidade pelo modelo.
 
+Os Banco de dados NoSQL fornecem mecanismos de aramzenamento e recuperação de dados que são modelados como não estruturado, diferente da forma disposta por tabelas utilizada pelos Banco de dados Relacionais. \cite{zhaoSchema:2014}
+
 %melhorar a justificativa para buscar um outro modelo...
 
 %falar mais
 
-\subsection{Categorização do NOSQL}
+%Trabalhar aqui!!!!
+
+\subsection{Categorização dos Banco de dados NOSQL}
 \label{subsec:categorizacao}
 
 O NOSQL pode ser classificado em cinco categorias \cite{typeNOSQL:2013} sendo elas: Banco de dados de armazenamento chave-valor, Banco de dados orientado por colunas, Banco de dados orientado a documentos, Banco de Dados orientado a grafos e Banco de Dados orientado a objetos.
 
-Em Banco de dados de armazenamento chave-valor os dados tem duas informações associadas a ele, uma sendo a chave e a outra sendo o valor, onde esse valor é literalmente o dado armazenado, como isso seu mecanismo de funcionamento é atua de forma similar a um hash, trazendo como um aspecto positivo a rapidez em sua manipulação, não só isso mas também alta concorrência e armazenamento em massa, porem o grande ponto negativo deve-se a falta de uma esquematização o que deixa a visualização da organização desses dados dificultada.
+Em Banco de dados de armazenamento chave-valor os dados tem duas informações associadas a ele, uma sendo a chave e a outra sendo o valor, onde esse valor é literalmente o dado armazenado, como isso seu mecanismo de funcionamento atua de forma similar a um hash, trazendo como um aspecto positivo a rapidez em sua manipulação, não só isso mas também alta concorrência e armazenamento em massa, porem o grande ponto negativo deve-se a falta de uma esquematização o que deixa a visualização da organização desses dados dificultada. \cite{typeNOSQL:2013}
 
-Em Banco de dados orientado por coluna consiste em uma organização onde o dados não são armazenados em linhas mas sim em colunas. %melhorar AQUI!!!
+Em Banco de dados orientado por coluna consiste em uma organização onde o dados não são armazenados em linhas mas sim em colunas, ou seja, ocorre uma mudança de orientação agora sendo por atributos, colunas, e não mais por registros, tuplas. Dois exemplos dessa categoria de Banco de dados orientado por colunas é o Cassandra e o BigTable. \cite{brito2010bancos}\cite{surveyNosql:2012}
 
-Em Banco de dados orientado a documentos os dados são armazenados na forma documentos, uma vantagem relacionado a essa categoria está no aproveitamento de espaço de armazenamento, visto que um documento tem um tamanho necessario para armazenar os dados em que nele estão sem que ocorra desperdicio de espaço, já no modelo relacional os dados são armazenados em tabelas sendo que alguns campos dessa tabela podem ficar vazios disperdiçando espaço, um exemplo de SGBD que utiliza este modelo o MongoDB. Esse modelo deve ser evitado em aplicações que envolvem muitos relacionamentos.
+Em Banco de dados orientado a documentos os dados são armazenados na forma de documentos que tem uma chave unica associada a ele, essa chave é uma string que representa o caminho, ou URI, onde o documento está armazenado, no geral é fonecido uma API ou uma linguagem de consulta para que esses documentos possam ser recuperados rapidamente. \cite{surveyNosql:2012} Uma vantagem relacionado a essa categoria está no aproveitamento de espaço de armazenamento, visto que um documento tem um tamanho necessario para armazenar os dados em que nele estão sem que ocorra desperdicio de espaço, já no modelo relacional os dados são armazenados em tabelas sendo que alguns campos dessa tabela podem ficar vazios disperdiçando espaço, um exemplo de SGBD que utiliza este modelo o MongoDB. Esse modelo deve ser evitado em aplicações que envolvem muitos relacionamentos. \cite{typeNOSQL:2013}
 
-Em Banco de dados orientado a grafos armazenam os dados na forma de um grafo, sendo que cada nó é um objeto e o relacionamento entre esses objetos é expresso pelas arestas que ligam dois nós. Esse tipo de modelo é indicado para redes sociais, sistemas bioinformatica entre outros, apresenta um desvantagem pois é dificil realizar um agrupamento. 
+Em Banco de dados orientado a grafos armazenam os dados na forma de um grafo, sendo que cada nó é um objeto e o relacionamento entre esses objetos é expresso pelas arestas que ligam dois nós. Esse tipo de modelo é indicado para redes sociais, sistemas bioinformatica entre outros, pois os nós podem representar por exemplo pessoas ou negocios semelhantes aos objetos utilizados em determinadas linguagens de programação, entretanto apresenta um desvantagem pois é dificil realizar um agrupamento desses dados.\cite{typeNOSQL:2013}\cite{surveyNosql:2012} 
 
-Em Banco de dados orientado a objetos os dados são armazenados na forma de objetos, objetos analogos aos do paradigma de programação orientado a objetos oferecendo recursos como encapsulamento, polimorfismo e herança, cada objeto tem um idenficador unico que representa o objeto unicamente. 
+Em Banco de dados orientado a objetos os dados são armazenados na forma de objetos, objetos analogos aos do paradigma de programação orientado a objetos oferecendo recursos como encapsulamento, polimorfismo e herança, cada objeto tem um idenficador unico que representa o objeto unicamente.\cite{typeNOSQL:2013}
 
-%melhorar todos os topicos
+\section{Sistemas Gerenciadores de Banco de Dados Não relacionais}
 
 \section{Banco de dados: relacional vs não relacional}
 
@@ -134,7 +134,8 @@ space before and after each caption.
 \includegraphics[width=.7\textwidth]{table.jpg}
 \end{table}
 
-\section{Images}
+\section{Conclusão}
+\label{sec:conclusao}
 
 All images and illustrations should be in black-and-white, or gray tones,
 excepting for the papers that will be electronically available (on CD-ROMs,
@@ -142,16 +143,6 @@ internet, etc.). The image resolution on paper should be about 600 dpi for
 black-and-white images, and 150-300 dpi for grayscale images.  Do not include
 images with excessive resolution, as they may take hours to print, without any
 visible difference in the result. 
-
-\section{References}
-
-Bibliographic references must be unambiguous and uniform.  We recommend giving
-the author names references in brackets, e.g. \cite{knuth:84},
-\cite{boulic:91}, and \cite{smith:99}.
-
-The references must be listed using 12 point font size, with 6 points of space
-before each reference. The first line of each reference should not be
-indented, while the subsequent should be indented by 0.5 cm.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}

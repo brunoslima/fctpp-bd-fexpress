@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  7 FEB 2017 15:45
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  8 FEB 2017 20:33
 entering extended mode
 **sbc-template.tex
 
@@ -428,8 +428,14 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 28.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
- [1
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+
+Underfull \hbox (badness 2245) in paragraph at lines 54--55
+[]\OT1/ptm/m/n/12 Os Banco de da-dos NoSQL fornecem mecan-is-mos de aramzena-me
+nto e
+ []
+
+[1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Underfull \hbox (badness 2426) in paragraph at lines 67--68
@@ -464,16 +470,6 @@ Package pdftex.def Info: table.jpg used on input line 134.
 (pdftex.def)             Requested size: 298.75264pt x 177.75932pt.
  [3 <C:/Users/BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/2º Seme
 stre/Banco de dados II/fctpp-bd-foodexpress/Artigo/fig1.jpg>]
-
-LaTeX Warning: Citation `knuth:84' on page 4 undefined on input line 149.
-
-
-LaTeX Warning: Citation `boulic:91' on page 4 undefined on input line 150.
-
-
-LaTeX Warning: Citation `smith:99' on page 4 undefined on input line 150.
-
-
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
 e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl" [4 <C:/Users/
 BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/2º Semestre/Banco de 
@@ -483,20 +479,17 @@ express/Artigo/table.jpg>]) [5]
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
 e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux")
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  2528 strings out of 493921
- 34619 string characters out of 3147282
- 95061 words of memory out of 3000000
+ 34638 string characters out of 3147282
+ 95111 words of memory out of 3000000
  5790 multiletter control sequences out of 15000+200000
  21033 words of font info for 44 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,8n,28p,736b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,8n,28p,932b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
@@ -504,7 +497,7 @@ urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb
 8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Progr
 am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2
 .9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (5 pages, 210001 bytes).
+Output written on sbc-template.pdf (5 pages, 210059 bytes).
 PDF statistics:
  50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
