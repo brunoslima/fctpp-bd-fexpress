@@ -15,12 +15,23 @@ Jatana, N., Puri, S., Ahuja, M., Kathuria, I., and Gosain, D. (2012).
 \newblock A survey and comparison of relational and non-relational database.
 \newblock {\em International Journal of Engineering Research Technology IJERT}.
 
+\bibitem[Leavitt 2010]{leavitt:2010}
+Leavitt, N. (2010).
+\newblock Will nosql databases live up to their promise?
+\newblock {\em Computer}, 43(2).
+\newblock IEEE.
+
 \bibitem[Nayak et~al. 2013]{typeNOSQL:2013}
 Nayak, A., Poriya, A., and Poojary, D. (2013).
 \newblock Type of nosql databases and its comparison with relational databases.
 \newblock {\em International Journal of Applied Information Systems},
   5(4):16--19.
 \newblock Published by Foundation of Computer Science, New York, USA.
+
+\bibitem[Pritchett 2008]{pritchett:2008}
+Pritchett, D. (2008).
+\newblock Base: An acid alternative.
+\newblock {\em Queue}, 6(3):48--55.
 
 \bibitem[Zhao et~al. 2014]{zhaoSchema:2014}
 Zhao, G., Lin, Q., Li, L., and Li, Z. (2014).

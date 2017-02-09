@@ -78,71 +78,63 @@ Em Banco de dados orientado a objetos os dados são armazenados na forma de obje
 
 \section{Banco de dados: relacional vs não relacional}
 
-In some conferences, the papers are published on CD-ROM while only the
-abstract is published in the printed Proceedings. In this case, authors are
-invited to prepare two final versions of the paper. One, complete, to be
-published on the CD and the other, containing only the first page, with
-abstract and ``resumo'' (for papers in Portuguese).
+\section{NoSQL: Vantagens e desvantagens}
+\label{sec:vantagensedesvantagens}
+
+Como toda tecnologia o NoSQL também apresenta um conjunto vantagens e desvantagens em sua utilização, é importante acrescentar que essas vantagens e desvantagens em sua utilização pode sofrer varianças de acordo com a necessidade de uma aplicação ou organização, ou seja, dependendo do proposito da aplicação as desvantagens são minimizadas devido a grande parcela de beneficios. A seguir é discutido algumas vantagens e desvantagens em sua utilização.
+
+\subsection{Vantagens}
+\label{subsec:vantagens}
+
+Os Bancos de dados NoSQL tem como sua grande vantagem o processamento mais rapido dos dados que estão armazenados se comparado com os Bancos de dados Relacionais. O fator que torna o Banco de dados relacional mais lento em processamento é caracterizado pelas chamadas restrições ACID, cujo a sigla representa Atomicidade, cosistência, isolamento e durabilidade. 
+
+Atomicidade significa que toda atualização é executada por completa ou não, já a consistência é o fato de toda transação estar proibida de quebrar as regras do banco de dados, isolamento deve-se ao fato de que cada aplicação faça transações de modo independente a outras aplicações que estão atuando em paralelo. Essas restrições são importantes no quesito precisão, porem se utilizadas causam uma perda de desempenho no processamento, o NoSQL não utiliza o suporte para as restrições ACID aumentando o seu desempenho de processamento. \cite{leavitt:2010}
+
+A não utilização das restrições ACID não torna o NoSQL um Banco de dados inconsistente ou inseguro, apenas diminui essas capacidades, porem não as elimina por completo devido a utilização da BASE como uma alternativa ao conjunto ACID. \cite{pritchett:2008}
+
+Um outro aspecto para o processamento mais rapido de dados nos Bancos de Dados NoSQL é a simplificação do modelo, ou seja, de um modo geral seus modelos são mais simples facilitando seu processamento. Outra vantagem interessante do NoSQL está na flexibilidade que o modelo prove, essa flexibilidade permite que as organizações e desenvolvedores utilizem seus aplicativos da forma que melhor atenda suas necessidades. \cite{leavitt:2010}
+
+\subsection{desvantagens}
+\label{subsec:desvantagens}
+
+O NoSQL apresenta ainda alguns desafios, sendo um deles a maior complexidade devido a não utilização de SQL, todos as consultas devem ser realizadas manualmente através da programação, esse fator pode não ser um problema em consultas simples, porem podem potencializar um problema para as tarefas mais dificeis. A falta de ferramentas para gerenciamento ou mesmo para utilização como suporte parte do cliente ainda é um problema, onde essa falta de ferramentas pode estar relacionado ainda ao desconhecimento da tecnologia que pode ser um outro problema. \cite{leavitt:2010}
+
+Devido a não utilização de restrições ACID quesitos como confiabilidade e a consitência tornam-se um problema em Banco de dados NoSQL sendo uma desvantagem, principalmente para certos tipos de aplicações como bancarias este modelo não é recomendado \cite{leavitt:2010}
 
 \section{Armazenamento e recuperação em banco de dados não relacional}
 
-Section titles must be in boldface, 13pt, flush left. There should be an extra
-12 pt of space before each title. Section numbering is optional. The first
-paragraph of each section should not be indented, while the first lines of
-subsequent paragraphs should be indented by 1.27 cm.
 
-\subsection{Subsections}
-
-The subsection titles must be in boldface, 12pt, flush left.
-
-\section{Figures and Captions}\label{sec:figs}
+%\subsection{Subsections}
 
 
-Figure and table captions should be centered if less than one line
-(Figure~\ref{fig:exampleFig1}), otherwise justified and indented by 0.8cm on
-both margins, as shown in Figure~\ref{fig:exampleFig2}. The caption font must
-be Helvetica, 10 point, boldface, with 6 points of space before and after each
-caption.
+%\section{Figures and Captions}\label{sec:figs}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.5\textwidth]{fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
-\end{figure}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.3\textwidth]{fig2.jpg}
-\caption{This figure is an example of a figure caption taking more than one
-  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-\label{fig:exampleFig2}
-\end{figure}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.5\textwidth]{fig1.jpg}
+%\caption{A typical figure}
+%\label{fig:exampleFig1}
+%\end{figure}
 
-In tables, try to avoid the use of colored or shaded backgrounds, and avoid
-thick, doubled, or unnecessary framing lines. When reporting empirical data,
-do not use more decimal digits than warranted by their precision and
-reproducibility. Table caption must be placed before the table (see Table 1)
-and the font used must also be Helvetica, 10 point, boldface, with 6 points of
-space before and after each caption.
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.3\textwidth]{fig2.jpg}
+%\caption{This figure is an example of a figure caption taking more than one
+%  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+%\label{fig:exampleFig2}
+%\end{figure}
 
-\begin{table}[ht]
-\centering
-\caption{Variables to be considered on the evaluation of interaction
-  techniques}
-\label{tab:exTable1}
-\includegraphics[width=.7\textwidth]{table.jpg}
-\end{table}
+%\begin{table}[ht]
+%\centering
+%\caption{Variables to be considered on the evaluation of interaction
+%  techniques}
+%\label{tab:exTable1}
+%\includegraphics[width=.7\textwidth]{table.jpg}
+%\end{table}
 
 \section{Conclusão}
 \label{sec:conclusao}
-
-All images and illustrations should be in black-and-white, or gray tones,
-excepting for the papers that will be electronically available (on CD-ROMs,
-internet, etc.). The image resolution on paper should be about 600 dpi for
-black-and-white images, and 150-300 dpi for grayscale images.  Do not include
-images with excessive resolution, as they may take hours to print, without any
-visible difference in the result. 
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}

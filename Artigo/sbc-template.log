@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  8 FEB 2017 20:33
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  9 FEB 2017 12:11
 entering extended mode
 **sbc-template.tex
 
@@ -443,63 +443,29 @@ Underfull \hbox (badness 2426) in paragraph at lines 67--68
 em duas
  []
 
-[2] <fig1.jpg, id=14, 254.3904pt x 232.2276pt>
-File: fig1.jpg Graphic file (type jpg)
- <use fig1.jpg>
-Package pdftex.def Info: fig1.jpg used on input line 109.
-(pdftex.def)             Requested size: 213.39568pt x 194.81471pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 110.
-
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
-File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
-)
-LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 110.
-
-<fig2.jpg, id=15, 205.7286pt x 234.1548pt>
-File: fig2.jpg Graphic file (type jpg)
- <use fig2.jpg>
-Package pdftex.def Info: fig2.jpg used on input line 116.
-(pdftex.def)             Requested size: 128.0387pt x 145.73541pt.
-
-<table.jpg, id=16, 365.2044pt x 217.2918pt>
-File: table.jpg Graphic file (type jpg)
- <use table.jpg>
-Package pdftex.def Info: table.jpg used on input line 134.
-(pdftex.def)             Requested size: 298.75264pt x 177.75932pt.
- [3 <C:/Users/BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/2º Seme
-stre/Banco de dados II/fctpp-bd-foodexpress/Artigo/fig1.jpg>]
+[2] [3]
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl" [4 <C:/Users/
-BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/2º Semestre/Banco de 
-dados II/fctpp-bd-foodexpress/Artigo/fig2.jpg> <C:/Users/BRUNO/Documents/Ciênc
-ia da Computação - UNESP/3º Ano/2º Semestre/Banco de dados II/fctpp-bd-food
-express/Artigo/table.jpg>]) [5]
+e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl") [4]
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux")
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux") ) 
 Here is how much of TeX's memory you used:
- 2528 strings out of 493921
- 34638 string characters out of 3147282
- 95111 words of memory out of 3000000
- 5790 multiletter control sequences out of 15000+200000
- 21033 words of font info for 44 fonts, out of 3000000 for 9000
+ 2455 strings out of 493921
+ 33723 string characters out of 3147282
+ 96137 words of memory out of 3000000
+ 5726 multiletter control sequences out of 15000+200000
+ 18188 words of font info for 40 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  30i,8n,28p,932b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb
-8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (5 pages, 210059 bytes).
+{C:/Program
+ Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
+1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
+b8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sbc-template.pdf (4 pages, 86680 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 40 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
