@@ -33,7 +33,7 @@
 	</header>
 	<div class="conteudo-menu">		
 		<ul>
-			<li value="inicio"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
+			<li value="home"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
 			<li value="empresas"><img class="imgItemMenu" src="<?php echo $assets['images']?>empresa.png">Empresa
 				<ul>
 					<li value="novaempresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>empresa.png">Nova Empresa</li>

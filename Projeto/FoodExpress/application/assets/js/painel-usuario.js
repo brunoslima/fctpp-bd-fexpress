@@ -69,14 +69,15 @@ $(document).ready(function(){
 		// se carregará o conteúdo da pagina
 		//ex: http://localhost/FoodExpress/gui/novaencomenda
 		//pega esse conteudo por ajax e damos uma append na div conteudo, sem esquecer de remover o anterior
-		//top!!
-		
+		//top!!	
 		e.preventDefault();
 		var url;
 
-		//console.log($(this).attr("value"));
-
 		switch($(this).attr("value")){
+
+			case "home":
+				window.location.assign("http://localhost:"+window.location.port+"/FoodExpress/painel");
+				break;
 
 			case "novaempresa":
 				url = "/gui/novaempresa";
