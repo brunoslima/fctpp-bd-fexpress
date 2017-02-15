@@ -8,7 +8,8 @@
 
 	$project["folder_name"] = "FoodExpress/";
 
-	$project["domain"] = "http://". $_SERVER['SERVER_NAME']. "/" . $project['name'];
+	$project["domain"] = "http://". $_SERVER['SERVER_NAME']. ":" .$_SERVER['SERVER_PORT']."/" . $project['name'];
+
 
 	/* ===============================================================================#
 	 * Configurações de Estilos
