@@ -10,6 +10,12 @@ Codd, E.~F. (1970).
 \newblock A relational model of data for large shared data banks.
 \newblock {\em Commun. ACM}, 13(6):377--387.
 
+\bibitem[Gueidi et~al. 2016]{gueidi:2016}
+Gueidi, A., Gharsellaoui, H., and Ahmed, S.~B. (2016).
+\newblock A nosql-based approach for real-time managing of embedded data bases.
+\newblock In {\em Computer Applications \& Research (WSCAR), 2016 World
+  Symposium on}, pages 110--115. IEEE.
+
 \bibitem[Jatana et~al. 2012]{surveyNosql:2012}
 Jatana, N., Puri, S., Ahuja, M., Kathuria, I., and Gosain, D. (2012).
 \newblock A survey and comparison of relational and non-relational database.

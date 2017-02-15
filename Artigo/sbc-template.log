@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  9 FEB 2017 12:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  15 FEB 2017 12:08
 entering extended mode
 **sbc-template.tex
 
@@ -429,43 +429,75 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 28.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
+ [1
 
-Underfull \hbox (badness 2245) in paragraph at lines 54--55
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 2245) in paragraph at lines 58--59
 []\OT1/ptm/m/n/12 Os Banco de da-dos NoSQL fornecem mecan-is-mos de aramzena-me
 nto e
  []
 
-[1
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 61.
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 61.
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 2426) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 2426) in paragraph at lines 73--74
 []\OT1/ptm/m/n/12 Em Banco de da-dos de ar-mazena-mento chave-valor os da-dos t
 em duas
  []
 
 [2] [3]
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl") [4]
+e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl" [4]) [5]
 ("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
 e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux") ) 
 Here is how much of TeX's memory you used:
- 2455 strings out of 493921
- 33723 string characters out of 3147282
- 96137 words of memory out of 3000000
- 5726 multiletter control sequences out of 15000+200000
+ 2473 strings out of 493921
+ 34021 string characters out of 3147282
+ 96157 words of memory out of 3000000
+ 5741 multiletter control sequences out of 15000+200000
  18188 words of font info for 40 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,8n,28p,932b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 30i,8n,28p,931b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program
  Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/
 fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
-b8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 
-2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (4 pages, 86680 bytes).
+1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/co
+urier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on sbc-template.pdf (5 pages, 98186 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 47 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
