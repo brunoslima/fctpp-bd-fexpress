@@ -18,7 +18,6 @@
 			}
 		}
 
-
 		public function cadastrarEmpresa(){
 
 			
@@ -39,7 +38,6 @@
 
 			$modelEmpresa = new EmpresaModel();
 			$modelEmpresa->add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
-
 		}
 
 		

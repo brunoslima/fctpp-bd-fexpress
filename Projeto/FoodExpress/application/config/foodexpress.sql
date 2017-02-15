@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 06-Fev-2017 às 09:53
+-- Data de Criação: 15-Fev-2017 às 17:08
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -5740,7 +5740,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `fkCidade` int(11) NOT NULL,
   PRIMARY KEY (`idEndereco`),
   KEY `fk_Endereco_Cidade_idx` (`fkCidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `endereco`
@@ -5748,7 +5748,8 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 
 INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complemento`, `fkCidade`) VALUES
 (1, 'Rua Latina', 125, 'Jardim Esplanada', '', 883),
-(2, 'Av. Rui Barbosa', 23, 'Centro', '', 2918);
+(2, 'Av. Rui Barbosa', 23, 'Centro', '', 2918),
+(3, 'test', 1, 'testado', 'a', 1);
 
 -- --------------------------------------------------------
 
@@ -5761,7 +5762,18 @@ CREATE TABLE IF NOT EXISTS `especproduto` (
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`idEspecProduto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `especproduto`
+--
+
+INSERT INTO `especproduto` (`idEspecProduto`, `nome`, `descricao`) VALUES
+(1, 'Batata', 'Rufles'),
+(2, 'Goiaba', 'Verde'),
+(3, 'Pimenta', 'Rosa'),
+(4, 'Maça', 'Gala'),
+(5, 'Arroz', 'Branquinho');
 
 -- --------------------------------------------------------
 
@@ -5821,6 +5833,13 @@ CREATE TABLE IF NOT EXISTS `fabrica` (
   KEY `fk_Fabrica_Fornecedor1_idx` (`idFabrica`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `fabrica`
+--
+
+INSERT INTO `fabrica` (`idFabrica`) VALUES
+('213123123');
+
 -- --------------------------------------------------------
 
 --
@@ -5839,6 +5858,13 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
   KEY `fk_Fornecedor_Endereco1_idx` (`fkEndereco`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `fornecedor`
+--
+
+INSERT INTO `fornecedor` (`cnpj`, `nome`, `email`, `codigo`, `area`, `numero`, `fkEndereco`) VALUES
+('213123123', 'Fornecedor', 'f@fornecedor.cpm', '55', '18', '987651234', 3);
+
 -- --------------------------------------------------------
 
 --
@@ -5852,7 +5878,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `dataContratacao` date DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL,
   PRIMARY KEY (`idfuncionario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
 -- Extraindo dados da tabela `funcionario`
@@ -5863,7 +5889,8 @@ INSERT INTO `funcionario` (`idfuncionario`, `nome`, `salario`, `dataContratacao`
 (2, 'José Carlos Pereira', 1500, '2011-06-11', '1982-06-03'),
 (3, 'Maria Cardozo', 1200, '2015-03-25', '1985-12-22'),
 (4, 'Luiz Carlos Gomes', 2300, '2011-03-01', '1985-01-06'),
-(5, 'José Aparecido da Silva', 1800, '2011-08-01', '1977-01-07');
+(5, 'José Aparecido da Silva', 1800, '2011-08-01', '1977-01-07'),
+(7, 'Fabricio Motta', 3500, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -5919,6 +5946,8 @@ CREATE TABLE IF NOT EXISTS `motorista` (
   `numero` decimal(9,0) DEFAULT NULL,
   `disponivel` tinyint(1) NOT NULL,
   `idMotorista` int(11) NOT NULL,
+  `chaveAcesso` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
   PRIMARY KEY (`idMotorista`),
   KEY `fk_Motorista_funcionario1_idx` (`idMotorista`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -5927,8 +5956,8 @@ CREATE TABLE IF NOT EXISTS `motorista` (
 -- Extraindo dados da tabela `motorista`
 --
 
-INSERT INTO `motorista` (`categoriaHabilitacao`, `codigo`, `area`, `numero`, `disponivel`, `idMotorista`) VALUES
-('2', '55', '18', '996321516', 1, 5);
+INSERT INTO `motorista` (`categoriaHabilitacao`, `codigo`, `area`, `numero`, `disponivel`, `idMotorista`, `chaveAcesso`, `senha`) VALUES
+('2', '55', '18', '997654433', 1, 7, 'motta', 'motta123');
 
 -- --------------------------------------------------------
 

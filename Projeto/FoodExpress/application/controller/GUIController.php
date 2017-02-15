@@ -182,7 +182,7 @@
 				</div>
 				<div class="opt1">
 					<input type="email" name="contato" placeholder="E-mail de Contato" />
-					<input type="email" name="login" placeholder="E-mail de Login" />
+					<input type="email" name="login" placeholder="E-mail de Login" /><br>
 					<input type="password" name="senha" placeholder="Senha" />
 					<input type="password" name="confirmsenha" placeholder="Confirmação de Senha" />	
 				</div>
