@@ -39,6 +39,11 @@ Pritchett, D. (2008).
 \newblock Base: An acid alternative.
 \newblock {\em Queue}, 6(3):48--55.
 
+\bibitem[Toth 2011]{toth2011abordagem}
+Toth, R.~M. (2011).
+\newblock Abordagem nosql uma real alternativa.
+\newblock {\em Sorocaba, S{\~a}o Paulo, Brasil: Abril}, 13.
+
 \bibitem[Zhao et~al. 2014]{zhaoSchema:2014}
 Zhao, G., Lin, Q., Li, L., and Li, Z. (2014).
 \newblock Schema conversion model of sql database to nosql.
