@@ -1,9 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.2.27)  26 FEB 2017 02:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2016.11.7)  27 FEB 2017 16:00
 entering extended mode
 **sbc-template.tex
-
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.tex"
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\sbc-template.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
 abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
@@ -15,9 +13,9 @@ german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
 ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
 an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
 ishmax, welsh, loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -32,26 +30,25 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.sty"
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\sbc-template.sty
 Package: sbc-template 2001/06/09
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count87
@@ -67,9 +64,8 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\caption2.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\caption2.sty
 Package: caption2 2002/08/03 v2.1 Customising captions (AS)
 \captionmargin=\dimen111
 \captionwidth=\dimen112
@@ -78,12 +74,12 @@ Package caption2 Info: Running in caption2 v2.0 compatibility mode on input lin
 e 147.
 \captionlinewidth=\dimen114
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
 \c@instn=\count90
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
+(C:\Users\leand\AppData\Roaming\MiKTeX\2.9\tex\latex\titlesec\titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box26
 \beforetitleunit=\skip43
@@ -95,27 +91,27 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \titlewidthlast=\dimen118
 \titlewidthfirst=\dimen119
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count91
@@ -123,23 +119,23 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen120
 \Gin@req@width=\dimen121
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+(C:\Users\leand\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\inputenc.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\utf8.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -289,7 +285,7 @@ File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -320,7 +316,7 @@ File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -344,8 +340,7 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux")
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\sbc-template.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
@@ -360,7 +355,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
 LaTeX Font Info:    ... okay on input line 25.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 25.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 *geometry* driver: auto-detecting
@@ -397,7 +392,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+(C:\Users\leand\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
 \scratchdimen=\dimen122
@@ -422,7 +417,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 27.
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 27.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
@@ -431,97 +426,158 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 2245) in paragraph at lines 61--62
-[]\OT1/ptm/m/n/12 Os Banco de da-dos NoSQL fornecem mecan-is-mos de ar-mazena-m
-ento e
- []
+{C:/Users/leand/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 68.
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 64.
-("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 64.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 68.
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
 [2]
-Underfull \hbox (badness 1308) in paragraph at lines 65--66
-[]\OT1/ptm/m/n/12 Escalabilidade hor-i-zon-tal: Est[]a rela-cionado a v[]arias 
-maquinas, servi-dores,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--67
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
 
-Underfull \hbox (badness 2426) in paragraph at lines 76--77
-[]\OT1/ptm/m/n/12 Em Banco de da-dos de ar-mazena-mento chave-valor os da-dos t
-em duas
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
  []
 
-[3] [4] [5] <img/cargaA.png, id=24, 560.8453pt x 259.7203pt>
-File: img/cargaA.png Graphic file (type png)
 
-<use img/cargaA.png>
-Package pdftex.def Info: img/cargaA.png used on input line 129.
-(pdftex.def)             Requested size: 384.1096pt x 177.87563pt.
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 130.
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
+
+ []
+
+[4]
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 122.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 130.
-<img/cargaB.png, id=25, 571.38469pt x 255.20343pt>
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 122.
+
+Underfull \hbox (badness 5741) in paragraph at lines 126--126
+[]\OT1/ptm/m/n/12 Poss[]vel, por[]em com-plexo
+ []
+
+
+Underfull \hbox (badness 3068) in paragraph at lines 126--127
+[]\OT1/ptm/m/n/12 Uma das prin-ci-pais van-ta-
+ []
+
+
+Underfull \hbox (badness 5756) in paragraph at lines 128--128
+[]\OT1/ptm/m/n/12 O con-junto de re-gras de
+ []
+
+
+Underfull \hbox (badness 2961) in paragraph at lines 128--128
+\OT1/ptm/m/n/12 i-ciam uma maior grau de
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 128--128
+\OT1/ptm/m/n/12 rigor quanto []a con-sist[]encia
+ []
+
+
+Underfull \hbox (badness 5970) in paragraph at lines 128--129
+[]\OT1/ptm/m/n/12 Realizada de modo even-
+ []
+
+
+Underfull \hbox (badness 3271) in paragraph at lines 130--130
+\OT1/ptm/m/n/12 su-por-tar a de-manda muito
+ []
+
+
+Underfull \hbox (badness 3679) in paragraph at lines 130--130
+\OT1/ptm/m/n/12 grande de informa[][]oes do
+ []
+
+
+Underfull \hbox (badness 2435) in paragraph at lines 130--131
+\OT1/ptm/m/n/12 sucesso desse mod-elo, ca-
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 130--131
+\OT1/ptm/m/n/12 n[]umero de solicita[][]oes aos
+ []
+
+
+Underfull \hbox (badness 5359) in paragraph at lines 130--131
+\OT1/ptm/m/n/12 do sis-tema e que o sis-
+ []
+
+[5] <img/cargaA.png, id=25, 560.8453pt x 259.7203pt>
+File: img/cargaA.png Graphic file (type png)
+ <use img/cargaA.png>
+Package pdftex.def Info: img/cargaA.png used on input line 169.
+(pdftex.def)             Requested size: 384.1096pt x 177.87563pt.
+
+<img/cargaB.png, id=26, 571.38469pt x 255.20343pt>
 File: img/cargaB.png Graphic file (type png)
  <use img/cargaB.png>
-Package pdftex.def Info: img/cargaB.png used on input line 136.
+Package pdftex.def Info: img/cargaB.png used on input line 176.
 (pdftex.def)             Requested size: 384.1096pt x 171.55783pt.
 
-[6 <C:/Users/BRUNO/Documents/Ciência da Computação - UNESP/3º Ano/2º Semes
-tre/Banco de dados II/fctpp-bd-foodexpress/Artigo/img/cargaA.png> <C:/Users/BRU
-NO/Documents/Ciência da Computação - UNESP/3º Ano/2º Semestre/Banco de dad
-os II/fctpp-bd-foodexpress/Artigo/img/cargaB.png>]
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.bbl") [7]
-("C:\Users\BRUNO\Documents\Ciência da Computação - UNESP\3º Ano\2º Semestr
-e\Banco de dados II\fctpp-bd-foodexpress\Artigo\sbc-template.aux") ) 
+[6 <D:/Documentos/fctpp-bd-foodexpress/Artigo/img/cargaA.png>]
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\sbc-template.bbl [7 <D:/Documentos/f
+ctpp-bd-foodexpress/Artigo/img/cargaB.png>]) [8]
+(D:\Documentos\fctpp-bd-foodexpress\Artigo\sbc-template.aux) ) 
 Here is how much of TeX's memory you used:
- 2549 strings out of 493921
- 35049 string characters out of 3147282
- 96208 words of memory out of 3000000
- 5807 multiletter control sequences out of 15000+200000
+ 2543 strings out of 493921
+ 34310 string characters out of 3144876
+ 97197 words of memory out of 3000000
+ 5801 multiletter control sequences out of 15000+200000
  21033 words of font info for 44 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 30i,8n,28p,938b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program
- Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/co
-urier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on sbc-template.pdf (7 pages, 392874 bytes).
+ 30i,13n,28p,804b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
+fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/typ
+e1/urw/helvetic/uhvb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/t
+imes/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmbi8
+a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sbc-template.pdf (8 pages, 397481 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
+ 64 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
