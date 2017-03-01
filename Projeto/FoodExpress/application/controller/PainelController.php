@@ -74,6 +74,7 @@
 				$modelSeguranca = new SegurancaModel();
 				$modelSeguranca->add($primaryKey); 
 			}
+
 		}
 
 
@@ -122,40 +123,48 @@
 			}
 		}
 
-		public function cadastrarPedido(){
+		public function finalizarPedido(){
 
 			//Pegando data atual
  			date_default_timezone_set('America/Sao_Paulo');
-			$data = date('d/m/Y');
-			$dataVencimento = date('d/m/Y', strtotime($data.' +2 days'));
+			$data = date("Y-m-d");
+			$dataVencimento = date("Y-m-d",strtotime("+40 day"));
 
 			//Informações do gerente
-			$nome = 'admin';
+			$nome = $_SESSION['nomeUsuario'];
 			$modeloFuncionarios = new FuncionarioModel();
-			$idGerente = $modeloFuncionarios->buscaIDGerente($nome);
-
-			//Informações Item
-			$valor = 1.0;
+			$idGerente = $_SESSION['idGerente'];
+			$cnpj = $_POST['cnpj'];
 
 			//Informações pagamento
 			//$descricao = $_POST['descricaoPagamento'];
-			$descricao = 'teste manual!';
+			$descricao = $_POST['descricao'];
 			$modeloPagamento = new PagamentoModel();
-			$idPagamento = $modeloPagamento->add(12345, $descricao, $valor, $dataVencimento, $data, $idGerente);
 
+			$num = rand(1, 2000000000);
+			$valor = $_POST['total'];
+			$idPagamento = $modeloPagamento->add($num, $descricao, $valor, $dataVencimento, $data, $idGerente);
+			
 			//Informações Pedido
 			$modeloPedido = new PedidoModel();
-			$modeloPedido->add($data, $idPagamento, $idGerente);
+			$numPedido = $modeloPedido->add($data, $idPagamento, $idGerente)[0]['max'];
 
-			//Informações ItemPedido
-			//$modeloItem = new ItemModel();
-			//$modeloItem->add();
+			$modeloItem = new ItemModel();
+			$modeloProduto = new ProdutoModel();
+			$modeloEspec = new EspecProdutoModel();
+
+			foreach ($_POST['itens'] as $value) {
+				
+				$especproduto = $modeloEspec->listarPorNomeEspec($value['produto']);
+				$idProduto = $modeloProduto->add($value['valor']*1.25, date("Y-m-d"), date("Y-m-d",strtotime("+30 day")), $especproduto, null, $value['quantidade']);	
+				$modeloItem->add($idProduto, $cnpj, $numPedido, $value['quantidade'], $value['valor']);
+			}
 
 		}
 
 		public function cadastrarProduto(){
 
-			$modelProduto = new ProdutoModel();
+			$modelProduto = new EspecProdutoModel();
 			$modelProduto->add();
 		}
 

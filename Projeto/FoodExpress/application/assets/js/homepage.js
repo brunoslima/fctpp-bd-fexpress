@@ -10,6 +10,9 @@ $(document).ready(function(){
 
 		if($login.length == 0 || $login.length == 0){
 			console.log("Um dos campos não está preenchido!");
+			$(".bx").fadeIn();
+			setTimeout(5);
+			$(".bx").fadeOut();
 		}
 		else{
 
@@ -36,6 +39,9 @@ $(document).ready(function(){
 				}
 				else{
 					console.log("Erro ao realizar login!");
+					$(".ax").fadeIn();
+					setTimeout(5);
+					$(".ax").fadeOut();
 				}
 			})
 			.fail(function(){ //Erro de falta de conexão

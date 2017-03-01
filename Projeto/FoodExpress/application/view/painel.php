@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-veiculos.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-produto.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-empresas.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-viagem.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
@@ -71,6 +72,7 @@
 			<li value="pedidos"><img class="imgItemMenu" src="<?php echo $assets['images']?>pedido.png">Pedidos
 				<ul>
 					<li value="novopedido"><img class="imgItemMenu" src="<?php echo $assets['images']?>pedido.png">Novo Pedido</li>
+					<li value="entradapedido"><img class="imgItemMenu" src="<?php echo $assets['images']?>pedido.png">Registrar Entrada</li>
 					<li value="mostrarpedido"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pedido</li>
 				</ul>
 			</li>
@@ -80,7 +82,12 @@
 					<li value="mostrarproduto"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Produtos</li>
 				</ul>
 			</li>
-			<li value="viagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens</li>
+			<li value="viagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens
+				<ul>
+					<li value="novaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>veiculo.png">Nova Viagem</li>
+					<li value="listarviagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Listar Viagens</li>
+				</ul>
+			</li>
 			<li value="veiculos"><img class="imgItemMenu" src="<?php echo $assets['images']?>veiculo.png">Veículos
 				<ul>
 					<li value="novoveiculo"><img class="imgItemMenu" src="<?php echo $assets['images']?>veiculo.png">Novo Veículo</li>
@@ -95,7 +102,7 @@
 			<br>	
 			<h1>Bem-Vindo ao FoodExpress</h1>
 			<p>A FoodExpress é uma distribuidora de alimentos criada em 2010 que tem como lema "So fast how you want!"</p>
-			<p>Prezado <strong>admin</strong> está conectado como <strong>Administrador</strong></p>
+			<p>Prezado <strong><?php echo $_SESSION['nomeUsuario'];?></strong> está conectado como <strong><?php echo $_SESSION['user'];?></strong></p>
 
 		</div>
 	</div>

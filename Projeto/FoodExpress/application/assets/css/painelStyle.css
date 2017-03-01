@@ -238,6 +238,11 @@ header {
 	font: 14px Tahoma;
 }
 
+.conteudo ul li {
+	font: 14px Tahoma;
+	margin-left: 60px;
+}
+
 div[class*="opt"]{
 	display: none;
 }

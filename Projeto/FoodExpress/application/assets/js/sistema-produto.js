@@ -10,6 +10,7 @@ $(document).ready(function(){
 	 	$dados = new Object();
 	 	$dados['nomeProduto'] = $("input[name='nomeProduto']").val();	 		 	
 	 	$dados['descricaoProduto'] = $("input[name='descricaoProduto']").val();
+	 	$dados['idFornecedor'] = $("#forn").val();
 	 	
 	 	$.ajax({
 			url: ( location.href + "/cadastrarProduto"),

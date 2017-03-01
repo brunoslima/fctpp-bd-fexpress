@@ -9,10 +9,9 @@
 
 		public function add($data, $fkPagamento, $fkGerente){
 
-			$this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkGerente) VALUES ('$data', 0, '$fkPagamento', '$fkGerente')");
+			$teste = $this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkGerente) VALUES ('$data', 0, '$fkPagamento', '$fkGerente')");
 			
-			return $this->select("SELECT LAST_INSERT_ID() INTO @idPedido");
-
+			return $this->select("SELECT max(idPedido) as max FROM pedido");
 		}
 
 		public function listarTodos(){

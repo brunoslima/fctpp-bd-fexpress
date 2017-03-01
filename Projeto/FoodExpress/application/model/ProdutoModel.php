@@ -5,19 +5,14 @@
 	*/
 	class ProdutoModel extends Model{
 		
-		private $table = "especproduto";
+		private $table = "produto";
 
-		public function add(){
 
-			$nome = $_POST['nomeProduto'];
-			$descricao = $_POST['descricaoProduto'];
+		public function add ($preco, $data, $dataV, $especproduto, $deposito, $quantidadeTotal) {
 
-			$this->insert("INSERT INTO `$this->table` (nome, descricao) VALUES ('$nome', '$descricao')");
-		}
-
-		public function listarTodos(){
-
-			return $this->select("SELECT idEspecProduto, nome, descricao FROM `$this->table`");
+			$this->insert("INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)");
+		
+			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];
 		}
 
 	}

@@ -26,6 +26,8 @@
 					<input placeholder="Identificação" autocomplete="off" type="email" name="username"/><br>
 					<input placeholder="Senha" type="password" name="password" minlength="5" maxlength="20" /><br>
 					<button class="button-login">Login</button>
+					<p class="message ax">Login ou senha incorretos !</p>
+					<p class="message bx">Campos preenchidos incorretamente !</p>
 				</form>
 			</div>
 		</div>

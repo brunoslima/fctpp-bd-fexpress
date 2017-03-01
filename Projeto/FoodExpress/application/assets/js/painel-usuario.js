@@ -77,6 +77,7 @@ $(document).ready(function(){
 
 			case "home":
 				window.location.assign("http://localhost:"+window.location.port+"/FoodExpress/painel");
+				return;
 				break;
 
 			case "novaempresa":
@@ -143,6 +144,14 @@ $(document).ready(function(){
 			case "mostrarveiculo":
 				url = "/gui/mostrarveiculo";
 				break;
+
+			case "entradapedido":
+				url = "/gui/entradapedido";
+				break;
+
+			case "novaviagem":
+				url = "/gui/novaviagem";
+				break;				
 				
 			default:
 

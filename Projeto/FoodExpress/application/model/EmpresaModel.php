@@ -35,6 +35,11 @@
 
 			return ("SELECT nome FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");			
 		}
+
+		public function listarEmpresasComEncomenda(){
+
+			return $this->select("SELECT nome FROM empresa WHERE cnpj IN (SELECT fkEmpresa FROM encomenda WHERE status <> 0)");
+		}
 	}
 
 ?>

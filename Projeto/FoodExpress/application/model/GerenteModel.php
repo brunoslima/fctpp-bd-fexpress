@@ -10,8 +10,13 @@
 		
 		public function login($username, $password){
 
-			return $this->select("SELECT * FROM  $this->table WHERE login = '$username' AND senha = '$password'");
+
 			
+			$result = $this->select("SELECT * FROM  $this->table WHERE login = '$username' AND senha = '$password'");
+			
+			$_SESSION['idGerente'] = $result[0]['idGerente'];
+
+			return $result;
 		}
 
 
@@ -27,8 +32,10 @@
 		public function retornarNome($username, $password){
 
 			//Criar procedure!!!
-			$idGerente = ("SELECT idGerente FROM  $this->table WHERE login = '$username' AND senha = '$password'");
-			return ("SELECT nome FROM funcionario, $this->table WHERE '$idGerente' = funcionario.idfuncionario");
+			$idGerente = $this->select("SELECT idGerente FROM gerente WHERE login = '$username' AND senha = '$password'")[0]['idGerente'];
+			$result = $this->select("SELECT nome FROM funcionario funcionario WHERE funcionario.idfuncionario = '$idGerente'")[0]['nome'];
+
+			return $result;
 		}
 	
 	}

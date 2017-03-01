@@ -21,5 +21,10 @@
 
 			return $this->select("SELECT idVeiculo, placa, ano, modelo, capacidade, disponivel FROM `$this->table`");
 		}
+
+		public function listarDisponiveis(){
+
+			return $this->select("SELECT placa, capacidade FROM veiculo WHERE disponivel = 1");
+		}
 	}
 ?>

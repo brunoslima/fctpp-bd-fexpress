@@ -32,7 +32,6 @@
 				$modeloGerente = new GerenteModel();
 				$result = $modeloGerente->login($username, $password);
 				$nome = $modeloGerente->retornarNome($username, $password);
-
 				$this->autenticar($result, $data, "gerente", $username, $nome);
 
 			}
@@ -42,7 +41,6 @@
 				$modeloEmpresa = new EmpresaModel();
 				$result = $modeloEmpresa->login($username, $password);
 				$nome = $modeloEmpresa->retornarNome($username, $password);
-
 				$this->autenticar($result, $data, "empresa", $username, $nome);
 			}
 
@@ -51,7 +49,6 @@
 				$modeloMotorista = new MotoristaModel();
 				$result = $modeloMotorista->login($username, $password);
 				$nome = $modeloMotorista->retornarNome($username, $password);
-
 				$this->autenticar($result, $data, "motorista", $username, $nome);
 
 			}
@@ -71,14 +68,12 @@
 				$_SESSION['type'] = $tipoUsuario;
 				$_SESSION['autenticado'] = true;
 				$_SESSION['nomeUsuario'] = $nome;
-				
 			}
 			else{
 
 				$data['resposta'] =	false;
 				$data['tipoUsuario'] = "";
 				$_SESSION['autenticado'] = false;
-
 			}
 
 		}

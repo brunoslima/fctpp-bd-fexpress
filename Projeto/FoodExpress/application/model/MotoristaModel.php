@@ -28,8 +28,14 @@
 		public function retornarNome($username, $password){
 
 			//Criar procedure!!!
-			$idMotorista = ("SELECT idMotorista FROM  $this->table WHERE login = '$username' AND senha = '$password'");
-			return ("SELECT nome FROM funcionario, $this->table WHERE '$idMotorista' = funcionario.idfuncionario");
+			$idMotorista = $this->select("SELECT idMotorista FROM  $this->table WHERE login = '$username' AND senha = '$password'")[0]['idMotorista'];
+			return $this->select("SELECT nome FROM funcionario WHERE funcionario.idfuncionario = $idMotorista")[0]['nome'];
+		}
+
+		public function listarDisponiveis(){
+
+			
+			return $this->select("SELECT nome FROM funcionario WHERE idfuncionario IN (SELECT idMotorista FROM motorista WHERE disponivel = 1)");
 		}
 
 	}

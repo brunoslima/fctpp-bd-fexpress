@@ -113,7 +113,9 @@
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$value['data']}</td><td>{$value['status']}</td></tr>";
+ 				$dn = date_format(date_create($value['data']),"d/m/Y");
+
+ 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$dn}</td><td>{$value['status']}</td></tr>";
 
  			}
 
@@ -236,22 +238,31 @@
 
 			$cargo = "Auxiliar de Limpeza";
  			foreach ($result['limpeza'] as $value) {
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+
+ 				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
+ 				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$cargo = "Gerência";
  			foreach ($result['gerente'] as $value) {
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
+ 				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$cargo = "Motorista";
  			foreach ($result['motorista'] as $value) {
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
+ 				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$cargo = "Segurança";
  			foreach ($result['seguranca'] as $value) {
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ {$value['salario']}</td><td>{$cargo}</td><td>{$value['dataNascimento']}</td><td>{$value['dataContratacao']}</td></tr>";
+ 				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
+ 				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
+ 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
@@ -361,8 +372,9 @@
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroboleto']}</td><td>{$value['descricao']}</td><td>{$value['valor']}</td><td>{$value['dataVencimento']}</td><td>{$value['dataEmissao']}</td><td>{$value['status']}</td><td>{$value['fkGerente']}</td></tr>";
-
+ 				$dv = date_format(date_create($value['dataEmissao']),"d/m/Y");
+ 				$de = date_format(date_create($value['dataVencimento']),"d/m/Y");
+ 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>{$value['status']}</td><td>{$value['fkGerente']}</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
@@ -375,39 +387,45 @@
  			//Pegando data atual
  			date_default_timezone_set('America/Sao_Paulo');
 			$data = date('d/m/Y');
-			$dataVencimento = date('d/m/Y', strtotime("+40 day"));
+			$dataVencimento = date('d/m/Y',strtotime("+40 day"));
 
-
-			$modelProduto = new EspecProdutoModel();
-			$result = $modelProduto->listar();
 			$listaP = "";
+			
+			$modelFornecedor = new FornecedorModel();
+			$result = $modelFornecedor->listar();
+			
+			
+			$listaF = "";
 			foreach ($result as $value) {
-				$listaP .= "<option value='".$value['nome']."'></option>";
+				$listaF .= "<option value='".$value['nome']."'></option>";
 			}
 
 
 			//Informações do gerente
-			$nome = $_SESSION['user'];
+			$nome = $_SESSION['nomeUsuario'];
 
- 			$html = '<h1>Novo Pedido</h1>
+ 			$html= '<h1>Novo Pedido</h1>
 			<form method="post" action="">
 				<p>Informações sobre o pedido:</p><br>
-				<label>:: Data de Lançamento: ' .$data. '</label><br>
-				<label>:: Data de Vencimento:  ' .$dataVencimento. '</label><br>
-				<label>:: Gerente Responsável: '.$nome. '</label><br><br>
+				<ul>
+					<li>Data de Lançamento: ' .$data. '</li>
+					<li>Data de Vencimento: ' .$dataVencimento. '</li>
+					<li>Gerente Responsável: '.$nome. '</li>
+				</ul>			
+				<br>
 				<p>Abaixo, descreva qualquer informação relevante em relação a este pedido:</p><br>
 				<textarea name="descricaoPagamento" cols="30" rows="20" placeholder="Descrição"></textarea>
 				<br>
 				<p>A seguir, adicione todos os produtos que farão parte do pedido:</p><br><br>
+				<label>Fornecedor</label>
+				<input type="text" name="boxFornecedor" autocomplete="off" list="listaFornecedor" placeholder="Digite o nome do fornecedor"/>
+				<datalist id="listaFornecedor">
+					'.$listaF.'
+				</datalist>
 				<label>Produto</label>
-				<input type="text" placeholder="Digite o nome do produto" name="boxProduto" list="listaProdutos"/>
+				<input type="text" autocomplete="off" placeholder="Digite o nome do produto" name="boxProduto" list="listaProdutos"/>
 				<datalist id="listaProdutos">
 					'.$listaP.'
-				</datalist>
-				<label>Fornecedor</label>
-				<input type="text" name="boxFornecedor" list="listaFornecedor" placeholder="Digite o nome do fornecedor"/>
-				<datalist id="listaFornecedor">
-					
 				</datalist>
 				<br><br>
 				<label>Quantidade</label>
@@ -422,7 +440,8 @@
 						<th>Produto</th>
 						<th>Fornecedor</th>
 						<th>Quantidade</th>
-						<th>Valor</th>
+						<th>Valor Unit.</th>
+						<th>Total</th>
 					</thead>
 					<tbody>
 						
@@ -437,18 +456,20 @@
  			echo $html;
  		}
 
- 		public function listarF(){
+ 		public function listarP(){
+ 			session_start();
+ 			$model = new EspecProdutoModel();
+ 			$result = $model->listarProdutos($_POST['nome']);
 
- 			$model = new FornecedorModel();
- 			$result = $model->listarNome($_POST['id']);
- 			$html = "";
-
+ 			$html['id'] = $_SESSION['idFornecedor'];
+ 			$html['nome'] = $_POST['nome'];
+ 			$html['pagina'] = "";
  			foreach ($result as $value) {
- 				$html .= "<option value='$value'></option>";
+ 				$html['pagina'] .= "<option data-id='".$value['cod']."' value='".$value['nome']."'></option>";
  			}
 
- 			echo $html;
- 		}
+ 			echo json_encode($html);
+  		}
 
  		public function mostrarpedido(){
 
@@ -479,10 +500,23 @@
 
  		public function novoproduto(){
 
+ 			$model = new FornecedorModel();
+ 			$result = $model->listar();
+ 			$list = "";
+ 			foreach ($result as $value) {
+ 				$list .= "<option value='".$value['cnpj']."'>".$value['nome']."</option>";
+ 			}
+
  			$html = '<h1>Novo Produto</h1>
 			<form method="post" action="">
-				<input type="text" placeholder="Nome" name="nomeProduto"/>
-				<input type="text" placeholder="Descrição" name="descricaoProduto"/>
+				<label>Nome do produto</label><br>
+				<input type="text" placeholder="Insira o nome do produto" name="nomeProduto"/><br>
+				<label>Descrição</label><br>
+				<input type="text" placeholder="Insira a descrição" name="descricaoProduto"/><br>
+				<label>Selecione o fornecedor</label><br>
+				<select name="fornecedor" id="forn">
+					'.$list.'
+				</select>
 				<button class="btn-cadastrar-produto">Cadastrar</button>
 			</form>';
 
@@ -491,7 +525,7 @@
 
  		public function mostrarproduto(){
 
- 			$modeloProduto = new ProdutoModel();
+ 			$modeloProduto = new EspecProdutoModel();
  			$result = $modeloProduto->listarTodos();
 
  			$html = "
@@ -516,7 +550,75 @@
 
  		public function novaviagem(){
 
+ 			$modeloVeiculo = new VeiculoModel();
+ 			$result = $modeloVeiculo->listarDisponiveis();
 
+ 			$listaVeiculos = "";
+			foreach ($result as $value) {
+				$listaVeiculos .= "<option value='".$value['placa']."'></option>";
+			}
+
+			$modeloMotorista = new MotoristaModel();
+			$result = $modeloMotorista->listarDisponiveis();
+
+			$listaMotoristas = "";
+			foreach ($result as $value) {
+				$listaMotoristas .= "<option value='".$value['nome']."'></option>";
+			}
+
+			$modeloEmpresa = new EmpresaModel();
+			$result = $modeloEmpresa->listarEmpresasComEncomenda();
+
+			$listaEmpresas = "";
+			foreach ($result as $value) {
+				$listaEmpresas .= "<option value='".$value['nome']."'></option>";
+			}
+
+			session_start();
+
+ 			$html = '<h1>Nova Viagem</h1>
+ 			<p>As viagens referem-se às entregas de encomendas realizadas a empresas cadastradas no sistema.</p><br>
+			<form method="post" action="">
+				<label><b>Gerente Responsável:</b> '.$_SESSION['nomeUsuario'].'</label><br><br><br>
+				<label>Descrição</label><br>
+				<textarea name="descricaoviagem" cols="30" rows="10"></textarea><br>
+				<label>Veículo de Carga</label><br>
+				<input type="text" autocomplete="off" list="listaveiculos" placeholder="Selecione um veículo" name="veiculoviagem"/>
+				<datalist id="listaveiculos">
+					'.$listaVeiculos.'
+				</datalist><br>
+				<label>Motorista</label><br>
+				<input type="text" autocomplete="off" placeholder="Selecione um motorista" list="listamotoristas" name="motoristaviagem"/>
+				<datalist id="listamotoristas">
+					'.$listaMotoristas.'
+				</datalist><br>
+				<label>Data de Partida</label><br>
+				<input type="date" name="datapartida"><br>
+				<label>Data de Chegada</label><br>
+				<input type="date" name="datachegada"><br>
+				<label>Selecionar empresa</label><br>
+				<input type="text" autocomplete="off" placeholder="Selecione uma empresa específica" list="listaempresas" name="empresaviagem"/>
+				<datalist id="listaempresas">
+					'.$listaEmpresas.'
+				</datalist><br><br><br>
+				<div id="listaEncomendas">
+					<label>Abaixo estão listadas as encomendas referentes as empresas</label>
+					<table>
+						<thead>
+							<th>Código Encomenda</th>
+							<th>Data</th>
+							<th>Preço Total</th>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+				
+				<button class="btn-finalizar-viagem">Finalizar viagem</button>
+			</form>';
+
+			echo $html;
  		}
 
  		public function mostrarviagem(){
@@ -579,6 +681,16 @@
 			} 
 			
 			echo $html;	
+ 		}
+
+ 		public function entradapedido(){
+
+
+ 		}
+
+ 		public function listarEncomendasViagem(){
+
+ 			$nome = $_POST['nome'];
  		}
  		
  	}
