@@ -9,18 +9,20 @@ class LinhaTabelaEncomenda{
 	}
 }
 
+var itensEncomenda = [];
+
 $(document).ready(function(){
 
-	let itensPedido = [];
+	
 	let count = 0;
 	let total = 0;
-	let ValorProduto;
+	let ValorProduto = 0;
 
 	$(document).on("blur", "[name='boxProdutoEncomenda']", function(){
 
 		$dados = new Object();
 
-		$dados['nome'] = $(this).val();;
+		$dados['nome'] = $(this).val();
 		var endereco = location.href;
 		endereco = endereco.split("/");
 		var final = "http://" + endereco[2] + "/FoodExpress/gui/RetornaValorProduto";
@@ -32,7 +34,6 @@ $(document).ready(function(){
 			cache: false
 		})
 		.done(function(data){
-			console.log(data);
 			ValorProduto = data;
 
 		})
@@ -47,9 +48,9 @@ $(document).ready(function(){
 		var d = [];
 		
 		d["codigo"] = ++count;
-		d["produto"] = $("[name='boxProduto']").val();
+		d["produto"] = $("[name='boxProdutoEncomenda']").val();
 		d["quantidade"] =  parseFloat($("[name='quantidadeF']").val());
-		d["valor"] = ValorProduto;
+		d["valor"] = parseFloat(ValorProduto);
 
 		//validar
 		var validado = true;
@@ -57,13 +58,13 @@ $(document).ready(function(){
 		if(validado){
 			
 			let linha = "<tr><td>"+d['codigo']+"</td><td>"+d['produto']+"</td><td>"+d['quantidade'].toFixed(3)+"</td><td>R$ "+d['valor'].toFixed(2)+"</td><td>R$ "+(d['quantidade']*d['valor']).toFixed(2)+"</td></tr>";
-			itensPedido.push(new LinhaTabelaEncomenda(d['codigo'],d['produto'],d['quantidade'],d['valor']));
+			itensEncomenda.push(new LinhaTabelaEncomenda(d['codigo'],d['produto'],d['quantidade'],d['valor']));
 			$(".item-pedido").append(linha);
 
 			total = 0;
-			for (let i = 0; i < itensPedido.length; i++) {
+			for (let i = 0; i < itensEncomenda.length; i++) {
 
-				total += itensPedido[i].quantidade*itensPedido[i].valor;
+				total += itensEncomenda[i].quantidade*itensEncomenda[i].valor;
 			}
 
 			$('.total-compra')[0].innerText = "Total da Compra: R$ " + (parseFloat(total).toFixed(2)); 
@@ -79,7 +80,7 @@ $(document).ready(function(){
 	 	let dados = {
 	 		descricao: $("[name='descricaoPagamento']").val(),
 	 		total: total,
-	 		itens: itensPedido
+	 		itens: itensEncomenda
 	 	}
 
 	 	$.ajax({
@@ -90,7 +91,9 @@ $(document).ready(function(){
 			cache: false
 		})
 		.done(function(data){
+			//data = $.parseJSON(data);
 			console.log(data);
+			console.log("Encomenda cadastrada com sucesso!");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã pãã hey");

@@ -119,7 +119,6 @@
 				<ul>
 					<li>Data de Lançamento: ' .$data. '</li>
 					<li>Data de Vencimento: ' .$dataVencimento. '</li>
-					<li>Gerente Responsável: '.$nome. '</li>
 				</ul>			
 				<br>
 				<p>Abaixo, descreva qualquer informação relevante em relação a esta encomenda:</p><br>
@@ -271,7 +270,10 @@
 					<label>Informações de Contato</label><br>
 					<input type="text" name="codigo" placeholder="Código"/>
 					<input type="text" name="area" placeholder="Área"/>
-					<input type="text" name="numero" placeholder="Número"/>
+					<input type="text" name="numero" placeholder="Número"/><br><br>
+					<label>Chave de Acesso e senha para o sistema</label><br>
+					<input type="text" name="chaveMotorista" placeholder="Chave de acesso"/>
+					<input type="text" name="senhaMotorista" placeholder="Senha"/>
 				</div>
 				<div class="opt3">
 					<label>Possui porte de arma? </label><br>
@@ -316,7 +318,10 @@
  			foreach ($result['gerente'] as $value) {
  				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
  				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 				if($value['nome'] != "Administrador") {
+ 					$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 				}
+ 					
  			}
 
  			$cargo = "Motorista";
@@ -691,7 +696,67 @@
 
  		public function mostrarviagem(){
 
+ 			$modeloViagem = new ViagemModel();
+ 			$result = $modeloViagem->listarTodos();
 
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Código</th>
+					<th>Descrição</th>
+					<th>Veículo</th>
+					<th>Motorista</th>
+					<th>Gerente</th>
+					<th>Status</th>
+					<th>Data Inicio</th>
+					<th>Data Chegada</th>
+
+
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkMotorista']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
+
+ 		}
+
+ 		public function mostrarviagemmotorista(){
+
+ 			session_start();
+ 			$idMotorista = $_SESSION['idMotorista'];
+
+ 			$modeloViagem = new ViagemModel();
+ 			$result = $modeloViagem->listarViagensMotorista($idMotorista);
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Código</th>
+					<th>Descrição</th>
+					<th>Veículo</th>
+					<th>Gerente</th>
+					<th>Status</th>
+					<th>Data Inicio</th>
+					<th>Data Chegada</th>
+
+
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
  		}
 
  		public function novoveiculo(){

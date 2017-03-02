@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 
-	let listaEncomendas;
+	let ArraylistaEncomendas;
 	/**
 	 * Associa a função de cadastrar veículo
 	 * ao respectivo botão
@@ -12,7 +12,7 @@ $(document).ready(function(){
 
 	 	e.preventDefault();
 	 	let dados = {
-	 		lista: listaEncomendas,
+	 		lista: ArraylistaEncomendas,
 	 		motorista: $("[name='motoristaviagem']").val(),
 	 		veiculo: $('[name="veiculoviagem"]').val(),
 	 		dataPartida: $('[name="datapartida"]').val(),
@@ -30,7 +30,7 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			console.log(data);
-			console.log("veiculo cadastrado com sucesso!");
+			console.log("Viagem cadastrada com sucesso!");
 		})
 		.fail(function(){
 			console.log("pãã");
@@ -56,14 +56,14 @@ $(document).ready(function(){
 			cache: false
 		})
 		.done(function(data){
-
-			console.log(data);
-			$("#listaEncomendasViagem").slideOut();
+			
+			data = $.parseJSON(data);
+			$("#listaEncomendasViagem").slideUp();
 			$("#listaEncomendasViagem tbody").empty();
-			$("#listaEncomendasViagem tbody").append(data['pagina']);
-			$("#listaEncomendasViagem").slideIn();
+			$("#listaEncomendasViagem tbody").append(data["pagina"]);
+			$("#listaEncomendasViagem").slideDown();
 
-			listaEncomendas = data['encomendas'];
+			ArraylistaEncomendas = data.encomendas;
 		})
 		.fail(function(){
 			console.log("pãã");

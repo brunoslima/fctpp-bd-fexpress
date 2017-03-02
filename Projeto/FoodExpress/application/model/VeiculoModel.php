@@ -15,6 +15,7 @@
 			$capacidade = $_POST['capacidadeVeiculo'];
 
 			$this->insert("INSERT INTO `$this->table` (placa, ano, modelo, capacidade, disponivel) VALUES ('$placa', '$ano', '$modelo', '$capacidade', true)");
+
 		}
 
 		public function listarTodos(){

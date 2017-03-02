@@ -197,10 +197,11 @@
 			$gerente = $_SESSION['idGerente'];
 
 			$modeloViagem = new ViagemModel();
-			$idViagem = $modelo->add($descricao, $veiculo, $motorista, $gerente, 1, $partida, $chegada);
+			$idViagem = $modeloViagem->add($descricao, $idVeiculo, $idMotorista, $gerente, 1, $partida, $chegada);
 
 			$modeloEncomenda = new EncomendaModel();
 			$modeloEncomenda->darBaixa($listaEncomendas, $idViagem);
+
 		}
 
 		public function entradaPedido(){

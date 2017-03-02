@@ -85,8 +85,12 @@ $(document).ready(function(){
 				break;
 
 			case "mostrarempresa":
-
 				url = "/gui/mostrarempresa";
+				break;
+
+			case "novaencomenda":
+				url = "/gui/novaencomenda";
+				itensEncomenda = [];
 				break;
 
 			case "mostrarencomenda":
@@ -119,6 +123,7 @@ $(document).ready(function(){
 
 			case "novopedido":
 				url = "/gui/novopedido";
+				itensPedido = [];
 				break;
 
 			case "mostrarpagamento":
@@ -151,6 +156,14 @@ $(document).ready(function(){
 
 			case "novaviagem":
 				url = "/gui/novaviagem";
+				break;
+
+			case "listarviagens":
+				url = "/gui/mostrarviagem";
+				break;
+
+			case "mostrarviagemmotorista":
+				url = "/gui/mostrarviagemmotorista";
 				break;				
 				
 			default:

@@ -27,11 +27,10 @@
 			$dataVencimento = date("Y-m-d",strtotime("+40 day"));
 
 			$nomeEmpresa = $_SESSION['nomeEmpresa'];
-			$modeloEmpresa = EmpresaModel();
+			$modeloEmpresa = new EmpresaModel();
 			$idEmpresa = $modeloEmpresa->getId($nomeEmpresa);
 
 			//Informações pagamento
-			//$descricao = $_POST['descricaoPagamento'];
 			$descricao = $_POST['descricao'];
 			$modeloPagamento = new PagamentoModel();
 
@@ -42,6 +41,9 @@
 			//Informações Encomenda
 			$modeloEncomenda = new EncomendaModel();
 			$modeloEncomenda->add($data, $idPagamento, null, $idEmpresa);
+
+			$dados['finalizado'] = true;
+			echo json_encode($dados);
 
 		}
 

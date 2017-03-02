@@ -10,10 +10,11 @@ class LinhaTabela{
 	}
 }
 
+var itensPedido = [];
 
 $(document).ready(function(){
 
-	let itensPedido = [];
+	
 	let count = 0;
 	let total = 0;
 	let cnpj;
@@ -84,7 +85,8 @@ $(document).ready(function(){
 
 		event.preventDefault();
 		var d = [];
-		
+		var totalLocal = 0;
+
 		d["codigo"] = ++count;
 		d["produto"] = $("[name='boxProduto']").val();
 		d["fornecedor"] = $("[name='boxFornecedor']").val();
@@ -100,16 +102,19 @@ $(document).ready(function(){
 			itensPedido.push(new LinhaTabela(d['codigo'],d['produto'],d['fornecedor'],d['quantidade'],d['valor']));
 			$(".item-pedido").append(linha);
 
-			total = 0;
+			totalLocal = 0;
 			for (let i = 0; i < itensPedido.length; i++) {
 
-				total += itensPedido[i].quantidade*itensPedido[i].valor;
+				totalLocal += itensPedido[i].quantidade*itensPedido[i].valor;
 			}
 
-			$('.total-compra')[0].innerText = "Total da Compra: R$ " + (parseFloat(total).toFixed(2)); 
+			$('.total-compra')[0].innerText = "Total da Compra: R$ " + (parseFloat(totalLocal).toFixed(2)); 
 
 			$(".message-alert").css("display","none");
 		}
+
+		total = totalLocal;
+		console.log(itensPedido);
 	}); 
 
 	$(document).on("click", ".btn-finalizar-pedido", function(event){
@@ -133,6 +138,7 @@ $(document).ready(function(){
 		})
 		.done(function(data){
 			console.log(data);
+			console.log("Pedido cadastrado com sucesso!");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã pãã hey");

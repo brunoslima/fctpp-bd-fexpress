@@ -34,7 +34,7 @@
 	<div class="conteudo-menu">		
 		<ul>
 			<li value="inicio"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
-			<li value="viagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens</li>
+			<li value="mostrarviagemmotorista"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens</li>
 		</ul>
 	</div>
 	<div class="conteudo">	

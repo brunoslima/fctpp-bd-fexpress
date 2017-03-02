@@ -27,6 +27,8 @@ $(document).ready(function(){
 	 		$dados['codigo'] = $("input[name='codigo']").val();
 	 		$dados['area'] = $("input[name='area']").val();
 	 		$dados['numero'] = $("input[name='numero']").val();
+	 		$dados['chaveMotorista'] = $("input[name='chaveMotorista']").val();
+	 		$dados['senhaMotorista'] = $("input[name='senhaMotorista']").val();
 	 	}
 	 	else{
 	 		

@@ -42,12 +42,17 @@
 
 		public function listarEmpresasComEncomenda(){
 
-			return $this->select("SELECT nome FROM empresa WHERE cnpj IN (SELECT fkEmpresa FROM encomenda WHERE status <> 0)");
+			return $this->select("SELECT nome FROM empresa WHERE cnpj IN (SELECT fkEmpresa FROM encomenda WHERE status = 0)");
 		}
 
 		public function getId($nome){
 
 			return $this->select("SELECT cnpj FROM empresa WHERE nome = '$nome'")[0]['cnpj'];
+		}
+
+		public function getEndereco(){
+
+			return $this->select("SELECT logradouro, numero, bairro");
 		}
 	}
 

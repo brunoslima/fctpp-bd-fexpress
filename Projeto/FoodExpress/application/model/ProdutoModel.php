@@ -10,6 +10,8 @@
 
 		public function add ($preco, $data, $dataV, $especproduto, $deposito, $quantidadeTotal) {
 
+			echo "INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)";
+
 			$this->insert("INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)");
 		
 			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];

@@ -7,13 +7,9 @@
 			
 			private $table = "deposito";
 
-			public function add($nome,$descricao){
-				$numero = $this->select("SELECT max(numero) FROM `$this->table`");
-				$numero->setFetchMode(PDO::FETCH_ASSOC);
-
-				$numero = $numero->fetchAll()[0]['max(numero)'] + 1;				
+			public function add($nome,$descricao){			
 				
-				$this->insert("INSERT INTO `$this->table` (numero, descricao, nome) VALUES ($numero, '$descricao','$nome');");
+				$this->insert("INSERT INTO `$this->table` (numero, descricao, nome) VALUES (null, '$descricao','$nome');");
 			}
 
 			public function listar(){

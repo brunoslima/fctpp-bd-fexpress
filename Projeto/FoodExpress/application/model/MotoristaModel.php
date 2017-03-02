@@ -9,8 +9,12 @@
 
 		public function login($username, $password){
 
-			return $this->select("SELECT * FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");
+			$result = $this->select("SELECT * FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");
 			
+			if(!empty($result)) $_SESSION['idMotorista'] = $result[0]['idMotorista'];
+
+			return $result;
+
 		}
 
 		public function add($primaryKey){
@@ -40,7 +44,7 @@
 
 		public function getId($nome){
 
-			return $this->select("SELECT idfuncionario as id FROM funcionario WHERE nome = $nome")[0]['id'];
+			return $this->select("SELECT idfuncionario as id FROM funcionario WHERE nome = '$nome'")[0]['id'];
 		}
 
 	}

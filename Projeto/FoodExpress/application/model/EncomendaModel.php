@@ -9,13 +9,18 @@
 
 			/**
 			 * status
-			 * 0 => encomenda concluida
-			 * 1 => encomenda em andamento
+			 * 0 => encomenda solicitada
+			 * 1 => encomenda concluida
 			 */
 
 			public function add($data, $fkPagamento, $fkViagem, $fkEmpresa){
 
-				$teste = $this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkViagem, fkEmpresa) VALUES ('$data', 0, '$fkPagamento', null, '$fkEmpresa')");
+				if($fkViagem == null){
+					$teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', null, '$fkEmpresa')");
+
+				}
+				else $teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', '$fkViagem', '$fkEmpresa')");
+
 			
 			}
 
@@ -33,7 +38,7 @@
 					ON fkEmpresa = cnpj
 					INNER JOIN pagamento
 					ON fkPagamento = idPagamento
-					WHERE encomenda.status = 1
+					WHERE encomenda.status = 0
 				");
 			}
 
@@ -46,7 +51,7 @@
 
 				foreach ($listaEncomendas as $value) {
 					$id = $value['id'];
-					$this->update("UPDATE encomenda SET status = 0, fkViagem = '$viagem' WHERE idEncomenda = $id");
+					$this->update("UPDATE encomenda SET status = 1, fkViagem = '$viagem' WHERE idEncomenda = $id");
 				}
 
 			}
