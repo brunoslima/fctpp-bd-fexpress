@@ -49,7 +49,13 @@
 		public function listarPorNomeEspec($nome) {
 			
 			return $this->select("SELECT idEspecProduto FROM especproduto WHERE nome = '$nome'")[0]['idEspecProduto'];
-		}	
+		}
+
+		public function retornarValorProduto($nome){
+
+			return $this->select("SELECT produto.preco FROM produto, especproduto WHERE produto.fkEspecProduto = especproduto.idEspecProduto and especproduto.nome = '$nome'")[0]['preco'];
+		}
+			
 	}
 
 ?>

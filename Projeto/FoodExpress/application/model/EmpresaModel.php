@@ -14,8 +14,12 @@
 		 */
 		public function login($username, $password){
 
-			return $this->select("SELECT * FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");
+			$result = $this->select("SELECT * FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");
 			
+		    if(!empty($result)) $_SESSION['nomeEmpresa'] = $result[0]['nome'];
+
+		    return $result;
+		    			
 		}	
 
 

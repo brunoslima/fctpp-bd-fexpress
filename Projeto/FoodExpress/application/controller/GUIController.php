@@ -94,8 +94,76 @@
  		}
 
  		public function novaencomenda(){
+ 			
+ 			session_start();
+ 			//Pegando data atual
+ 			date_default_timezone_set('America/Sao_Paulo');
+			$data = date('d/m/Y');
+			$dataVencimento = date('d/m/Y',strtotime("+40 day"));
 
+			$modeloEspecProduto = new EspecProdutoModel();
+			$resultEspecProdutos = $modeloEspecProduto->listarTodos();
+
+			$listaP = "";
+			foreach ($resultEspecProdutos as $value) {
+				$listaP .= "<option value='".$value['nome']."'></option>";
+			}
+
+
+			//Informações da empresa
+			$nome = $_SESSION['nomeUsuario'];
+
+ 			$html= '<h1>Nova Encomenda</h1>
+			<form method="post" action="">
+				<p>Informações sobre a encomenda:</p><br>
+				<ul>
+					<li>Data de Lançamento: ' .$data. '</li>
+					<li>Data de Vencimento: ' .$dataVencimento. '</li>
+					<li>Gerente Responsável: '.$nome. '</li>
+				</ul>			
+				<br>
+				<p>Abaixo, descreva qualquer informação relevante em relação a esta encomenda:</p><br>
+				<textarea name="descricaoPagamento" cols="30" rows="20" placeholder="Descrição"></textarea>
+				<br>
+				<p>A seguir, adicione todos os produtos que farão parte da encomenda:</p><br><br>
+				<label>Produto</label>
+				<input type="text" autocomplete="off" placeholder="Digite o nome do produto" name="boxProdutoEncomenda" list="listaProdutos"/>
+				<datalist id="listaProdutos">
+					'.$listaP.'
+				</datalist>
+				<label>Quantidade</label>
+				<input placeholder="Quantidade unitária" type="number" min="0" step="0.0001" name="quantidadeF"/>
+				<button class="btn-adicionar-itemEncomenda">Adicionar</button>
+				<p>A tabela a seguir lista todos os itens incluídos na encomenda:</p>
+				<table class="item-pedido">
+					<thead>
+						<th>Código</th>
+						<th>Produto</th>
+						<th>Quantidade</th>
+						<th>Valor Unit.</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table><br>
+				<p class="message-alert">Não foram incluídos itens.</p><br><br><br>
+				<p class="total-compra">Total da Compra: R$ 0.00</p><br>
+				<p>Para finalizar a encomenda, clique em "Finalizar Encomenda".</p>
+				<button class="btn-finalizar-encomenda">Finalizar Encomenda</button>
+			</form>';
+
+ 			echo $html;
  		}
+
+ 		public function retornaValorProduto(){
+
+  			session_start();
+  			$modeloEspecProduto = new EspecProdutoModel();
+  			$valorProduto = $modeloEspecProduto->retornarValorProduto($_POST['nome']);
+
+  			echo $valorProduto;
+  		}
 
  		public function verencomendas(){
 

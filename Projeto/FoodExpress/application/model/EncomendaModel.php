@@ -13,6 +13,12 @@
 			 * 1 => encomenda em andamento
 			 */
 
+			public function add($data, $fkPagamento, $fkViagem, $fkEmpresa){
+
+				$teste = $this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkViagem, fkEmpresa) VALUES ('$data', 0, '$fkPagamento', null, '$fkEmpresa')");
+			
+			}
+
 			public function listar(){
 
 				return $this->select("SELECT idEncomenda, data, status FROM `$this->table`");

@@ -19,12 +19,29 @@
 		}
 		
 
-		public function cadastrarEncomenda(){
+		public function finalizarEncomenda(){
 
 			//Pegando data atual
  			date_default_timezone_set('America/Sao_Paulo');
-			$data = date('d/m/Y');
-			$dataVencimento = date('d/m/Y', strtotime($data.' +2 days'));
+			$data = date("Y-m-d");
+			$dataVencimento = date("Y-m-d",strtotime("+40 day"));
+
+			$nomeEmpresa = $_SESSION['nomeEmpresa'];
+			$modeloEmpresa = EmpresaModel();
+			$idEmpresa = $modeloEmpresa->getId($nomeEmpresa);
+
+			//Informações pagamento
+			//$descricao = $_POST['descricaoPagamento'];
+			$descricao = $_POST['descricao'];
+			$modeloPagamento = new PagamentoModel();
+
+			$num = rand(1, 2000000000);
+			$valor = $_POST['total'];
+			$idPagamento = $modeloPagamento->add($num, $descricao, $valor, $dataVencimento, $data, null);
+			
+			//Informações Encomenda
+			$modeloEncomenda = new EncomendaModel();
+			$modeloEncomenda->add($data, $idPagamento, null, $idEmpresa);
 
 		}
 
