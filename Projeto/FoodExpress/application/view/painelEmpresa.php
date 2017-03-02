@@ -36,6 +36,7 @@
 			<li value="inicio"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
 			<li value="encomendas"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Encomendas
 				<ul>
+					<li value="novaencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Nova encomenda</li>
 					<li value="mostrarencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver encomendas</li>
 				</ul>
 			</li>
