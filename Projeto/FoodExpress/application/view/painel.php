@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
 	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
+	<script type="text/javascript" src="<?php echo $assets['script']?>painel-acesso.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-deposito.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-fornecedores.js"></script>
@@ -21,10 +22,18 @@
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-viagem.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelStyle.css">	
+	<link rel="stylesheet" type="text/css" href="<?php echo $assets['style']?>painelJanela.css">	
 	<link rel="shortcut icon" href="<?php echo $assets['images']?>logo_transparent.png">	
 
 </head>
 <body>
+	<div class="w">
+		<div class="b">
+			<div class="close">X</div>
+			
+			<button class="btn-salvar-alteracoes">Salvar</button>
+		</div>
+	</div>
 	<header>
 		<div class="conteudo-cabecalho">			
 			<img class="imgLogoCabecalho" src="<?php echo $assets['images']?>logo_transparent.png">

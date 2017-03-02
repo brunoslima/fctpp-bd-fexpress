@@ -1,0 +1,43 @@
+/**
+ * /////////////////////////////////
+ * Mostrar janela
+ */
+.w{
+	position: absolute;
+	display: none;
+	width: 100vw; height: 100vh;
+	background: rgba(0,0,0,0.7);
+	z-index: 100;
+}
+
+.b{
+	position: relative;
+	display: block;
+	left: calc(50vw - 400px);
+	top: calc(50vh - 300px);
+	width: 800px; height: 600px;
+	padding: 15px;
+	background: #fff;
+}
+
+.close{
+	
+	position: absolute;
+	top: 5px; right: 5px;
+	background-color: #000;
+	border-radius: 12px;
+	width: 24px; height: 24px;
+	text-align: center;
+	line-height: 24px;
+	vertical-align: middle;
+	color: #fff; font-family: Arial;
+	cursor: pointer;
+}
+
+.w  button[class*='btn']{
+	position: absolute;
+	display: block;
+	width: 100px; height: 50px;
+	margin: 50px 50px 50px 50px;
+	top: 510px; left: 660px;
+}
