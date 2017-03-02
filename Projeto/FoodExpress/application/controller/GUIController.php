@@ -601,7 +601,7 @@
 				<datalist id="listaempresas">
 					'.$listaEmpresas.'
 				</datalist><br><br><br>
-				<div id="listaEncomendas">
+				<div id="listaEncomendasViagem">
 					<label>Abaixo estão listadas as encomendas referentes as empresas</label>
 					<table>
 						<thead>
@@ -614,7 +614,7 @@
 						</tbody>
 					</table>
 				</div>
-				
+				<br>
 				<button class="btn-finalizar-viagem">Finalizar viagem</button>
 			</form>';
 
@@ -679,18 +679,68 @@
  			for($i = 0; $i < count($resultSelect); $i++){
 				$html .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
 			} 
-			
 			echo $html;	
  		}
 
  		public function entradapedido(){
 
+ 			$modeloPedido = new PedidoModel();
+ 			$resultSelect = $modeloPedido->listarTodos();
+ 			$listaPedidos = "";
+ 			for($i = 0; $i < count($resultSelect); $i++){
+				
+ 				if ($resultSelect[$i]['status'] == 0) {
+					$listaPedidos .= '<option value="'.$resultSelect[$i]['idPedido'].'"> Nº '.$resultSelect[$i]['idPedido']." - ".date_format(date_create($resultSelect[$i]['dataPedido']),"d/m/Y").'</option>';
+ 				}
+			} 
 
+			$listaDepositos = "";
+			$modeloDeposito = new DepositoModel();
+			$result = $modeloDeposito->listar();
+
+			for($i = 0; $i < count($result); $i++){
+				
+				$listaDepositos .= '<option value="'.$result[$i]['numero'].'"> Nº '.$result[$i]['numero']." - ".$result[$i]['nome'].'</option>';
+			}
+
+ 			$html = '<h1>Registrar Entrada de Pedido</h1>
+			<form method="post" action="">
+				<label>Esta seção refere-se ao registro de entradas de pedidos realizados aos fornecedores que entram na distribuidora.</label><br>
+				<br><br>
+				<label>Selecione o pedido</label><br>
+				<select name="listapedidoentrada">
+					'.$listaPedidos.'
+				</select>
+				<br>
+				<label>Selecione o depósito</label><br>
+				<select name="listadepositoentrada">
+					'.$listaDepositos.'
+				</select>
+				<button class="btn-confirmar-entrada">Confirmar</button>
+			</form>';
+
+ 			echo $html;
  		}
 
  		public function listarEncomendasViagem(){
 
  			$nome = $_POST['nome'];
+
+ 			$modeloEmpresa = new EmpresaModel();
+ 			$modeloEncomenda = new EncomendaModel();
+
+ 			$idEmpresa = $modeloEmpresa->getId($nome);
+
+
+ 			$result = $modeloEncomenda->listarDescricao($idEmpresa);
+ 			$html["pagina"] = "";
+ 			$html["encomendas"] = $result; 
+
+ 			foreach ($result as $value) {
+ 				$html["pagina"] .= "<tr><td>{$value['id']}</td><td>{$value['data']}</td><td>{$value['total']}</td></tr>";
+ 			}
+
+ 			echo json_encode($html);
  		}
  		
  	}

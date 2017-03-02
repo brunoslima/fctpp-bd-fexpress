@@ -174,6 +174,49 @@
 			$modelVeiculo->add();
 		}
 
+		public function finalizarViagem(){
+
+			$listaEncomendas = $_POST['lista'];
+			$motorista = $_POST['motorista'];
+			$veiculo = $_POST['veiculo'];
+			$partida = $_POST['dataPartida'];
+			$chegada = $_POST['dataChegada'];
+			$empresa = $_POST['nomeEmpresa'];
+			$descricao = $_POST['descricao'];
+
+
+			$modeloMotorista = new MotoristaModel();
+			$idMotorista = $modeloMotorista->getId($motorista);
+
+			$modeloVeiculo = new VeiculoModel();
+			$idVeiculo = $modeloVeiculo->getId($veiculo);
+
+			$modeloEmpresa = new EmpresaModel();
+			$cnpj = $modeloEmpresa->getId($empresa);
+
+			$gerente = $_SESSION['idGerente'];
+
+			$modeloViagem = new ViagemModel();
+			$idViagem = $modelo->add($descricao, $veiculo, $motorista, $gerente, 1, $partida, $chegada);
+
+			$modeloEncomenda = new EncomendaModel();
+			$modeloEncomenda->darBaixa($listaEncomendas, $idViagem);
+		}
+
+		public function entradaPedido(){
+
+			$idPedido = $_POST['pedido'];
+			$idDeposito = $_POST['deposito'];
+
+			//marcar o status do pedido
+			$modeloPedido = new PedidoModel();
+			$modeloPedido->darBaixa($idPedido);
+
+			//identificar em qual deposito os produtos do pedido estão
+			$modeloProduto = new ProdutoModel();
+			$modeloProduto->darBaixa($idPedido, $idDeposito);
+		}
+
 
 		/**
 		 * Redireciona para a view Painel

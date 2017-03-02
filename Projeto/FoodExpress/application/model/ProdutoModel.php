@@ -15,6 +15,19 @@
 			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];
 		}
 
+		public function darBaixa($idPedido, $idDeposito){
+
+			return $this->update("
+				
+				UPDATE produto SET fkDeposito = '$idDeposito'
+				WHERE codProduto IN (
+					SELECT codProduto
+					FROM item
+					WHERE num_pedido = '$idPedido'
+				)
+			");
+		}
+
 	}
 
 ?>

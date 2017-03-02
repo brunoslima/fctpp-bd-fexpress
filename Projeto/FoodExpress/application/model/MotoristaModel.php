@@ -38,6 +38,11 @@
 			return $this->select("SELECT nome FROM funcionario WHERE idfuncionario IN (SELECT idMotorista FROM motorista WHERE disponivel = 1)");
 		}
 
+		public function getId($nome){
+
+			return $this->select("SELECT idfuncionario as id FROM funcionario WHERE nome = $nome")[0]['id'];
+		}
+
 	}
 
 ?>

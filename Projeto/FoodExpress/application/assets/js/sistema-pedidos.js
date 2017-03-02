@@ -138,4 +138,28 @@ $(document).ready(function(){
 			console.log("pãã pãã pãã pãã hey");
 		});
 	});
+
+	$(document).on("click", ".btn-confirmar-entrada", function(event){
+
+		event.preventDefault();
+
+	 	let dados = {
+	 		pedido: $('[name="listapedidoentrada"]').val(),
+	 		deposito: $('[name="listadepositoentrada"]').val()
+	 	}
+
+	 	$.ajax({
+			url: ( location.href + "/entradaPedido"),
+			type: "post",
+			async: true,
+			data: dados,
+			cache: false
+		})
+		.done(function(data){
+			console.log(data);
+		})
+		.fail(function(){
+			console.log("pãã pãã pãã pãã hey");
+		});
+	});
 });

@@ -14,7 +14,7 @@
 			
 			$result = $this->select("SELECT * FROM  $this->table WHERE login = '$username' AND senha = '$password'");
 			
-			$_SESSION['idGerente'] = $result[0]['idGerente'];
+			if (!empty($result)) $_SESSION['idGerente'] = $result[0]['idGerente'];
 
 			return $result;
 		}
@@ -32,7 +32,13 @@
 		public function retornarNome($username, $password){
 
 			//Criar procedure!!!
-			$idGerente = $this->select("SELECT idGerente FROM gerente WHERE login = '$username' AND senha = '$password'")[0]['idGerente'];
+			$idGerente = $this->select("SELECT idGerente FROM gerente WHERE login = '$username' AND senha = '$password'");
+
+			if (count($idGerente) > 0) {
+				$idGerente = $idGerente[0]['idGerente'];
+			}
+			else return false;
+			
 			$result = $this->select("SELECT nome FROM funcionario funcionario WHERE funcionario.idfuncionario = '$idGerente'")[0]['nome'];
 
 			return $result;

@@ -26,5 +26,10 @@
 
 			return $this->select("SELECT placa, capacidade FROM veiculo WHERE disponivel = 1");
 		}
+
+		public function getId($placa){
+
+			return $this->select("SELECT idVeiculo as id FROM veiculo WHERE placa = '$placa'")[0]['id'];
+		}
 	}
 ?>
