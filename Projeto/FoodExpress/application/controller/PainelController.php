@@ -297,5 +297,44 @@
 			//echo $data;
 			echo json_encode($data);
 		}
+
+		public function recuperarFuncionario(){
+
+			$modeloFuncionario = new FuncionarioModel();
+			$data['func'] = $modeloFuncionario->getFuncionario($_POST['id']['id']);
+
+			if ($_POST['id']['cargo'] == "Auxiliar de Limpeza") {
+
+				$modelo = new AuxiliarLimpezaModel();
+				$data['outro'] = $modelo->getAuxiliar($_POST['id']['id']);
+			}
+			else if($_POST['id']['cargo'] == "Gerência") {
+				$modelo = new GerenteModel();
+				$data['outro'] = $modelo->getGerente($_POST['id']['id']);
+			}
+			else if ($_POST['id']['cargo'] == "Motorista") {
+				$modelo = new MotoristaModel();
+				$data['outro'] = $modelo->getMotorista($_POST['id']['id']);
+			}
+			else{
+				//segurança
+				$modelo = new SegurancaModel();
+				$data['outro'] = $modelo->getSeguranca($_POST['id']['id']);
+			}
+
+			echo json_encode($data);
+		}
 		
+		public function recuperarEmpresa(){
+
+			$cnpj = $_POST['id'];
+
+			$modeloEmpresa = new EmpresaModel();
+			$data['empresa'] = $modeloEmpresa->getEmpresa($cnpj);
+
+			$modeloEndereco = new EnderecoModel();
+			$data['endereco'] = $modeloEndereco->getEndereco($data['empresa']['fkEndereco']);
+
+			echo json_encode($data);
+		}
 	}

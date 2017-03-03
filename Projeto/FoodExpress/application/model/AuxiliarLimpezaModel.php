@@ -14,5 +14,7 @@
 			$this->insert("INSERT INTO `$this->table` (idAuxiliarLimpeza, setor) VALUES ('$primaryKey', '$setor')");
 		}
 
-
+		public function getAuxiliar($id){
+			return $this->select("SELECT * FROM auxiliarlimpeza WHERE idAuxiliarLimpeza = $id")[0];
+		}
 	}

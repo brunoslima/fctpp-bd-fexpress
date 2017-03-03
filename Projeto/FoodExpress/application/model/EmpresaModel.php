@@ -59,6 +59,11 @@
 
 			return $this->select("SELECT logradouro, numero, bairro");
 		}
+
+		public function getEmpresa($id){
+
+			return $this->select("SELECT * FROM empresa WHERE cnpj = $id")[0];
+		}
 	}
 
 ?>

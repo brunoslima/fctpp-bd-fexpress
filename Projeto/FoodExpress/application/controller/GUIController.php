@@ -86,7 +86,7 @@
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['cnpj']}</td><td>{$value['nome']}</td><td>{$value['proprietario']}</td></tr>";
+ 				$html .= "<tr style='cursor:pointer' class='panel-empresa' data-cnpj='{$value["cnpj"]}'><td>{$value['cnpj']}</td><td>{$value['nome']}</td><td>{$value['proprietario']}</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
@@ -375,7 +375,7 @@
 
  				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
  				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 				$html .= "<tr style='cursor:pointer' class='panel-func' data-type='{$cargo}' data-id='{$value["idfuncionario"]}'><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$cargo = "Gerência";
@@ -383,7 +383,7 @@
  				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
  				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
  				if($value['nome'] != "Administrador") {
- 					$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 					$html .= "<tr style='cursor:pointer' class='panel-func' data-type='{$cargo}' data-id='{$value["idfuncionario"]}'><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  				}
  					
  			}
@@ -392,15 +392,16 @@
  			foreach ($result['motorista'] as $value) {
  				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
  				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 				$html .= "<tr style='cursor:pointer' class='panel-func' data-type='{$cargo}' data-id='{$value["idfuncionario"]}'><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
 
  			$cargo = "Segurança";
  			foreach ($result['seguranca'] as $value) {
  				$dn = date_format(date_create($value['dataNascimento']),"d/m/Y");
  				$dc = date_format(date_create($value['dataContratacao']),"d/m/Y");
- 				$html .= "<tr><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
+ 				$html .= "<tr style='cursor:pointer' class='panel-func' data-type='{$cargo}' data-id='{$value["idfuncionario"]}'><td>{$value['nome']}</td><td>R$ ".number_format($value['salario'], 2,",",'')."</td><td>{$cargo}</td><td>{$dn}</td><td>{$dc}</td></tr>";
  			}
+
 
  			$html .= "</tbody></table>";
  			echo $html;

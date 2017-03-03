@@ -107,7 +107,7 @@
 			<li value="viagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens
 				<ul>
 					<li value="novaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Nova Viagem</li>
-					<li value="entradaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Finalzar Viagem</li>
+					<li value="entradaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Finalizar Viagem</li>
 					<li value="listarviagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Listar Viagens</li>
 				</ul>
 			</li>

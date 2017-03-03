@@ -36,4 +36,8 @@
 			return $this->select("SELECT idGerente FROM `$this->tabela`, gerente WHERE (idfuncionario.`$this->tabela` = idGerente and '$nome' = nome.`$this->tabela`)");
 		}
 
+		public function getFuncionario($id){
+			return $this->select("SELECT * FROM funcionario WHERE idfuncionario = $id")[0];
+		}
+
 	}

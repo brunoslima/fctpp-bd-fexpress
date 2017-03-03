@@ -13,6 +13,19 @@
 			$resultSelect = $this->select("SELECT max(idEndereco) FROM $this->table");
 			return $resultSelect[0]['max(idEndereco)'];
 		}
+
+		public function getEndereco($id){
+
+			return $this->select("
+				SELECT endereco.logradouro as logradouro, numero, bairro, complemento, cidade.nome as nomeCidade, estados.nome as nomeEstado
+				FROM endereco
+				INNER JOIN cidade
+				ON fkCidade = idCidade
+				INNER JOIN estados
+				ON cidade.idEstado = estados.id
+				WHERE idEndereco = $id
+			")[0];
+		}
 	}
 
 ?>

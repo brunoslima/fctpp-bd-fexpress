@@ -64,6 +64,11 @@
 			$this->update("UPDATE motorista SET disponivel = 1 WHERE idMotorista = $idMotorista");
 		}
 
+		public function getMotorista($id){
+
+			return $this->select("SELECT * FROM motorista WHERE idMotorista = $id")[0];
+		}
+
 	}
 
 ?>
