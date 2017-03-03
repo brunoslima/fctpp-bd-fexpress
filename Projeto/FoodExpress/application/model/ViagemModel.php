@@ -30,5 +30,10 @@
 
 			return $this->select("SELECT idViagem, descricao, fkVeiculo, fkGerente, status, dataInicio, dataChegada FROM `$this->table` WHERE '$idMotorista' = fkMotorista");
 		}
+
+		public function getViagem($id){
+
+			return $this->select("SELECT * FROM viagem WHERE idViagem = $id")[0];
+		}
 	}
 ?>

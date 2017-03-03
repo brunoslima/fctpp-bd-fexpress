@@ -55,6 +55,21 @@
 				}
 
 			}
+
+			public function getEmpresaEndereco($id){
+
+				return $this->select("
+					SELECT empresa.nome as empresa, logradouro, numero, bairro, complemento, cidade.nome as cidade, estados.nome as estado
+					FROM empresa 
+					INNER JOIN endereco
+					ON fkEndereco = idEndereco
+					INNER JOIN cidade
+					ON fkCidade = idCidade
+					INNER JOIN estados
+					ON idEstado = estados.id
+					WHERE cnpj IN (SELECT fkEmpresa FROM encomenda WHERE fkViagem = $id)
+				");
+			}
 		}	
 
 ?>

@@ -31,7 +31,17 @@
 		<div class="b">
 			<div class="close">X</div>
 			
-			<button class="btn-salvar-alteracoes">Salvar</button>
+			<!--<div class="desc-viagem">
+				<h1>Descrição Viagem</h1><br>
+				<p>Código da Viagem: 001</p>
+				<p>Veículo: CVX-9988</p>
+				<p>Motorista: Luiz</p>
+				<p>Gerente Responsável: Rafael Santos</p>
+				<p>Data de partida: 02/03/14</p>
+				<p>Data de chegada: 02/03/14</p>
+			</div>
+
+			<button class="btn-salvar-alteracoes">Salvar</button>-->
 		</div>
 	</div>
 	<header>

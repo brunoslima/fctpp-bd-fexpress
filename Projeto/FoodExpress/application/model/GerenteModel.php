@@ -43,5 +43,10 @@
 
 			return $result;
 		}
+
+		public function getNome($id){
+
+			return $this->select("SELECT nome FROM funcionario WHERE idfuncionario = $id")[0]['nome'];
+		}
 	
 	}

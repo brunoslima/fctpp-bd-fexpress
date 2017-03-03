@@ -32,5 +32,9 @@
 
 			return $this->select("SELECT idVeiculo as id FROM veiculo WHERE placa = '$placa'")[0]['id'];
 		}
+
+		public function getPlaca($id){
+			return $this->select("SELECT placa FROM veiculo WHERE idVeiculo = $id");
+		}
 	}
 ?>

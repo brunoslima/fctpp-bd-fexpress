@@ -47,6 +47,10 @@
 			return $this->select("SELECT idfuncionario as id FROM funcionario WHERE nome = '$nome'")[0]['id'];
 		}
 
+		public function getNome($idMotorista){
+			return $this->select("SELECT nome FROM funcionario WHERE funcionario.idfuncionario = $idMotorista")[0]['nome'];
+		}
+
 	}
 
 ?>

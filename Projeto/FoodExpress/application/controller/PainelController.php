@@ -234,5 +234,32 @@
 
 			session_destroy();
 		}
+
+		//////////////////////////////////////
+
+		public function recuperarViagem(){
+
+			$modeloViagem = new ViagemModel();
+			$result = $modeloViagem->getViagem($_POST['id']);
+
+			$data['descricao'] = $result['descricao'];
+			$data['partida'] = date_format(date_create($result['dataInicio']),"d/m/Y");
+			$data['chegada'] = date_format(date_create($result['dataChegada']),"d/m/Y");
+
+			$modeloGerente = new GerenteModel();
+			$data['gerente'] = $modeloGerente->getNome($result['fkGerente']);
+
+			$modeloMotorista = new MotoristaModel();
+			$data['motorista'] = $modeloMotorista->getNome($result['fkMotorista']);
+			
+			$modeloVeiculo = new VeiculoModel();
+			$data['veiculo'] = $modeloVeiculo->getPlaca($result['fkVeiculo']);
+
+			$modeloEncomenda = new EncomendaModel();
+			$data['dados'] = $modeloEncomenda->getEmpresaEndereco($_POST['id']);
+
+			//echo $data;
+			echo json_encode($data);
+		}
 		
 	}

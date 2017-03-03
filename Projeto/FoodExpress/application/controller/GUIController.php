@@ -710,15 +710,12 @@
 					<th>Status</th>
 					<th>Data Inicio</th>
 					<th>Data Chegada</th>
-
-
 				</thead>
 				<tbody>
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkMotorista']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
-
+ 				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkMotorista']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
