@@ -59,5 +59,16 @@
 
 .largura {
 	display: block;
-	width: 320px;
+	width: 300px;
+}
+
+.b p {
+	width: 300px;
+}
+
+#map{
+	position: absolute;
+	top: 30px; left: 350px;
+	height: 570px;
+	width: 440px;
 }

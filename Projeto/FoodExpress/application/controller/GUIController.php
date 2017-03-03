@@ -174,7 +174,7 @@
 				<thead>
 					<th>Código</th>
 					<th>Data de realização</th>
-					<th>Status</th>
+					<th>Situação</th>
 				</thead>
 				<tbody>
 			";
@@ -182,7 +182,9 @@
  			foreach ($result as $value) {
  				$dn = date_format(date_create($value['data']),"d/m/Y");
 
- 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$dn}</td><td>{$value['status']}</td></tr>";
+ 				$status = ($value['status'] == 1) ? "Concluída" : "Solicitada";
+
+ 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$dn}</td><td>".$status."</td></tr>";
 
  			}
 
@@ -447,7 +449,10 @@
  			foreach ($result as $value) {
  				$dv = date_format(date_create($value['dataEmissao']),"d/m/Y");
  				$de = date_format(date_create($value['dataVencimento']),"d/m/Y");
- 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>{$value['status']}</td><td>{$value['fkGerente']}</td></tr>";
+
+ 				$status = ($value['status'] == 0) ? "Não pago" : "Pago";
+
+ 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>".$status."</td><td>{$value['fkGerente']}</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
@@ -561,8 +566,12 @@
 				<tbody>
 			";
 
+
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idPedido']}</td><td>{$value['dataPedido']}</td><td>{$value['status']}</td><td>{$value['fkPagamento']}</td><td>{$value['fkGerente']}</td></tr>";
+
+ 				$status = ($value['status'] == 0) ? "Solicitado" : "Concluído";
+
+ 				$html .= "<tr><td>{$value['idPedido']}</td><td>{$value['dataPedido']}</td><td>".$status."</td><td>{$value['fkPagamento']}</td><td>{$value['fkGerente']}</td></tr>";
 
  			}
 
@@ -707,15 +716,21 @@
 					<th>Veículo</th>
 					<th>Motorista</th>
 					<th>Gerente</th>
-					<th>Status</th>
+					<th>Situação</th>
 					<th>Data Inicio</th>
 					<th>Data Chegada</th>
+
+
 				</thead>
 				<tbody>
 			";
 
  			foreach ($result as $value) {
+
+ 				$status = ($value['status'] == 0) ? "Concluída" : "Em andamento";
+
  				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkMotorista']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+
  			}
 
  			$html .= "</tbody></table>";
@@ -738,17 +753,19 @@
 					<th>Descrição</th>
 					<th>Veículo</th>
 					<th>Gerente</th>
-					<th>Status</th>
+					<th>Situação</th>
 					<th>Data Inicio</th>
 					<th>Data Chegada</th>
-
 
 				</thead>
 				<tbody>
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+
+ 				$status = ($value['status'] == 0) ? "Concluída" : "Em andamento";
+
+ 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkGerente']}</td><td>".$status."</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
 
  			}
 
@@ -791,6 +808,7 @@
 
 			$status = "";
  			foreach ($result as $value) {
+
  				$status = ($value['disponivel'] == 1 ? "Disponível" : "Ocupado");
  				$html .= "<tr><td>{$value['idVeiculo']}</td><td>{$value['placa']}</td><td>{$value['ano']}</td><td>{$value['modelo']}</td><td>{$value['capacidade']}</td><td>{$status}</td></tr>";
 

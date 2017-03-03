@@ -5,7 +5,8 @@
 	<meta charset="utf-8"/>
 	
 	<title>FoodExpress</title>
-
+	<!--&callback=inicializarMapa-->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXt4eQQuIrffLkbrjcTcxE4E46RO7Qycs"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
 	
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
