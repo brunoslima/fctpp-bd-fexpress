@@ -11,7 +11,10 @@
 
 			$result = $this->select("SELECT * FROM  $this->table WHERE chaveAcesso = '$username' AND senha = '$password'");
 			
-			if(!empty($result)) $_SESSION['idMotorista'] = $result[0]['idMotorista'];
+			if(!empty($result)) {
+				$_SESSION['idMotorista'] = $result[0]['idMotorista'];
+				$_SESSION['nomeMotorista'] = $this->getNome($result[0]['idMotorista']);
+			}
 
 			return $result;
 
@@ -49,6 +52,16 @@
 
 		public function getNome($idMotorista){
 			return $this->select("SELECT nome FROM funcionario WHERE funcionario.idfuncionario = $idMotorista")[0]['nome'];
+		}
+
+		public function tornarIndisponivel($idMotorista){
+
+			$this->update("UPDATE motorista SET disponivel = 0 WHERE idMotorista = $idMotorista");
+		}
+
+		public function tornarDisponivel($idMotorista){
+
+			$this->update("UPDATE motorista SET disponivel = 1 WHERE idMotorista = $idMotorista");
 		}
 
 	}

@@ -29,5 +29,10 @@
 
 			$this->update("UPDATE pedido SET status = 1 WHERE idPedido = $id");
 		}
+
+		public function getFkPagamento($idPedido){
+
+			return $this->select("SELECT fkPagamento FROM `$this->table` WHERE idPedido = $idPedido")[0]['fkPagamento'];
+		}
 	}
 ?>

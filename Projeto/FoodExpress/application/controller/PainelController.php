@@ -174,7 +174,7 @@
 			$modelVeiculo->add();
 		}
 
-		public function finalizarViagem(){
+		public function finalizarViagem(){ //Nova viagem
 
 			$listaEncomendas = $_POST['lista'];
 			$motorista = $_POST['motorista'];
@@ -187,9 +187,11 @@
 
 			$modeloMotorista = new MotoristaModel();
 			$idMotorista = $modeloMotorista->getId($motorista);
+			$modeloMotorista->tornarIndisponivel($idMotorista);
 
 			$modeloVeiculo = new VeiculoModel();
 			$idVeiculo = $modeloVeiculo->getId($veiculo);
+			$modeloVeiculo->tornarIndisponivel($idVeiculo);
 
 			$modeloEmpresa = new EmpresaModel();
 			$cnpj = $modeloEmpresa->getId($empresa);
@@ -204,6 +206,16 @@
 
 		}
 
+		public function entradaEncomenda(){
+
+			$idPagamento = $_POST['pagamento'];
+
+			//marcar o status do pagamento da encomenda como pago
+			$modeloPagamento = new PagamentoModel();
+			$modeloPagamento->tornarPago($idPagamento);
+
+		}
+
 		public function entradaPedido(){
 
 			$idPedido = $_POST['pedido'];
@@ -212,10 +224,34 @@
 			//marcar o status do pedido
 			$modeloPedido = new PedidoModel();
 			$modeloPedido->darBaixa($idPedido);
+			$fkPagamento = $modeloPedido->getFkPagamento($idPedido);
+
+			//marcar pagamento do pedido como pago
+			$modeloPagamento = new PagamentoModel();
+			$modeloPagamento->tornarPago($fkPagamento);
 
 			//identificar em qual deposito os produtos do pedido estão
 			$modeloProduto = new ProdutoModel();
 			$modeloProduto->darBaixa($idPedido, $idDeposito);
+		}
+
+		public function entradaViagem(){
+
+			$idViagem = $_POST['viagem'];
+
+			//marcar o status da viagem
+			$modeloViagem = new ViagemModel();
+			$modeloViagem->darBaixa($idViagem);
+
+			$idVeiculo = $modeloViagem->getIdVeiculo($idViagem);
+			$idMotorista = $modeloViagem->getIdMotorista($idViagem);
+
+			$modeloVeiculo = new VeiculoModel();
+			$modeloVeiculo->tornarDisponivel($idVeiculo);
+
+			$modeloMotorista = new MotoristaModel();
+			$modeloMotorista->tornarDisponivel($idMotorista);
+
 		}
 
 

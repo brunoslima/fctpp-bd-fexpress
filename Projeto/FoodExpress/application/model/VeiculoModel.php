@@ -34,7 +34,17 @@
 		}
 
 		public function getPlaca($id){
-			return $this->select("SELECT placa FROM veiculo WHERE idVeiculo = $id");
+			return $this->select("SELECT placa FROM veiculo WHERE idVeiculo = $id")[0]['placa'];
+		}
+
+		public function tornarIndisponivel($idVeiculo){
+
+			$this->update("UPDATE veiculo SET disponivel = 0 WHERE idVeiculo = $idVeiculo");
+		}
+
+		public function tornarDisponivel($idVeiculo){
+
+			$this->update("UPDATE veiculo SET disponivel = 1 WHERE idVeiculo = $idVeiculo");
 		}
 	}
 ?>

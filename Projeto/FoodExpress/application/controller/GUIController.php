@@ -164,10 +164,72 @@
   			echo $valorProduto;
   		}
 
+		public function finalizarencomenda(){
+
+ 			$modeloPagamento = new PagamentoModel();
+ 			$resultSelect = $modeloPagamento->listarEncomendasNaoPagas();
+ 			
+ 			$listaEncomendas = "";
+ 			for($i = 0; $i < count($resultSelect); $i++){
+
+				$listaEncomendas .= '<option value="'.$resultSelect[$i]['idPagamento'].'"> Nº '.$resultSelect[$i]['idPagamento']. " Nº Boleto ".$resultSelect[$i]['numeroBoleto']." - ".date_format(date_create($resultSelect[$i]['dataVencimento']),"d/m/Y").'</option>';
+			}
+
+ 			$html = '<h1>Registrar pagamento de encomendas</h1>
+			<form method="post" action="">
+				<label>Esta seção refere-se ao registro de pagamento de encomendas.</label><br>
+				<br><br>
+				<label>Selecione a encomenda</label><br>
+				<select name="listaencomendaentrada">
+					'.$listaEncomendas.'
+				</select>
+				<br>
+				<button class="btn-confirmar-entradaEncomenda">Confirmar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
  		public function verencomendas(){
 
  			$model = new EncomendaModel();
- 			$result = $model->listar();
+ 			$result = $model->listarTodos();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Código</th>
+					<th>Data de realização</th>
+					<th>Empresa Requisitante</th>
+					<th>Situação</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$dn = date_format(date_create($value['data']),"d/m/Y");
+
+ 				$status = ($value['status'] == 1) ? "Concluída" : "Solicitada";
+
+ 				$modeloEmpresa = new EmpresaModel();
+ 				$nomeEmpresa = $modeloEmpresa->getNome($value['fkEmpresa']);
+
+ 				$html .= "<tr><td>{$value['idEncomenda']}</td><td>{$dn}</td><td>".$nomeEmpresa."</td><td>".$status."</td></tr>";
+
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
+ 		}
+
+ 		 public function verEncomendasDaEmpresa(){
+
+ 		 	session_start();
+ 		 	$modeloEmpresa = new EmpresaModel();
+ 		 	$cnpj = $modeloEmpresa->getId($_SESSION['nomeEmpresa']);
+
+ 			$model = new EncomendaModel();
+ 			$result = $model->listarEncomendasDaEmpresa($cnpj);
 
  			$html = "
  			<table>
@@ -426,10 +488,50 @@
  			echo $html;
  		}
 
- 		public function mostrarpagamentos(){
+ 		public function mostrarpagamentosencomendas(){
 
  			$modeloPagamento = new PagamentoModel();
- 			$result = $modeloPagamento->listarTodos();
+ 			$result = $modeloPagamento->listarPagamentoEncomendas();
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Codigo</th>
+					<th>Numero boleto</th>
+					<th>Descrição</th>
+					<th>Valor</th>
+					<th>Data vencimento</th>
+					<th>Data emissão</th>
+					<th>Situação</th>
+					<th>Empresa</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$dv = date_format(date_create($value['dataEmissao']),"d/m/Y");
+ 				$de = date_format(date_create($value['dataVencimento']),"d/m/Y");
+
+ 				$status = ($value['status'] == 0) ? "Não pago" : "Pago";
+
+ 				$modeloEncomenda = new EncomendaModel();
+ 				$fkEmpresa = $modeloEncomenda->getEmpresaPagamento($value['idPagamento']);
+
+ 				$modeloEmpresa = new EmpresaModel();
+				$nomeEmpresa = $modeloEmpresa->getNome($fkEmpresa);
+
+ 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>".$status."</td><td>".$nomeEmpresa."</td></tr>";
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
+
+ 		}
+
+ 		public function mostrarpagamentospedidos(){
+
+ 			$modeloPagamento = new PagamentoModel();
+ 			$result = $modeloPagamento->listarPagamentoPedidos();
 
  			$html = "
  			<table>
@@ -452,7 +554,47 @@
 
  				$status = ($value['status'] == 0) ? "Não pago" : "Pago";
 
- 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>".$status."</td><td>{$value['fkGerente']}</td></tr>";
+ 				$modeloGerente = new GerenteModel();
+ 				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
+
+ 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>".$status."</td><td>".$nomeGerente."</td></tr>";
+ 			}
+
+ 			$html .= "</tbody></table>";
+ 			echo $html;
+
+ 		}
+
+ 		public function mostrarpagamentosempresa(){
+
+ 			session_start();
+ 		 	$modeloEmpresa = new EmpresaModel();
+ 		 	$cnpj = $modeloEmpresa->getId($_SESSION['nomeEmpresa']);
+
+ 			$modeloPagamento = new PagamentoModel();
+ 			$result = $modeloPagamento->listarPagamentosDeUmaEmpresa($cnpj);
+
+ 			$html = "
+ 			<table>
+				<thead>
+					<th>Codigo</th>
+					<th>Numero boleto</th>
+					<th>Descrição</th>
+					<th>Valor</th>
+					<th>Data vencimento</th>
+					<th>Data emissão</th>
+					<th>Situação</th>
+				</thead>
+				<tbody>
+			";
+
+ 			foreach ($result as $value) {
+ 				$dv = date_format(date_create($value['dataEmissao']),"d/m/Y");
+ 				$de = date_format(date_create($value['dataVencimento']),"d/m/Y");
+
+ 				$status = ($value['status'] == 0) ? "Não pago" : "Pago";
+
+ 				$html .= "<tr><td>{$value['idPagamento']}</td><td>{$value['numeroBoleto']}</td><td>{$value['descricao']}</td><td>R$ ".number_format($value['valor'], 2,",",'')."</td><td>{$dv}</td><td>{$de}</td><td>".$status."</td></tr>";
  			}
 
  			$html .= "</tbody></table>";
@@ -571,7 +713,10 @@
 
  				$status = ($value['status'] == 0) ? "Solicitado" : "Concluído";
 
- 				$html .= "<tr><td>{$value['idPedido']}</td><td>{$value['dataPedido']}</td><td>".$status."</td><td>{$value['fkPagamento']}</td><td>{$value['fkGerente']}</td></tr>";
+ 				$modeloGerente = new GerenteModel();
+ 				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
+
+ 				$html .= "<tr><td>{$value['idPedido']}</td><td>{$value['dataPedido']}</td><td>".$status."</td><td>{$value['fkPagamento']}</td><td>".$nomeGerente."</td></tr>";
 
  			}
 
@@ -729,7 +874,16 @@
 
  				$status = ($value['status'] == 0) ? "Concluída" : "Em andamento";
 
- 				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkMotorista']}</td><td>{$value['fkGerente']}</td><td>{$value['status']}</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+ 				$modeloGerente = new GerenteModel();
+ 				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
+
+ 				$modeloMotorista = new MotoristaModel();
+ 				$nomeMotorista = $modeloMotorista->getNome($value['fkMotorista']);
+
+ 				$modeloVeiculo = new VeiculoModel();
+ 				$placaVeiculo = $modeloVeiculo->getPlaca($value['fkVeiculo']);
+
+ 				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>".$placaVeiculo."</td><td>".$nomeMotorista."</td><td>".$nomeGerente."</td><td>".$status."</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
 
  			}
 
@@ -765,7 +919,13 @@
 
  				$status = ($value['status'] == 0) ? "Concluída" : "Em andamento";
 
- 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>{$value['fkVeiculo']}</td><td>{$value['fkGerente']}</td><td>".$status."</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+ 				$modeloGerente = new GerenteModel();
+ 				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
+				
+				$modeloVeiculo = new VeiculoModel();
+ 				$placaVeiculo = $modeloVeiculo->getPlaca($value['fkVeiculo']);
+
+ 				$html .= "<tr><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>".$placaVeiculo."</td><td>".$nomeGerente."</td><td>".$status."</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
 
  			}
 
@@ -865,6 +1025,32 @@
 					'.$listaDepositos.'
 				</select>
 				<button class="btn-confirmar-entrada">Confirmar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
+ 		public function entradaviagem(){
+
+ 			$modeloviagem = new ViagemModel();
+ 			$resultSelect = $modeloviagem->listarViagensNaoConcluidas();
+ 			
+ 			$listaViagens = "";
+ 			for($i = 0; $i < count($resultSelect); $i++){
+
+					$listaViagens .= '<option value="'.$resultSelect[$i]['idViagem'].'"> Nº '.$resultSelect[$i]['idViagem']." - ".$resultSelect[$i]['descricao']." - ".date_format(date_create($resultSelect[$i]['dataChegada']),"d/m/Y").'</option>';
+			}
+
+ 			$html = '<h1>Registrar Viagens finalizadas</h1>
+			<form method="post" action="">
+				<label>Esta seção refere-se ao registro de finalização de viagens realizadas.</label><br>
+				<br><br>
+				<label>Selecione a viagem</label><br>
+				<select name="listaviagementrada">
+					'.$listaViagens.'
+				</select>
+				<br>
+				<button class="btn-confirmar-entradaViagem">Confirmar</button>
 			</form>';
 
  			echo $html;

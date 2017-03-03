@@ -72,4 +72,28 @@ $(document).ready(function(){
 	});
 
 
+	$(document).on("click", ".btn-confirmar-entradaViagem", function(event){
+
+		event.preventDefault();
+
+	 	let dados = {
+	 		viagem: $('[name="listaviagementrada"]').val(),
+	 	}
+
+	 	$.ajax({
+			url: ( location.href + "/entradaViagem"),
+			type: "post",
+			async: true,
+			data: dados,
+			cache: false
+		})
+		.done(function(data){
+			console.log(data);
+		})
+		.fail(function(){
+			console.log("pãã pãã pãã pãã hey");
+		});
+	});
+
+
 });

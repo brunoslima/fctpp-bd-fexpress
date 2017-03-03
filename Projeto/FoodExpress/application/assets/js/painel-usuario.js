@@ -80,6 +80,16 @@ $(document).ready(function(){
 				return;
 				break;
 
+			case "homeEmpresa":
+				window.location.assign("http://localhost:"+window.location.port+"/FoodExpress/painelEmpresa");
+				return;
+				break;
+				
+			case "homeMotorista":
+				window.location.assign("http://localhost:"+window.location.port+"/FoodExpress/painelMotorista");
+				return;
+				break;	
+
 			case "novaempresa":
 				url = "/gui/novaempresa";
 				break;
@@ -93,8 +103,16 @@ $(document).ready(function(){
 				itensEncomenda = [];
 				break;
 
+			case "finalizarencomenda":
+				url = "/gui/finalizarencomenda";
+				break;
+
 			case "mostrarencomenda":
 				url = "/gui/verencomendas";
+				break;
+
+			case "mostrarencomendaempresa":
+				url = "/gui/verEncomendasDaEmpresa";
 				break;
 
 			case "novodeposito":
@@ -126,8 +144,16 @@ $(document).ready(function(){
 				itensPedido = [];
 				break;
 
-			case "mostrarpagamento":
-				url = "/gui/mostrarpagamentos";
+			case "mostrarpagamentoencomendas":
+				url = "/gui/mostrarpagamentosencomendas";
+				break;
+
+			case "mostrarpagamentopedidos":
+				url = "/gui/mostrarpagamentospedidos";
+				break;
+
+			case "mostrarpagamentoempresa":
+				url = "/gui/mostrarpagamentosempresa";
 				break;
 
 			case "mostrarpedido":
@@ -156,6 +182,10 @@ $(document).ready(function(){
 
 			case "novaviagem":
 				url = "/gui/novaviagem";
+				break;
+
+			case "entradaviagem":
+				url = "/gui/entradaviagem";
 				break;
 
 			case "listarviagens":

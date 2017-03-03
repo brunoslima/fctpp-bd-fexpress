@@ -50,6 +50,11 @@
 			return $this->select("SELECT cnpj FROM empresa WHERE nome = '$nome'")[0]['cnpj'];
 		}
 
+		public function getNome($cnpj){
+
+			return $this->select("SELECT nome FROM empresa WHERE cnpj = '$cnpj'")[0]['nome'];
+		}
+
 		public function getEndereco(){
 
 			return $this->select("SELECT logradouro, numero, bairro");

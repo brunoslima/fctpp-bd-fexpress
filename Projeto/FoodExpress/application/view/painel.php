@@ -63,6 +63,7 @@
 			</li>
 			<li value="encomendas"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Encomendas
 				<ul>
+					<li value="finalizarencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Finalizar encomenda</li>
 					<li value="mostrarencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver encomendas</li>
 				</ul>
 			</li>
@@ -86,7 +87,8 @@
 			</li>
 			<li value="pagamento"><img class="imgItemMenu" src="<?php echo $assets['images']?>pagamento.png">Pagamentos
 				<ul>
-					<li value="mostrarpagamento"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pagamento</li>
+					<li value="mostrarpagamentopedidos"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pagamento pedidos</li>
+					<li value="mostrarpagamentoencomendas"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pagamento encomendas</li>
 				</ul>
 			</li>
 			<li value="pedidos"><img class="imgItemMenu" src="<?php echo $assets['images']?>pedido.png">Pedidos
@@ -104,7 +106,8 @@
 			</li>
 			<li value="viagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens
 				<ul>
-					<li value="novaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>veiculo.png">Nova Viagem</li>
+					<li value="novaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Nova Viagem</li>
+					<li value="entradaviagem"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Finalzar Viagem</li>
 					<li value="listarviagens"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Listar Viagens</li>
 				</ul>
 			</li>

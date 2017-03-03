@@ -26,5 +26,42 @@
 			return $this->select("SELECT * FROM `$this->table`");
 
 		}
+
+		public function listarEncomendasNaoPagas(){
+
+			return $this->select("SELECT * FROM pagamento WHERE fkGerente is NULL and status = 0");
+		}
+
+		public function listarPagamentoEncomendas(){
+
+			return $this->select("SELECT * FROM pagamento WHERE fkGerente is NULL");
+		}
+
+		public function listarPagamentoPedidos(){
+
+			return $this->select("SELECT * FROM pagamento WHERE fkGerente is NOT NULL");
+		}
+
+		public function listarPagamentosDeUmaEmpresa($cnpj){
+
+			return $this->select("
+					SELECT  pagamento.idPagamento, pagamento.numeroBoleto, pagamento.descricao, 
+							pagamento.valor, pagamento.dataVencimento, pagamento.dataEmissao, 
+							pagamento.status
+					FROM encomenda
+					INNER JOIN empresa
+					ON fkEmpresa = cnpj
+					INNER JOIN pagamento
+					ON pagamento.idPagamento = encomenda.fkPagamento
+					WHERE cnpj = $cnpj
+				");
+		}
+
+		public function tornarPago($fkPagamento){
+
+			$this->update("UPDATE pagamento SET status = 1 WHERE idPagamento = $fkPagamento");
+
+		}
+		
 	}
 ?>

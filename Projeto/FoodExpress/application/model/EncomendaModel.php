@@ -29,6 +29,16 @@
 				return $this->select("SELECT idEncomenda, data, status FROM `$this->table`");
 			}
 
+			public function listarTodos(){
+
+				return $this->select("SELECT * FROM `$this->table`");
+			}
+
+			public function listarEncomendasDaEmpresa($cnpj){
+
+				return $this->select("SELECT idEncomenda, data, status FROM `$this->table` WHERE fkEmpresa = $cnpj");
+			}
+
 			public function listarDescricao($idEmpresa){
 
 				return $this->select("
@@ -70,6 +80,12 @@
 					WHERE cnpj IN (SELECT fkEmpresa FROM encomenda WHERE fkViagem = $id)
 				");
 			}
+
+			public function getEmpresaPagamento($fkPagamento){
+
+				return $this->select("SELECT fkEmpresa FROM encomenda WHERE fkPagamento = $fkPagamento")[0]['fkEmpresa'];
+			}
+
 		}	
 
 ?>

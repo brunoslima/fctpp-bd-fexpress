@@ -33,7 +33,7 @@
 	</header>
 	<div class="conteudo-menu">		
 		<ul>
-			<li value="inicio"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
+			<li value="homeMotorista"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
 			<li value="mostrarviagemmotorista"><img class="imgItemMenu" src="<?php echo $assets['images']?>viagem.png">Viagens</li>
 		</ul>
 	</div>
@@ -43,7 +43,7 @@
 			<br>	
 			<h1>Bem-Vindo ao FoodExpress</h1>
 			<p>A FoodExpress é uma distribuidora de alimentos criada em 2010 que tem como lema "So fast how you want!"</p>
-			<p>Prezado <strong>admin</strong> está conectado como um <strong>motorista</strong> da FoodExpress</p>
+			<p>Prezado <strong><?php echo $_SESSION['nomeMotorista'];?></strong> está conectado como um <strong>motorista</strong> da FoodExpress</p>
 
 		</div>
 	</div>

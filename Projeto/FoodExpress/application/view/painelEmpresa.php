@@ -33,16 +33,16 @@
 	</header>
 	<div class="conteudo-menu">		
 		<ul>
-			<li value="inicio"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
+			<li value="homeEmpresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>home.png">Inicio</li>
 			<li value="encomendas"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Encomendas
 				<ul>
 					<li value="novaencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>encomenda.png">Nova encomenda</li>
-					<li value="mostrarencomenda"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver encomendas</li>
+					<li value="mostrarencomendaempresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver encomendas</li>
 				</ul>
 			</li>
 			<li value="pagamento"><img class="imgItemMenu" src="<?php echo $assets['images']?>pagamento.png">Pagamentos
 				<ul>
-					<li value="mostrarpagamento"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pagamento</li>
+					<li value="mostrarpagamentoempresa"><img class="imgItemMenu" src="<?php echo $assets['images']?>relatorio.png">Ver Pagamento</li>
 				</ul>
 			</li>
 			<li value="produtos"><img class="imgItemMenu" src="<?php echo $assets['images']?>produto.png">Produtos
@@ -58,7 +58,7 @@
 			<br>	
 			<h1>Bem-Vindo ao FoodExpress</h1>
 			<p>A FoodExpress é uma distribuidora de alimentos criada em 2010 que tem como lema "So fast how you want!"</p>
-			<p>Prezado <strong>admin</strong> está conectado como <strong>uma de nossas empresas parceiras</strong></p>
+			<p>Prezado <strong><?php echo $_SESSION['nomeEmpresa'];?></strong> está conectado como <strong>uma de nossas empresas parceiras</strong></p>
 
 		</div>
 	</div>
