@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 02-Mar-2017 às 18:55
+-- Data de Criação: 03-Mar-2017 às 19:16
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `agricultor` (
 --
 
 INSERT INTO `agricultor` (`idAgricultor`) VALUES
+('11705527000138'),
 ('50987685000180');
 
 -- --------------------------------------------------------
@@ -5663,7 +5664,7 @@ CREATE TABLE IF NOT EXISTS `deposito` (
   `descricao` varchar(45) DEFAULT NULL,
   `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`numero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Extraindo dados da tabela `deposito`
@@ -5671,7 +5672,8 @@ CREATE TABLE IF NOT EXISTS `deposito` (
 
 INSERT INTO `deposito` (`numero`, `descricao`, `nome`) VALUES
 (1, 'Suprimentos Alimentares em geral', 'Balcão de Suprimentos Alimentares'),
-(2, 'Bolachas e afins', 'Depósito de Bolachas Industrializadas');
+(2, 'Bolachas e afins', 'Depósito de Bolachas Industrializadas'),
+(3, 'Depósito de alimentos agricolas', 'Setor de Alimentos Naturais/Agricolas');
 
 -- --------------------------------------------------------
 
@@ -5695,6 +5697,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 --
 
 INSERT INTO `empresa` (`cnpj`, `proprietario`, `nome`, `chaveAcesso`, `senha`, `fkEndereco`) VALUES
+('18521555000144', 'Rosa Maria de Souza', 'Supermercado Primavera', 'primavera', '123', 10),
 ('29272762000129', 'Sr. Nagai', 'Supermercado Irmãos Nagai', 'nagai', 'mart', 8),
 ('39599098000180', 'Jose Silva Silvero', 'Mercado Avenda', 'avenda', 'avenda123', 6);
 
@@ -5715,14 +5718,21 @@ CREATE TABLE IF NOT EXISTS `encomenda` (
   KEY `fk_Encomenda_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Encomenda_Viagem1_idx` (`fkViagem`),
   KEY `fk_Encomenda_Empresa1_idx` (`fkEmpresa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Extraindo dados da tabela `encomenda`
 --
 
 INSERT INTO `encomenda` (`idEncomenda`, `data`, `status`, `fkPagamento`, `fkViagem`, `fkEmpresa`) VALUES
-(5, '2017-03-02', 1, 23, 8, '39599098000180');
+(5, '2017-03-02', 1, 23, 8, '39599098000180'),
+(6, '2017-03-03', 1, 24, 10, '29272762000129'),
+(7, '2017-03-03', 1, 27, 11, '18521555000144'),
+(8, '2017-03-03', 1, 28, 12, '29272762000129'),
+(9, '2017-03-03', 1, 29, 12, '29272762000129'),
+(10, '2017-03-03', 1, 30, 13, '29272762000129'),
+(11, '2017-03-03', 0, 33, NULL, '18521555000144'),
+(12, '2017-03-03', 0, 34, NULL, '18521555000144');
 
 -- --------------------------------------------------------
 
@@ -5754,7 +5764,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `fkCidade` int(11) NOT NULL,
   PRIMARY KEY (`idEndereco`),
   KEY `fk_Endereco_Cidade_idx` (`fkCidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `endereco`
@@ -5764,7 +5774,9 @@ INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complem
 (5, 'Rua dos Alfeneiros', 724, 'Vila Sezamo', 'A', 2214),
 (6, 'Rua Albino', 171, 'Inocap', 'A', 5262),
 (7, 'Rua 9 de julho', 122, 'Centro', 'B', 5117),
-(8, 'Av. Padre Jorge Summerer', 64, 'Centro', 'A', 5117);
+(8, 'Av. Padre Jorge Summerer', 64, 'Centro', 'A', 5117),
+(9, 'Rua São Joao', 23, 'Vila Rual Formosa', 'Fundo', 1702),
+(10, 'Rua São Paulo', 73, 'Centro', 'A', 5078);
 
 -- --------------------------------------------------------
 
@@ -5777,7 +5789,7 @@ CREATE TABLE IF NOT EXISTS `especproduto` (
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`idEspecProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Extraindo dados da tabela `especproduto`
@@ -5787,7 +5799,11 @@ INSERT INTO `especproduto` (`idEspecProduto`, `nome`, `descricao`) VALUES
 (11, 'Whey Proten', 'Proteina Pura'),
 (12, 'Bolacha de Maizena', 'Maizena'),
 (13, 'Bolacha de Maizena Diet', 'Maizena Zero Açucar'),
-(14, 'Bolacha de Agua e Sal', 'Bolacha Salgada');
+(14, 'Bolacha de Agua e Sal', 'Bolacha Salgada'),
+(15, 'Queijo Minas Natural', 'Natural'),
+(16, 'Requeijão Natural Pastoso', 'Tipo Natural 1'),
+(17, 'Requeijão Natural Tablete', 'Tipo Natural 2'),
+(18, 'Doce de Leite Natural', 'Natural');
 
 -- --------------------------------------------------------
 
@@ -5878,6 +5894,7 @@ CREATE TABLE IF NOT EXISTS `fornecedor` (
 
 INSERT INTO `fornecedor` (`cnpj`, `nome`, `email`, `codigo`, `area`, `numero`, `fkEndereco`) VALUES
 ('6095295000103', 'Liane Alimentos', 'liane.alimentos@liane.com.br', '55', '18', '32214354', 7),
+('11705527000138', 'Carlos Silva', 'csilva7@gmail.com', '55', '18', '998762204', 9),
 ('50987685000180', 'Carlos Miguel Aidar', 'carlosaidar@gmail.com', '55', '18', '998677775', 5);
 
 -- --------------------------------------------------------
@@ -5959,7 +5976,12 @@ CREATE TABLE IF NOT EXISTS `item` (
 INSERT INTO `item` (`codProduto`, `cnpjFornecedor`, `num_pedido`, `quantidade`, `precoTotal`) VALUES
 (3, '6095295000103', 6, 200, 4.99),
 (4, '6095295000103', 6, 200, 5.99),
-(5, '6095295000103', 6, 300, 3.99);
+(5, '6095295000103', 6, 300, 3.99),
+(6, '50987685000180', 7, 50, 549.9),
+(7, '11705527000138', 8, 200, 4.56),
+(8, '11705527000138', 9, 200, 6.99),
+(9, '11705527000138', 9, 200, 7.99),
+(10, '11705527000138', 10, 200, 5.67);
 
 -- --------------------------------------------------------
 
@@ -6017,15 +6039,26 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
   `fkGerente` int(11) DEFAULT NULL,
   PRIMARY KEY (`idPagamento`),
   KEY `fk_Pagamento_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `pagamento`
 --
 
 INSERT INTO `pagamento` (`idPagamento`, `numeroBoleto`, `descricao`, `valor`, `dataVencimento`, `dataEmissao`, `status`, `fkGerente`) VALUES
-(22, 876403809, 'Abastecimento de Bolachas', 3393, '2017-04-11', '2017-03-02', 0, 1),
-(23, 312744141, 'Abastecimento de Bolacha', 1122.5, '2017-04-11', '2017-03-02', 0, NULL);
+(22, 876403809, 'Abastecimento de Bolachas', 3393, '2017-04-11', '2017-03-02', 1, 1),
+(23, 312744141, 'Abastecimento de Bolacha', 1122.5, '2017-04-11', '2017-03-02', 1, NULL),
+(24, 1019653321, 'Requisição de bolachas Maizena', 536.5, '2017-04-12', '2017-03-03', 1, NULL),
+(25, 1471130372, 'Pedido de suprimentos alimentares Whey Proten', 27495, '2017-04-12', '2017-03-03', 0, 8),
+(26, 637939454, 'Abastecimento de Queijo Natural', 911.9999999999999, '2017-04-12', '2017-03-03', 0, 8),
+(27, 663879395, 'Encomenda Queijo Minas', 114, '2017-04-12', '2017-03-03', 1, NULL),
+(28, 777709961, 'Solicitação de queijo minas', 171, '2017-04-12', '2017-03-03', 1, NULL),
+(29, 836364747, 'Solicitação de suprementos', 3436.875, '2017-04-12', '2017-03-03', 1, NULL),
+(30, 1187072754, 'Requisição de Bolacha', 99.75, '2017-04-12', '2017-03-03', 1, NULL),
+(31, 1613159180, 'Abastecimento de Requeijão Natural', 2996, '2017-04-12', '2017-03-03', 1, 8),
+(32, 150329590, 'Abastecimento de Doce de leite natural', 1134, '2017-04-12', '2017-03-03', 1, 8),
+(33, 1219116211, 'Doce de leite pedido', 141.75, '2017-04-12', '2017-03-03', 0, NULL),
+(34, 949645997, 'Pedido de encomenda requeijão', 199.75, '2017-04-12', '2017-03-03', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -6042,14 +6075,18 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   PRIMARY KEY (`idPedido`),
   KEY `fk_Pedido_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Pedido_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `pedido`
 --
 
 INSERT INTO `pedido` (`idPedido`, `dataPedido`, `status`, `fkPagamento`, `fkGerente`) VALUES
-(6, '2017-03-02', 0, 22, 1);
+(6, '2017-03-02', 1, 22, 1),
+(7, '2017-03-03', 1, 25, 8),
+(8, '2017-03-03', 1, 26, 8),
+(9, '2017-03-03', 1, 31, 8),
+(10, '2017-03-03', 1, 32, 8);
 
 -- --------------------------------------------------------
 
@@ -6068,16 +6105,21 @@ CREATE TABLE IF NOT EXISTS `produto` (
   PRIMARY KEY (`codProduto`),
   KEY `fk_Produto_EspecProduto1_idx` (`fkEspecProduto`),
   KEY `fk_Produto_Deposito1_idx` (`fkDeposito`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `produto`
 --
 
 INSERT INTO `produto` (`codProduto`, `preco`, `dataFabricacao`, `dataVencimento`, `fkEspecProduto`, `fkDeposito`, `quantidadeTotal`) VALUES
-(3, 6.2375, '2017-03-02', '2017-04-01', 12, NULL, 200),
-(4, 7.4875, '2017-03-02', '2017-04-01', 13, NULL, 200),
-(5, 4.9875, '2017-03-02', '2017-04-01', 14, NULL, 300);
+(3, 6.2375, '2017-03-02', '2017-04-01', 12, 2, 200),
+(4, 7.4875, '2017-03-02', '2017-04-01', 13, 2, 200),
+(5, 4.9875, '2017-03-02', '2017-04-01', 14, 2, 300),
+(6, 687.375, '2017-03-03', '2017-04-02', 11, 1, 50),
+(7, 5.7, '2017-03-03', '2017-04-02', 15, 3, 200),
+(8, 8.7375, '2017-03-03', '2017-04-02', 16, 3, 200),
+(9, 9.9875, '2017-03-03', '2017-04-02', 17, 3, 200),
+(10, 7.0875, '2017-03-03', '2017-04-02', 18, 3, 200);
 
 -- --------------------------------------------------------
 
@@ -6100,6 +6142,10 @@ INSERT INTO `produtofornecedor` (`fk_espec_produto`, `fk_cnpj`) VALUES
 (12, '6095295000103'),
 (13, '6095295000103'),
 (14, '6095295000103'),
+(15, '11705527000138'),
+(16, '11705527000138'),
+(17, '11705527000138'),
+(18, '11705527000138'),
 (11, '50987685000180');
 
 -- --------------------------------------------------------
@@ -6136,14 +6182,18 @@ CREATE TABLE IF NOT EXISTS `veiculo` (
   `capacidade` int(11) NOT NULL,
   `disponivel` tinyint(1) NOT NULL,
   PRIMARY KEY (`idVeiculo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `veiculo`
 --
 
 INSERT INTO `veiculo` (`idVeiculo`, `placa`, `ano`, `modelo`, `capacidade`, `disponivel`) VALUES
-(1, 'CVY-5689', '2010', '2011', 45000, 1);
+(1, 'CVY-5689', '2010', '2011', 45000, 1),
+(2, 'YWY-4439', '2012', '2013', 50000, 1),
+(3, 'CPF-1234', '2015', '2016', 30000, 1),
+(4, 'LGT-7542', '2015', '2016', 35000, 1),
+(5, 'RGD-3422', '2016', '2017', 20000, 1);
 
 -- --------------------------------------------------------
 
@@ -6164,14 +6214,18 @@ CREATE TABLE IF NOT EXISTS `viagem` (
   KEY `fk_Viagem_Veiculo1_idx` (`fkVeiculo`),
   KEY `fk_Viagem_Motorista1_idx` (`fkMotorista`),
   KEY `fk_Viagem_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Extraindo dados da tabela `viagem`
 --
 
 INSERT INTO `viagem` (`idViagem`, `descricao`, `fkVeiculo`, `fkMotorista`, `fkGerente`, `status`, `dataInicio`, `dataChegada`) VALUES
-(8, 'Entrega de bolachas no mercado avenda', 1, 9, 8, 1, '2017-03-03', '2017-03-06');
+(8, 'Entrega de bolachas no mercado avenda', 1, 9, 8, 0, '2017-03-03', '2017-03-06'),
+(10, 'Entrega de bolachas de maizena supermercados nagia martinopolis', 2, 10, 8, 0, '2017-03-04', '2017-03-07'),
+(11, 'Viagem entrega de queijo minas para supermercado primavera', 3, 11, 8, 0, '2017-03-04', '2017-03-07'),
+(12, 'Entregas para nagai martinopolis', 1, 9, 8, 0, '2017-03-04', '2017-03-07'),
+(13, 'Entrega Nagai', 1, 9, 8, 0, '2017-03-03', '2017-03-04');
 
 --
 -- Constraints for dumped tables
