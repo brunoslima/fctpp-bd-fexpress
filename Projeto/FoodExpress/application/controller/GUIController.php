@@ -1078,4 +1078,254 @@
  			echo json_encode($html);
  		}
  		
+public function alterarFuncionario(){
+
+ 			$modelo = new FuncionarioModel();
+ 			$result = $modelo->listar();
+
+ 			$select = "";
+ 			$teste = "";
+ 			foreach ($result as $key => $chave) {
+ 				if ($key == "limpeza") $teste = "Auxiliar de Limpeza";
+ 				else if($key == "gerente") $teste = "Gerência";
+ 				else if($key == "motorista") $teste = "Motorista";
+ 				else $teste = "Segurança";
+
+ 				foreach ($chave as $value) {
+
+ 					if ($value['nome'] != "Administrador") $select .= "<option value='{$teste} {$value['idfuncionario']}'>{$value['nome']}</option>";
+ 				}
+ 			}
+
+ 			$html = '<h1>Modificar Funcionário</h1>
+			<form class="editarfuncionario" method="post" action="">
+				<label>Selecione um funcionário:</label><br>
+				<select name="alterarFuncionario">
+					<option value="0"></option>
+					'.$select.'
+				</select>
+				<br><br>
+				<label>Nome</label><br>
+				<input type="text" placeholder="Nome Completo" name="nome"/>
+				<br><br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
+				<br><label>Data de Contratação</label><br><input type="date" name="dataContratacao"/><br><br>
+				<label>Salário</label><br><input type="number" min="0.01" step="0.01" placeholder="Insira o salário" name="salario"/>
+	
+				<button class="btn-alterar-funcionario">Atualizar</button>
+			</form>';
+
+ 			echo $html;
+ 		}
+
+ 		public function modificarEmpresa(){
+
+ 			$modelo = new EmpresaModel();
+ 			$result = $modelo->selectAll();
+ 			$select = "";
+ 			foreach ($result as $value) {
+ 				$select .= "<option value='{$value['cnpj']}'>{$value['nome']}</option>";
+ 			}
+
+ 			$html = '<h1>Modificar Empresa</h1>
+			<form class="modificarempresa" method="post" action="">
+				<label>Selecione uma empresa:</label><br>
+				<select name="modificarempresa">
+					<option value="0"></option>
+					'.$select.'
+				</select>
+			';
+
+			$modelEstado = new EstadoModel();
+ 			$resultSelect = $modelEstado->pesquisa();
+
+ 			$opcoesEstado = '';
+			
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesEstado .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 	
+			
+
+ 			$html .= '
+				<br><br>
+				<label>Informações Empresariais</label><br>
+				<input type="text" placeholder="CNPJ" name="cnpjEmpresa"/><br>
+				<input type="text" placeholder="Nome da empresa" name="nomeEmpresa"/>
+				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/><br>
+				<br><label>Informações de Acesso</label><br>
+				<input type="text" placeholder="Chave de acesso" name="chaveEmpresa"/>
+				<input type="text" placeholder="Senha Antiga" name="senhaEmpresa"/>
+				<input type="text" placeholder="Senha Nova" name="senhaEmpresaNova"/><br>
+				<br>
+				<label>Localização</label><br>
+				<input type="text" name="logradouroEmpresa" placeholder="Logradouro"/>
+				<input type="text" name="numeroEnderecoEmpresa" placeholder="Número"/><br>
+				<input type="text" name="bairroEmpresa" placeholder="Bairro"/>
+				<input type="text" name="complementoEmpresa" placeholder="Complemento"/>
+				<br><br><label>Estado</label><br>
+				<select name="estado">
+					'.$opcoesEstado.'	
+				</select><br>
+				<label>Cidade</label><br>
+				<select name="cidade">
+				</select>
+				<button class="btn-atualizar-empresa">Atualizar</button>
+			</form>';
+
+			echo($html);
+ 		}
+
+ 		public function modificarDeposito(){
+
+ 			$select = '';
+ 			$modelo = new DepositoModel();
+ 			$result = $modelo->listar();
+
+ 			foreach ($result as $value) {
+ 				
+ 				$select .= "<option value='{$value['numero']}'>{$value['numero']} - {$value['nome']}</option>";
+ 			}
+
+ 			$html = '<h1>Modificar Depósito</h1>
+			<form class="modificardeposito" method="post" action="">
+				<label>Selecione um depósito:</label><br>
+				<select name="modificardeposito">
+					<option value="0"></option>
+					'.$select.'
+				</select><br><br>
+				<label>Nome</label><br>
+				<input type="text" placeholder="Nome" name="nomeDepositoModificar"/><br><br>
+				<label>Descrição</label><br>
+				<textarea name="descricaoDepositoModificar" cols="30" rows="20" placeholder="Descrição"></textarea>
+				<button class="btn-modificar-deposito">Atualizar</button>
+			</form>
+			';
+
+			echo($html);
+ 		}
+
+ 		public function modificarFornecedor(){
+
+ 			$modelEstado = new EstadoModel();
+ 			$resultSelect = $modelEstado->pesquisa();
+
+ 			$opcoesEstado = '';
+			
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesEstado .= '<option value="'.$resultSelect[$i]['id'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 	
+
+ 			$modelo = new FornecedorModel();
+ 			$result = $modelo->listarTodos();
+ 			$select = "";
+ 			
+ 			foreach ($result as $key => $chave) {
+ 				foreach ($chave as $value) {
+ 					$select .= "<option value='{$key} {$value['cnpj']}'>{$value['nome']}</option>";
+ 				}
+ 			}
+ 			 
+ 			$html = '<h1>Modificar Fornecedor</h1>
+			<form class="modificarfornecedor" method="post" action="">
+				<label>Selecione um fornecedor:</label><br>
+				<select name="modificarfornecedor">
+					<option value="0"></option>
+					'.$select.'
+				</select><br><br>
+				<label>Nome</label><br>
+				<input type="text" placeholder="Nome" name="nome"/><br><br>
+				<label>E-mail</label><br>
+				<input name="email" placeholder="Insira o e-mail" type="email"><br><br>
+				<label>Informações de Contato</label><br>
+				<br /><label>Código</label><br />
+				<input type="text" name="codigo" placeholder="Código"/><br />
+				<label>Área</label><br />
+				<input type="text" name="area" placeholder="Área"/><br />
+				<label>Número</label><br />
+				<input type="text" name="numero" placeholder="Número"/><br><br>
+				<label>Localização</label><br>
+				<input type="text" name="logradouro" placeholder="Logradouro"/>
+				<input type="text" name="numeroEndereco" placeholder="Número"/><br>
+				<input type="text" name="bairro" placeholder="Bairro"/>
+				<input type="text" name="complemento" placeholder="Complemento"/>
+				<br><br><label>Estado</label><br>
+				<select name="estado">
+					'.$opcoesEstado.'	
+				</select><br>
+				<label>Cidade</label><br>
+				<select name="cidade">
+				</select>
+				<button class="btn-modificar-fornecedor">Atualizar</button>
+			</form>
+			';
+
+			echo $html;
+ 		}
+
+ 		public function modificarProduto(){
+ 			
+ 			$m = new EspecProdutoModel();
+ 			$result = $m->listarTodos();
+
+ 			$select = "";
+ 			foreach ($result as $value) {
+ 				
+ 				$select .= "<option value='{$value['idEspecProduto']}'>{$value['nome']}</option>";
+ 			}
+
+
+ 			$html = '<h1>Modificar Produto</h1>
+			<form class="modificarproduto" method="post" action="">
+				<label>Selecione um produto:</label><br>
+				<select name="modificarproduto">
+					<option value="0"></option>
+					'.$select.'
+				</select><br><br>
+				<label>Nome</label><br>
+				<input type="text" placeholder="Nome" name="nomeProduto"/><br><br>
+				<label>Descrição</label><br>
+				<textarea name="descricaoProduto" cols="30" rows="20" placeholder="Descrição"></textarea><br>
+				
+				<button class="btn-modificar-produto">Atualizar</button>
+			</form>
+			';
+
+			echo($html);
+ 		}
+
+ 		public function modificarVeiculo(){
+
+ 			$select = "";
+ 			$m = new VeiculoModel();
+ 			$result = $m->listarTodos();
+
+ 			foreach ($result as $value) {
+ 				
+ 				$select .= "<option value='{$value['idVeiculo']}'>{$value['placa']}</option>";
+ 			}
+
+ 			$html = '<h1>Modificar Veículo</h1>
+			<form class="modificarveiculo" method="post" action="">
+				<label>Selecione um veículo:</label><br>
+				<select name="modificarveiculo">
+					<option value="0"></option>
+					'.$select.'
+				</select><br><br>
+				<label>Placa</label><br>
+				<input type="text" placeholder="Placa" name="placa"/><br>
+				<label>Ano</label><br>
+				<input type="text" placeholder="Ano" name="ano"/><br>
+				<label>Modelo</label><br>
+				<input type="text" placeholder="Modelo" name="modelo"/><br>
+				<label>Capacidade</label><br>
+				<input type="text" placeholder="Capacidade" name="capacidade"/><br>
+				<button class="btn-modificar-veiculo">Atualizar</button>
+			</form>
+			';
+
+			echo $html;
+ 		}
+ 		
  	}
+
+
+				

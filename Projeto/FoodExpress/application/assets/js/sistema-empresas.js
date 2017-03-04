@@ -62,4 +62,30 @@ $(document).ready(function(){
 			console.log("pãã");
 		});
 	});
+
+	$(document).on("change",'[name="modificarempresa"]', function(){
+		let id = $(this).val();
+		
+		if (id != 0){
+			$(this).attr("disabled", true);
+			recuperarDados(id, "/recuperarEmpresa");
+
+			$(".modificarempresa [name='cnpjEmpresa']").val(dadosObjeto.empresa.cnpj);
+			$(".modificarempresa [name='cnpjEmpresa']").attr("disabled", true);
+			$(".modificarempresa [name='nomeEmpresa']").val(dadosObjeto.empresa.nome);
+			$(".modificarempresa [name='proprietarioEmpresa']").val(dadosObjeto.empresa.proprietario);
+			$(".modificarempresa [name='chaveEmpresa']").val(dadosObjeto.empresa.chaveAcesso);
+			$(".modificarempresa [name='logradouroEmpresa']").val(dadosObjeto.endereco.logradouro);
+			$(".modificarempresa [name='numeroEnderecoEmpresa']").val(parseInt(dadosObjeto.endereco.numero));
+			$(".modificarempresa [name='bairroEmpresa']").val(dadosObjeto.endereco.bairro);
+			
+			$(".modificarempresa [name='estado']").val(dadosObjeto.endereco.idState);
+			
+			recuperarDados(dadosObjeto.endereco.idState, "/recuperarCidades");
+			$(".modificarempresa [name='cidade']").empty();
+			$(".modificarempresa [name='cidade']").append(dadosObjeto['listaCidades']);
+			$(".modificarempresa [name='cidade']").val(dadosObjeto.endereco.idCity);
+			$(".modificarempresa [name='complementoEmpresa']").val(dadosObjeto.endereco.complemento);
+		}
+	});
 });

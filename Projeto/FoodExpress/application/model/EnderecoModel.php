@@ -17,7 +17,7 @@
 		public function getEndereco($id){
 
 			return $this->select("
-				SELECT endereco.logradouro as logradouro, numero, bairro, complemento, cidade.nome as nomeCidade, estados.nome as nomeEstado
+				SELECT endereco.logradouro as logradouro, numero, bairro, complemento, cidade.idCidade as idCity, estados.id as idState, cidade.nome as nomeCidade, estados.nome as nomeEstado
 				FROM endereco
 				INNER JOIN cidade
 				ON fkCidade = idCidade

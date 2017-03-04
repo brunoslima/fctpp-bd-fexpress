@@ -36,6 +36,17 @@
 			");*/
 		}
 
+		//////////////////////////
+		public function getProduto($id){
+			$result = $this->select("SELECT * FROM produto WHERE fkEspecProduto = $id");
+			if (count($result)>0) {
+				return $result[0];
+			}
+			else{
+				return null;
+			}
+		}
+
 	}
 
 ?>

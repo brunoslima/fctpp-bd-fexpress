@@ -337,4 +337,60 @@
 
 			echo json_encode($data);
 		}
+	
+
+		//////////////////////////////////////////////
+		public function recuperarCidades(){
+
+
+ 			$modelCidade = new CidadeModel();
+			$resultSelect = $modelCidade->pesquisa($_POST['id']);
+			$opcoesCidade = '';
+			for($i = 0; $i < count($resultSelect); $i++){
+				$opcoesCidade .= '<option value="'.$resultSelect[$i]['idCidade'].'">'.$resultSelect[$i]['nome'].'</option>';
+			} 
+
+			$data['listaCidades'] = $opcoesCidade;
+			echo json_encode($data);
+ 		}
+
+ 		public function recuperarDeposito(){
+ 			$m = new DepositoModel();
+ 			$data['deposito'] = $m->getDeposito($_POST['id']);
+ 			echo json_encode($data);
+ 		}
+
+ 		public function recuperarFornecedor(){
+
+ 			$m = new FornecedorModel();
+ 			$data['fornecedor'] = $m->getFornecedor($_POST['id']);
+ 			$e = new EnderecoModel();
+ 			$data['endereco'] = $e->getEndereco($data['fornecedor']['fkEndereco']);
+ 			echo json_encode($data);	
+ 		}
+
+ 		public function recuperarProduto(){
+
+ 			$m = new EspecProdutoModel();
+ 			$data['espec'] = $m->getEspecProduto($_POST['id']);
+ 			$n = new ProdutoModel();
+ 			$data['produto'] = $n->getProduto($data['espec']['idEspecProduto']);
+ 			$n = new DepositoModel();
+ 			$result = $n->listar();
+ 			$deposito = "";
+ 			foreach ($result as $value) {
+ 				$deposito .= "<option value='{$value['numero']}'>{$value['numero']} - {$value['nome']}</option>";	
+ 			}
+
+ 			$data['deposito'] = $deposito;
+ 			echo json_encode($data);
+ 		}
+
+ 		public function recuperarVeiculo(){
+
+ 			$v = new VeiculoModel();
+ 			$data['veiculo'] = $v->getVeiculo($_POST['id']); 
+ 			echo json_encode($data);
+ 		}
+
 	}

@@ -196,6 +196,30 @@ $(document).ready(function(){
 				url = "/gui/mostrarviagemmotorista";
 				break;				
 				
+			case "editarfuncionario":
+				url = "/gui/alterarFuncionario";			
+				break;
+
+			case "modificarempresa":
+				url = "/gui/modificarEmpresa";
+				break;
+
+			case "modificardeposito":
+				url = "/gui/modificarDeposito";
+				break;
+				
+			case "modificarfornecedor":
+				url = "/gui/modificarFornecedor";
+				break;
+
+			case "modificarproduto":
+				url = "/gui/modificarProduto";
+				break;
+
+			case "modificarveiculo":
+				url = "/gui/modificarVeiculo";
+				break;
+
 			default:
 
 				return;

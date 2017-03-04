@@ -52,5 +52,10 @@
 			$this->query("call tornarVeiculoDisponivel('$idVeiculo');");
 			//$this->update("UPDATE veiculo SET disponivel = 1 WHERE idVeiculo = $idVeiculo");
 		}
+
+		//////////////
+		public function getVeiculo($id){
+			return $this->select("SELECT * FROM veiculo WHERE idVeiculo = $id")[0];
+		}
 	}
 ?>

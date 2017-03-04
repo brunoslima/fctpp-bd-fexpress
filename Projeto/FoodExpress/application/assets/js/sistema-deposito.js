@@ -27,5 +27,17 @@ $(document).ready(function(){
 		});
 
 	});
+
+	$(document).on("change",'[name="modificardeposito"]', function(){
+		let id = $(this).val();
+		
+		if (id != 0){
+			$(this).attr("disabled", true);
+			recuperarDados(id, "/recuperarDeposito");
+
+			$(".modificardeposito [name='nomeDepositoModificar']").val(dadosObjeto.deposito.nome);
+			$(".modificardeposito [name='descricaoDepositoModificar']").val(dadosObjeto.deposito.descricao);
+		}
+	});  
 	 
 });

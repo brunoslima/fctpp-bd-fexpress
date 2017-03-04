@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	var lista = {};
 	/**
 	 * Associa a função de cadastrar funcionário
 	 * ao respectivo botão
@@ -55,4 +56,101 @@ $(document).ready(function(){
 			console.log("pãã");
 		});
 	 });
+
+	 $(document).on("change",'[name="alterarFuncionario"]', function(){
+		let valor = $(this).val();
+		
+		let conjunto = valor.split(' ');
+		lista.cargo = conjunto[0];
+		if (lista.cargo == "Auxiliar") {
+			lista.id = parseInt(conjunto[3]);
+		}else lista.id = parseInt(conjunto[1]);
+
+		$('.block').remove();
+		if (lista.id != 0){
+			$(this).attr("disabled", true);
+			recuperarDados(lista, "/recuperarFuncionario");
+
+			$('.editarfuncionario [name="nome"]').val(dadosObjeto.func.nome);
+			$('.editarfuncionario [name="dataNascimento"]').val(dadosObjeto.func.dataContratacao);
+			$('.editarfuncionario [name="dataContratacao"]').val(dadosObjeto.func.dataNascimento);
+			$('.editarfuncionario [name="salario"]').val(parseFloat(dadosObjeto.func.salario).toFixed(2));
+			
+
+			let content = '';
+			if(lista.cargo == "Segurança"){
+				content += `<label>Possui porte de arma? </label><br>
+					<select name="porte" >
+						<optgroup>
+							<option value="1">Sim</option>
+							<option value="0">Não</option>
+						</optgroup>
+					</select>`;
+
+				content = `<br><br><div class="block">${content}</div>`;
+
+
+				$('[name="salario"]').after(content);
+				$('.editarfuncionario [name="porte"]').val(dadosObjeto.outro.porteArma);	
+			}
+			else if (lista.cargo == "Gerência"){
+				content += `<label>Informações de Contato e Acesso</label><br><input type="email" name="contato" placeholder="E-mail de Contato" />
+					<input type="email" name="login" placeholder="E-mail de Login" /><br>
+					<input type="password" name="senha" placeholder="Senha Antiga" />
+					<input type="password" name="confirmsenha" placeholder="Senha Nova" />`;
+				content = `<br><br><div class="block">${content}</div>`;
+
+
+				$('[name="salario"]').after(content);
+				$('.editarfuncionario [name="contato"]').val(dadosObjeto.outro.email);	
+				$('.editarfuncionario [name="login"]').val(dadosObjeto.outro.login);	
+
+			}
+			else if (lista.cargo == "Motorista") {
+				content += `<label>Categoria de Habilitação</label><br><select name="categoria">
+						<optgroup>
+							<option value="0">A</option>
+							<option value="1">B</option>
+							<option value="2">C</option>
+							<option value="3">D</option>
+							<option value="4">E</option>
+						</optgroup>
+					</select>
+					<br><br />
+					<label>Informações de Contato</label><br>
+					<br /><label>Código</label><br />
+					<input type="text" name="codigo" placeholder="Código"/><br />
+					<label>Área</label><br />
+					<input type="text" name="area" placeholder="Área"/><br />
+					<label>Número</label><br />
+					<input type="text" name="numero" placeholder="Número"/><br><br>
+					<label>Chave de Acesso e senha para o sistema</label><br>
+					<input type="text" name="chaveMotorista" placeholder="Chave de acesso"/>
+					<input type="text" name="senhaMotorista" placeholder="Senha Antiga"/>
+					<input type="text" name="senhaMotoristaNova" placeholder="Senha Nova"/>`;
+
+					content = `<br><br><div class="block">${content}</div>`;
+
+					$('[name="salario"]').after(content);
+					$('.editarfuncionario [name="categoria"]').val(dadosObjeto.outro.categoriaHabilitacao);
+					$('.editarfuncionario [name="codigo"]').val(dadosObjeto.outro.codigo);
+					$('.editarfuncionario [name="area"]').val(dadosObjeto.outro.area);
+					$('.editarfuncionario [name="numero"]').val(dadosObjeto.outro.numero);
+					$('.editarfuncionario [name="chaveMotorista"]').val(dadosObjeto.outro.chaveAcesso);
+
+			}
+			else{
+
+				content += `<label>Setor</label><br /><input type="text" name="setor" placeholder="Setor" />`;
+				content = `<br><br><div class="block">${content}</div>`;
+
+
+				$('[name="salario"]').after(content);
+				$('.editarfuncionario [name="setor"]').val(dadosObjeto.outro.setor);
+			}
+		}
+	});
+
+	
+
 });

@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+	var listaFornecedor = {};
 	/**
 	 * Associa a função de cadastrar fornecedor
 	 * ao respectivo botão
@@ -42,4 +44,29 @@ $(document).ready(function(){
 			console.log("pãã");
 		});
 	});
+
+	 $(document).on("change",'[name="modificarfornecedor"]', function(){
+		let valor = ($(this).val()).split(" ");
+		listaFornecedor.id=parseInt(valor[1]);
+		let id = listaFornecedor.id;
+		if (id != 0){
+			$(this).attr("disabled", true);
+			recuperarDados(id, "/recuperarFornecedor");
+
+			$(".modificarfornecedor [name='nome']").val(dadosObjeto.fornecedor.nome);
+			$(".modificarfornecedor [name='email']").val(dadosObjeto.fornecedor.email);
+			$(".modificarfornecedor [name='codigo']").val(dadosObjeto.fornecedor.codigo);
+			$(".modificarfornecedor [name='area']").val(dadosObjeto.fornecedor.area);
+			$(".modificarfornecedor [name='numero']").val(dadosObjeto.fornecedor.numero);
+			$(".modificarfornecedor [name='logradouro']").val(dadosObjeto.endereco.logradouro);
+			$(".modificarfornecedor [name='numeroEndereco']").val(dadosObjeto.endereco.numero);
+			$(".modificarfornecedor [name='bairro']").val(dadosObjeto.endereco.bairro);
+			$(".modificarfornecedor [name='complemento']").val(dadosObjeto.endereco.complemento);
+			$(".modificarfornecedor [name='estado']").val(dadosObjeto.endereco.idState);
+			recuperarDados(dadosObjeto.endereco.idState, "/recuperarCidades");
+			$(".modificarfornecedor [name='cidade']").empty();
+			$(".modificarfornecedor [name='cidade']").append(dadosObjeto['listaCidades']);
+			$(".modificarfornecedor [name='cidade']").val(dadosObjeto.endereco.idCity);
+		}
+	}); 
 });

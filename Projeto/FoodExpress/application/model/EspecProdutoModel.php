@@ -55,6 +55,12 @@
 
 			return $this->select("SELECT produto.preco FROM produto, especproduto WHERE produto.fkEspecProduto = especproduto.idEspecProduto and especproduto.nome = '$nome'")[0]['preco'];
 		}
+		
+		///////////////////////
+		public function getEspecProduto($id){
+
+			return $this->select("SELECT * FROM especproduto WHERE idEspecProduto = $id")[0];
+		}
 			
 	}
 

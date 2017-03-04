@@ -29,8 +29,8 @@
 	position: relative;
 	display: block;
 	left: calc(50vw - 400px);
-	top: calc(50vh - 300px);
-	width: 800px; height: 600px;
+	top: calc(50vh - 265px);
+	width: 800px; height: 530px;
 	padding: 15px;
 	background: #fff;
 }
@@ -69,6 +69,6 @@
 #map, #mapLugar{
 	position: absolute;
 	top: 30px; left: 350px;
-	height: 570px;
+	height: 500px;
 	width: 440px;
 }

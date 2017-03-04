@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+	var listaVeiculo = {};
 	/**
 	 * Associa a função de cadastrar veículo
 	 * ao respectivo botão
@@ -29,5 +30,24 @@ $(document).ready(function(){
 		});
 		
 	 });
+
+
+	 $(document).on("change",'[name="modificarveiculo"]', function(){
+
+		listaVeiculo.id = $(this).val();
+		let id = listaVeiculo.id;
+
+		if (id != 0){
+			$(this).attr("disabled", true);
+			recuperarDados(id, "/recuperarVeiculo");
+
+			$(".modificarveiculo [name='placa']").val(dadosObjeto.veiculo.placa);
+			$(".modificarveiculo [name='ano']").val(dadosObjeto.veiculo.ano);
+			$(".modificarveiculo [name='modelo']").val(dadosObjeto.veiculo.modelo);
+			$(".modificarveiculo [name='capacidade']").val(dadosObjeto.veiculo.capacidade);
+
+			
+		}
+	});
 
 });
