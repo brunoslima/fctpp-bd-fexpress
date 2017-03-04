@@ -25,7 +25,8 @@
 
 		public function add($cnpj, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco){
 
-			$this->insert("INSERT INTO `$this->table` (cnpj, proprietario, nome, chaveAcesso, senha, fkEndereco) VALUES ('$cnpj', '$proprietario', '$nome', '$chave', '$senha', '$primaryKeyEndereco')");
+			$this->query("call novaEmpresa('$cnpj', '$proprietario', '$nome', '$chave', '$senha', '$primaryKeyEndereco');");
+			//$this->insert("INSERT INTO `$this->table` (cnpj, proprietario, nome, chaveAcesso, senha, fkEndereco) VALUES ('$cnpj', '$proprietario', '$nome', '$chave', '$senha', '$primaryKeyEndereco')");
 
 		}
 

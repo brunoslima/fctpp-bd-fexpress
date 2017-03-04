@@ -16,7 +16,8 @@
 			$area = $_POST['areaFornecedor'];
 			$numero = $_POST['numeroFornecedor'];
 
-			$resultInsert = $this->insert("INSERT INTO `$this->table` (cnpj, nome, email, codigo, area, numero, fkEndereco) VALUES ('$cnpj', '$nome', '$email', '$codigo', '$area', '$numero', '$primaryKeyEndereco')");
+			$this->query("call novoFornecedor('$cnpj', '$nome', '$email', '$codigo', '$area', '$numero', '$primaryKeyEndereco');");
+			//$resultInsert = $this->insert("INSERT INTO `$this->table` (cnpj, nome, email, codigo, area, numero, fkEndereco) VALUES ('$cnpj', '$nome', '$email', '$codigo', '$area', '$numero', '$primaryKeyEndereco')");
 			return $cnpj;
 		}
 

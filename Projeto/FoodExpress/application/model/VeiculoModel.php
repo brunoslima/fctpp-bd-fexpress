@@ -14,8 +14,12 @@
 			$modelo = $_POST['modeloVeiculo'];
 			$capacidade = $_POST['capacidadeVeiculo'];
 
-			$this->insert("INSERT INTO `$this->table` (placa, ano, modelo, capacidade, disponivel) VALUES ('$placa', '$ano', '$modelo', '$capacidade', true)");
+			$this->query("
+				
+				call novoVeiculo('$placa', '$ano', '$modelo', '$capacidade', true);
 
+			");
+			
 		}
 
 		public function listarTodos(){
@@ -39,12 +43,14 @@
 
 		public function tornarIndisponivel($idVeiculo){
 
-			$this->update("UPDATE veiculo SET disponivel = 0 WHERE idVeiculo = $idVeiculo");
+			$this->query("call tornarVeiculoIndisponivel('$idVeiculo');");
+			//$this->update("UPDATE veiculo SET disponivel = 0 WHERE idVeiculo = $idVeiculo");
 		}
 
 		public function tornarDisponivel($idVeiculo){
 
-			$this->update("UPDATE veiculo SET disponivel = 1 WHERE idVeiculo = $idVeiculo");
+			$this->query("call tornarVeiculoDisponivel('$idVeiculo');");
+			//$this->update("UPDATE veiculo SET disponivel = 1 WHERE idVeiculo = $idVeiculo");
 		}
 	}
 ?>

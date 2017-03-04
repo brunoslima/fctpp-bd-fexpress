@@ -1,0 +1,178 @@
+USE `foodexpress`;
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `atualizaFuncionario`(id int, n varchar(45), s float, d date, e date, idGerente integer)
+begin
+	
+	SET @gerente = idGerente;
+	SET @funcionario= id;
+
+	update funcionario set nome = n, salario = s, dataContratacao = d, dataNascimento = e where idfuncionario = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tornarMotoristaIndisponivel`(id integer)
+begin
+	
+	UPDATE motorista SET disponivel = 0 WHERE idMotorista = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tornarMotoristaDisponivel`(id integer)
+begin
+	
+	UPDATE motorista SET disponivel = 1 WHERE idMotorista = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novaViagem`(descricao text, veiculo integer, motorista integer, gerente integer, status integer, inicio date, fim date)
+begin
+	
+	INSERT INTO `viagem` VALUES (null, descricao, veiculo, motorista, gerente, status, inicio, fim);
+	
+	SELECT max(idViagem) as id FROM viagem;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaViagem`(id integer)
+begin
+	
+	UPDATE viagem SET status = 0 WHERE idViagem = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoVeiculo`(placa varchar(45), ano decimal(4,0), modelo decimal(4,0), capacidade integer, disponivel boolean)
+begin
+	
+	INSERT INTO `veiculo` VALUES (placa, ano, modelo, capacidade, true);
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tornarVeiculoIndisponivel`(id integer)
+begin
+	
+	UPDATE veiculo SET disponivel = 0 WHERE idVeiculo = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `tornarVeiculoDisponivel`(id integer)
+begin
+	
+	UPDATE veiculo SET disponivel = 1 WHERE idVeiculo = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoProduto`(preco float, dataFabricacao date,  dataVencimento date, fkespecproduto integer, quantidadeTotal float)
+begin
+	
+	INSERT INTO `produto` VALUES (null, preco, dataFabricacao, dataVencimento, fkespecproduto, null, quantidadeTotal);
+	
+	SELECT max(codProduto) as cod FROM produto;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoItem`(codProduto integer, cnpj decimal(14,0),  numpedido integer, quant float, preco float)
+begin
+	
+	INSERT INTO item VALUES (codProduto, cnpj, numpedido, quant, preco);
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoPedido`(data date, fkpagamento integer, fkgerente integer)
+begin
+	
+	INSERT INTO `pedido` (dataPedido, status, fkPagamento, fkGerente) VALUES (data, 0, fkPagamento, fkGerente);
+	
+	SELECT max(idPedido) as max FROM pedido";
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPedido`(id integer)
+begin
+	
+	UPDATE pedido SET status = 1 WHERE idPedido = id;
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `vincularProdutoDeposito`(idPed integer, idDep integer)
+begin
+	
+	UPDATE produto SET fkDeposito = idDep
+				WHERE codProduto IN (
+					SELECT codProduto
+					FROM item
+					WHERE num_pedido = idPed
+				)
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoDeposito`(descricao varchar(45), nome varchar(50))
+begin
+	
+	INSERT INTO deposito (numero, descricao, nome) VALUES (null, descricao, nome);
+
+end$$
+
+DELIMITER ;
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novaEncomenda`(data date, fkPagamento integer, fkEmpresa decimal(14,0))
+begin
+	
+	INSERT INTO `encomenda` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, data, 0, fkPagamento, null, fkEmpresa);
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaEncomenda`(id integer, viagem integer)
+begin
+	
+	UPDATE encomenda SET status = 1, fkViagem = viagem WHERE idEncomenda = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novaEmpresa`(cnpjEmp decimal(14,0), proprietarioEmp varchar(45), nomeEmp varchar(45), chaveEmp varchar(45), senhaEmp varchar(45), primaryKeyEndereco integer)
+begin
+	
+	INSERT INTO `empresa` (cnpj, proprietario, nome, chaveAcesso, senha, fkEndereco) VALUES (cnpjEmp, proprietarioEmp, nomeEmp, chaveEmp, senhaEmp, primaryKeyEndereco);
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `novoFornecedor`(cnpjFor decimal(14,0), nomeFor varchar(45), emailFor varchar(45), codigoFor decimal(3,0), areaFor decimal(2,0), numeroFor decimal(9,0), primaryKeyEndereco integer)
+begin
+	
+	INSERT INTO `fornecedor` (cnpj, nome, email, codigo, area, numero, fkEndereco) VALUES (cnpjFor, nomeFor, emailFor, codigoFor, areaFor, numeroFor, primaryKeyEndereco);
+
+end$$
+
+drop table logAtualizarSalario;
+create table logAtualizarSalario(
+	
+	id int not null primary key auto_increment,
+	idFuncionario int not null,
+	idGerente int not null,
+	salarioAntigo float not null,
+	salarioNovo float not null,
+	constraint fk_atualizar_func foreign key(idFuncionario) references funcionario(idfuncionario),
+	constraint fk_atualizar_gerente foreign key(idGerente) references gerente(idGerente)
+);
+
+
+delimiter $$
+create trigger atualizaSalario
+after update on funcionario
+for each row
+begin
+	if (old.salario <> new.salario) then
+		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);
+	end if;
+end $$
+
+
+INSERT INTO `TRIGGERS` (`TRIGGER_CATALOG`, `TRIGGER_SCHEMA`, `TRIGGER_NAME`, `EVENT_MANIPULATION`, `EVENT_OBJECT_CATALOG`, `EVENT_OBJECT_SCHEMA`, `EVENT_OBJECT_TABLE`, `ACTION_ORDER`, `ACTION_CONDITION`, `ACTION_STATEMENT`, `ACTION_ORIENTATION`, `ACTION_TIMING`, `ACTION_REFERENCE_OLD_TABLE`, `ACTION_REFERENCE_NEW_TABLE`, `ACTION_REFERENCE_OLD_ROW`, `ACTION_REFERENCE_NEW_ROW`, `CREATED`, `SQL_MODE`, `DEFINER`, `CHARACTER_SET_CLIENT`, `COLLATION_CONNECTION`, `DATABASE_COLLATION`) VALUES
+('def', 'foodexpress', 'atualizaSalario', 'UPDATE', 'def', 'foodexpress', 'funcionario', 0, NULL, 'begin\n	if (old.salario <> new.salario) then\n		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);\n	end if;\nend', 'ROW', 'AFTER', NULL, NULL, 'OLD', 'NEW', NULL, 'NO_ENGINE_SUBSTITUTION', 'root@localhost', 'utf8', 'utf8_general_ci', 'utf8_general_ci');

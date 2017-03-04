@@ -15,9 +15,14 @@
 
 		public function add($data, $fkPagamento, $fkGerente){
 
-			$teste = $this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkGerente) VALUES ('$data', 0, '$fkPagamento', '$fkGerente')");
+			return $this->select("
+				
+				call novoPedido('$data', '$fkPagamento', '$fkGerente');
+
+			")[0]['max'];
+			//$teste = $this->insert("INSERT INTO `$this->table` (dataPedido, status, fkPagamento, fkGerente) VALUES ('$data', 0, '$fkPagamento', '$fkGerente')");
 			
-			return $this->select("SELECT max(idPedido) as max FROM pedido");
+			//return $this->select("SELECT max(idPedido) as max FROM pedido");
 		}
 
 		public function listarTodos(){
@@ -27,7 +32,8 @@
 
 		public function darBaixa($id){
 
-			$this->update("UPDATE pedido SET status = 1 WHERE idPedido = $id");
+			$this->query("call darBaixaPedido('$id')");
+			//$this->update("UPDATE pedido SET status = 1 WHERE idPedido = $id");
 		}
 
 		public function getFkPagamento($idPedido){

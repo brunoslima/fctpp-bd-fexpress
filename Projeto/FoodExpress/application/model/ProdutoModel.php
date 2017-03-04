@@ -10,16 +10,22 @@
 
 		public function add ($preco, $data, $dataV, $especproduto, $deposito, $quantidadeTotal) {
 
-			echo "INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)";
+			return $this->select("
+				
+				call novoProduto($preco, '$data', '$dataV', '$especproduto', $quantidadeTotal);
 
-			$this->insert("INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)");
+			")[0]['cod'];
+
+			//$this->insert("INSERT INTO `produto` VALUES (null, $preco, '$data', '$dataV', '$especproduto', null, $quantidadeTotal)");
 		
-			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];
+			//return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];
 		}
 
 		public function darBaixa($idPedido, $idDeposito){
 
-			return $this->update("
+			$this->query("call vincularProdutoDeposito('$idPedido','$idDeposito')");
+
+			/*return $this->update("
 				
 				UPDATE produto SET fkDeposito = '$idDeposito'
 				WHERE codProduto IN (
@@ -27,7 +33,7 @@
 					FROM item
 					WHERE num_pedido = '$idPedido'
 				)
-			");
+			");*/
 		}
 
 	}

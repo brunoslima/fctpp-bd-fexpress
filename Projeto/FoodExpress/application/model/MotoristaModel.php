@@ -56,12 +56,14 @@
 
 		public function tornarIndisponivel($idMotorista){
 
-			$this->update("UPDATE motorista SET disponivel = 0 WHERE idMotorista = $idMotorista");
+			$this->query("call tornarMotoristaIndisponivel('$idMotorista')");
+			//$this->update("UPDATE motorista SET disponivel = 0 WHERE idMotorista = $idMotorista");
 		}
 
 		public function tornarDisponivel($idMotorista){
 
-			$this->update("UPDATE motorista SET disponivel = 1 WHERE idMotorista = $idMotorista");
+			$this->query("call tornarMotoristaDisponivel('$idMotorista')");
+			//$this->update("UPDATE motorista SET disponivel = 1 WHERE idMotorista = $idMotorista");
 		}
 
 		public function getMotorista($id){

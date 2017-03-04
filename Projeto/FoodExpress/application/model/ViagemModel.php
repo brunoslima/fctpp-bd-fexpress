@@ -15,9 +15,12 @@
 
 		public function add($descricao, $veiculo, $motorista, $gerente, $status, $inicio, $fim){
 
-			$this->insert("INSERT INTO `viagem` VALUES (null, '$descricao', '$veiculo', '$motorista', '$gerente', $status, '$inicio', '$fim')");
+			return $this->select("
+				
+				call novaViagem('$descricao', $veiculo, $motorista, $gerente, $status, '$inicio', '$fim');
 
-			return $this->select("SELECT max(idViagem) as max FROM viagem")[0]['max'];
+			")[0]['id'];
+
 		}
 
 		public function listarTodos(){
@@ -37,7 +40,9 @@
 
 		public function darBaixa($idViagem){
 
-			$this->update("UPDATE viagem SET status = 0 WHERE idViagem = '$idViagem'");
+			$this->query("call darBaixaViagem('$idViagem');");
+			
+			//$this->update("UPDATE viagem SET status = 0 WHERE idViagem = '$idViagem'");
 		}
 
 		public function getViagem($id){

@@ -9,7 +9,9 @@
 
 			public function add($nome,$descricao){			
 				
-				$this->insert("INSERT INTO `$this->table` (numero, descricao, nome) VALUES (null, '$descricao','$nome');");
+				$this->query("call novoDeposito('$descricao','$nome')");
+				
+				//$this->insert("INSERT INTO `$this->table` (numero, descricao, nome) VALUES (null, '$descricao','$nome');");
 			}
 
 			public function listar(){

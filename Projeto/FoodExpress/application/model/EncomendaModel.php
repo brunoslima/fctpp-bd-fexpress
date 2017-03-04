@@ -15,12 +15,16 @@
 
 			public function add($data, $fkPagamento, $fkViagem, $fkEmpresa){
 
+
 				if($fkViagem == null){
-					$teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', null, '$fkEmpresa')");
+					$this->query("call novaEncomenda('$data', '$fkPagamento', '$fkEmpresa')");
+					//$teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', null, '$fkEmpresa')");
 
 				}
-				else $teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', '$fkViagem', '$fkEmpresa')");
-
+				else {
+					//$this->query("call novaEncomenda('$data', '$fkPagamento', '$fkViagem', '$fkEmpresa')");
+					$teste = $this->insert("INSERT INTO `$this->table` (idEncomenda, data, status, fkPagamento, fkViagem, fkEmpresa) VALUES (null, '$data', 0, '$fkPagamento', '$fkViagem', '$fkEmpresa')");
+				}
 			
 			}
 
@@ -48,7 +52,7 @@
 					ON fkEmpresa = cnpj
 					INNER JOIN pagamento
 					ON fkPagamento = idPagamento
-					WHERE encomenda.status = 0
+					WHERE encomenda.status = 0 and cnpj = $idEmpresa
 				");
 			}
 
@@ -61,7 +65,8 @@
 
 				foreach ($listaEncomendas as $value) {
 					$id = $value['id'];
-					$this->update("UPDATE encomenda SET status = 1, fkViagem = '$viagem' WHERE idEncomenda = $id");
+					$this->query("call darBaixaEncomenda('$id', '$viagem');");
+					//$this->update("UPDATE encomenda SET status = 1, fkViagem = '$viagem' WHERE idEncomenda = $id");
 				}
 
 			}
