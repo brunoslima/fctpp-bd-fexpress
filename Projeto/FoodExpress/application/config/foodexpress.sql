@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 05-Mar-2017 às 13:37
+-- Data de Criação: 05-Mar-2017 às 15:58
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -57,10 +57,24 @@ begin
 
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarAuxiliarLimpeza`(id integer, Nsetor varchar(45))
+begin
+	
+	UPDATE auxiliarlimpeza SET setor = Nsetor WHERE idAuxiliarLimeza = id;
+
+end$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarDeposito`(id integer, novoNome varchar(50), novaDescricao varchar(45))
 begin
 	
 	UPDATE deposito SET nome = novoNome, descricao = novaDescricao WHERE numero = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEmpresa`(id decimal(14,0), Nproprietario varchar(45), Nnome varchar(45), Nchave varchar(45), Nsenha varchar(45), NprimaryKeyEndereco integer)
+begin
+	
+	UPDATE empresa SET proprietario = Nproprietario, nome = Nnome, chaveAcesso = Nchave, senha = Nsenha, fkEndereco = primaryKeyEndereco = novaDescricao WHERE cnpj = id;
 
 end$$
 
@@ -78,10 +92,38 @@ begin
 
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFuncionario`(id integer, Nnome varchar(45), Nsalario float, dataC date, dataN date)
+begin
+	
+	UPDATE funcionario SET nome = Nnome, salario = Nsalario, dataContratacao = dataC, dataNascimento = dataN WHERE idFuncionario = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarGerente`(id integer, Ncontato varchar(45), Nlogin varchar(45), Nsenha varchar(45))
+begin
+	
+	UPDATE gerente SET email = Ncontato, login = Nlogin, senha = Nsenha WHERE idGerente = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarMotorista`(id integer, Ncategoria varchar(2), Ncodigo decimal(3,0), Narea decimal(3,0), Nnumero decimal(3,0), Nchave varchar(45), Nsenha varchar(45))
+begin
+	
+	UPDATE motorista SET categoriaHabilitacao = Ncategoria, codigo = Ncodigo, area = Narea, numero = Nnumero, chaveAcesso = Nchave, senha = Nsenha  WHERE idMotorista = id;
+
+end$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProduto`(id integer, novoNome varchar(200), novaDescricao varchar(45))
 begin
 	
 	UPDATE especproduto SET nome = novoNome, descricao = novaDescricao WHERE idEspecProduto = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarSeguranca`(id integer, Nporte boolean)
+begin
+	
+	UPDATE seguranca SET porteArma = Nporte WHERE idSeguranca = id;
 
 end$$
 

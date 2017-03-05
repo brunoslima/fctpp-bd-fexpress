@@ -40,4 +40,10 @@
 			return $this->select("SELECT * FROM funcionario WHERE idfuncionario = $id")[0];
 		}
 
+		public function modificarFuncionario($idFuncionario, $nome, $salario, $dataC, $dataN){
+
+			$this->query("call modificarFuncionario('$idFuncionario', '$nome', '$salario', '$dataC', '$dataN');");
+
+		}
+
 	}

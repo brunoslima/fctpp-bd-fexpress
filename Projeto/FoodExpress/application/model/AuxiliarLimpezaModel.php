@@ -17,4 +17,11 @@
 		public function getAuxiliar($id){
 			return $this->select("SELECT * FROM auxiliarlimpeza WHERE idAuxiliarLimpeza = $id")[0];
 		}
+
+		public function modificarAuxiliarLimpeza($idAuxiliarLimpeza, $setor){
+
+			$this->query("call modificarAuxiliarLimpeza('$idAuxiliarLimpeza', '$setor');");
+
+		}
+
 	}

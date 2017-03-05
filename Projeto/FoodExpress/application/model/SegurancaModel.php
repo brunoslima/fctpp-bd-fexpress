@@ -20,4 +20,10 @@
 			return $this->select("SELECT * FROM seguranca WHERE idSeguranca = $id")[0];
 		}
 
+		public function modificarSeguranca($id, $porte){
+
+			$this->query("call modificarSeguranca('$id', '$porte')");
+
+		}
+
 	}

@@ -52,5 +52,11 @@
 		public function getGerente($id){
 			return $this->select("SELECT * FROM gerente WHERE  idGerente = $id")[0];
 		}
+
+		public function modificarGerente($id, $contato, $login, $senha){
+
+			$this->query("call modificarGerente('$id', '$contato', '$login', '$senha');");
+
+		}
 	
 	}

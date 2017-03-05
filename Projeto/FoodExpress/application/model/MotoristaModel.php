@@ -71,6 +71,12 @@
 			return $this->select("SELECT * FROM motorista WHERE idMotorista = $id")[0];
 		}
 
+		public function modificarMotorista($id, $categoria, $codigo, $area, $numero, $chaveAcesso, $senha){
+
+			$this->query("call modificarMotorista('$id', '$categoria', '$codigo', '$area', '$numero', '$chaveAcesso', '$senha');");
+
+		}
+
 	}
 
 ?>

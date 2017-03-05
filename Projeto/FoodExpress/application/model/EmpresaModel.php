@@ -65,6 +65,12 @@
 
 			return $this->select("SELECT * FROM empresa WHERE cnpj = $id")[0];
 		}
+
+		public function modificarEmpresa($idEmpresa, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco){
+
+			$this->query("call modificarEmpresa('$idEmpresa' ,'$proprietario', '$nome', '$chave', '$senha', '$primaryKeyEndereco');");
+		}
+
 	}
 
 ?>
