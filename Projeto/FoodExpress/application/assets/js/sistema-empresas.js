@@ -94,14 +94,29 @@ $(document).ready(function(){
 	$(document).on("click", ".btn-atualizar-empresa", function(e){
 		
 		e.preventDefault();
-		let dados = {}
+		let dados = {
 
+		};
+		let regra = {
+
+		};
+
+		let excecao = {
+	
+		};
+		console.log(dadosObjeto);
 		dados['id'] = $(".modificarempresa [name='cnpjEmpresa']").val();
 		dados['nome'] = $(".modificarempresa [name='nomeEmpresa']").val();
 		dados['proprietario'] = $(".modificarempresa [name='proprietarioEmpresa']").val();
 		dados['chave'] = $(".modificarempresa [name='chaveEmpresa']").val();
 		dados['senhaantiga'] = $(".modificarempresa [name='senhaEmpresa']").val();
 		dados['senhanova'] = $(".modificarempresa [name='senhaEmpresaNova']").val();
+
+		if(dados['senhaantiga'] == dadosObjeto.empresa.senha){
+				dados['senha'] = dados['senhanova'];
+		}
+		else dados['senha'] = dadosObjeto.empresa.senha;
+
 		dados['logradouro'] = $(".modificarempresa [name='logradouroEmpresa']").val();
 		dados['numero'] = $(".modificarempresa [name='numeroEnderecoEmpresa']").val();
 		dados['bairro'] = $(".modificarempresa [name='bairroEmpresa']").val();
@@ -109,7 +124,20 @@ $(document).ready(function(){
 		dados['cidade'] = $(".modificarempresa [name='cidade']").val();
 		dados['complemento'] = $(".modificarempresa [name='complementoEmpresa']").val();
 
-		console.log(dados);
+		regra['id'] = "";
+		regra['nome'] = "";
+		regra['proprietario'] = "";
+		regra['chave'] = "";
+		regra['senhaantiga'] = "";
+		regra['senhanova'] = "";
+		regra['logradouro'] = "";
+		regra['numero'] = "";
+		regra['bairro'] ="";
+		regra['estado'] = "";
+		regra['cidade'] = "";
+		regra['complemento'] = "";
+		regra['senha'] = "";
+
 
 		resetForm(".modificarempresa");
 	});

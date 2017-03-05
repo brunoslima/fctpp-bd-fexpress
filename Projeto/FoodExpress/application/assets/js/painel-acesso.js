@@ -1,6 +1,64 @@
 var dadosObjeto = {};
 var geocoder;
 
+function enviarDados(dados, url){
+
+	$.ajax({
+		url: ( location.href + url),
+		type: "post",
+		async: false,
+		data:  dados,
+		cache: false
+	})
+	.done(function(data){
+	
+		data = $.parseJSON(data);
+		mensagem(data.resposta);
+	})
+	.fail(function(){
+		console.log("pãã");
+	});
+
+}
+
+function mensagem(resposta){
+
+	if(resposta){
+		$(".sucesso").fadeIn();
+		setTimeout(function(){
+			$(".sucesso").fadeOut();
+		}, 3000);
+	}
+	else{
+		$(".falha").fadeIn();
+		setTimeout(function(){
+			$(".falha").fadeOut();
+		}, 3000);
+	}
+}
+
+function recuperarDados(dados, url){
+
+	$.ajax({
+		url: ( location.href + url),
+		type: "post",
+		async: false,
+		data:  {
+			id: id
+		},
+		cache: false
+	})
+	.done(function(data){
+		console.log(data)
+		data = $.parseJSON(data);
+		get(data);
+	})
+	.fail(function(){
+		console.log("pãã");
+	});
+
+}
+
 function resetForm(selector) {
     // seleciona o form a ser resetado
     var form = document.querySelector(selector);
@@ -39,6 +97,78 @@ function resetForm(selector) {
     }
 }
 
+
+
+function placa( placa ){  var er = /[a-z]{3}-?\d{4}/gim;  er.lastIndex = 0;  return er.test( placa );}
+
+function validar(dados, regra, excecao) {
+
+    for(x in dados){
+
+    	
+    	for(a in excecao){
+    		if(excecao[a] == x) {
+    			continue;
+    		}
+    	}
+
+    
+    	if(dados[x] == ""){
+    		return {validado:false, incompleto:true};
+    	}
+
+    	try{
+
+    		switch(regra[x]){
+
+	    		case "nome":
+
+	    			var reTipo = /[A-z][ ][A-z]/;
+	    			if(!reTipo.test(dados[x])){
+
+	    				return {validado:false, incompleto:false};
+	    			}
+
+	    			break;
+
+	    		case "int":
+
+	    			dados[x] = parseInt(dados[x]);
+	    			break;
+
+	    		case "dinheiro":
+	    			dados[x] = parseFloat(dados[x]).toFixed(2);
+	    			break;
+
+	    		case "float":
+	    			dados[x] = parseFloat(dados[x]);
+	    			break;
+
+	    		case "ano":
+
+	    			if(dados[x].length != 4) return {validado:false, incompleto:false};
+
+	    			break;
+
+	    		case "placa":
+	    			if(!placa(dados[x])) return {validado:false, incompleto:false};
+	    			break;
+
+	    		case "email":
+	    			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    			if(!re.test(dados[x])) return {validado:false, incompleto:false};
+	    			break;
+
+    		}
+    	}
+    	catch(e){
+
+    		return {validado:false, incompleto:false};
+    	}
+    }
+
+    return {validado:true};
+}
 function recuperarDados(id, url){
 
 	$.ajax({

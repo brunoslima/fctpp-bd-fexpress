@@ -73,7 +73,17 @@ $(document).ready(function(){
 	 $(document).on("click", ".btn-modificar-fornecedor", function(e){
 		e.preventDefault();
 
-		let dados = {};
+		let dados = {
+
+		};
+		let regra = {
+
+		};
+
+		let excecao = {
+
+		};
+
 		dados['id'] = listaFornecedor.id;
 		dados['nome'] = $(".modificarfornecedor [name='nome']").val();
 		dados['email'] = $(".modificarfornecedor [name='email']").val();
@@ -87,7 +97,20 @@ $(document).ready(function(){
 		dados['estado'] = $(".modificarfornecedor [name='estado']").val();
 		dados['cidade'] = $(".modificarfornecedor [name='cidade']").val();
 
-		console.log(dados);
+		regra['id'] = "";
+		regra['nome'] = "nome";
+		regra['email'] = "email";
+		regra['codigo'] = "int";
+		regra['area'] = "int";
+		regra['numero'] = "int";
+		regra['logradouro'] = "";
+		regra['numeroEndereco'] = "int";
+		regra['bairro'] = "";
+		regra['complemento'] = "";
+		regras['estado'] = "";
+		regra['cidade'] = "";
+
+
 		
 		resetForm(".modificarfornecedor");
 	});

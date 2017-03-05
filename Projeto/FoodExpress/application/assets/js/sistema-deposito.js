@@ -50,12 +50,20 @@ $(document).ready(function(){
 		let dados = {
 
 		};
+		let regra = {
+			id: "",
+			nome: "nome",
+			descricao: ""
+		};
+
+		let excecao = {
+
+		};
 
 		dados['id'] = listaDeposito.id;
 		dados['nome'] = $(".modificardeposito [name='nomeDepositoModificar']").val();
 		dados['descricao'] = $(".modificardeposito [name='descricaoDepositoModificar']").val();
 
-		console.log(dados);
 		
 		resetForm(".modificardeposito");
 	}); 

@@ -28,6 +28,14 @@
 
 </head>
 <body>
+
+	<div class="resposta sucesso">
+		<p>Operação concluída com sucesso</p>
+	</div>
+	<div class="resposta falha">
+		<p>Operação realizada com falhas</p>
+	</div>
+
 	<div class="w">
 		<div class="b">
 			<div class="close">X</div>

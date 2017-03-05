@@ -70,7 +70,19 @@ $(document).ready(function(){
 	$(document).on("click", ".btn-modificar-produto", function(e){
 		e.preventDefault();
 
-		let dados = {};
+		let dados = {
+
+		};
+		let regra = {
+			id: "",
+			nome: "nome",
+			descricao: ""
+		};
+
+		let excecao = {
+
+		};
+
 		dados['id'] = listaProduto.id;
 		dados['nome'] = $(".modificarproduto [name='nomeProduto']").val();
 		dados['descricao'] = $(".modificarproduto [name='descricaoProduto']").val();
@@ -79,10 +91,11 @@ $(document).ready(function(){
 
 			dados['preco'] = $(".modificarproduto [name='precoProduto']").val();
 			dados['deposito'] = $(".modificarproduto [name='depositoProduto']").val();
+			regra['preco'] = "dinheiro";
+			regra['deposito'] = "";
 		}
 
-		console.log(dados);
-			
+		
 
 		resetForm(".modificarproduto");
 	});

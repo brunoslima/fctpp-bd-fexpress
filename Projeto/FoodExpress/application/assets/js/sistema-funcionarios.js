@@ -152,7 +152,21 @@ $(document).ready(function(){
 	$(document).on("click", ".btn-alterar-funcionario", function(e){
 		e.preventDefault();
 
-		let dados = {};
+		let dados = {
+
+		};
+		let regra = {
+			id: "",
+			nome: "nome",
+			nasc:"",
+			cont:"",
+			salario:"dinheiro"
+		};
+
+		let excecao = {
+
+		};
+
 		dados['id'] = lista.id;
 		dados['nome'] = $('.editarfuncionario [name="nome"]').val();
 		dados['nasc'] = $('.editarfuncionario [name="dataNascimento"]').val();
@@ -163,14 +177,26 @@ $(document).ready(function(){
 		if(lista.cargo == "Segurança"){
 
 			dados['porte'] = $('.editarfuncionario [name="porte"]').val();
+			regra['porte'] = "";
 		}
 		else if (lista.cargo == "Gerência"){
 
 			dados['contato'] = $('.editarfuncionario [name="contato"]').val();
 			dados['login'] = $('.editarfuncionario [name="login"]').val();
+			
 			dados['senhaAntiga'] = $('.editarfuncionario [name="senha"]').val();
 			dados['senhaNova'] = $('.editarfuncionario [name="senhanova"]').val();
 
+			if(dados['senhaAntiga'] == dadosObjeto.outro.senha){
+				dados['senha'] = dados['senhaNova'];
+			}
+			else dados['senha'] = dadosObjeto.outro.senha;
+			
+			regra['contato'] = "email";
+			regra['login'] = "email";
+			regra['senhaAntiga'] = "";
+			regra['senhaNova'] = "";
+			regra['senha'] = "";
 		}
 		else if (lista.cargo == "Motorista") {
 		
@@ -183,12 +209,24 @@ $(document).ready(function(){
 			dados['senhaAntiga'] = $('.editarfuncionario [name="senhaMotorista"]').val();
 			dados['senhaNova'] = $('.editarfuncionario [name="senhaMotoristaNova"]').val();
 
+			if(dados['senhaAntiga'] == dadosObjeto.outro.senha){
+				dados['senha'] = dados['senhaNova'];
+			}
+			else dados['senha'] = dadosObjeto.outro.senha;
+
+			regra['categoria'] = "";
+			regra['codigo'] = "int";
+			regra['area'] = "int";
+			regra['numero'] = "int";
+			regra['chave'] = "nome";
 		}
 		else{
 			dados['setor'] = $('.editarfuncionario [name="setor"]').val();
+
+			regra['setor'] = "";
 		}
 
-		console.log(dados);
+
 
 		resetForm(".editarfuncionario");
 	});

@@ -353,3 +353,26 @@ td:last-child {
 #listaEncomendasViagem{
 	display: none;
 }
+
+.resposta{
+	position: absolute;
+	display: none;
+	padding: 15px;
+	z-index: 500;
+	font-family: Tahoma;
+	bottom: 20px; right: 20px;
+	width: 230px; height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	box-shadow: 0 0 6px #000;
+	font-size: 13px; font-weight: bold;
+	color: #fff;
+}
+
+.sucesso{
+	background: #007507;
+}
+
+.falha{
+	background-color: #d14200;
+}
