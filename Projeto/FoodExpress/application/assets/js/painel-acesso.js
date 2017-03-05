@@ -6,12 +6,12 @@ function enviarDados(dados, url){
 	$.ajax({
 		url: ( location.href + url),
 		type: "post",
-		async: false,
+		async: true,
 		data:  dados,
 		cache: false
 	})
 	.done(function(data){
-	
+		console.log(data);
 		data = $.parseJSON(data);
 		mensagem(data.resposta);
 	})
@@ -49,7 +49,7 @@ function recuperarDados(dados, url){
 		cache: false
 	})
 	.done(function(data){
-		console.log(data)
+
 		data = $.parseJSON(data);
 		get(data);
 	})
@@ -169,6 +169,7 @@ function validar(dados, regra, excecao) {
 
     return {validado:true};
 }
+
 function recuperarDados(id, url){
 
 	$.ajax({
@@ -181,7 +182,7 @@ function recuperarDados(id, url){
 		cache: false
 	})
 	.done(function(data){
-		console.log(data)
+		
 		data = $.parseJSON(data);
 		get(data);
 	})

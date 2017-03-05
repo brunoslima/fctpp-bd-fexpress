@@ -70,8 +70,8 @@ $(document).ready(function(){
 			recuperarDados(lista, "/recuperarFuncionario");
 
 			$('.editarfuncionario [name="nome"]').val(dadosObjeto.func.nome);
-			$('.editarfuncionario [name="dataNascimento"]').val(dadosObjeto.func.dataContratacao);
-			$('.editarfuncionario [name="dataContratacao"]').val(dadosObjeto.func.dataNascimento);
+			$('.editarfuncionario [name="dataNascimento"]').val(dadosObjeto.func.dataNascimento);
+			$('.editarfuncionario [name="dataContratacao"]').val(dadosObjeto.func.dataContratacao);
 			$('.editarfuncionario [name="salario"]').val(parseFloat(dadosObjeto.func.salario).toFixed(2));
 			
 
@@ -89,6 +89,7 @@ $(document).ready(function(){
 
 
 				$('[name="salario"]').after(content);
+				lista.idSeguranca = dadosObjeto.outro.idSeguranca;
 				$('.editarfuncionario [name="porte"]').val(dadosObjeto.outro.porteArma);	
 			}
 			else if (lista.cargo == "Gerência"){
@@ -102,6 +103,7 @@ $(document).ready(function(){
 				$('[name="salario"]').after(content);
 				$('.editarfuncionario [name="contato"]').val(dadosObjeto.outro.email);	
 				$('.editarfuncionario [name="login"]').val(dadosObjeto.outro.login);	
+				lista.idGerente = dadosObjeto.outro.idGerente;
 
 			}
 			else if (lista.cargo == "Motorista") {
@@ -136,6 +138,8 @@ $(document).ready(function(){
 					$('.editarfuncionario [name="numero"]').val(dadosObjeto.outro.numero);
 					$('.editarfuncionario [name="chaveMotorista"]').val(dadosObjeto.outro.chaveAcesso);
 
+					lista.idMotorista = dadosObjeto.outro.idMotorista;
+
 			}
 			else{
 
@@ -145,6 +149,7 @@ $(document).ready(function(){
 
 				$('[name="salario"]').after(content);
 				$('.editarfuncionario [name="setor"]').val(dadosObjeto.outro.setor);
+				lista.idAuxiliarLimpeza = dadosObjeto.outro.idAuxiliarLimpeza;
 			}
 		}
 	});
@@ -178,14 +183,19 @@ $(document).ready(function(){
 
 			dados['porte'] = $('.editarfuncionario [name="porte"]').val();
 			regra['porte'] = "";
+			dados.idSeguranca = lista.idSeguranca;
+			regra.idSeguranca = "";
 		}
 		else if (lista.cargo == "Gerência"){
+
+			dados.idGerente = lista.idGerente;
+			regra.idGerente = "";
 
 			dados['contato'] = $('.editarfuncionario [name="contato"]').val();
 			dados['login'] = $('.editarfuncionario [name="login"]').val();
 			
 			dados['senhaAntiga'] = $('.editarfuncionario [name="senha"]').val();
-			dados['senhaNova'] = $('.editarfuncionario [name="senhanova"]').val();
+			dados['senhaNova'] = $('.editarfuncionario [name="confirmsenha"]').val();
 
 			if(dados['senhaAntiga'] == dadosObjeto.outro.senha){
 				dados['senha'] = dados['senhaNova'];
@@ -200,7 +210,8 @@ $(document).ready(function(){
 		}
 		else if (lista.cargo == "Motorista") {
 		
-
+			dados.idMotorista = lista.idMotorista;
+			regra.idMotorista = "";
 			dados['categoria'] = $('.editarfuncionario [name="categoria"]').val();
 			dados['codigo'] = $('.editarfuncionario [name="codigo"]').val();
 			dados['area'] = $('.editarfuncionario [name="area"]').val();
@@ -221,12 +232,17 @@ $(document).ready(function(){
 			regra['chave'] = "nome";
 		}
 		else{
+			dados.idAuxiliarLimpeza = lista.idAuxiliarLimpeza;
+			regra.idAuxiliarLimpeza = "";
 			dados['setor'] = $('.editarfuncionario [name="setor"]').val();
 
 			regra['setor'] = "";
 		}
 
+		dados.tipo = lista.cargo;
 
+		console.log(dados);
+		enviarDados(dados, "/updateFuncionario");
 
 		resetForm(".editarfuncionario");
 	});

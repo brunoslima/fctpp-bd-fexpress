@@ -95,7 +95,7 @@ $(document).ready(function(){
 			regra['deposito'] = "";
 		}
 
-		
+		enviarDados(dados, "/updateProduto");
 
 		resetForm(".modificarproduto");
 	});

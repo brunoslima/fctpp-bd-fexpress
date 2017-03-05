@@ -355,7 +355,7 @@ td:last-child {
 }
 
 .resposta{
-	position: absolute;
+	position: fixed;
 	display: none;
 	padding: 15px;
 	z-index: 500;

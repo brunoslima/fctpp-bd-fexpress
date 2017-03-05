@@ -76,6 +76,7 @@ $(document).ready(function(){
 		dados['modelo'] = $(".modificarveiculo [name='modelo']").val();
 		dados['capacidade'] = $(".modificarveiculo [name='capacidade']").val();
 
+		enviarDados(dados, "/updateVeiculo");
 
 		resetForm(".modificarveiculo");
 	});

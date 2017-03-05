@@ -52,6 +52,8 @@ $(document).ready(function(){
 		if (id != 0){
 			$(this).attr("disabled", true);
 			recuperarDados(id, "/recuperarFornecedor");
+			listaFornecedor.idEndereco = dadosObjeto.endereco.idEndereco;
+			listaFornecedor.idCidade = dadosObjeto.endereco.idCity;
 
 			$(".modificarfornecedor [name='nome']").val(dadosObjeto.fornecedor.nome);
 			$(".modificarfornecedor [name='email']").val(dadosObjeto.fornecedor.email);
@@ -85,6 +87,7 @@ $(document).ready(function(){
 		};
 
 		dados['id'] = listaFornecedor.id;
+
 		dados['nome'] = $(".modificarfornecedor [name='nome']").val();
 		dados['email'] = $(".modificarfornecedor [name='email']").val();
 		dados['codigo'] = $(".modificarfornecedor [name='codigo']").val();
@@ -107,10 +110,13 @@ $(document).ready(function(){
 		regra['numeroEndereco'] = "int";
 		regra['bairro'] = "";
 		regra['complemento'] = "";
-		regras['estado'] = "";
+		regra['estado'] = "";
 		regra['cidade'] = "";
 
 
+		dados['idEndereco'] = listaFornecedor.idEndereco;
+		dados['idCidade'] = listaFornecedor.idCidade;
+		enviarDados(dados, "/updateFornecedor");
 		
 		resetForm(".modificarfornecedor");
 	});

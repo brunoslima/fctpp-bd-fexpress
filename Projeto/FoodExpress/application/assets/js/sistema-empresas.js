@@ -72,6 +72,8 @@ $(document).ready(function(){
 			$(this).attr("disabled", true);
 			recuperarDados(id, "/recuperarEmpresa");
 
+
+			listaEmpresa.idEndereco = dadosObjeto.endereco.idEndereco;
 			$(".modificarempresa [name='cnpjEmpresa']").val(dadosObjeto.empresa.cnpj);
 			$(".modificarempresa [name='cnpjEmpresa']").attr("disabled", true);
 			$(".modificarempresa [name='nomeEmpresa']").val(dadosObjeto.empresa.nome);
@@ -82,7 +84,8 @@ $(document).ready(function(){
 			$(".modificarempresa [name='bairroEmpresa']").val(dadosObjeto.endereco.bairro);
 			
 			$(".modificarempresa [name='estado']").val(dadosObjeto.endereco.idState);
-			
+			listaEmpresa.idCidade = dadosObjeto.endereco.idCity;
+			listaEmpresa.idEstado = dadosObjeto.endereco.idState;
 			recuperarDados(dadosObjeto.endereco.idState, "/recuperarCidades");
 			$(".modificarempresa [name='cidade']").empty();
 			$(".modificarempresa [name='cidade']").append(dadosObjeto['listaCidades']);
@@ -104,7 +107,7 @@ $(document).ready(function(){
 		let excecao = {
 	
 		};
-		console.log(dadosObjeto);
+
 		dados['id'] = $(".modificarempresa [name='cnpjEmpresa']").val();
 		dados['nome'] = $(".modificarempresa [name='nomeEmpresa']").val();
 		dados['proprietario'] = $(".modificarempresa [name='proprietarioEmpresa']").val();
@@ -138,6 +141,13 @@ $(document).ready(function(){
 		regra['complemento'] = "";
 		regra['senha'] = "";
 
+		
+		dados['idEndereco'] = listaEmpresa.idEndereco;
+		dados['idCidade'] = listaEmpresa.idCidade;
+
+		console.log(dados);
+
+		enviarDados(dados, "/updateEmpresa");
 
 		resetForm(".modificarempresa");
 	});

@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 	$(document).on("change",'[name="modificardeposito"]', function(){
 		let id = $(this).val();
-		
+		listaDeposito.id = id;
 		if (id != 0){
 			$(this).attr("disabled", true);
 			recuperarDados(id, "/recuperarDeposito");
@@ -63,7 +63,7 @@ $(document).ready(function(){
 		dados['id'] = listaDeposito.id;
 		dados['nome'] = $(".modificardeposito [name='nomeDepositoModificar']").val();
 		dados['descricao'] = $(".modificardeposito [name='descricaoDepositoModificar']").val();
-
+		enviarDados(dados, "/updateDeposito");
 		
 		resetForm(".modificardeposito");
 	}); 

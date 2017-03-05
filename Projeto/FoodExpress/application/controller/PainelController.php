@@ -393,4 +393,163 @@
  			echo json_encode($data);
  		}
 
+ 		//////////////////
+ 		//////////////////
+ 		//////////////////
+ 		//////////////////
+ 		
+
+ 		//não funciona
+ 		public function updateEmpresa(){
+ 			
+
+ 			try{
+ 				$model = new EmpresaModel();
+ 			//$model->modificarEmpresa($idEmpresa, $proprietario, $nome, $chave, $senha, $primaryKeyEndereco);
+ 				$model->modificarEmpresa($_POST['id'], $_POST['proprietario'], $_POST['nome'], $_POST['chave'], $_POST['senha'], $_POST['idEndereco']);
+ 			
+ 				$modeloEndereco = new EnderecoModel();
+ 				//modificarEndereco($idEndereco ,$logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade)
+ 				$modeloEndereco->modificarEndereco($_POST['idEndereco'] ,$_POST['logradouro'], $_POST['numero'], $_POST['bairro'], $_POST['complemento'], $_POST['idCidade']);
+
+ 				$data['resposta'] = true;
+ 				
+ 			}
+ 			catch(Exception $e){
+ 				$data['resposta'] = false;
+ 				
+ 			}
+
+ 			echo json_encode($data);
+ 		}
+
+ 		//funciona
+ 		public function updateDeposito(){
+
+ 			try{
+ 				$model = new DepositoModel();
+ 				//modificarDeposito($idDeposito, $nome, $descricao)
+ 				$model->modificarDeposito($_POST['id'], $_POST['nome'], $_POST['descricao']);
+ 				$data['resposta'] = true;
+ 				
+ 			}
+ 			catch(Exception $e){
+ 				$data['resposta'] = false;
+ 				
+ 			}
+
+ 			echo json_encode($data);
+ 		}
+
+ 		//funciona parcialmente, somente o fornecedor
+ 		public function updateFornecedor(){
+
+ 			try{
+ 				$model = new FornecedorModel();
+ 				//modificarFornecedor($cnpj, $nome, $email, $codigo, $area, $numero, $primaryKeyEndereco)
+ 				$model->modificarFornecedor($_POST['id'], $_POST['nome'], $_POST['email'], $_POST['codigo'], $_POST['area'], $_POST['numero'], $_POST['idEndereco']);
+ 				
+ 				$modeloEndereco = new EnderecoModel();
+ 				//modificarEndereco($idEndereco ,$logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade)
+ 				$modeloEndereco->modificarEndereco($_POST['idEndereco'] ,$_POST['logradouro'], $_POST['numero'], $_POST['bairro'], $_POST['complemento'], $_POST['idCidade']);
+
+ 				$data['resposta'] = true;
+ 				
+ 			}
+ 			catch(Exception $e){
+ 				$data['resposta'] = false;
+ 				
+ 			}
+
+ 			echo json_encode($data);
+ 		}
+
+ 		//funciona parcialmente
+ 		public function updateFuncionario(){
+
+ 			try{
+ 				//funcionario funciona
+ 				$modelFuncionario = new FuncionarioModel();
+	 			//modificarFuncionario($idFuncionario, $nome, $salario, $dataC, $dataN);
+				$modelFuncionario->modificarFuncionario($_POST['id'], $_POST['nome'], $_POST['salario'], $_POST['cont'], $_POST['nasc']);
+
+				//não funciona
+				if($_POST['tipo'] == "Auxiliar"){
+					
+					$modelLimpeza = new AuxiliarLimpezaModel();
+					//modificarAuxiliarLimpeza($idAuxiliarLimpeza, $setor)
+					$modelLimpeza->modificarAuxiliarLimpeza($_POST['idAuxiliarLimpeza'], $_POST['setor']);
+				}
+				//funciona
+				else if($_POST['tipo'] == "Gerência"){
+					
+					$modelGerente = new GerenteModel();
+					//modificarGerente($id, $contato, $login, $senha)
+					$modelGerente->modificarGerente($_POST['idGerente'], $_POST['contato'], $_POST['login'], $_POST['senha']);
+				}
+				//o número do motorista só está entrando os três primeiros digitos
+				else if($_POST['tipo'] == "Motorista"){
+
+					$modelMotorista = new MotoristaModel();
+					//modificarMotorista($id, $categoria, $codigo, $area, $numero, $chaveAcesso, $senha)
+					$modelMotorista->modificarMotorista($_POST['idMotorista'], $_POST['categoria'], $_POST['codigo'], $_POST['area'], $_POST['numero'], $_POST['chave'], $_POST['senha']);
+				}
+				//funciona
+				else{
+		
+					$modelSeguranca = new SegurancaModel();
+					//modificarSeguranca($id, $porte)
+					$modelSeguranca->modificarSeguranca($_POST['idSeguranca'], $_POST['porte']);
+				}
+
+				$data['resposta'] = true;
+ 			}
+ 			catch(Exception $e){
+ 				$data['resposta'] = false;
+ 			}
+
+ 			echo json_encode($data);
+ 		}
+
+ 		//funciona o que foi feito
+ 		public function updateProduto(){
+
+ 			try{
+ 				$modelo = new EspecProdutoModel();
+				//modificarProduto($id, $nome, $descricao)
+	 			$modelo->modificarProduto($_POST['id'], $_POST['nome'], $_POST['descricao']);
+
+	 			//falta atualizar o preço na tabela produto se a especproduto tiver um correspondente nesta tabela
+	 			
+	 			//lembrete, quando damos entrada no pedido, precisamos ver se o produto já existe:
+	 			//se não existir só põe como está,
+	 			//se existe tem que recalcular o preco dele e atualizar a quantidade
+	 			//
+	 			$data['resposta'] = true;
+ 			}
+ 			catch(Exception $e){
+ 				$data['resposta'] = false;
+ 			}
+
+ 			echo json_encode($data);
+ 		}
+
+ 		//funciona perfeitamente
+ 		public function updateVeiculo(){
+
+ 			try{
+
+ 				$modelVeiculo = new VeiculoModel();
+ 				//modificarVeiculo($idVeiculo, $placa, $ano, $modelo, $capacidade)
+				$modelVeiculo->modificarVeiculo($_POST['id'], $_POST['placa'], $_POST['ano'], $_POST['modelo'], $_POST['capacidade']);
+
+				$data['resposta'] = true;
+ 			}
+ 			catch(Exception $e){
+
+ 				$data['resposta'] = false;
+ 			}
+
+ 			echo json_encode($data);
+ 		}
 	}
