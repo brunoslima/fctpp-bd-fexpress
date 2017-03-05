@@ -39,6 +39,11 @@
 
 			return $this->select("SELECT * FROM fornecedor WHERE cnpj = $id")[0];
 		}
+
+		public function modificarFornecedor($cnpj, $nome, $email, $codigo, $area, $numero, $primaryKeyEndereco){
+
+			$this->query("call modificarFornecedor('$cnpj', '$nome', '$email', '$codigo', '$area', '$numero', '$primaryKeyEndereco');");
+		}
 	}
 
 ?>

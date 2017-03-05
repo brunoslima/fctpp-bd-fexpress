@@ -57,5 +57,11 @@
 		public function getVeiculo($id){
 			return $this->select("SELECT * FROM veiculo WHERE idVeiculo = $id")[0];
 		}
+
+		public function modificarVeiculo($idVeiculo, $placa, $ano, $modelo, $capacidade){
+
+			$this->query("call modificarVeiculo('$idVeiculo' ,'$placa', '$ano', '$modelo', '$capacidade');");
+		}
+		
 	}
 ?>

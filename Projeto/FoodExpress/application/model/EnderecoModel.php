@@ -26,6 +26,12 @@
 				WHERE idEndereco = $id
 			")[0];
 		}
+
+		public function modificarEndereco($idEndereco ,$logradouro, $numeroEndereco, $bairro, $complemento, $primaryKeyCidade){
+
+			$this->query("call modificarEndereco('$idEndereco', '$logradouro', '$numeroEndereco', '$bairro', '$complemento', '$primaryKeyCidade');");
+		}
+		
 	}
 
 ?>

@@ -17,6 +17,12 @@
 			public function listar(){
 				return $this->select("SELECT * FROM deposito");
 			}
+
+			public function modificarDeposito($idDeposito, $nome, $descricao){
+
+				$this->query("call modificarDeposito('$idDeposito', '$nome', '$descricao');");
+			}
+			
 		}	
 
 ?>

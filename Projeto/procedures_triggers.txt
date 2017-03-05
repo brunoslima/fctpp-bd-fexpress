@@ -143,12 +143,52 @@ begin
 
 end$$
 
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `novoFornecedor`(cnpjFor decimal(14,0), nomeFor varchar(45), emailFor varchar(45), codigoFor decimal(3,0), areaFor decimal(2,0), numeroFor decimal(9,0), primaryKeyEndereco integer)
 begin
 	
 	INSERT INTO `fornecedor` (cnpj, nome, email, codigo, area, numero, fkEndereco) VALUES (cnpjFor, nomeFor, emailFor, codigoFor, areaFor, numeroFor, primaryKeyEndereco);
 
 end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarDeposito`(id integer, novoNome varchar(50), novaDescricao varchar(45))
+begin
+	
+	UPDATE deposito SET nome = novoNome, descricao = novaDescricao WHERE numero = id;
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFornecedor`(Ncnpj decimal(14,0), Nnome varchar(45), Nemail varchar(45), Ncodigo decimal(3,0), Narea decimal(2,0), Nnumero decimal(9,0), NprimaryKeyEndereco integer)
+begin
+	
+	UPDATE fornecedor SET cnpj = Ncnpj, nome = Nnome, email = Nemail, codigo = Ncodigo, area = Narea, numero = Nnumero, fkEndereco = NprimaryKeyEndereco WHERE cnpj = Ncnpj;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEndereco`(NidEndereco integer, Nlogradouro varchar(45), NnumeroEndereco integer, Nbairro varchar(45), Ncomplemento varchar(100), NprimaryKeyCidade integer)
+begin
+	
+	UPDATE endereco SET logradouro = Nlogradouro, numeroEndereco = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyEndereco WHERE idEndereco = NidEndereco;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarVeiculo`(id integer, Nplaca varchar(45), Nano decimal(4,0), Nmodelo decimal(4,0), Ncapacidade integer)
+begin
+	
+	UPDATE veiculo SET placa = Nplaca, ano = Nano, modelo = Nmodelo, capacidade = Ncapacidade WHERE idVeiculo = id;
+
+end$$
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProduto`(id integer, novoNome varchar(200), novaDescricao varchar(45))
+begin
+	
+	UPDATE especproduto SET nome = novoNome, descricao = novaDescricao WHERE idEspecProduto = id;
+
+end$$
+
 
 drop table logAtualizarSalario;
 create table logAtualizarSalario(
@@ -172,6 +212,53 @@ begin
 		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);
 	end if;
 end $$
+
+
+
+create table logBaixaPagamento(
+	
+    id integer not null primary key,
+    idPagamento integer not null,
+    data date not null,
+    gerenteResponsavel integer,
+    empresaResponsavel decimal(14,0),
+    constraint fk_pag_pag foreign key(idPagamento) references pagamento(idPagamento), 
+    constraint fk_pag_ger foreign key(gerenteResponsavel) references gerente(idGerente),
+    constraint fk_pag_emp foreign key(empresaResponsavel) references empresa(cnpj)
+);
+
+
+create table logAtualizarSenhaGerente(
+
+	id integer not null primary key,
+	data date not null,
+	gerenteResponsavel integer not null,
+	gerenteModificado integer not null,
+	senhaAntiga varchar(45),
+	senhaNova varchar(45),
+	constraint fk_senha foreign key(gerenteResponsavel) references gerente(idGerente),
+	constraint fk_senha_modificado foreign key(gerenteModificado) references gerente(idGerente)
+);
+
+
+create table logFinalizarEncomenda(
+	id integer not null primary key,
+	data date not null,
+	gerenteResponsavel integer not null,
+	idEncomenda int not null,
+	constraint fk_gerente foreign key(gerenteResponsavel) references gerente(idGerente),
+	constraint fk_encomenda foreign key(idEncomenda) references encomenda(idEncomenda)
+);
+
+
+create table logEntradaPedido(
+	id integer not null primary key,
+	data date not null,
+	gerenteResponsavel integer not null,
+	idPedido int not null,
+	constraint fk_gerente_pedido foreign key(gerenteResponsavel) references gerente(idGerente),
+	constraint fk_pedido foreign key(idPedido) references pedido(idPedido)
+);
 
 
 INSERT INTO `TRIGGERS` (`TRIGGER_CATALOG`, `TRIGGER_SCHEMA`, `TRIGGER_NAME`, `EVENT_MANIPULATION`, `EVENT_OBJECT_CATALOG`, `EVENT_OBJECT_SCHEMA`, `EVENT_OBJECT_TABLE`, `ACTION_ORDER`, `ACTION_CONDITION`, `ACTION_STATEMENT`, `ACTION_ORIENTATION`, `ACTION_TIMING`, `ACTION_REFERENCE_OLD_TABLE`, `ACTION_REFERENCE_NEW_TABLE`, `ACTION_REFERENCE_OLD_ROW`, `ACTION_REFERENCE_NEW_ROW`, `CREATED`, `SQL_MODE`, `DEFINER`, `CHARACTER_SET_CLIENT`, `COLLATION_CONNECTION`, `DATABASE_COLLATION`) VALUES

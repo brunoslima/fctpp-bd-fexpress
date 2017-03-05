@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 04-Mar-2017 às 20:32
+-- Data de Criação: 05-Mar-2017 às 13:37
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -54,6 +54,41 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaViagem`(id integer)
 begin
 	
 	UPDATE viagem SET status = 0 WHERE idViagem = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarDeposito`(id integer, novoNome varchar(50), novaDescricao varchar(45))
+begin
+	
+	UPDATE deposito SET nome = novoNome, descricao = novaDescricao WHERE numero = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEndereco`(NidEndereco integer, Nlogradouro varchar(45), NnumeroEndereco integer, Nbairro varchar(45), Ncomplemento varchar(100), NprimaryKeyCidade integer)
+begin
+	
+	UPDATE endereco SET logradouro = Nlogradouro, numeroEndereco = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyEndereco WHERE idEndereco = NidEndereco;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFornecedor`(IN `Ncnpj` DECIMAL(14,0), IN `Nnome` VARCHAR(45), IN `Nemail` VARCHAR(45), IN `Ncodigo` DECIMAL(3,0), IN `Narea` DECIMAL(2,0), IN `Nnumero` DECIMAL(9,0), IN `NprimaryKeyEndereco` INT)
+begin
+	
+	UPDATE fornecedor SET nome = Nnome, email = Nemail, codigo = Ncodigo, area = Narea, numero = Nnumero, fkEndereco = NprimaryKeyEndereco WHERE cnpj = Ncnpj;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarProduto`(id integer, novoNome varchar(200), novaDescricao varchar(45))
+begin
+	
+	UPDATE especproduto SET nome = novoNome, descricao = novaDescricao WHERE idEspecProduto = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarVeiculo`(id integer, Nplaca varchar(45), Nano decimal(4,0), Nmodelo decimal(4,0), Ncapacidade integer)
+begin
+	
+	UPDATE veiculo SET placa = Nplaca, ano = Nano, modelo = Nmodelo, capacidade = Ncapacidade WHERE idVeiculo = id;
 
 end$$
 
@@ -6090,6 +6125,20 @@ INSERT INTO `funcionario` (`idfuncionario`, `nome`, `salario`, `dataContratacao`
 (12, 'Leandro Ungari Cayres', 2200, '2017-03-04', '1996-03-09'),
 (13, 'Jose Lula Silva', 1800, '2017-03-04', '1973-03-31');
 
+--
+-- Acionadores `funcionario`
+--
+DROP TRIGGER IF EXISTS `atualizaSalario`;
+DELIMITER //
+CREATE TRIGGER `atualizaSalario` AFTER UPDATE ON `funcionario`
+ FOR EACH ROW begin
+	if (old.salario <> new.salario) then
+		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);
+	end if;
+end
+//
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -6131,6 +6180,91 @@ CREATE TABLE IF NOT EXISTS `item` (
   KEY `fk_Produto_has_Fornecedor_Fornecedor1_idx` (`cnpjFornecedor`),
   KEY `fk_Produto_has_Fornecedor_Produto1_idx` (`codProduto`),
   KEY `fk_item_pedido` (`num_pedido`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logatualizarsalario`
+--
+
+CREATE TABLE IF NOT EXISTS `logatualizarsalario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idFuncionario` int(11) NOT NULL,
+  `idGerente` int(11) NOT NULL,
+  `salarioAntigo` float NOT NULL,
+  `salarioNovo` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_atualizar_func` (`idFuncionario`),
+  KEY `fk_atualizar_gerente` (`idGerente`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logatualizarsenhagerente`
+--
+
+CREATE TABLE IF NOT EXISTS `logatualizarsenhagerente` (
+  `id` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `gerenteResponsavel` int(11) NOT NULL,
+  `gerenteModificado` int(11) NOT NULL,
+  `senhaAntiga` varchar(45) DEFAULT NULL,
+  `senhaNova` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_senha` (`gerenteResponsavel`),
+  KEY `fk_senha_modificado` (`gerenteModificado`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logbaixapagamento`
+--
+
+CREATE TABLE IF NOT EXISTS `logbaixapagamento` (
+  `id` int(11) NOT NULL,
+  `idPagamento` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `gerenteResponsavel` int(11) DEFAULT NULL,
+  `empresaResponsavel` decimal(14,0) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_pag_pag` (`idPagamento`),
+  KEY `fk_pag_ger` (`gerenteResponsavel`),
+  KEY `fk_pag_emp` (`empresaResponsavel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logentradapedido`
+--
+
+CREATE TABLE IF NOT EXISTS `logentradapedido` (
+  `id` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `gerenteResponsavel` int(11) NOT NULL,
+  `idPedido` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_gerente_pedido` (`gerenteResponsavel`),
+  KEY `fk_pedido` (`idPedido`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `logfinalizarencomenda`
+--
+
+CREATE TABLE IF NOT EXISTS `logfinalizarencomenda` (
+  `id` int(11) NOT NULL,
+  `data` date NOT NULL,
+  `gerenteResponsavel` int(11) NOT NULL,
+  `idEncomenda` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_gerente` (`gerenteResponsavel`),
+  KEY `fk_encomenda` (`idEncomenda`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -6478,6 +6612,42 @@ ALTER TABLE `item`
   ADD CONSTRAINT `fk_item_pedido` FOREIGN KEY (`num_pedido`) REFERENCES `pedido` (`idPedido`),
   ADD CONSTRAINT `fk_Produto_has_Fornecedor_Fornecedor1` FOREIGN KEY (`cnpjFornecedor`) REFERENCES `fornecedor` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Produto_has_Fornecedor_Produto1` FOREIGN KEY (`codProduto`) REFERENCES `produto` (`codProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `logatualizarsalario`
+--
+ALTER TABLE `logatualizarsalario`
+  ADD CONSTRAINT `fk_atualizar_func` FOREIGN KEY (`idFuncionario`) REFERENCES `funcionario` (`idfuncionario`),
+  ADD CONSTRAINT `fk_atualizar_gerente` FOREIGN KEY (`idGerente`) REFERENCES `gerente` (`idGerente`);
+
+--
+-- Limitadores para a tabela `logatualizarsenhagerente`
+--
+ALTER TABLE `logatualizarsenhagerente`
+  ADD CONSTRAINT `fk_senha` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
+  ADD CONSTRAINT `fk_senha_modificado` FOREIGN KEY (`gerenteModificado`) REFERENCES `gerente` (`idGerente`);
+
+--
+-- Limitadores para a tabela `logbaixapagamento`
+--
+ALTER TABLE `logbaixapagamento`
+  ADD CONSTRAINT `fk_pag_pag` FOREIGN KEY (`idPagamento`) REFERENCES `pagamento` (`idPagamento`),
+  ADD CONSTRAINT `fk_pag_ger` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
+  ADD CONSTRAINT `fk_pag_emp` FOREIGN KEY (`empresaResponsavel`) REFERENCES `empresa` (`cnpj`);
+
+--
+-- Limitadores para a tabela `logentradapedido`
+--
+ALTER TABLE `logentradapedido`
+  ADD CONSTRAINT `fk_gerente_pedido` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
+  ADD CONSTRAINT `fk_pedido` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`idPedido`);
+
+--
+-- Limitadores para a tabela `logfinalizarencomenda`
+--
+ALTER TABLE `logfinalizarencomenda`
+  ADD CONSTRAINT `fk_gerente` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
+  ADD CONSTRAINT `fk_encomenda` FOREIGN KEY (`idEncomenda`) REFERENCES `encomenda` (`idEncomenda`);
 
 --
 -- Limitadores para a tabela `motorista`

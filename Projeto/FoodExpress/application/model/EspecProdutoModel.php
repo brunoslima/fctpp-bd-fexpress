@@ -61,6 +61,13 @@
 
 			return $this->select("SELECT * FROM especproduto WHERE idEspecProduto = $id")[0];
 		}
+
+		public function modificarProduto($id, $nome, $descricao){
+
+			//Especificação do produto
+			$this->query("call modificarProduto('$id', '$nome', '$descricao');");
+
+		}
 			
 	}
 
