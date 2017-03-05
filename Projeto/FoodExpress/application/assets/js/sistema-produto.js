@@ -67,4 +67,23 @@ $(document).ready(function(){
 		}
 	});
 
+	$(document).on("click", ".btn-modificar-produto", function(e){
+		e.preventDefault();
+
+		let dados = {};
+		dados['id'] = listaProduto.id;
+		dados['nome'] = $(".modificarproduto [name='nomeProduto']").val();
+		dados['descricao'] = $(".modificarproduto [name='descricaoProduto']").val();
+
+		if (dadosObjeto.produto != null) {
+
+			dados['preco'] = $(".modificarproduto [name='precoProduto']").val();
+			dados['deposito'] = $(".modificarproduto [name='depositoProduto']").val();
+		}
+
+		console.log(dados);
+			
+
+		resetForm(".modificarproduto");
+	});
 });

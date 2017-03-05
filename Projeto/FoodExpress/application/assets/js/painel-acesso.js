@@ -1,6 +1,44 @@
 var dadosObjeto = {};
 var geocoder;
 
+function resetForm(selector) {
+    // seleciona o form a ser resetado
+    var form = document.querySelector(selector);
+
+    // limpa todos os inputs do tipo text, password, etc...
+    var inputs = form.querySelectorAll('input');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].type != 'checkbox' && inputs[i].type != 'radio') {
+            inputs[i].value = '';
+            inputs[i].disabled=false;
+        }
+    }
+
+    // limpa todas as textareas
+    var textarea = form.querySelectorAll('textarea');
+    for (var i = 0; i < textarea.length; i++) {
+        textarea[i].value = '';
+        textarea[i].disabled=false;
+    }
+
+    // desmarca todos os checkboxes e radios
+    inputs = form.querySelectorAll('input[type=checkbox], input[type=radio]');
+    for (i = 0; i < inputs.length; i++) {
+        inputs[i].checked = false;
+        inputs[i].disabled=false;
+    }
+
+    // seleciona a primeira opcao de todos os selects
+    var selects = form.querySelectorAll('select');
+    for (i = 0; i < selects.length; i++) {
+        var options = selects[i].querySelectorAll('option');
+        if (options.length > 0) {
+            selects[i].value = options[0].value;
+            selects[i].disabled=false;
+        }
+    }
+}
+
 function recuperarDados(id, url){
 
 	$.ajax({

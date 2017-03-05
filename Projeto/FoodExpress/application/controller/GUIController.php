@@ -1078,7 +1078,7 @@
  			echo json_encode($html);
  		}
  		
-public function alterarFuncionario(){
+		public function alterarFuncionario(){
 
  			$modelo = new FuncionarioModel();
  			$result = $modelo->listar();
@@ -1093,7 +1093,7 @@ public function alterarFuncionario(){
 
  				foreach ($chave as $value) {
 
- 					if ($value['nome'] != "Administrador") $select .= "<option value='{$teste} {$value['idfuncionario']}'>{$value['nome']}</option>";
+ 					if ($value['nome'] != "Administrador") $select .= "<option value='{$value['idfuncionario']} {$teste}'>{$value['nome']}</option>";
  				}
  			}
 
@@ -1153,8 +1153,8 @@ public function alterarFuncionario(){
 				<input type="text" placeholder="Proprietario" name="proprietarioEmpresa"/><br>
 				<br><label>Informações de Acesso</label><br>
 				<input type="text" placeholder="Chave de acesso" name="chaveEmpresa"/>
-				<input type="text" placeholder="Senha Antiga" name="senhaEmpresa"/>
-				<input type="text" placeholder="Senha Nova" name="senhaEmpresaNova"/><br>
+				<input type="password" placeholder="Senha Antiga" name="senhaEmpresa"/>
+				<input type="password" placeholder="Senha Nova" name="senhaEmpresaNova"/><br>
 				<br>
 				<label>Localização</label><br>
 				<input type="text" name="logradouroEmpresa" placeholder="Logradouro"/>

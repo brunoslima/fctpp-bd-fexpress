@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+	var listaEmpresa = {};	
 	/**
 	 * Associa a função de cadastrar empresa
 	 * ao respectivo botão
@@ -87,5 +89,28 @@ $(document).ready(function(){
 			$(".modificarempresa [name='cidade']").val(dadosObjeto.endereco.idCity);
 			$(".modificarempresa [name='complementoEmpresa']").val(dadosObjeto.endereco.complemento);
 		}
+	});
+
+	$(document).on("click", ".btn-atualizar-empresa", function(e){
+		
+		e.preventDefault();
+		let dados = {}
+
+		dados['id'] = $(".modificarempresa [name='cnpjEmpresa']").val();
+		dados['nome'] = $(".modificarempresa [name='nomeEmpresa']").val();
+		dados['proprietario'] = $(".modificarempresa [name='proprietarioEmpresa']").val();
+		dados['chave'] = $(".modificarempresa [name='chaveEmpresa']").val();
+		dados['senhaantiga'] = $(".modificarempresa [name='senhaEmpresa']").val();
+		dados['senhanova'] = $(".modificarempresa [name='senhaEmpresaNova']").val();
+		dados['logradouro'] = $(".modificarempresa [name='logradouroEmpresa']").val();
+		dados['numero'] = $(".modificarempresa [name='numeroEnderecoEmpresa']").val();
+		dados['bairro'] = $(".modificarempresa [name='bairroEmpresa']").val();
+		dados['estado'] = $(".modificarempresa [name='estado']").val();
+		dados['cidade'] = $(".modificarempresa [name='cidade']").val();
+		dados['complemento'] = $(".modificarempresa [name='complementoEmpresa']").val();
+
+		console.log(dados);
+
+		resetForm(".modificarempresa");
 	});
 });

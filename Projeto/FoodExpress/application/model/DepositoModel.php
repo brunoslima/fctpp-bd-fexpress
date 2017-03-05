@@ -22,6 +22,10 @@
 
 				$this->query("call modificarDeposito('$idDeposito', '$nome', '$descricao');");
 			}
+
+			public function getDeposito($id){
+				return $this->select("SELECT * FROM deposito WHERE numero = $id")[0];
+			}
 			
 		}	
 

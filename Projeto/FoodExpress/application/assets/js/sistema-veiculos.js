@@ -50,4 +50,21 @@ $(document).ready(function(){
 		}
 	});
 
+
+	$(document).on("click", ".btn-modificar-veiculo", function(e){
+		
+		e.preventDefault();
+		let dados ={};
+		
+		dados['id'] = listaVeiculo.id;
+		dados['placa'] = $(".modificarveiculo [name='placa']").val();
+		dados['ano'] = $(".modificarveiculo [name='ano']").val();
+		dados['modelo'] = $(".modificarveiculo [name='modelo']").val();
+		dados['capacidade'] = $(".modificarveiculo [name='capacidade']").val();
+
+		console.log(dados);
+
+		resetForm(".modificarveiculo");
+	});
+
 });

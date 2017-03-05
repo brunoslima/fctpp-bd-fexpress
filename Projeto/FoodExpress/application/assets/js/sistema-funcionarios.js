@@ -61,10 +61,8 @@ $(document).ready(function(){
 		let valor = $(this).val();
 		
 		let conjunto = valor.split(' ');
-		lista.cargo = conjunto[0];
-		if (lista.cargo == "Auxiliar") {
-			lista.id = parseInt(conjunto[3]);
-		}else lista.id = parseInt(conjunto[1]);
+		lista.cargo = conjunto[1];
+		lista.id = parseInt(conjunto[0]);
 
 		$('.block').remove();
 		if (lista.id != 0){
@@ -151,6 +149,48 @@ $(document).ready(function(){
 		}
 	});
 
-	
+	$(document).on("click", ".btn-alterar-funcionario", function(e){
+		e.preventDefault();
+
+		let dados = {};
+		dados['id'] = lista.id;
+		dados['nome'] = $('.editarfuncionario [name="nome"]').val();
+		dados['nasc'] = $('.editarfuncionario [name="dataNascimento"]').val();
+		dados['cont'] = $('.editarfuncionario [name="dataContratacao"]').val();
+		dados['salario'] = $('.editarfuncionario [name="salario"]').val();
+			
+
+		if(lista.cargo == "Segurança"){
+
+			dados['porte'] = $('.editarfuncionario [name="porte"]').val();
+		}
+		else if (lista.cargo == "Gerência"){
+
+			dados['contato'] = $('.editarfuncionario [name="contato"]').val();
+			dados['login'] = $('.editarfuncionario [name="login"]').val();
+			dados['senhaAntiga'] = $('.editarfuncionario [name="senha"]').val();
+			dados['senhaNova'] = $('.editarfuncionario [name="senhanova"]').val();
+
+		}
+		else if (lista.cargo == "Motorista") {
+		
+
+			dados['categoria'] = $('.editarfuncionario [name="categoria"]').val();
+			dados['codigo'] = $('.editarfuncionario [name="codigo"]').val();
+			dados['area'] = $('.editarfuncionario [name="area"]').val();
+			dados['numero'] = $('.editarfuncionario [name="numero"]').val();
+			dados['chave'] = $('.editarfuncionario [name="chaveMotorista"]').val();
+			dados['senhaAntiga'] = $('.editarfuncionario [name="senhaMotorista"]').val();
+			dados['senhaNova'] = $('.editarfuncionario [name="senhaMotoristaNova"]').val();
+
+		}
+		else{
+			dados['setor'] = $('.editarfuncionario [name="setor"]').val();
+		}
+
+		console.log(dados);
+
+		resetForm(".editarfuncionario");
+	});
 
 });

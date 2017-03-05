@@ -69,4 +69,26 @@ $(document).ready(function(){
 			$(".modificarfornecedor [name='cidade']").val(dadosObjeto.endereco.idCity);
 		}
 	}); 
+
+	 $(document).on("click", ".btn-modificar-fornecedor", function(e){
+		e.preventDefault();
+
+		let dados = {};
+		dados['id'] = listaFornecedor.id;
+		dados['nome'] = $(".modificarfornecedor [name='nome']").val();
+		dados['email'] = $(".modificarfornecedor [name='email']").val();
+		dados['codigo'] = $(".modificarfornecedor [name='codigo']").val();
+		dados['area'] = $(".modificarfornecedor [name='area']").val();
+		dados['numero'] = $(".modificarfornecedor [name='numero']").val();
+		dados['logradouro'] = $(".modificarfornecedor [name='logradouro']").val();
+		dados['numeroEndereco'] = $(".modificarfornecedor [name='numeroEndereco']").val();
+		dados['bairro'] = $(".modificarfornecedor [name='bairro']").val();
+		dados['complemento'] = $(".modificarfornecedor [name='complemento']").val();
+		dados['estado'] = $(".modificarfornecedor [name='estado']").val();
+		dados['cidade'] = $(".modificarfornecedor [name='cidade']").val();
+
+		console.log(dados);
+		
+		resetForm(".modificarfornecedor");
+	});
 });

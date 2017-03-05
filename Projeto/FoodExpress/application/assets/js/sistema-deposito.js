@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+
+	var listaDeposito = {
+
+	};
 	/**
 	 * Associa a função de cadastrar um novo deposito
 	 * ao respectivo botão
@@ -39,5 +43,21 @@ $(document).ready(function(){
 			$(".modificardeposito [name='descricaoDepositoModificar']").val(dadosObjeto.deposito.descricao);
 		}
 	});  
+	 
+	$(document).on("click", ".btn-modificar-deposito", function(e){
+		e.preventDefault();
+
+		let dados = {
+
+		};
+
+		dados['id'] = listaDeposito.id;
+		dados['nome'] = $(".modificardeposito [name='nomeDepositoModificar']").val();
+		dados['descricao'] = $(".modificardeposito [name='descricaoDepositoModificar']").val();
+
+		console.log(dados);
+		
+		resetForm(".modificardeposito");
+	}); 
 	 
 });

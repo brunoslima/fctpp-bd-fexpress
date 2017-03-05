@@ -303,7 +303,7 @@
 			$modeloFuncionario = new FuncionarioModel();
 			$data['func'] = $modeloFuncionario->getFuncionario($_POST['id']['id']);
 
-			if ($_POST['id']['cargo'] == "Auxiliar de Limpeza") {
+			if ($_POST['id']['cargo'] == "Auxiliar") {
 
 				$modelo = new AuxiliarLimpezaModel();
 				$data['outro'] = $modelo->getAuxiliar($_POST['id']['id']);
