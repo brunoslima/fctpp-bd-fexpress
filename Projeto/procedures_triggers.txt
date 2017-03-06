@@ -170,7 +170,7 @@ end$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEndereco`(NidEndereco integer, Nlogradouro varchar(45), NnumeroEndereco integer, Nbairro varchar(45), Ncomplemento varchar(100), NprimaryKeyCidade integer)
 begin
 	
-	UPDATE endereco SET logradouro = Nlogradouro, numeroEndereco = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyEndereco WHERE idEndereco = NidEndereco;
+	UPDATE endereco SET logradouro = Nlogradouro, numero = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyCidade WHERE idEndereco = NidEndereco;
 
 end$$
 
@@ -192,7 +192,7 @@ end$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEmpresa`(id decimal(14,0), Nproprietario varchar(45), Nnome varchar(45), Nchave varchar(45), Nsenha varchar(45), NprimaryKeyEndereco integer)
 begin
 	
-	UPDATE empresa SET proprietario = Nproprietario, nome = Nnome, chaveAcesso = Nchave, senha = Nsenha, fkEndereco = primaryKeyEndereco = novaDescricao WHERE cnpj = id;
+	UPDATE empresa SET proprietario = Nproprietario, nome = Nnome, chaveAcesso = Nchave, senha = Nsenha, fkEndereco = NprimaryKeyEndereco WHERE cnpj = id;
 
 end$$
 
@@ -207,11 +207,11 @@ end$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarAuxiliarLimpeza`(id integer, Nsetor varchar(45))
 begin
 	
-	UPDATE auxiliarlimpeza SET setor = Nsetor WHERE idAuxiliarLimeza = id;
+	UPDATE auxiliarlimpeza SET setor = Nsetor WHERE idAuxiliarLimpeza = id;
 
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarMotorista`(id integer, Ncategoria varchar(2), Ncodigo decimal(3,0), Narea decimal(3,0), Nnumero decimal(3,0), Nchave varchar(45), Nsenha varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarMotorista`(id integer, Ncategoria varchar(2), Ncodigo decimal(3,0), Narea decimal(2,0), Nnumero decimal(9,0), Nchave varchar(45), Nsenha varchar(45))
 begin
 	
 	UPDATE motorista SET categoriaHabilitacao = Ncategoria, codigo = Ncodigo, area = Narea, numero = Nnumero, chaveAcesso = Nchave, senha = Nsenha  WHERE idMotorista = id;

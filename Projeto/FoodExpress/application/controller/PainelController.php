@@ -399,7 +399,7 @@
  		//////////////////
  		
 
- 		//não funciona
+ 		//Funciona
  		public function updateEmpresa(){
  			
 
@@ -441,7 +441,7 @@
  			echo json_encode($data);
  		}
 
- 		//funciona parcialmente, somente o fornecedor
+ 		//funciona
  		public function updateFornecedor(){
 
  			try{
@@ -464,16 +464,16 @@
  			echo json_encode($data);
  		}
 
- 		//funciona parcialmente
+ 		//funciona
  		public function updateFuncionario(){
 
  			try{
- 				//funcionario funciona
+ 				//funciona
  				$modelFuncionario = new FuncionarioModel();
 	 			//modificarFuncionario($idFuncionario, $nome, $salario, $dataC, $dataN);
 				$modelFuncionario->modificarFuncionario($_POST['id'], $_POST['nome'], $_POST['salario'], $_POST['cont'], $_POST['nasc']);
 
-				//não funciona
+				//funciona
 				if($_POST['tipo'] == "Auxiliar"){
 					
 					$modelLimpeza = new AuxiliarLimpezaModel();
@@ -487,7 +487,7 @@
 					//modificarGerente($id, $contato, $login, $senha)
 					$modelGerente->modificarGerente($_POST['idGerente'], $_POST['contato'], $_POST['login'], $_POST['senha']);
 				}
-				//o número do motorista só está entrando os três primeiros digitos
+				//funciona
 				else if($_POST['tipo'] == "Motorista"){
 
 					$modelMotorista = new MotoristaModel();
@@ -534,7 +534,7 @@
  			echo json_encode($data);
  		}
 
- 		//funciona perfeitamente
+ 		//funciona
  		public function updateVeiculo(){
 
  			try{

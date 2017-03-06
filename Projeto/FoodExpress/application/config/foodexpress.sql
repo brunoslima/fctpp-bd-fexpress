@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 05-Mar-2017 às 15:58
+-- Data de Criação: 06-Mar-2017 às 00:42
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -60,7 +60,7 @@ end$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarAuxiliarLimpeza`(id integer, Nsetor varchar(45))
 begin
 	
-	UPDATE auxiliarlimpeza SET setor = Nsetor WHERE idAuxiliarLimeza = id;
+	UPDATE auxiliarlimpeza SET setor = Nsetor WHERE idAuxiliarLimpeza = id;
 
 end$$
 
@@ -74,14 +74,14 @@ end$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEmpresa`(id decimal(14,0), Nproprietario varchar(45), Nnome varchar(45), Nchave varchar(45), Nsenha varchar(45), NprimaryKeyEndereco integer)
 begin
 	
-	UPDATE empresa SET proprietario = Nproprietario, nome = Nnome, chaveAcesso = Nchave, senha = Nsenha, fkEndereco = primaryKeyEndereco = novaDescricao WHERE cnpj = id;
+	UPDATE empresa SET proprietario = Nproprietario, nome = Nnome, chaveAcesso = Nchave, senha = Nsenha, fkEndereco = NprimaryKeyEndereco WHERE cnpj = id;
 
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarEndereco`(NidEndereco integer, Nlogradouro varchar(45), NnumeroEndereco integer, Nbairro varchar(45), Ncomplemento varchar(100), NprimaryKeyCidade integer)
 begin
 	
-	UPDATE endereco SET logradouro = Nlogradouro, numeroEndereco = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyEndereco WHERE idEndereco = NidEndereco;
+	UPDATE endereco SET logradouro = Nlogradouro, numero = NnumeroEndereco, bairro = Nbairro, complemento = Ncomplemento, fkCidade = NprimaryKeyCidade WHERE idEndereco = NidEndereco;
 
 end$$
 
@@ -106,7 +106,7 @@ begin
 
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarMotorista`(id integer, Ncategoria varchar(2), Ncodigo decimal(3,0), Narea decimal(3,0), Nnumero decimal(3,0), Nchave varchar(45), Nsenha varchar(45))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarMotorista`(id integer, Ncategoria varchar(2), Ncodigo decimal(3,0), Narea decimal(2,0), Nnumero decimal(9,0), Nchave varchar(45), Nsenha varchar(45))
 begin
 	
 	UPDATE motorista SET categoriaHabilitacao = Ncategoria, codigo = Ncodigo, area = Narea, numero = Nnumero, chaveAcesso = Nchave, senha = Nsenha  WHERE idMotorista = id;
@@ -283,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `auxiliarlimpeza` (
 --
 
 INSERT INTO `auxiliarlimpeza` (`setor`, `idAuxiliarLimpeza`) VALUES
-('Administração', 3);
+('Deposito', 3);
 
 -- --------------------------------------------------------
 
@@ -5925,7 +5925,7 @@ INSERT INTO `empresa` (`cnpj`, `proprietario`, `nome`, `chaveAcesso`, `senha`, `
 ('11627288000145', 'Paulo Vitor', 'Panificadora Ki-Pão', 'kipao', '123', 11),
 ('18521555000144', 'Rosa Maria de Souza', 'Supermercado Primavera', 'primavera', '123', 10),
 ('29272762000129', 'Sr. Nagai', 'Supermercado Irmãos Nagai', 'nagai', 'mart', 8),
-('39599098000180', 'Jose Silva Silvero', 'Mercado Avenda', 'avenda', 'avenda123', 6),
+('39599098000180', 'Jose Silva Silvero', 'Mercado Avenida', 'avenida', '123', 6),
 ('60188817000167', 'Felipe Pavan', 'Restaurante Almanara', 'carnessaorafael', '123', 14),
 ('97689021000106', 'Rogério do Carmo', 'Supermercado pague menos', 'paguemenos', '123', 12);
 
@@ -5998,7 +5998,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
 
 INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complemento`, `fkCidade`) VALUES
 (5, 'Rua dos Alfeneiros', 724, 'Vila Sezamo', 'A', 2214),
-(6, 'Rua Albino', 171, 'Inocap', 'A', 5262),
+(6, 'Av. Pedro de Tolêdo', 1347, 'Conj. Hab. Planalto', 'A', 5262),
 (7, 'Rua 9 de julho', 122, 'Centro', 'B', 5117),
 (8, 'Av. Padre Jorge Summerer', 64, 'Centro', 'A', 5117),
 (9, 'Rua São Joao', 23, 'Vila Rual Formosa', 'Fundo', 1702),
@@ -6334,7 +6334,7 @@ CREATE TABLE IF NOT EXISTS `motorista` (
 
 INSERT INTO `motorista` (`categoriaHabilitacao`, `codigo`, `area`, `numero`, `disponivel`, `idMotorista`, `chaveAcesso`, `senha`) VALUES
 ('2', '55', '18', '996542312', 1, 9, 'claudinei', '123'),
-('2', '55', '18', '981235647', 1, 10, 'freitas', '123'),
+('3', '55', '18', '980001234', 1, 10, 'freitas', '123'),
 ('2', '55', '18', '997232323', 1, 11, 'oliveira', '123'),
 ('2', '55', '18', '981124432', 1, 13, 'lula', '123');
 
