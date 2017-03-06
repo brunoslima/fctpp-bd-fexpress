@@ -223,7 +223,7 @@ var mapLugar;
 //Localização da empresa FoodExpress
 var minhaLocalizacao = "Av. Joaquim Constantino, 1000 - Vila Nova Prudente, Pres. Prudente - SP";
 //Localização do destino
-var destino = "Av. Padre Jorge Summerer, 64 - Centro, Martinópolis - São Paulo";
+var destino = "";
 
 
 
@@ -431,7 +431,7 @@ $(document).ready(function(){
 		$(".w > .b").append(content);
 		$(".w > .b").append("<div id='mapLugar'></div>");
 		initMap();
-		geocodeAddress(geocoder, map, `${dadosObjeto.endereco.logradouro}, ${dadosObjeto.endereco.numero} - ${dadosObjeto.endereco.bairro}, ${dadosObjeto.endereco.nomeCidade} - ${dadosObjeto.endereco.nomeEstado}`)
+		geocodeAddress(geocoder, map, `${dadosObjeto.endereco.logradouro}, ${dadosObjeto.endereco.numero} - ${dadosObjeto.endereco.bairro}, ${dadosObjeto.endereco.nomeCidade} - ${dadosObjeto.endereco.nomeEstado}`);
 		$(".w").fadeIn();
 	});
 });

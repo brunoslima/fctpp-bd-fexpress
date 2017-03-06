@@ -60,7 +60,7 @@
 			$novoValor = ($novaQuant*$novoPreco+$produto['quantidadeTotal']*$produto['preco'])/($produto['quantidadeTotal']+$novaQuant);
 
 			$quant = $novaQuant + $produto['quantidadeTotal'];
-			$this->update("UPDATE produto SET quantidadeTotal = $quant, preco = $novoValor");
+			$this->update("UPDATE produto SET quantidadeTotal = $quant, preco = $novoValor WHERE fkEspecProduto = $espec");
 
 			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];	
 

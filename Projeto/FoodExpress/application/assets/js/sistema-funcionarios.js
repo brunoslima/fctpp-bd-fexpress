@@ -51,6 +51,7 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("funcionario cadastrado com sucesso!");
+			resetForm(".novofuncionariocad");
 		})
 		.fail(function(){
 			console.log("pãã");

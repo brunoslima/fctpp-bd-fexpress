@@ -94,6 +94,21 @@ $(document).ready(function(){
 			//data = $.parseJSON(data);
 			console.log(data);
 			console.log("Encomenda cadastrada com sucesso!");
+			$(".novaEncomendaCad .item-pedido").empty();
+			$(".novaEncomendaCad .item-pedido").append(`<thead>
+						<th>Código</th>
+						<th>Produto</th>
+						<th>Quantidade</th>
+						<th>Valor Unit.</th>
+						<th>Total</th>
+					</thead>
+					<tbody>
+						
+					</tbody>`);
+			resetForm(".novaEncomendaCad");
+			itensEncomenda = [];
+			total = 0;
+			$(".total-compra").text("Total da Compra: R$ 0.00");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã pãã hey");

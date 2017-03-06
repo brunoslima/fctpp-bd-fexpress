@@ -8,6 +8,7 @@
 
 	<script type="text/javascript" src="<?php echo $assets['script']?>jquery-3.1.1.min.js"></script>
 	
+	<script type="text/javascript" src="<?php echo $assets['script']?>painel-acesso.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>painel-usuario.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-encomendas.js"></script>
 	<script type="text/javascript" src="<?php echo $assets['script']?>sistema-deposito.js"></script>

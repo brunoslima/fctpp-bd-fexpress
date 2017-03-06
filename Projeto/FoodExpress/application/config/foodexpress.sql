@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 06-Mar-2017 às 14:26
+-- Data de Criação: 06-Mar-2017 às 22:15
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -292,7 +292,8 @@ CREATE TABLE IF NOT EXISTS `auxiliarlimpeza` (
 --
 
 INSERT INTO `auxiliarlimpeza` (`setor`, `idAuxiliarLimpeza`) VALUES
-('Deposito', 3);
+('Deposito', 3),
+('Vendas', 16);
 
 -- --------------------------------------------------------
 
@@ -5897,7 +5898,7 @@ CREATE TABLE IF NOT EXISTS `deposito` (
   `descricao` varchar(45) DEFAULT NULL,
   `nome` varchar(50) NOT NULL,
   PRIMARY KEY (`numero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Extraindo dados da tabela `deposito`
@@ -5907,7 +5908,9 @@ INSERT INTO `deposito` (`numero`, `descricao`, `nome`) VALUES
 (1, 'Suprimentos Alimentares em geral', 'Balcão de Suprimentos Alimentares'),
 (2, 'Bolachas e afins', 'Depósito de Bolachas Industrializadas'),
 (3, 'Depósito de alimentos agricolas', 'Setor de Alimentos Naturais/Agricolas'),
-(4, 'Contém alimentos não-perecíveis', 'Depósito de Alimentos não-perecíveis');
+(4, 'Contém alimentos não-perecíveis', 'Depósito de Alimentos não-perecíveis'),
+(5, 'Carnes Suinas', 'Deposito de carnes'),
+(6, 'Carnes Bovinas', 'Deposito de Carnes Bovinas');
 
 -- --------------------------------------------------------
 
@@ -5932,6 +5935,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
 
 INSERT INTO `empresa` (`cnpj`, `proprietario`, `nome`, `chaveAcesso`, `senha`, `fkEndereco`) VALUES
 ('11627288000145', 'Paulo Vitor', 'Panificadora Ki-Pão', 'kipao', '123', 11),
+('15173744000185', 'Carlos Miguel', 'Supermercados Pastorinho', 'pastorinho', '123', 15),
 ('18521555000144', 'Rosa Maria de Souza', 'Supermercado Primavera', 'primavera', '123', 10),
 ('29272762000129', 'Sr. Nagai', 'Supermercado Irmãos Nagai', 'nagai', 'mart', 8),
 ('39599098000180', 'Jose Silva Silvero', 'Mercado Avenida', 'avenida', '123', 6),
@@ -5955,7 +5959,7 @@ CREATE TABLE IF NOT EXISTS `encomenda` (
   KEY `fk_Encomenda_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Encomenda_Viagem1_idx` (`fkViagem`),
   KEY `fk_Encomenda_Empresa1_idx` (`fkEmpresa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
 -- Extraindo dados da tabela `encomenda`
@@ -5969,7 +5973,10 @@ INSERT INTO `encomenda` (`idEncomenda`, `data`, `status`, `fkPagamento`, `fkViag
 (24, '2017-03-04', 1, 68, 32, '18521555000144'),
 (25, '2017-03-04', 1, 69, 32, '18521555000144'),
 (27, '2017-03-06', 1, 82, 36, '97689021000106'),
-(28, '2017-03-06', 1, 83, 35, '29272762000129');
+(28, '2017-03-06', 1, 83, 35, '29272762000129'),
+(29, '2017-03-06', 1, 89, 37, '29272762000129'),
+(30, '2017-03-06', 1, 90, 38, '97689021000106'),
+(31, '2017-03-06', 1, 91, 39, '29272762000129');
 
 --
 -- Acionadores `encomenda`
@@ -6015,7 +6022,7 @@ CREATE TABLE IF NOT EXISTS `endereco` (
   `fkCidade` int(11) NOT NULL,
   PRIMARY KEY (`idEndereco`),
   KEY `fk_Endereco_Cidade_idx` (`fkCidade`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Extraindo dados da tabela `endereco`
@@ -6031,7 +6038,9 @@ INSERT INTO `endereco` (`idEndereco`, `logradouro`, `numero`, `bairro`, `complem
 (11, 'Av. Dorvalino dos Santos', 788, 'Centro', 'A', 2271),
 (12, 'R. Treze de Maio', 1145, 'Vila Aparecida', 'A', 5302),
 (13, 'Estr. Raimundo Maiolini', 401, 'Ameliópolis', 'Rural', 5253),
-(14, 'Rua Paulo Sérgio Gonçalves Molina', 382, 'Centro', 'A', 5227);
+(14, 'Rua Paulo Sérgio Gonçalves Molina', 382, 'Centro', 'A', 5227),
+(15, 'R. Maj. Felício Tarabay', 615, 'Centro', 'A', 5253),
+(16, 'Av. José de Grande', 518, 'Jardim Parati', '642', 5115);
 
 -- --------------------------------------------------------
 
@@ -6044,7 +6053,7 @@ CREATE TABLE IF NOT EXISTS `especproduto` (
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`idEspecProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Extraindo dados da tabela `especproduto`
@@ -6066,7 +6075,10 @@ INSERT INTO `especproduto` (`idEspecProduto`, `nome`, `descricao`) VALUES
 (24, 'Beterraba', 'Natural'),
 (25, 'Tomate cereja', 'Natural'),
 (26, 'Maça Argentina', 'Natural/Importado'),
-(27, 'Laranja', 'Fruta cítrica');
+(27, 'Laranja', 'Fruta cítrica'),
+(28, 'Guarana Dolly', 'Dollynho'),
+(29, 'Bolacha Doce', 'Doce bolacha'),
+(30, 'Limão', 'Natural');
 
 -- --------------------------------------------------------
 
@@ -6131,7 +6143,8 @@ CREATE TABLE IF NOT EXISTS `fabrica` (
 --
 
 INSERT INTO `fabrica` (`idFabrica`) VALUES
-('6095295000103');
+('6095295000103'),
+('98231826000166');
 
 -- --------------------------------------------------------
 
@@ -6159,7 +6172,8 @@ INSERT INTO `fornecedor` (`cnpj`, `nome`, `email`, `codigo`, `area`, `numero`, `
 ('6095295000103', 'Liane Alimentos', 'liane.alimentos@liane.com.br', '55', '18', '32214354', 7),
 ('11705527000138', 'Carlos Silva', 'csilva7@gmail.com', '55', '18', '998762204', 9),
 ('50987685000180', 'Carlos Miguel Aidar', 'carlosaidar@gmail.com', '55', '18', '998677775', 5),
-('67516243000158', 'José Costa Borges', 'jcborges@hotmail.com', '55', '18', '981456608', 13);
+('67516243000158', 'José Costa Borges', 'jcborges@hotmail.com', '55', '18', '981456608', 13),
+('98231826000166', 'Marilan', 'marilan@gmail.com', '55', '18', '987651122', 16);
 
 -- --------------------------------------------------------
 
@@ -6174,7 +6188,7 @@ CREATE TABLE IF NOT EXISTS `funcionario` (
   `dataContratacao` date DEFAULT NULL,
   `dataNascimento` date DEFAULT NULL,
   PRIMARY KEY (`idfuncionario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Extraindo dados da tabela `funcionario`
@@ -6191,7 +6205,10 @@ INSERT INTO `funcionario` (`idfuncionario`, `nome`, `salario`, `dataContratacao`
 (10, 'Ricardo Freitas', 2200, '2017-03-02', '1977-03-02'),
 (11, 'Luiz Oliveira', 1500.99, '2017-02-21', '1977-03-02'),
 (12, 'Leandro Ungari Cayres', 2200, '2017-03-04', '1996-03-09'),
-(13, 'Jose Lula Silva', 1800, '2017-03-04', '1973-03-31');
+(13, 'Jose Lula Silva', 1800, '2017-03-04', '1973-03-31'),
+(14, 'Gabriel Francisco Casarro', 3500.99, '2017-03-06', '1977-03-06'),
+(15, 'Gabriel Alves', 2000, '2017-03-06', '1979-03-06'),
+(16, 'Eymar Ferrario de Lima', 880, '2017-03-06', '1995-10-20');
 
 --
 -- Acionadores `funcionario`
@@ -6288,7 +6305,7 @@ CREATE TABLE IF NOT EXISTS `logbaixapagamento` (
   PRIMARY KEY (`id`),
   KEY `fk_pag_pag` (`idPagamento`),
   KEY `fk_pag_ger` (`gerenteResponsavel`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `logbaixapagamento`
@@ -6297,7 +6314,10 @@ CREATE TABLE IF NOT EXISTS `logbaixapagamento` (
 INSERT INTO `logbaixapagamento` (`id`, `idPagamento`, `data`, `gerenteResponsavel`) VALUES
 (3, 82, '2017-03-06', 8),
 (4, 83, '2017-03-06', 8),
-(5, 84, '2017-03-06', 8);
+(5, 84, '2017-03-06', 8),
+(6, 85, '2017-03-06', 8),
+(7, 89, '2017-03-06', 8),
+(8, 91, '2017-03-06', 8);
 
 -- --------------------------------------------------------
 
@@ -6313,14 +6333,15 @@ CREATE TABLE IF NOT EXISTS `logentradapedido` (
   PRIMARY KEY (`id`),
   KEY `fk_gerente_pedido` (`gerenteResponsavel`),
   KEY `fk_pedido` (`idPedido`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `logentradapedido`
 --
 
 INSERT INTO `logentradapedido` (`id`, `data`, `gerenteResponsavel`, `idPedido`) VALUES
-(4, '2017-03-06', 8, 40);
+(4, '2017-03-06', 8, 40),
+(5, '2017-03-06', 8, 41);
 
 -- --------------------------------------------------------
 
@@ -6336,7 +6357,7 @@ CREATE TABLE IF NOT EXISTS `logfinalizarencomenda` (
   PRIMARY KEY (`id`),
   KEY `fk_gerente` (`gerenteResponsavel`),
   KEY `fk_encomenda` (`idEncomenda`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Extraindo dados da tabela `logfinalizarencomenda`
@@ -6344,7 +6365,10 @@ CREATE TABLE IF NOT EXISTS `logfinalizarencomenda` (
 
 INSERT INTO `logfinalizarencomenda` (`id`, `data`, `gerenteResponsavel`, `idEncomenda`) VALUES
 (1, '2017-03-06', 8, 28),
-(2, '2017-03-06', 8, 27);
+(2, '2017-03-06', 8, 27),
+(3, '2017-03-06', 8, 29),
+(4, '2017-03-06', 8, 30),
+(5, '2017-03-06', 8, 31);
 
 -- --------------------------------------------------------
 
@@ -6370,10 +6394,10 @@ CREATE TABLE IF NOT EXISTS `motorista` (
 --
 
 INSERT INTO `motorista` (`categoriaHabilitacao`, `codigo`, `area`, `numero`, `disponivel`, `idMotorista`, `chaveAcesso`, `senha`) VALUES
-('2', '55', '18', '996542312', 1, 9, 'claudinei', '123'),
+('2', '55', '18', '996542312', 0, 9, 'claudinei', '123'),
 ('3', '55', '18', '980001234', 1, 10, 'freitas', '123'),
 ('2', '55', '18', '997232323', 1, 11, 'oliveira', '123'),
-('2', '55', '18', '981124432', 1, 13, 'lula', '123');
+('2', '55', '18', '981124432', 0, 13, 'lula', '123');
 
 -- --------------------------------------------------------
 
@@ -6403,7 +6427,7 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
   `fkGerente` int(11) DEFAULT NULL,
   PRIMARY KEY (`idPagamento`),
   KEY `fk_Pagamento_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=92 ;
 
 --
 -- Extraindo dados da tabela `pagamento`
@@ -6428,7 +6452,13 @@ INSERT INTO `pagamento` (`idPagamento`, `numeroBoleto`, `descricao`, `valor`, `d
 (82, 247375489, 'Abastecimento de suprimento alimentar', 7037.37, '2017-04-15', '2017-03-06', 1, NULL),
 (83, 1311157227, 'Abastecimento de whey', 3518.685, '2017-04-15', '2017-03-06', 1, NULL),
 (84, 857116700, 'Pedido de laranjas', 10, '2017-04-15', '2017-03-06', 1, 8),
-(85, 1734619141, 'Novas laranjas', 20, '2017-04-15', '2017-03-06', 0, 8);
+(85, 1734619141, 'Novas laranjas', 20, '2017-04-15', '2017-03-06', 1, 8),
+(86, 743041993, 'Pedido bolacha maizena e sal', 54, '2017-04-15', '2017-03-06', 0, 8),
+(87, 339050293, 'Pedido de doce', 49.900000000000006, '2017-04-15', '2017-03-06', 0, 8),
+(88, 1085449219, 'Pedido tomate', 68.8, '2017-04-15', '2017-03-06', 0, 8),
+(89, 1866210938, 'Encomenda bolacha', 21.114600000000003, '2017-04-15', '2017-03-06', 1, NULL),
+(90, 1134704590, 'Pedido doce leite', 21.114600000000003, '2017-04-15', '2017-03-06', 0, NULL),
+(91, 807556153, 'teste', 75.5, '2017-04-15', '2017-03-06', 1, NULL);
 
 --
 -- Acionadores `pagamento`
@@ -6459,7 +6489,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   PRIMARY KEY (`idPedido`),
   KEY `fk_Pedido_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Pedido_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
 -- Extraindo dados da tabela `pedido`
@@ -6476,7 +6506,10 @@ INSERT INTO `pedido` (`idPedido`, `dataPedido`, `status`, `fkPagamento`, `fkGere
 (27, '2017-03-04', 1, 62, 8),
 (28, '2017-03-04', 1, 63, 8),
 (40, '2017-03-06', 1, 84, 8),
-(41, '2017-03-06', 0, 85, 8);
+(41, '2017-03-06', 1, 85, 8),
+(42, '2017-03-06', 0, 86, 8),
+(43, '2017-03-06', 0, 87, 8),
+(44, '2017-03-06', 0, 88, 8);
 
 --
 -- Acionadores `pedido`
@@ -6516,32 +6549,32 @@ CREATE TABLE IF NOT EXISTS `produto` (
 --
 
 INSERT INTO `produto` (`codProduto`, `preco`, `dataFabricacao`, `dataVencimento`, `fkEspecProduto`, `fkDeposito`, `quantidadeTotal`) VALUES
-(15, 1.875, '2017-03-04', '2017-04-03', 12, 4, 20),
-(16, 1.875, '2017-03-04', '2017-04-03', 13, 4, 20),
-(17, 1.875, '2017-03-04', '2017-04-03', 14, 4, 20),
-(18, 1.875, '2017-03-04', '2017-04-03', 19, 4, 20),
-(19, 1.875, '2017-03-04', '2017-04-03', 26, 4, 20),
-(20, 1.875, '2017-03-04', '2017-04-03', 25, 4, 20),
-(21, 1.875, '2017-03-04', '2017-04-03', 20, 4, 20),
-(22, 1.875, '2017-03-04', '2017-04-03', 21, 4, 20),
-(23, 1.875, '2017-03-04', '2017-04-03', 22, 4, 20),
-(24, 1.875, '2017-03-04', '2017-04-03', 24, 4, 20),
-(25, 1.875, '2017-03-04', '2017-04-03', 15, 4, 20),
-(26, 1.875, '2017-03-04', '2017-04-03', 16, 4, 20),
-(27, 1.88, '2017-03-04', '2017-04-03', 17, 3, 20),
-(28, 1.875, '2017-03-04', '2017-04-03', 18, 4, 20),
-(29, 1.875, '2017-03-04', '2017-04-03', 11, 4, 20),
-(30, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
-(31, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
-(32, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
-(33, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
-(34, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
-(35, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
-(36, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
-(38, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
-(39, 1.875, '2017-03-06', '2017-04-05', 20, 4, 20),
-(40, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
-(41, 1.88, '2017-03-06', '2017-04-05', 27, 3, 20);
+(15, 4.22, '2017-03-04', '2017-04-03', 12, 4, 60),
+(16, 4.34, '2017-03-04', '2017-04-03', 13, 4, 60),
+(17, 4.1, '2017-03-04', '2017-04-03', 14, 4, 60),
+(18, 3.99, '2017-03-04', '2017-04-03', 19, 4, 60),
+(19, 5.44, '2017-03-04', '2017-04-03', 26, 4, 60),
+(20, 7.55, '2017-03-04', '2017-04-03', 25, 4, 60),
+(21, 4.66, '2017-03-04', '2017-04-03', 20, 4, 60),
+(22, 3.44, '2017-03-04', '2017-04-03', 21, 4, 60),
+(23, 8.66, '2017-03-04', '2017-04-03', 22, 4, 60),
+(24, 4.67, '2017-03-04', '2017-04-03', 24, 4, 60),
+(25, 6.77, '2017-03-04', '2017-04-03', 15, 4, 60),
+(26, 3.66, '2017-03-04', '2017-04-03', 16, 4, 60),
+(27, 7.55, '2017-03-04', '2017-04-03', 17, 3, 60),
+(28, 5.34, '2017-03-04', '2017-04-03', 18, 4, 60),
+(29, 3.55, '2017-03-04', '2017-04-03', 11, 4, 60),
+(30, 3.99, '2017-03-06', '2017-04-05', 19, 4, 60),
+(31, 3.99, '2017-03-06', '2017-04-05', 19, 4, 60),
+(32, 3.99, '2017-03-06', '2017-04-05', 19, 4, 60),
+(33, 3.99, '2017-03-06', '2017-04-05', 19, 4, 60),
+(34, 6.45, '2017-03-06', '2017-04-05', 12, 4, 60),
+(35, 4.8, '2017-03-06', '2017-04-05', 12, 4, 60),
+(36, 2.33, '2017-03-06', '2017-04-05', 12, 4, 60),
+(38, 8.33, '2017-03-06', '2017-04-05', 12, 4, 60),
+(39, 1.44, '2017-03-06', '2017-04-05', 20, 4, 60),
+(40, 4.76, '2017-03-06', '2017-04-05', 12, 4, 60),
+(41, 4.88, '2017-03-06', '2017-04-05', 27, 3, 60);
 
 -- --------------------------------------------------------
 
@@ -6565,18 +6598,21 @@ INSERT INTO `produtofornecedor` (`fk_espec_produto`, `fk_cnpj`) VALUES
 (13, '6095295000103'),
 (14, '6095295000103'),
 (19, '6095295000103'),
+(29, '6095295000103'),
 (15, '11705527000138'),
 (16, '11705527000138'),
 (17, '11705527000138'),
 (18, '11705527000138'),
 (11, '50987685000180'),
+(28, '50987685000180'),
 (20, '67516243000158'),
 (21, '67516243000158'),
 (22, '67516243000158'),
 (24, '67516243000158'),
 (25, '67516243000158'),
 (26, '67516243000158'),
-(27, '67516243000158');
+(27, '67516243000158'),
+(30, '67516243000158');
 
 -- --------------------------------------------------------
 
@@ -6596,7 +6632,9 @@ CREATE TABLE IF NOT EXISTS `seguranca` (
 --
 
 INSERT INTO `seguranca` (`porteArma`, `idSeguranca`) VALUES
-(1, 2);
+(1, 2),
+(1, 14),
+(0, 15);
 
 -- --------------------------------------------------------
 
@@ -6612,7 +6650,7 @@ CREATE TABLE IF NOT EXISTS `veiculo` (
   `capacidade` int(11) NOT NULL,
   `disponivel` tinyint(1) NOT NULL,
   PRIMARY KEY (`idVeiculo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Extraindo dados da tabela `veiculo`
@@ -6625,12 +6663,14 @@ INSERT INTO `veiculo` (`idVeiculo`, `placa`, `ano`, `modelo`, `capacidade`, `dis
 (4, 'LGT-7542', '2015', '2016', 35000, 1),
 (5, 'RGD-3422', '2016', '2017', 20000, 1),
 (6, 'FGH-3333', '2016', '2017', 50000, 1),
-(7, 'BSL-0412', '2017', '2018', 60000, 1),
+(7, 'BSL-0412', '2017', '2018', 60000, 0),
 (8, 'CSG-1222', '2000', '2001', 10000, 1),
 (9, 'GVH-4069', '2015', '2016', 25000, 1),
 (10, 'LUC-2301', '2014', '2015', 35000, 1),
 (11, 'GHW-5667', '2014', '2015', 40000, 1),
-(12, 'YGH-1808', '2013', '2014', 10000, 1);
+(12, 'YGH-1808', '2013', '2014', 10000, 1),
+(13, 'EFL-2230', '2015', '2015', 10000, 0),
+(14, 'FDS-1011', '2017', '2018', 20000, 1);
 
 -- --------------------------------------------------------
 
@@ -6651,7 +6691,7 @@ CREATE TABLE IF NOT EXISTS `viagem` (
   KEY `fk_Viagem_Veiculo1_idx` (`fkVeiculo`),
   KEY `fk_Viagem_Motorista1_idx` (`fkMotorista`),
   KEY `fk_Viagem_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=40 ;
 
 --
 -- Extraindo dados da tabela `viagem`
@@ -6664,7 +6704,10 @@ INSERT INTO `viagem` (`idViagem`, `descricao`, `fkVeiculo`, `fkMotorista`, `fkGe
 (33, 'Entregas para o supermercado pague menos', 7, 9, 8, 0, '2017-03-04', '2017-03-04'),
 (34, 'Entrega pague menos', 1, 10, 8, 0, '2017-03-06', '2017-03-06'),
 (35, 'Entrega whey nagai', 1, 9, 8, 0, '2017-03-06', '2017-03-06'),
-(36, 'Entrega de whey pague menos', 2, 10, 8, 0, '2017-03-06', '2017-03-06');
+(36, 'Entrega de whey pague menos', 2, 10, 8, 0, '2017-03-06', '2017-03-06'),
+(37, 'Entregas nagai', 13, 9, 8, 1, '2017-03-06', '2017-03-06'),
+(38, 'Entrega pague menos', 7, 13, 8, 1, '2017-03-06', '2017-03-06'),
+(39, 'Teste', 1, 10, 8, 0, '2017-03-06', '2017-03-07');
 
 --
 -- Constraints for dumped tables

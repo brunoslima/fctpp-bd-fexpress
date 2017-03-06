@@ -139,6 +139,12 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("Pedido cadastrado com sucesso!");
+			$(".item-pedido").empty();
+			$(".item-pedido").append("<thead><th>Código</th><th>Produto</th><th>Fornecedor</th><th>Quantidade</th><th>Valor Unit.</th><th>Total</th></thead><tbody></tbody>");
+			resetForm(".novoPedidoCad");
+			itensPedido = [];
+			total = 0;
+			$(".total-compra").text("Total da Compra: R$ 0.00");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã pãã hey");

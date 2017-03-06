@@ -24,6 +24,7 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("veiculo cadastrado com sucesso!");
+			resetForm(".novoveiculocad");
 		})
 		.fail(function(){
 			console.log("pãã");

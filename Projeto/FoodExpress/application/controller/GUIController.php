@@ -39,7 +39,7 @@
 			} 			
 
  			$html = '<h1>Nova Empresa</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novaEmpresa">
 				<br>
 				<label>Informações Empresariais</label><br>
 				<input type="text" placeholder="CNPJ" name="cnpjEmpresa"/><br>
@@ -114,7 +114,7 @@
 			$nome = $_SESSION['nomeUsuario'];
 
  			$html= '<h1>Nova Encomenda</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novaEncomendaCad">
 				<p>Informações sobre a encomenda:</p><br>
 				<ul>
 					<li>Data de Lançamento: ' .$data. '</li>
@@ -258,7 +258,7 @@
  		public function novodeposito(){
  			
  			$html = '<h1>Novo Depósito</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novoDeposito">
 				<input type="text" placeholder="Nome" name="nomeDeposito"/>
 				<textarea name="descricaoDeposito" cols="30" rows="20" placeholder="Descrição"></textarea>
 				<button class="btn-cadastrar-deposito">Cadastrar</button>
@@ -295,7 +295,7 @@
  		public function novofuncionario(){
 
  			$html = '<h1>Novo Funcionário</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novofuncionariocad">
 				<label>Informações Pessoais</label><br>
 				<input type="text" placeholder="Nome Completo" name="nome"/>
 				<br><br><label>Data de Nascimento</label><br><input type="date" name="dataNascimento"/><br>
@@ -426,7 +426,7 @@
 			}
 
  			$html = '<h1>Novo Fornecedor</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novoFornecedor">
 				<label>Informações Gerais</label><br>
 				<input type="text" placeholder="Cnpj" name="cnpjFornecedor"/><br>
 				<input type="text" placeholder="Nome Completo" name="nomeFornecedor"/>
@@ -626,7 +626,7 @@
 			$nome = $_SESSION['nomeUsuario'];
 
  			$html= '<h1>Novo Pedido</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novoPedidoCad">
 				<p>Informações sobre o pedido:</p><br>
 				<ul>
 					<li>Data de Lançamento: ' .$data. '</li>
@@ -738,7 +738,7 @@
  			}
 
  			$html = '<h1>Novo Produto</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novoprodutocad">
 				<label>Nome do produto</label><br>
 				<input type="text" placeholder="Insira o nome do produto" name="nomeProduto"/><br>
 				<label>Descrição</label><br>
@@ -764,12 +764,18 @@
 					<th>Código</th>
 					<th>Nome</th>
 					<th>Descrição</th>
+					<th>Preço</th>
 				</thead>
 				<tbody>
 			";
 
  			foreach ($result as $value) {
- 				$html .= "<tr><td>{$value['idEspecProduto']}</td><td>{$value['nome']}</td><td>{$value['descricao']}</td></tr>";
+
+ 				if($value['preco'] != null) {
+ 					$preco = number_format($value['preco'], 2,",",'');
+ 				}
+ 				else $preco = " - ";
+ 				$html .= "<tr><td>{$value['idEspecProduto']}</td><td>{$value['nome']}</td><td>{$value['descricao']}</td><td>".$preco."</td></tr>";
 
  			}
 
@@ -808,7 +814,7 @@
 
  			$html = '<h1>Nova Viagem</h1>
  			<p>As viagens referem-se às entregas de encomendas realizadas a empresas cadastradas no sistema.</p><br>
-			<form method="post" action="">
+			<form method="post" action="" class="novaviagemcad">
 				<label><b>Gerente Responsável:</b> '.$_SESSION['nomeUsuario'].'</label><br><br><br>
 				<label>Descrição</label><br>
 				<textarea name="descricaoviagem" cols="30" rows="10"></textarea><br>
@@ -943,7 +949,7 @@
  		public function novoveiculo(){
 
  			$html = '<h1>Novo Veículo</h1>
-			<form method="post" action="">
+			<form method="post" action="" class="novoveiculocad">
 				<label>Informações Veiculares</label><br>
 				<input type="text" placeholder="Placa" name="placaVeiculo"/><br>
 				<input type="text" placeholder="Ano de fabricação" name="anoVeiculo"/><br>

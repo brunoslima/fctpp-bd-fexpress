@@ -28,7 +28,7 @@
 
 		public function listarTodos(){
 
-			return $this->select("SELECT idEspecProduto, nome, descricao FROM `$this->table`");
+			return $this->select("SELECT idEspecProduto, nome, descricao, produto.preco as preco FROM `$this->table`, produto WHERE idEspecProduto = fkEspecProduto group by idEspecProduto order by nome asc");
 		}
 
 		public function listarProdutos($nome){

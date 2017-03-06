@@ -23,6 +23,8 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("Produto cadastrado com sucesso!");
+			resetForm(".novoprodutocad");
+		
 		})
 		.fail(function(){
 			console.log("pãã");

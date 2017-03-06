@@ -25,6 +25,7 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("Deposito cadastrado com sucesso!");
+			resetForm(".novoDeposito");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã pãã hey");

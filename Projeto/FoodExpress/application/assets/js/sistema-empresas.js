@@ -32,6 +32,8 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("empresa cadastrada com sucesso!");
+
+			resetForm(".novaEmpresa");
 		})
 		.fail(function(){
 			console.log("pãã pãã pãã hey");

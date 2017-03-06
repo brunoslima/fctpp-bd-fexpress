@@ -31,6 +31,18 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("Viagem cadastrada com sucesso!");
+			let table = `<thead>
+							<th>Código Encomenda</th>
+							<th>Data</th>
+							<th>Preço Total</th>
+						</thead>
+						<tbody>
+							
+						</tbody>`;
+			$("#listaEncomendasViagem").empty();
+			$("#listaEncomendasViagem").append(table);
+			$("#listaEncomendasViagem").slideUp();
+			resetForm(".novaviagemcad");
 		})
 		.fail(function(){
 			console.log("pãã");

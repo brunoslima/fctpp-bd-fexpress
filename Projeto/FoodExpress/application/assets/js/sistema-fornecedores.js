@@ -39,6 +39,7 @@ $(document).ready(function(){
 		.done(function(data){
 			console.log(data);
 			console.log("fornecedor cadastrado com sucesso!");
+			resetForm(".novoFornecedor");
 		})
 		.fail(function(){
 			console.log("pãã");
