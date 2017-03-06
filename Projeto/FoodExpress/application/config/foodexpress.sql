@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 06-Mar-2017 às 00:42
+-- Data de Criação: 06-Mar-2017 às 14:26
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -26,26 +26,32 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `atualizaFuncionario`(id int, n varchar(45), s float, d date, e date, idGerente integer)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaEncomenda`(id integer, viagem integer, idGerente integer)
 begin
 	
-	SET @gerente = idGerente;
-	SET @funcionario= id;
+	SET @idEncomenda = id;
+	SET @gerenteEncomenda = idGerente;
 
-	update funcionario set nome = n, salario = s, dataContratacao = d, dataNascimento = e where idfuncionario = id;
-
-end$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaEncomenda`(id integer, viagem integer)
-begin
-	
 	UPDATE encomenda SET status = 1, fkViagem = viagem WHERE idEncomenda = id;
 
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPedido`(IN `id` INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPagamento`(id integer, idGerente integer)
 begin
 	
+	SET @idPagamento = id;
+	SET @gerentePagamento = idGerente;
+
+	UPDATE pagamento SET status = 1 WHERE idPagamento = id;
+
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPedido`(id integer, idGerente integer)
+begin
+	
+	SET @idPedido = id;
+	SET @gerentePedido = idGerente;
+
 	UPDATE pedido SET status = 1 WHERE idPedido = id;
 
 end$$
@@ -92,9 +98,12 @@ begin
 
 end$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFuncionario`(id integer, Nnome varchar(45), Nsalario float, dataC date, dataN date)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFuncionario`(id integer, Nnome varchar(45), Nsalario float, dataC date, dataN date, idGerente integer)
 begin
 	
+	SET @gerente = idGerente;
+	SET @funcionario= id;
+
 	UPDATE funcionario SET nome = Nnome, salario = Nsalario, dataContratacao = dataC, dataNascimento = dataN WHERE idFuncionario = id;
 
 end$$
@@ -5946,7 +5955,7 @@ CREATE TABLE IF NOT EXISTS `encomenda` (
   KEY `fk_Encomenda_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Encomenda_Viagem1_idx` (`fkViagem`),
   KEY `fk_Encomenda_Empresa1_idx` (`fkEmpresa`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Extraindo dados da tabela `encomenda`
@@ -5958,7 +5967,23 @@ INSERT INTO `encomenda` (`idEncomenda`, `data`, `status`, `fkPagamento`, `fkViag
 (22, '2017-03-04', 1, 66, 30, '29272762000129'),
 (23, '2017-03-04', 1, 67, 31, '11627288000145'),
 (24, '2017-03-04', 1, 68, 32, '18521555000144'),
-(25, '2017-03-04', 1, 69, 32, '18521555000144');
+(25, '2017-03-04', 1, 69, 32, '18521555000144'),
+(27, '2017-03-06', 1, 82, 36, '97689021000106'),
+(28, '2017-03-06', 1, 83, 35, '29272762000129');
+
+--
+-- Acionadores `encomenda`
+--
+DROP TRIGGER IF EXISTS `atualizaEncomendaBaixa`;
+DELIMITER //
+CREATE TRIGGER `atualizaEncomendaBaixa` AFTER UPDATE ON `encomenda`
+ FOR EACH ROW begin
+	if (old.status <> new.status) then
+		insert into `logfinalizarencomenda` values (null, curdate(), @gerenteEncomenda, @idEncomenda);
+	end if;
+end
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -6019,7 +6044,7 @@ CREATE TABLE IF NOT EXISTS `especproduto` (
   `nome` varchar(200) NOT NULL,
   `descricao` varchar(45) NOT NULL,
   PRIMARY KEY (`idEspecProduto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `especproduto`
@@ -6040,7 +6065,8 @@ INSERT INTO `especproduto` (`idEspecProduto`, `nome`, `descricao`) VALUES
 (22, 'Repolho', 'Natural'),
 (24, 'Beterraba', 'Natural'),
 (25, 'Tomate cereja', 'Natural'),
-(26, 'Maça Argentina', 'Natural/Importado');
+(26, 'Maça Argentina', 'Natural/Importado'),
+(27, 'Laranja', 'Fruta cítrica');
 
 -- --------------------------------------------------------
 
@@ -6161,7 +6187,7 @@ INSERT INTO `funcionario` (`idfuncionario`, `nome`, `salario`, `dataContratacao`
 (4, 'Luiz Carlos Gomes', 2300, '2011-03-01', '1985-01-06'),
 (5, 'José Aparecido da Silva', 1800, '2011-08-01', '1977-01-07'),
 (8, 'Bruno Santos de Lima', 2200, '2017-01-02', '1995-12-04'),
-(9, 'Claudinei Henrique', 2200, '2017-03-02', '1984-03-02'),
+(9, 'Claudinei Henrique', 2300, '2017-03-02', '1984-03-02'),
 (10, 'Ricardo Freitas', 2200, '2017-03-02', '1977-03-02'),
 (11, 'Luiz Oliveira', 1500.99, '2017-02-21', '1977-03-02'),
 (12, 'Leandro Ungari Cayres', 2200, '2017-03-04', '1996-03-09'),
@@ -6175,7 +6201,7 @@ DELIMITER //
 CREATE TRIGGER `atualizaSalario` AFTER UPDATE ON `funcionario`
  FOR EACH ROW begin
 	if (old.salario <> new.salario) then
-		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);
+		insert into `logatualizarsalario` values (null, @funcionario, @gerente, old.salario, new.salario);
 	end if;
 end
 //
@@ -6239,25 +6265,14 @@ CREATE TABLE IF NOT EXISTS `logatualizarsalario` (
   PRIMARY KEY (`id`),
   KEY `fk_atualizar_func` (`idFuncionario`),
   KEY `fk_atualizar_gerente` (`idGerente`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Estrutura da tabela `logatualizarsenhagerente`
+-- Extraindo dados da tabela `logatualizarsalario`
 --
 
-CREATE TABLE IF NOT EXISTS `logatualizarsenhagerente` (
-  `id` int(11) NOT NULL,
-  `data` date NOT NULL,
-  `gerenteResponsavel` int(11) NOT NULL,
-  `gerenteModificado` int(11) NOT NULL,
-  `senhaAntiga` varchar(45) DEFAULT NULL,
-  `senhaNova` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_senha` (`gerenteResponsavel`),
-  KEY `fk_senha_modificado` (`gerenteModificado`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `logatualizarsalario` (`id`, `idFuncionario`, `idGerente`, `salarioAntigo`, `salarioNovo`) VALUES
+(1, 9, 8, 2200, 2300);
 
 -- --------------------------------------------------------
 
@@ -6266,16 +6281,23 @@ CREATE TABLE IF NOT EXISTS `logatualizarsenhagerente` (
 --
 
 CREATE TABLE IF NOT EXISTS `logbaixapagamento` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idPagamento` int(11) NOT NULL,
   `data` date NOT NULL,
   `gerenteResponsavel` int(11) DEFAULT NULL,
-  `empresaResponsavel` decimal(14,0) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_pag_pag` (`idPagamento`),
-  KEY `fk_pag_ger` (`gerenteResponsavel`),
-  KEY `fk_pag_emp` (`empresaResponsavel`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `fk_pag_ger` (`gerenteResponsavel`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `logbaixapagamento`
+--
+
+INSERT INTO `logbaixapagamento` (`id`, `idPagamento`, `data`, `gerenteResponsavel`) VALUES
+(3, 82, '2017-03-06', 8),
+(4, 83, '2017-03-06', 8),
+(5, 84, '2017-03-06', 8);
 
 -- --------------------------------------------------------
 
@@ -6284,14 +6306,21 @@ CREATE TABLE IF NOT EXISTS `logbaixapagamento` (
 --
 
 CREATE TABLE IF NOT EXISTS `logentradapedido` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `gerenteResponsavel` int(11) NOT NULL,
   `idPedido` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_gerente_pedido` (`gerenteResponsavel`),
   KEY `fk_pedido` (`idPedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Extraindo dados da tabela `logentradapedido`
+--
+
+INSERT INTO `logentradapedido` (`id`, `data`, `gerenteResponsavel`, `idPedido`) VALUES
+(4, '2017-03-06', 8, 40);
 
 -- --------------------------------------------------------
 
@@ -6300,14 +6329,22 @@ CREATE TABLE IF NOT EXISTS `logentradapedido` (
 --
 
 CREATE TABLE IF NOT EXISTS `logfinalizarencomenda` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `data` date NOT NULL,
   `gerenteResponsavel` int(11) NOT NULL,
   `idEncomenda` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_gerente` (`gerenteResponsavel`),
   KEY `fk_encomenda` (`idEncomenda`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Extraindo dados da tabela `logfinalizarencomenda`
+--
+
+INSERT INTO `logfinalizarencomenda` (`id`, `data`, `gerenteResponsavel`, `idEncomenda`) VALUES
+(1, '2017-03-06', 8, 28),
+(2, '2017-03-06', 8, 27);
 
 -- --------------------------------------------------------
 
@@ -6366,7 +6403,7 @@ CREATE TABLE IF NOT EXISTS `pagamento` (
   `fkGerente` int(11) DEFAULT NULL,
   PRIMARY KEY (`idPagamento`),
   KEY `fk_Pagamento_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=70 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=86 ;
 
 --
 -- Extraindo dados da tabela `pagamento`
@@ -6387,7 +6424,25 @@ INSERT INTO `pagamento` (`idPagamento`, `numeroBoleto`, `descricao`, `valor`, `d
 (66, 423034668, 'Requisição de queijo e requeijao', 989.375, '2017-04-13', '2017-03-04', 1, NULL),
 (67, 20507813, 'Requisição de doce de leite natural', 536.25, '2017-04-13', '2017-03-04', 1, NULL),
 (68, 488830567, 'Requisição de verduras', 609.375, '2017-04-13', '2017-03-04', 1, NULL),
-(69, 1004760743, 'Requisição de frutas', 78.125, '2017-04-13', '2017-03-04', 1, NULL);
+(69, 1004760743, 'Requisição de frutas', 78.125, '2017-04-13', '2017-03-04', 1, NULL),
+(82, 247375489, 'Abastecimento de suprimento alimentar', 7037.37, '2017-04-15', '2017-03-06', 1, NULL),
+(83, 1311157227, 'Abastecimento de whey', 3518.685, '2017-04-15', '2017-03-06', 1, NULL),
+(84, 857116700, 'Pedido de laranjas', 10, '2017-04-15', '2017-03-06', 1, 8),
+(85, 1734619141, 'Novas laranjas', 20, '2017-04-15', '2017-03-06', 0, 8);
+
+--
+-- Acionadores `pagamento`
+--
+DROP TRIGGER IF EXISTS `atualizaPagamentoBaixa`;
+DELIMITER //
+CREATE TRIGGER `atualizaPagamentoBaixa` AFTER UPDATE ON `pagamento`
+ FOR EACH ROW begin
+	if (old.status <> new.status) then
+		insert into `logbaixapagamento` values (null, @idPagamento, curdate(), @gerentePagamento);
+	end if;
+end
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -6404,7 +6459,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   PRIMARY KEY (`idPedido`),
   KEY `fk_Pedido_Pagamento1_idx` (`fkPagamento`),
   KEY `fk_Pedido_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Extraindo dados da tabela `pedido`
@@ -6419,7 +6474,23 @@ INSERT INTO `pedido` (`idPedido`, `dataPedido`, `status`, `fkPagamento`, `fkGere
 (25, '2017-03-04', 1, 60, 8),
 (26, '2017-03-04', 1, 61, 8),
 (27, '2017-03-04', 1, 62, 8),
-(28, '2017-03-04', 1, 63, 8);
+(28, '2017-03-04', 1, 63, 8),
+(40, '2017-03-06', 1, 84, 8),
+(41, '2017-03-06', 0, 85, 8);
+
+--
+-- Acionadores `pedido`
+--
+DROP TRIGGER IF EXISTS `atualizaPedidoBaixa`;
+DELIMITER //
+CREATE TRIGGER `atualizaPedidoBaixa` AFTER UPDATE ON `pedido`
+ FOR EACH ROW begin
+	if (old.status <> new.status) then
+		insert into `logentradapedido` values (null, curdate(), @gerentePedido, @idPedido);
+	end if;
+end
+//
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -6438,28 +6509,39 @@ CREATE TABLE IF NOT EXISTS `produto` (
   PRIMARY KEY (`codProduto`),
   KEY `fk_Produto_EspecProduto1_idx` (`fkEspecProduto`),
   KEY `fk_Produto_Deposito1_idx` (`fkDeposito`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Extraindo dados da tabela `produto`
 --
 
 INSERT INTO `produto` (`codProduto`, `preco`, `dataFabricacao`, `dataVencimento`, `fkEspecProduto`, `fkDeposito`, `quantidadeTotal`) VALUES
-(15, 4.4875, '2017-03-04', '2017-04-03', 12, NULL, 500),
-(16, 5.7375, '2017-03-04', '2017-04-03', 13, NULL, 500),
-(17, 4.0625, '2017-03-04', '2017-04-03', 14, NULL, 500),
-(18, 3.4375, '2017-03-04', '2017-04-03', 19, NULL, 500),
-(19, 1.5625, '2017-03-04', '2017-04-03', 26, NULL, 700),
-(20, 7.8125, '2017-03-04', '2017-04-03', 25, NULL, 700),
-(21, 3.0625, '2017-03-04', '2017-04-03', 20, NULL, 500),
-(22, 4.0625, '2017-03-04', '2017-04-03', 21, NULL, 500),
-(23, 2.8125, '2017-03-04', '2017-04-03', 22, NULL, 500),
-(24, 5.3125, '2017-03-04', '2017-04-03', 24, NULL, 500),
-(25, 5.3625, '2017-03-04', '2017-04-03', 15, NULL, 300),
-(26, 6.5875, '2017-03-04', '2017-04-03', 16, NULL, 400),
-(27, 7.8375, '2017-03-04', '2017-04-03', 17, NULL, 400),
-(28, 5.3625, '2017-03-04', '2017-04-03', 18, NULL, 700),
-(29, 703.737, '2017-03-04', '2017-04-03', 11, NULL, 100);
+(15, 1.875, '2017-03-04', '2017-04-03', 12, 4, 20),
+(16, 1.875, '2017-03-04', '2017-04-03', 13, 4, 20),
+(17, 1.875, '2017-03-04', '2017-04-03', 14, 4, 20),
+(18, 1.875, '2017-03-04', '2017-04-03', 19, 4, 20),
+(19, 1.875, '2017-03-04', '2017-04-03', 26, 4, 20),
+(20, 1.875, '2017-03-04', '2017-04-03', 25, 4, 20),
+(21, 1.875, '2017-03-04', '2017-04-03', 20, 4, 20),
+(22, 1.875, '2017-03-04', '2017-04-03', 21, 4, 20),
+(23, 1.875, '2017-03-04', '2017-04-03', 22, 4, 20),
+(24, 1.875, '2017-03-04', '2017-04-03', 24, 4, 20),
+(25, 1.875, '2017-03-04', '2017-04-03', 15, 4, 20),
+(26, 1.875, '2017-03-04', '2017-04-03', 16, 4, 20),
+(27, 1.88, '2017-03-04', '2017-04-03', 17, 3, 20),
+(28, 1.875, '2017-03-04', '2017-04-03', 18, 4, 20),
+(29, 1.875, '2017-03-04', '2017-04-03', 11, 4, 20),
+(30, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
+(31, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
+(32, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
+(33, 1.875, '2017-03-06', '2017-04-05', 19, 4, 20),
+(34, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
+(35, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
+(36, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
+(38, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
+(39, 1.875, '2017-03-06', '2017-04-05', 20, 4, 20),
+(40, 1.875, '2017-03-06', '2017-04-05', 12, 4, 20),
+(41, 1.88, '2017-03-06', '2017-04-05', 27, 3, 20);
 
 -- --------------------------------------------------------
 
@@ -6493,7 +6575,8 @@ INSERT INTO `produtofornecedor` (`fk_espec_produto`, `fk_cnpj`) VALUES
 (22, '67516243000158'),
 (24, '67516243000158'),
 (25, '67516243000158'),
-(26, '67516243000158');
+(26, '67516243000158'),
+(27, '67516243000158');
 
 -- --------------------------------------------------------
 
@@ -6568,7 +6651,7 @@ CREATE TABLE IF NOT EXISTS `viagem` (
   KEY `fk_Viagem_Veiculo1_idx` (`fkVeiculo`),
   KEY `fk_Viagem_Motorista1_idx` (`fkMotorista`),
   KEY `fk_Viagem_Gerente1_idx` (`fkGerente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
 
 --
 -- Extraindo dados da tabela `viagem`
@@ -6578,7 +6661,10 @@ INSERT INTO `viagem` (`idViagem`, `descricao`, `fkVeiculo`, `fkMotorista`, `fkGe
 (30, 'Entrega supermercado irmãos nagai em martinopolis', 1, 9, 8, 0, '2017-03-02', '2017-03-02'),
 (31, 'Entregas da panificadora ki-pão', 6, 10, 8, 0, '2017-03-02', '2017-03-04'),
 (32, 'Entregas da supermercado primavera em joão ramalho', 2, 9, 8, 0, '2017-03-04', '2017-03-04'),
-(33, 'Entregas para o supermercado pague menos', 7, 9, 8, 0, '2017-03-04', '2017-03-04');
+(33, 'Entregas para o supermercado pague menos', 7, 9, 8, 0, '2017-03-04', '2017-03-04'),
+(34, 'Entrega pague menos', 1, 10, 8, 0, '2017-03-06', '2017-03-06'),
+(35, 'Entrega whey nagai', 1, 9, 8, 0, '2017-03-06', '2017-03-06'),
+(36, 'Entrega de whey pague menos', 2, 10, 8, 0, '2017-03-06', '2017-03-06');
 
 --
 -- Constraints for dumped tables
@@ -6663,19 +6749,11 @@ ALTER TABLE `logatualizarsalario`
   ADD CONSTRAINT `fk_atualizar_gerente` FOREIGN KEY (`idGerente`) REFERENCES `gerente` (`idGerente`);
 
 --
--- Limitadores para a tabela `logatualizarsenhagerente`
---
-ALTER TABLE `logatualizarsenhagerente`
-  ADD CONSTRAINT `fk_senha` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
-  ADD CONSTRAINT `fk_senha_modificado` FOREIGN KEY (`gerenteModificado`) REFERENCES `gerente` (`idGerente`);
-
---
 -- Limitadores para a tabela `logbaixapagamento`
 --
 ALTER TABLE `logbaixapagamento`
-  ADD CONSTRAINT `fk_pag_pag` FOREIGN KEY (`idPagamento`) REFERENCES `pagamento` (`idPagamento`),
   ADD CONSTRAINT `fk_pag_ger` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
-  ADD CONSTRAINT `fk_pag_emp` FOREIGN KEY (`empresaResponsavel`) REFERENCES `empresa` (`cnpj`);
+  ADD CONSTRAINT `fk_pag_pag` FOREIGN KEY (`idPagamento`) REFERENCES `pagamento` (`idPagamento`);
 
 --
 -- Limitadores para a tabela `logentradapedido`
@@ -6688,8 +6766,8 @@ ALTER TABLE `logentradapedido`
 -- Limitadores para a tabela `logfinalizarencomenda`
 --
 ALTER TABLE `logfinalizarencomenda`
-  ADD CONSTRAINT `fk_gerente` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`),
-  ADD CONSTRAINT `fk_encomenda` FOREIGN KEY (`idEncomenda`) REFERENCES `encomenda` (`idEncomenda`);
+  ADD CONSTRAINT `fk_encomenda` FOREIGN KEY (`idEncomenda`) REFERENCES `encomenda` (`idEncomenda`),
+  ADD CONSTRAINT `fk_gerente` FOREIGN KEY (`gerenteResponsavel`) REFERENCES `gerente` (`idGerente`);
 
 --
 -- Limitadores para a tabela `motorista`

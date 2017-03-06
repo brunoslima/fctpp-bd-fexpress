@@ -714,10 +714,12 @@
 
  				$status = ($value['status'] == 0) ? "Solicitado" : "Concluído";
 
+ 				$d = date_format(date_create($value['dataPedido']),"d/m/Y");
+
  				$modeloGerente = new GerenteModel();
  				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
 
- 				$html .= "<tr><td>{$value['idPedido']}</td><td>{$value['dataPedido']}</td><td>".$status."</td><td>{$value['fkPagamento']}</td><td>".$nomeGerente."</td></tr>";
+ 				$html .= "<tr><td>{$value['idPedido']}</td><td>".$d."</td><td>".$status."</td><td>{$value['fkPagamento']}</td><td>".$nomeGerente."</td></tr>";
 
  			}
 
@@ -875,6 +877,10 @@
 
  				$status = ($value['status'] == 0) ? "Concluída" : "Em andamento";
 
+ 				$da = date_format(date_create($value['dataInicio']),"d/m/Y");
+ 				$db = date_format(date_create($value['dataChegada']),"d/m/Y");
+
+
  				$modeloGerente = new GerenteModel();
  				$nomeGerente = $modeloGerente->getNome($value['fkGerente']);
 
@@ -884,7 +890,7 @@
  				$modeloVeiculo = new VeiculoModel();
  				$placaVeiculo = $modeloVeiculo->getPlaca($value['fkVeiculo']);
 
- 				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>".$placaVeiculo."</td><td>".$nomeMotorista."</td><td>".$nomeGerente."</td><td>".$status."</td><td>{$value['dataInicio']}</td><td>{$value['dataChegada']}</td></tr>";
+ 				$html .= "<tr style='cursor:pointer' data-id='{$value['idViagem']}' class='panel-viagem'><td>{$value['idViagem']}</td><td>{$value['descricao']}</td><td>".$placaVeiculo."</td><td>".$nomeMotorista."</td><td>".$nomeGerente."</td><td>".$status."</td><td>".$da."</td><td>".$db."</td></tr>";
 
  			}
 

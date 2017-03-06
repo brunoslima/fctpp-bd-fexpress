@@ -92,9 +92,12 @@ begin
 end$$
 
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPedido`(id integer)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPedido`(id integer, idGerente integer)
 begin
 	
+	SET @idPedido = id;
+	SET @gerentePedido = idGerente;
+
 	UPDATE pedido SET status = 1 WHERE idPedido = id;
 
 end$$
@@ -129,9 +132,12 @@ begin
 end$$
 
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaEncomenda`(id integer, viagem integer)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaEncomenda`(id integer, viagem integer, idGerente integer)
 begin
 	
+	SET @idEncomenda = id;
+	SET @gerenteEncomenda = idGerente;
+
 	UPDATE encomenda SET status = 1, fkViagem = viagem WHERE idEncomenda = id;
 
 end$$
@@ -197,9 +203,12 @@ begin
 end$$
 
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFuncionario`(id integer, Nnome varchar(45), Nsalario float, dataC date, dataN date)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `modificarFuncionario`(id integer, Nnome varchar(45), Nsalario float, dataC date, dataN date, idGerente integer)
 begin
 	
+	SET @gerente = idGerente;
+	SET @funcionario= id;
+
 	UPDATE funcionario SET nome = Nnome, salario = Nsalario, dataContratacao = dataC, dataNascimento = dataN WHERE idFuncionario = id;
 
 end$$
@@ -233,6 +242,16 @@ begin
 
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `darBaixaPagamento`(id integer, idGerente integer)
+begin
+	
+	SET @idPagamento = id;
+	SET @gerentePagamento = idGerente;
+
+	UPDATE pagamento SET status = 1 WHERE idPagamento = id;
+
+end$$
+
 
 drop table logAtualizarSalario;
 create table logAtualizarSalario(
@@ -253,10 +272,39 @@ after update on funcionario
 for each row
 begin
 	if (old.salario <> new.salario) then
-		insert into `logAtualizarSalario` values (null, @funcionario, @gerente, old.salario, new.salario);
+		insert into `logatualizarsalario` values (null, @funcionario, @gerente, old.salario, new.salario);
 	end if;
 end $$
 
+delimiter $$
+create trigger atualizaPedidoBaixa
+after update on pedido
+for each row
+begin
+	if (old.status <> new.status) then
+		insert into `logentradapedido` values (null, curdate(), @gerentePedido, @idPedido);
+	end if;
+end $$
+
+delimiter $$
+create trigger atualizaEncomendaBaixa
+after update on encomenda
+for each row
+begin
+	if (old.status <> new.status) then
+		insert into `logfinalizarencomenda` values (null, curdate(), @gerenteEncomenda, @idEncomenda);
+	end if;
+end $$
+
+delimiter $$
+create trigger atualizaPagamentoBaixa
+after update on pagamento
+for each row
+begin
+	if (old.status <> new.status) then
+		insert into `logbaixapagamento` values (null, @idPagamento, curdate(), @gerentePagamento);
+	end if;
+end $$
 
 
 create table logBaixaPagamento(
@@ -265,10 +313,8 @@ create table logBaixaPagamento(
     idPagamento integer not null,
     data date not null,
     gerenteResponsavel integer,
-    empresaResponsavel decimal(14,0),
     constraint fk_pag_pag foreign key(idPagamento) references pagamento(idPagamento), 
-    constraint fk_pag_ger foreign key(gerenteResponsavel) references gerente(idGerente),
-    constraint fk_pag_emp foreign key(empresaResponsavel) references empresa(cnpj)
+    constraint fk_pag_ger foreign key(gerenteResponsavel) references gerente(idGerente)
 );
 
 

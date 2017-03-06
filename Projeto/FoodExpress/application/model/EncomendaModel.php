@@ -63,9 +63,11 @@
 			 */
 			public function darBaixa($listaEncomendas, $viagem){
 
+				$idGerente = $_SESSION['idGerente'];
+
 				foreach ($listaEncomendas as $value) {
 					$id = $value['id'];
-					$this->query("call darBaixaEncomenda('$id', '$viagem');");
+					$this->query("call darBaixaEncomenda('$id', '$viagem', '$idGerente');");
 					//$this->update("UPDATE encomenda SET status = 1, fkViagem = '$viagem' WHERE idEncomenda = $id");
 				}
 

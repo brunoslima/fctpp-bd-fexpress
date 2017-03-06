@@ -156,7 +156,16 @@
 			foreach ($_POST['itens'] as $value) {
 				
 				$especproduto = $modeloEspec->listarPorNomeEspec($value['produto']);
-				$idProduto = $modeloProduto->add($value['valor']*1.25, date("Y-m-d"), date("Y-m-d",strtotime("+30 day")), $especproduto, null, $value['quantidade']);	
+
+				$a = $modeloProduto->getProduto($especproduto);
+				if ($a != null) {
+
+					$idProduto = $modeloProduto->recalcular($especproduto, $value['quantidade'], $value['valor']*1.25);
+				}
+				else{
+					$idProduto = $modeloProduto->add($value['valor']*1.25, date("Y-m-d"), date("Y-m-d",strtotime("+30 day")), $especproduto, null, $value['quantidade']);	
+				}
+				
 				$modeloItem->add($idProduto, $cnpj, $numPedido, $value['quantidade'], $value['valor']);
 			}
 
@@ -228,6 +237,7 @@
 
 			//marcar pagamento do pedido como pago
 			$modeloPagamento = new PagamentoModel();
+			echo ($fkPagamento);
 			$modeloPagamento->tornarPago($fkPagamento);
 
 			//identificar em qual deposito os produtos do pedido estão
@@ -519,12 +529,9 @@
 				//modificarProduto($id, $nome, $descricao)
 	 			$modelo->modificarProduto($_POST['id'], $_POST['nome'], $_POST['descricao']);
 
-	 			//falta atualizar o preço na tabela produto se a especproduto tiver um correspondente nesta tabela
-	 			
-	 			//lembrete, quando damos entrada no pedido, precisamos ver se o produto já existe:
-	 			//se não existir só põe como está,
-	 			//se existe tem que recalcular o preco dele e atualizar a quantidade
-	 			//
+	 			$modeloProduto = new ProdutoModel();
+	 			$modeloProduto->atualiza($_POST['id'], $_POST['preco'], $_POST['deposito']);
+
 	 			$data['resposta'] = true;
  			}
  			catch(Exception $e){

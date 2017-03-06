@@ -32,7 +32,9 @@
 
 		public function darBaixa($id){
 
-			$this->query("call darBaixaPedido('$id')");
+			$idGerente = $_SESSION['idGerente'];
+
+			$this->query("call darBaixaPedido('$id', '$idGerente');");
 			//$this->update("UPDATE pedido SET status = 1 WHERE idPedido = $id");
 		}
 

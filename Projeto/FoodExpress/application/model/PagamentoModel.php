@@ -59,8 +59,10 @@
 
 		public function tornarPago($fkPagamento){
 
-			$this->update("UPDATE pagamento SET status = 1 WHERE idPagamento = $fkPagamento");
+			$idGerente = $_SESSION['idGerente'];
 
+			$this->query("call darBaixaPagamento('$fkPagamento','$idGerente');");
+			//$this->update("UPDATE pagamento SET status = 1 WHERE idPagamento = $fkPagamento;");
 		}
 		
 	}

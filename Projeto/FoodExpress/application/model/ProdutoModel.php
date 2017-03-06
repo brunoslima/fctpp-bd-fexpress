@@ -47,6 +47,25 @@
 			}
 		}
 
+		public function atualiza($id, $preco, $deposito){
+
+			$this->update("UPDATE produto SET preco = $preco, fkDeposito = $deposito WHERE fkEspecProduto = $id");
+
+		}
+
+		public function recalcular($espec, $novaQuant, $novoPreco){
+
+			$produto = $this->select("SELECT * FROM produto WHERE fkEspecProduto = $espec")[0];
+
+			$novoValor = ($novaQuant*$novoPreco+$produto['quantidadeTotal']*$produto['preco'])/($produto['quantidadeTotal']+$novaQuant);
+
+			$quant = $novaQuant + $produto['quantidadeTotal'];
+			$this->update("UPDATE produto SET quantidadeTotal = $quant, preco = $novoValor");
+
+			return $this->select("SELECT max(codProduto) as cod FROM produto")[0]['cod'];	
+
+		}
+
 	}
 
 ?>

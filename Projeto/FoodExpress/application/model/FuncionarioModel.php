@@ -40,7 +40,9 @@
 
 		public function modificarFuncionario($idFuncionario, $nome, $salario, $dataC, $dataN){
 
-			$this->query("call modificarFuncionario('$idFuncionario', '$nome', '$salario', '$dataC', '$dataN');");
+			$idGerente = $_SESSION['idGerente'];
+
+			$this->query("call modificarFuncionario('$idFuncionario', '$nome', '$salario', '$dataC', '$dataN', '$idGerente');");
 
 		}
 
